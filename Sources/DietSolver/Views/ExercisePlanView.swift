@@ -5,6 +5,15 @@ struct ExercisePlanView: View {
     let healthData: HealthData
     
     var body: some View {
+        ModernExercisePlanView(plan: plan, healthData: healthData)
+    }
+}
+
+struct LegacyExercisePlanView: View {
+    let plan: ExercisePlan
+    let healthData: HealthData
+    
+    var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
                 // Focus Areas

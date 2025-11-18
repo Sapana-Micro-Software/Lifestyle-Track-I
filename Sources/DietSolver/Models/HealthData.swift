@@ -75,6 +75,12 @@ struct HealthData: Codable { // Define HealthData struct conforming to Codable p
     // HealthKit Data
     var healthKitBiomarkers: [HealthKitBiomarkers] = [] // Array of HealthKit biomarker readings
     
+    // Eating Metrics
+    var eatingMetrics: [EatingMetrics] = [] // Array of eating metrics records
+    
+    // Emotional Health
+    var emotionalHealth: [EmotionalHealth] = [] // Array of emotional health records
+    
     enum Gender: String, Codable, CaseIterable {
         case male, female, other
     }

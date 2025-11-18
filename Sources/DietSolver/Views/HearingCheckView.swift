@@ -9,6 +9,14 @@ import SwiftUI
 
 struct HearingCheckView: View {
     @ObservedObject var viewModel: DietSolverViewModel
+    
+    var body: some View {
+        ModernHearingCheckView(viewModel: viewModel)
+    }
+}
+
+struct LegacyHearingCheckView: View {
+    @ObservedObject var viewModel: DietSolverViewModel
     @State private var testType: DailyAudioHearingTest.TestType = .quick
     @State private var device: DailyAudioHearingTest.TestDevice = .iphone
     @State private var rightEarThreshold: Double = 20.0

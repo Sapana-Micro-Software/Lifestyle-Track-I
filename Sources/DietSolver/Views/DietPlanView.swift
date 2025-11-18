@@ -75,27 +75,7 @@ struct MealsView: View {
     let plan: DailyDietPlan
     
     var body: some View {
-        List {
-            ForEach(plan.meals) { meal in
-                Section(header: Text(meal.name).font(.headline)) {
-                    ForEach(meal.items) { item in
-                        HStack {
-                            Text(item.food.name)
-                            Spacer()
-                            Text("\(String(format: "%.0f", item.amount)) g")
-                                .foregroundColor(.secondary)
-                        }
-                    }
-                    
-                    HStack {
-                        Text("Total Calories")
-                        Spacer()
-                        Text("\(String(format: "%.0f", meal.totalNutrients.calories)) kcal")
-                            .foregroundColor(.secondary)
-                    }
-                }
-            }
-        }
+        ModernMealsView(plan: plan)
     }
 }
 

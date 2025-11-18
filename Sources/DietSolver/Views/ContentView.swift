@@ -6,6 +6,15 @@ public struct ContentView: View { // Define ContentView struct conforming to Vie
     public init() {} // Public initializer for ContentView
     
     public var body: some View { // Define body property returning view hierarchy
+        UniversalContentView() // Use universal content view with multi-platform support
+    }
+}
+
+// Legacy ContentView kept for compatibility
+struct LegacyContentView: View {
+    @StateObject private var viewModel = DietSolverViewModel()
+    
+    var body: some View {
         TabView { // Create tab view container
             // Main Diet Plan Tab
             NavigationView { // Create navigation view

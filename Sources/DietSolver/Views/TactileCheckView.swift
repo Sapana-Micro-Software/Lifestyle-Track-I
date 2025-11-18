@@ -9,6 +9,14 @@ import SwiftUI
 
 struct TactileCheckView: View {
     @ObservedObject var viewModel: DietSolverViewModel
+    
+    var body: some View {
+        ModernTactileCheckView(viewModel: viewModel)
+    }
+}
+
+struct LegacyTactileCheckView: View {
+    @ObservedObject var viewModel: DietSolverViewModel
     @State private var testType: DailyTactileTest.TestType = .quick
     @State private var bodyRegion: TactilePrescription.BodyRegionAssessment.BodyRegion = .fingertips
     @State private var device: DailyTactileTest.TestDevice = .manual

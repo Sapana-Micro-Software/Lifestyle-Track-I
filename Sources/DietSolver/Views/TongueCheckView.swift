@@ -9,6 +9,14 @@ import SwiftUI
 
 struct TongueCheckView: View {
     @ObservedObject var viewModel: DietSolverViewModel
+    
+    var body: some View {
+        ModernTongueCheckView(viewModel: viewModel)
+    }
+}
+
+struct LegacyTongueCheckView: View {
+    @ObservedObject var viewModel: DietSolverViewModel
     @State private var testType: DailyTongueTest.TestType = .quick
     @State private var device: DailyTongueTest.TestDevice = .mirror
     @State private var tongueColor: TonguePrescription.TongueAppearance.TongueColor = .pink
