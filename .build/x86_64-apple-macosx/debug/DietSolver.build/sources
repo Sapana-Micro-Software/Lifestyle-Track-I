@@ -1,7 +1,10 @@
 /Users/shyamalchandra/diet-solver/Sources/DietSolver/Analyzers/CognitiveAnalyzer.swift
+/Users/shyamalchandra/diet-solver/Sources/DietSolver/Analyzers/HearingAnalyzer.swift
 /Users/shyamalchandra/diet-solver/Sources/DietSolver/Analyzers/JournalAnalyzer.swift
 /Users/shyamalchandra/diet-solver/Sources/DietSolver/Analyzers/MedicalAnalyzer.swift
 /Users/shyamalchandra/diet-solver/Sources/DietSolver/Analyzers/SleepAnalyzer.swift
+/Users/shyamalchandra/diet-solver/Sources/DietSolver/Analyzers/TactileAnalyzer.swift
+/Users/shyamalchandra/diet-solver/Sources/DietSolver/Analyzers/TongueAnalyzer.swift
 /Users/shyamalchandra/diet-solver/Sources/DietSolver/Analyzers/VisionAnalyzer.swift
 /Users/shyamalchandra/diet-solver/Sources/DietSolver/Generators/NutritionFactsGenerator.swift
 /Users/shyamalchandra/diet-solver/Sources/DietSolver/Generators/RecipeGenerator.swift
@@ -19,6 +22,8 @@
 /Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/MedicalTests.swift
 /Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/Nutrient.swift
 /Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/SleepAnalysis.swift
+/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/TactileData.swift
+/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/TongueData.swift
 /Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/VisionData.swift
 /Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/VisionGames.swift
 /Users/shyamalchandra/diet-solver/Sources/DietSolver/Planners/ExercisePlanner.swift
@@ -32,8 +37,12 @@
 /Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/ExerciseLogView.swift
 /Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/ExercisePlanView.swift
 /Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/HealthDataInputView.swift
+/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/HearingCheckView.swift
 /Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/JournalAnalysisView.swift
+/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/MusicSessionView.swift
 /Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/PlanningSessionView.swift
 /Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/SolvingView.swift
+/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/TactileCheckView.swift
+/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/TongueCheckView.swift
 /Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/VisionCheckView.swift
 /Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/VisionGamesView.swift

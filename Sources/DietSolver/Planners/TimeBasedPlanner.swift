@@ -180,7 +180,7 @@ class TimeBasedPlanner { // Define TimeBasedPlanner class for generating plannin
         
         // Generate morning tasks based on health data
         if let healthData = healthData { // Check if health data exists
-            if let exercisePlan = healthData.exerciseGoals { // Check if exercise goals exist
+            if healthData.exerciseGoals != nil { // Check if exercise goals exist
                 tasks.append(TimeBasedPlanningSession.PlanningTask( // Add exercise task
                     title: "Morning Exercise", // Set task title
                     description: "Complete morning exercise routine", // Set task description
@@ -279,8 +279,8 @@ class TimeBasedPlanner { // Define TimeBasedPlanner class for generating plannin
     
     func generateWeekStartPlan(for date: Date, healthData: HealthData?, journalEntries: [JournalEntry], previousWeekPlan: TimeBasedPlanningSession?) -> TimeBasedPlanningSession { // Function to generate week start plan
         var goals: [TimeBasedPlanningSession.Goal] = [] // Initialize goals array
-        var priorities: [TimeBasedPlanningSession.Priority] = [] // Initialize priorities array
-        var tasks: [TimeBasedPlanningSession.PlanningTask] = [] // Initialize tasks array
+        let priorities: [TimeBasedPlanningSession.Priority] = [] // Initialize priorities array
+        let tasks: [TimeBasedPlanningSession.PlanningTask] = [] // Initialize tasks array
         
         // Analyze previous week's journal entries
         let calendar = Calendar.current // Get calendar instance
@@ -300,7 +300,7 @@ class TimeBasedPlanner { // Define TimeBasedPlanner class for generating plannin
         
         // Set goals based on health data and previous week analysis
         if let healthData = healthData { // Check if health data exists
-            if let exerciseGoals = healthData.exerciseGoals { // Check if exercise goals exist
+            if healthData.exerciseGoals != nil { // Check if exercise goals exist
                 goals.append(TimeBasedPlanningSession.Goal( // Add exercise goal
                     title: "Weekly Exercise Goal", // Set goal title
                     description: "Complete weekly exercise plan", // Set goal description
@@ -359,7 +359,7 @@ class TimeBasedPlanner { // Define TimeBasedPlanner class for generating plannin
     
     func generateMonthStartPlan(for date: Date, healthData: HealthData?, journalEntries: [JournalEntry], previousMonthPlan: TimeBasedPlanningSession?) -> TimeBasedPlanningSession { // Function to generate month start plan
         var goals: [TimeBasedPlanningSession.Goal] = [] // Initialize goals array
-        var priorities: [TimeBasedPlanningSession.Priority] = [] // Initialize priorities array
+        let priorities: [TimeBasedPlanningSession.Priority] = [] // Initialize priorities array
         
         // Analyze previous month's journal entries
         let calendar = Calendar.current // Get calendar instance
@@ -378,7 +378,7 @@ class TimeBasedPlanner { // Define TimeBasedPlanner class for generating plannin
         }
         
         // Set monthly goals based on health data
-        if let healthData = healthData { // Check if health data exists
+        if healthData != nil { // Check if health data exists
             goals.append(TimeBasedPlanningSession.Goal( // Add health goal
                 title: "Monthly Health Goal", // Set goal title
                 description: "Focus on health and wellness improvements", // Set goal description

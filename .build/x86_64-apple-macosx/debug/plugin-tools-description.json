@@ -32,6 +32,10 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Analyzers/HearingAnalyzer.swift"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Analyzers/JournalAnalyzer.swift"
         },
         {
@@ -41,6 +45,14 @@
         {
           "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Analyzers/SleepAnalyzer.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Analyzers/TactileAnalyzer.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Analyzers/TongueAnalyzer.swift"
         },
         {
           "kind" : "file",
@@ -112,6 +124,14 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/TactileData.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/TongueData.swift"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/VisionData.swift"
         },
         {
@@ -164,7 +184,15 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/HearingCheckView.swift"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/JournalAnalysisView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/MusicSessionView.swift"
         },
         {
           "kind" : "file",
@@ -173,6 +201,14 @@
         {
           "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/SolvingView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/TactileCheckView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/TongueCheckView.swift"
         },
         {
           "kind" : "file",
@@ -196,9 +232,12 @@
       "moduleOutputPath" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/Modules/DietSolver.swiftmodule",
       "objects" : [
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/CognitiveAnalyzer.swift.o",
+        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/HearingAnalyzer.swift.o",
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/JournalAnalyzer.swift.o",
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/MedicalAnalyzer.swift.o",
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/SleepAnalyzer.swift.o",
+        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/TactileAnalyzer.swift.o",
+        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/TongueAnalyzer.swift.o",
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/VisionAnalyzer.swift.o",
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/NutritionFactsGenerator.swift.o",
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/RecipeGenerator.swift.o",
@@ -216,6 +255,8 @@
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/MedicalTests.swift.o",
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/Nutrient.swift.o",
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/SleepAnalysis.swift.o",
+        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/TactileData.swift.o",
+        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/TongueData.swift.o",
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/VisionData.swift.o",
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/VisionGames.swift.o",
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ExercisePlanner.swift.o",
@@ -229,9 +270,13 @@
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ExerciseLogView.swift.o",
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ExercisePlanView.swift.o",
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/HealthDataInputView.swift.o",
+        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/HearingCheckView.swift.o",
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/JournalAnalysisView.swift.o",
+        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/MusicSessionView.swift.o",
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/PlanningSessionView.swift.o",
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/SolvingView.swift.o",
+        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/TactileCheckView.swift.o",
+        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/TongueCheckView.swift.o",
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/VisionCheckView.swift.o",
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/VisionGamesView.swift.o"
       ],
@@ -298,6 +343,10 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/HearingAnalyzer.swift.o"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/JournalAnalyzer.swift.o"
         },
         {
@@ -307,6 +356,14 @@
         {
           "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/SleepAnalyzer.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/TactileAnalyzer.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/TongueAnalyzer.swift.o"
         },
         {
           "kind" : "file",
@@ -378,6 +435,14 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/TactileData.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/TongueData.swift.o"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/VisionData.swift.o"
         },
         {
@@ -430,7 +495,15 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/HearingCheckView.swift.o"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/JournalAnalysisView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/MusicSessionView.swift.o"
         },
         {
           "kind" : "file",
@@ -439,6 +512,14 @@
         {
           "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/SolvingView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/TactileCheckView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/TongueCheckView.swift.o"
         },
         {
           "kind" : "file",
@@ -456,9 +537,12 @@
       "prepareForIndexing" : false,
       "sources" : [
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Analyzers/CognitiveAnalyzer.swift",
+        "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Analyzers/HearingAnalyzer.swift",
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Analyzers/JournalAnalyzer.swift",
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Analyzers/MedicalAnalyzer.swift",
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Analyzers/SleepAnalyzer.swift",
+        "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Analyzers/TactileAnalyzer.swift",
+        "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Analyzers/TongueAnalyzer.swift",
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Analyzers/VisionAnalyzer.swift",
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Generators/NutritionFactsGenerator.swift",
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Generators/RecipeGenerator.swift",
@@ -476,6 +560,8 @@
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/MedicalTests.swift",
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/Nutrient.swift",
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/SleepAnalysis.swift",
+        "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/TactileData.swift",
+        "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/TongueData.swift",
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/VisionData.swift",
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/VisionGames.swift",
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Planners/ExercisePlanner.swift",
@@ -489,9 +575,13 @@
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/ExerciseLogView.swift",
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/ExercisePlanView.swift",
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/HealthDataInputView.swift",
+        "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/HearingCheckView.swift",
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/JournalAnalysisView.swift",
+        "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/MusicSessionView.swift",
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/PlanningSessionView.swift",
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/SolvingView.swift",
+        "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/TactileCheckView.swift",
+        "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/TongueCheckView.swift",
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/VisionCheckView.swift",
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/VisionGamesView.swift"
       ],
@@ -716,6 +806,10 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Tests/DietSolverTests/TactileTongueIntegrationTests.swift"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt"
         },
         {
@@ -732,7 +826,8 @@
       "moduleOutputPath" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/Modules/DietSolverTests.swiftmodule",
       "objects" : [
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build/HearingIntegrationSwiftTestingTests.swift.o",
-        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build/HearingIntegrationTests.swift.o"
+        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build/HearingIntegrationTests.swift.o",
+        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build/TactileTongueIntegrationTests.swift.o"
       ],
       "otherArguments" : [
         "-target",
@@ -800,13 +895,18 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build/TactileTongueIntegrationTests.swift.o"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/Modules/DietSolverTests.swiftmodule"
         }
       ],
       "prepareForIndexing" : false,
       "sources" : [
         "/Users/shyamalchandra/diet-solver/Tests/DietSolverTests/HearingIntegrationSwiftTestingTests.swift",
-        "/Users/shyamalchandra/diet-solver/Tests/DietSolverTests/HearingIntegrationTests.swift"
+        "/Users/shyamalchandra/diet-solver/Tests/DietSolverTests/HearingIntegrationTests.swift",
+        "/Users/shyamalchandra/diet-solver/Tests/DietSolverTests/TactileTongueIntegrationTests.swift"
       ],
       "tempsPath" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build",
       "wholeModuleOptimization" : false
@@ -824,9 +924,12 @@
       "diet_solver",
       "-c",
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Analyzers/CognitiveAnalyzer.swift",
+      "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Analyzers/HearingAnalyzer.swift",
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Analyzers/JournalAnalyzer.swift",
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Analyzers/MedicalAnalyzer.swift",
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Analyzers/SleepAnalyzer.swift",
+      "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Analyzers/TactileAnalyzer.swift",
+      "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Analyzers/TongueAnalyzer.swift",
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Analyzers/VisionAnalyzer.swift",
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Generators/NutritionFactsGenerator.swift",
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Generators/RecipeGenerator.swift",
@@ -844,6 +947,8 @@
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/MedicalTests.swift",
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/Nutrient.swift",
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/SleepAnalysis.swift",
+      "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/TactileData.swift",
+      "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/TongueData.swift",
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/VisionData.swift",
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/VisionGames.swift",
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Planners/ExercisePlanner.swift",
@@ -857,9 +962,13 @@
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/ExerciseLogView.swift",
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/ExercisePlanView.swift",
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/HealthDataInputView.swift",
+      "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/HearingCheckView.swift",
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/JournalAnalysisView.swift",
+      "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/MusicSessionView.swift",
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/PlanningSessionView.swift",
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/SolvingView.swift",
+      "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/TactileCheckView.swift",
+      "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/TongueCheckView.swift",
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/VisionCheckView.swift",
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/VisionGamesView.swift",
       "-I",
@@ -1062,6 +1171,7 @@
       "-c",
       "/Users/shyamalchandra/diet-solver/Tests/DietSolverTests/HearingIntegrationSwiftTestingTests.swift",
       "/Users/shyamalchandra/diet-solver/Tests/DietSolverTests/HearingIntegrationTests.swift",
+      "/Users/shyamalchandra/diet-solver/Tests/DietSolverTests/TactileTongueIntegrationTests.swift",
       "-I",
       "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/Modules",
       "-target",
@@ -1170,6 +1280,10 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Analyzers/HearingAnalyzer.swift"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Analyzers/JournalAnalyzer.swift"
         },
         {
@@ -1179,6 +1293,14 @@
         {
           "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Analyzers/SleepAnalyzer.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Analyzers/TactileAnalyzer.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Analyzers/TongueAnalyzer.swift"
         },
         {
           "kind" : "file",
@@ -1250,6 +1372,14 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/TactileData.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/TongueData.swift"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/VisionData.swift"
         },
         {
@@ -1302,7 +1432,15 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/HearingCheckView.swift"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/JournalAnalysisView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/MusicSessionView.swift"
         },
         {
           "kind" : "file",
@@ -1311,6 +1449,14 @@
         {
           "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/SolvingView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/TactileCheckView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/TongueCheckView.swift"
         },
         {
           "kind" : "file",
@@ -1424,6 +1570,14 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/HearingAnalyzer.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/HearingCheckView.swift.o"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/HearingData.swift.o"
         },
         {
@@ -1460,6 +1614,10 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/MusicSessionView.swift.o"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/Nutrient.swift.o"
         },
         {
@@ -1492,7 +1650,31 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/TactileAnalyzer.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/TactileCheckView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/TactileData.swift.o"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/TimeBasedPlanner.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/TongueAnalyzer.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/TongueCheckView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/TongueData.swift.o"
         },
         {
           "kind" : "file",
@@ -1608,6 +1790,14 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/HearingAnalyzer.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/HearingCheckView.swift.o"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/HearingData.swift.o"
         },
         {
@@ -1644,6 +1834,10 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/MusicSessionView.swift.o"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/Nutrient.swift.o"
         },
         {
@@ -1676,7 +1870,31 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/TactileAnalyzer.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/TactileCheckView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/TactileData.swift.o"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/TimeBasedPlanner.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/TongueAnalyzer.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/TongueCheckView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/TongueData.swift.o"
         },
         {
           "kind" : "file",
@@ -1709,6 +1927,10 @@
         {
           "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build/HearingIntegrationTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build/TactileTongueIntegrationTests.swift.o"
         }
       ],
       "outputFilePath" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverPackageTests.product/Objects.LinkFileList"
@@ -1727,6 +1949,10 @@
         {
           "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/Tests/DietSolverTests/HearingIntegrationTests.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Tests/DietSolverTests/TactileTongueIntegrationTests.swift"
         }
       ],
       "outputFilePath" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build/sources"

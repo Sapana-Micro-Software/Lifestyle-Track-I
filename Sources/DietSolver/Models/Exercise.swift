@@ -267,6 +267,52 @@ class ExerciseDatabase {
                            benefits: ["Hearing health", "Learning", "Cognitive stimulation", "Entertainment"],
                            muscleGroups: []),
         ])
+        
+        // Tactile & Touch Activities
+        activities.append(contentsOf: [
+            ExerciseActivity(name: "Tactile Stimulation", category: .mindBody, intensity: .light, caloriesPerMinute: 0.01,
+                           benefits: ["Tactile health", "Sensory awareness", "Stress reduction", "Body awareness"],
+                           muscleGroups: []),
+            
+            ExerciseActivity(name: "Massage Therapy", category: .mindBody, intensity: .light, caloriesPerMinute: 0.02,
+                           benefits: ["Tactile health", "Muscle relaxation", "Circulation", "Pain relief"],
+                           muscleGroups: []),
+            
+            ExerciseActivity(name: "Texture Exploration", category: .mindBody, intensity: .light, caloriesPerMinute: 0.01,
+                           benefits: ["Tactile sensitivity", "Sensory integration", "Mindfulness", "Cognitive stimulation"],
+                           muscleGroups: []),
+            
+            ExerciseActivity(name: "Temperature Therapy", category: .mindBody, intensity: .light, caloriesPerMinute: 0.01,
+                           benefits: ["Tactile health", "Circulation", "Pain relief", "Relaxation"],
+                           muscleGroups: []),
+            
+            ExerciseActivity(name: "Reflexology", category: .mindBody, intensity: .light, caloriesPerMinute: 0.01,
+                           benefits: ["Tactile health", "Energy flow", "Relaxation", "Therapeutic"],
+                           muscleGroups: []),
+        ])
+        
+        // Tongue & Oral Health Activities
+        activities.append(contentsOf: [
+            ExerciseActivity(name: "Tongue Exercises", category: .mindBody, intensity: .light, caloriesPerMinute: 0.01,
+                           benefits: ["Tongue health", "Speech clarity", "Oral strength", "Swallowing"],
+                           muscleGroups: ["Tongue", "Oral muscles"]),
+            
+            ExerciseActivity(name: "Taste Training", category: .mindBody, intensity: .light, caloriesPerMinute: 0.01,
+                           benefits: ["Taste sensitivity", "Nutrition awareness", "Mindful eating", "Sensory health"],
+                           muscleGroups: []),
+            
+            ExerciseActivity(name: "Tongue Scraping", category: .mindBody, intensity: .light, caloriesPerMinute: 0.01,
+                           benefits: ["Oral hygiene", "Tongue health", "Taste improvement", "Freshness"],
+                           muscleGroups: []),
+            
+            ExerciseActivity(name: "Oil Pulling", category: .mindBody, intensity: .light, caloriesPerMinute: 0.01,
+                           benefits: ["Oral health", "Tongue vitality", "Detoxification", "Freshness"],
+                           muscleGroups: ["Oral muscles"]),
+            
+            ExerciseActivity(name: "Speech Practice", category: .mindBody, intensity: .light, caloriesPerMinute: 0.01,
+                           benefits: ["Tongue mobility", "Speech clarity", "Oral coordination", "Communication"],
+                           muscleGroups: ["Tongue", "Oral muscles"]),
+        ])
     }
     
     func activitiesForCategory(_ category: ExerciseCategory) -> [ExerciseActivity] {

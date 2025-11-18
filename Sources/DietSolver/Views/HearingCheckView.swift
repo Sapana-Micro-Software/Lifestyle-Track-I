@@ -105,6 +105,9 @@ struct HearingCheckView: View {
         
         test.notes = notes.isEmpty ? nil : notes
         
-        viewModel.healthData.dailyAudioHearingTests.append(test)
+        if var healthData = viewModel.healthData {
+            healthData.dailyAudioHearingTests.append(test)
+            viewModel.healthData = healthData
+        }
     }
 }

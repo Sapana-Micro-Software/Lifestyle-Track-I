@@ -176,7 +176,7 @@ class LongTermPlanner {
     
     // MARK: - Helper Methods
     private func calculateTargetWeight(current: Double, healthData: HealthData) -> Double {
-        let bmi = current / pow(healthData.height / 100, 2) // Calculate current BMI
+        _ = current / pow(healthData.height / 100, 2) // Calculate current BMI (not used but kept for documentation)
         let targetBMI = 22.0 // Set target BMI to 22 (optimal)
         return targetBMI * pow(healthData.height / 100, 2) // Calculate and return target weight
     }

@@ -91,7 +91,7 @@ struct VisionCheckView: View { // Define VisionCheckView struct conforming to Vi
             peripheralVision: nil, // Set peripheral vision to nil
             eyeStrain: rightEyeStrain, // Set eye strain
             dryness: rightEyeDryness, // Set dryness
-            redness: .none // Set redness to none
+            redness: DailyVisionCheck.EyeCheck.RednessLevel.none // Set redness to none
         )
         
         let leftEye = DailyVisionCheck.EyeCheck( // Create left eye check
@@ -102,7 +102,7 @@ struct VisionCheckView: View { // Define VisionCheckView struct conforming to Vi
             peripheralVision: nil, // Set peripheral vision to nil
             eyeStrain: leftEyeStrain, // Set eye strain
             dryness: leftEyeDryness, // Set dryness
-            redness: .none // Set redness to none
+            redness: DailyVisionCheck.EyeCheck.RednessLevel.none // Set redness to none
         )
         
         let visionCheck = DailyVisionCheck( // Create vision check

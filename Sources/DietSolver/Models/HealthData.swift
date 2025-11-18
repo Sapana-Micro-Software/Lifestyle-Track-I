@@ -60,6 +60,18 @@ struct HealthData: Codable { // Define HealthData struct conforming to Codable p
     var musicHearingSessions: [MusicHearingSession] = [] // Array of music hearing sessions
     var hearingAnalysis: HearingAnalysisReport? // Optional hearing analysis report
     
+    // Tactile Data
+    var tactilePrescription: TactilePrescription? // Optional tactile prescription data
+    var dailyTactileTests: [DailyTactileTest] = [] // Array of daily tactile test records
+    var tactileVitalitySessions: [TactileVitalitySession] = [] // Array of tactile vitality sessions
+    var tactileAnalysis: TactileAnalysisReport? // Optional tactile analysis report
+    
+    // Tongue Data
+    var tonguePrescription: TonguePrescription? // Optional tongue prescription data
+    var dailyTongueTests: [DailyTongueTest] = [] // Array of daily tongue test records
+    var tongueVitalitySessions: [TongueVitalitySession] = [] // Array of tongue vitality sessions
+    var tongueAnalysis: TongueAnalysisReport? // Optional tongue analysis report
+    
     // HealthKit Data
     var healthKitBiomarkers: [HealthKitBiomarkers] = [] // Array of HealthKit biomarker readings
     

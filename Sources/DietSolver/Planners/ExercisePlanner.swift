@@ -43,6 +43,7 @@ class ExercisePlanner {
                     createActivity("Weight Training", duration: 45, timeOfDay: .morning),
                     createActivity("Pilates", duration: 30, timeOfDay: .afternoon),
                     createActivity("Body Scanning", duration: 15, timeOfDay: .evening),
+                    createActivity("Tactile Stimulation", duration: 15, timeOfDay: .evening),
                 ])
                 
             case 4: // Thursday - Dance/Cardio
@@ -67,6 +68,8 @@ class ExercisePlanner {
                     createActivity("Rowing", duration: 30, timeOfDay: .afternoon),
                     createActivity("Laughing Exercise", duration: 10, timeOfDay: .evening),
                     createActivity("Nature Sounds Therapy", duration: 30, timeOfDay: .afternoon),
+                    createActivity("Massage Therapy", duration: 20, timeOfDay: .evening),
+                    createActivity("Tongue Exercises", duration: 10, timeOfDay: .morning),
                 ])
                 
             default:
@@ -131,6 +134,38 @@ class ExercisePlanner {
         }
         if recentTests.count < 3 {
             focusAreas.append("Daily Hearing Tests")
+        }
+        
+        // Add tactile health focus areas
+        if healthData.dailyTactileTests.isEmpty {
+            focusAreas.append("Tactile Health Monitoring")
+        }
+        
+        if healthData.tactileVitalitySessions.isEmpty {
+            focusAreas.append("Tactile Vitality Sessions")
+        } else {
+            let recentSessions = healthData.tactileVitalitySessions.filter { session in
+                Calendar.current.dateInterval(of: .weekOfYear, for: Date())?.contains(session.date) ?? false
+            }
+            if recentSessions.count < 2 {
+                focusAreas.append("Regular Tactile Therapy")
+            }
+        }
+        
+        // Add tongue health focus areas
+        if healthData.dailyTongueTests.isEmpty {
+            focusAreas.append("Tongue Health Monitoring")
+        }
+        
+        if healthData.tongueVitalitySessions.isEmpty {
+            focusAreas.append("Tongue Vitality Sessions")
+        } else {
+            let recentSessions = healthData.tongueVitalitySessions.filter { session in
+                Calendar.current.dateInterval(of: .weekOfYear, for: Date())?.contains(session.date) ?? false
+            }
+            if recentSessions.count < 3 {
+                focusAreas.append("Regular Tongue Exercises")
+            }
         }
         
         return ExercisePlan(weeklyPlan: weeklyPlan, goals: goals, focusAreas: focusAreas)
@@ -241,6 +276,71 @@ class ExercisePlanner {
                 }
                 if let binaural = exerciseDatabase.activities.first(where: { $0.name == "Binaural Beats Session" }) {
                     recommendations.append(binaural)
+                }
+            }
+        }
+        
+        // Add tactile-related recommendations
+        if healthData.dailyTactileTests.isEmpty || healthData.dailyTactileTests.count < 5 {
+            if let tactileStim = exerciseDatabase.activities.first(where: { $0.name == "Tactile Stimulation" }) {
+                recommendations.append(tactileStim)
+            }
+        }
+        
+        if healthData.tactileVitalitySessions.isEmpty {
+            if let massage = exerciseDatabase.activities.first(where: { $0.name == "Massage Therapy" }) {
+                recommendations.append(massage)
+            }
+        }
+        
+        // Check for tactile issues
+        if let latestTactileTest = healthData.dailyTactileTests.last {
+            if latestTactileTest.results.numbness == .moderate || latestTactileTest.results.numbness == .severe {
+                if let tactileStim = exerciseDatabase.activities.first(where: { $0.name == "Tactile Stimulation" }) {
+                    recommendations.append(tactileStim)
+                }
+                if let texture = exerciseDatabase.activities.first(where: { $0.name == "Texture Exploration" }) {
+                    recommendations.append(texture)
+                }
+            }
+            
+            if latestTactileTest.results.painSensitivity?.level == .moderate || latestTactileTest.results.painSensitivity?.level == .severe {
+                if let tempTherapy = exerciseDatabase.activities.first(where: { $0.name == "Temperature Therapy" }) {
+                    recommendations.append(tempTherapy)
+                }
+            }
+        }
+        
+        // Add tongue-related recommendations
+        if healthData.dailyTongueTests.isEmpty || healthData.dailyTongueTests.count < 5 {
+            if let tongueExercise = exerciseDatabase.activities.first(where: { $0.name == "Tongue Exercises" }) {
+                recommendations.append(tongueExercise)
+            }
+        }
+        
+        if healthData.tongueVitalitySessions.isEmpty {
+            if let tasteTraining = exerciseDatabase.activities.first(where: { $0.name == "Taste Training" }) {
+                recommendations.append(tasteTraining)
+            }
+        }
+        
+        // Check for tongue issues
+        if let latestTongueTest = healthData.dailyTongueTests.last {
+            if latestTongueTest.symptoms.pain == .moderate || latestTongueTest.symptoms.pain == .severe {
+                if let tongueExercise = exerciseDatabase.activities.first(where: { $0.name == "Tongue Exercises" }) {
+                    recommendations.append(tongueExercise)
+                }
+            }
+            
+            if let tasteTest = latestTongueTest.tasteTest, tasteTest.overallScore < 0.5 {
+                if let tasteTraining = exerciseDatabase.activities.first(where: { $0.name == "Taste Training" }) {
+                    recommendations.append(tasteTraining)
+                }
+            }
+            
+            if let mobilityTest = latestTongueTest.mobilityTest, mobilityTest.overallScore < 0.5 {
+                if let speechPractice = exerciseDatabase.activities.first(where: { $0.name == "Speech Practice" }) {
+                    recommendations.append(speechPractice)
                 }
             }
         }

@@ -174,11 +174,12 @@ class CalendarScheduler { // Define CalendarScheduler class for managing calenda
             }
         }
         
+        let daysOfMonth: [NSNumber]? = rule.dayOfMonth.map { [NSNumber(value: $0)] } // Convert to NSNumber array
         let ekRule = EKRecurrenceRule( // Create EventKit recurrence rule
             recurrenceWith: frequency, // Set frequency
             interval: rule.interval, // Set interval
             daysOfTheWeek: daysOfWeek, // Set days of week
-            daysOfTheMonth: rule.dayOfMonth.map { [$0] }, // Set day of month
+            daysOfTheMonth: daysOfMonth, // Set day of month
             monthsOfTheYear: nil, // No specific months
             weeksOfTheYear: nil, // No specific weeks
             daysOfTheYear: nil, // No specific days of year

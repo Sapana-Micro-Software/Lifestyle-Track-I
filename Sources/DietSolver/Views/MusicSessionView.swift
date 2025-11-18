@@ -59,8 +59,8 @@ struct MusicSessionView: View {
                 
                 Section(header: Text("After Session")) {
                     Picker("Hearing Fatigue", selection: Binding(
-                        get: { hearingFatigue ?? .none },
-                        set: { hearingFatigue = $0 == .none ? nil : $0 }
+                        get: { hearingFatigue ?? MusicHearingSession.HearingFatigueLevel.none },
+                        set: { hearingFatigue = $0 == MusicHearingSession.HearingFatigueLevel.none ? nil : $0 }
                     )) {
                         Text("None").tag(MusicHearingSession.HearingFatigueLevel.none)
                         ForEach([MusicHearingSession.HearingFatigueLevel.mild, .moderate, .severe], id: \.self) { level in
@@ -107,6 +107,9 @@ struct MusicSessionView: View {
             notes: notes.isEmpty ? nil : notes
         )
         
-        viewModel.healthData.musicHearingSessions.append(session)
+        if var healthData = viewModel.healthData {
+            healthData.musicHearingSessions.append(session)
+            viewModel.healthData = healthData
+        }
     }
 }

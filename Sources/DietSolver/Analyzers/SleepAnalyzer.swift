@@ -177,17 +177,22 @@ class SleepAnalyzer { // Define SleepAnalyzer class for analyzing sleep data
                 // Modify exercise plan to be less intense
                 for i in 0..<adjustedPlan.weeklyPlan.count { // Iterate through weekly plan
                     adjustedPlan.weeklyPlan[i].activities = adjustedPlan.weeklyPlan[i].activities.map { activity in // Map activities
-                        var modified = activity // Create mutable copy
                         if activity.activity.intensity == .high { // Check if activity is high intensity
                             // Replace with moderate intensity alternative
                             let moderateActivity = ExerciseDatabase.shared.activities.first { // Find moderate alternative
                                 $0.name == activity.activity.name && $0.intensity == .moderate // Match name and moderate intensity
                             }
                             if let moderate = moderateActivity { // Check if alternative found
-                                modified.activity = moderate // Replace with moderate activity
+                                // Create new PlannedActivity with moderate activity
+                                return ExercisePlan.DayPlan.PlannedActivity(
+                                    id: activity.id,
+                                    activity: moderate,
+                                    duration: activity.duration,
+                                    timeOfDay: activity.timeOfDay
+                                )
                             }
                         }
-                        return modified // Return modified activity
+                        return activity // Return original activity
                     }
                 }
             }

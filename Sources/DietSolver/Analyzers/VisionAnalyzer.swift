@@ -337,7 +337,10 @@ class VisionAnalyzer { // Define VisionAnalyzer class for analyzing vision healt
         var improvements: [String] = [] // Initialize improvements array
         
         let recentChecks = checks.suffix(7) // Get last 7 checks
-        let lowStrainCount = recentChecks.filter { $0.rightEye.eyeStrain == .none || $0.leftEye.eyeStrain == .none }.count // Count low strain checks
+        let lowStrainCount = recentChecks.filter { 
+            $0.rightEye.eyeStrain == DailyVisionCheck.EyeCheck.EyeStrainLevel.none || 
+            $0.leftEye.eyeStrain == DailyVisionCheck.EyeCheck.EyeStrainLevel.none 
+        }.count // Count low strain checks
         
         if lowStrainCount >= 5 { // Check if frequent low strain
             improvements.append("Eye strain management is effective") // Add improvement
@@ -367,7 +370,14 @@ class VisionAnalyzer { // Define VisionAnalyzer class for analyzing vision healt
         guard !levels.isEmpty else { return nil } // Check if levels exist
         let counts = Dictionary(grouping: levels, by: { $0 }) // Group by level
         let mostCommon = counts.max(by: { $0.value.count < $1.value.count })?.key // Get most common
-        return mostCommon // Return most common level
+        guard let common = mostCommon else { return nil } // Unwrap optional
+        // Convert DailyVisionCheck.EyeCheck.EyeStrainLevel to VisionAnalysisReport.EyeAnalysis.EyeStrainLevel
+        switch common {
+        case .none: return VisionAnalysisReport.EyeAnalysis.EyeStrainLevel.none
+        case .mild: return VisionAnalysisReport.EyeAnalysis.EyeStrainLevel.mild
+        case .moderate: return VisionAnalysisReport.EyeAnalysis.EyeStrainLevel.moderate
+        case .severe: return VisionAnalysisReport.EyeAnalysis.EyeStrainLevel.severe
+        }
     }
     
     private func calculateStrainTrend(levels: [DailyVisionCheck.EyeCheck.EyeStrainLevel]) -> VisionAnalysisReport.EyeAnalysis.TrendDirection { // Private function to calculate strain trend
@@ -411,7 +421,14 @@ class VisionAnalyzer { // Define VisionAnalyzer class for analyzing vision healt
         guard !levels.isEmpty else { return nil } // Check if levels exist
         let counts = Dictionary(grouping: levels, by: { $0 }) // Group by level
         let mostCommon = counts.max(by: { $0.value.count < $1.value.count })?.key // Get most common
-        return mostCommon // Return most common level
+        guard let common = mostCommon else { return nil } // Unwrap optional
+        // Convert DailyVisionCheck.EyeCheck.DrynessLevel to VisionAnalysisReport.EyeAnalysis.DrynessLevel
+        switch common {
+        case .none: return VisionAnalysisReport.EyeAnalysis.DrynessLevel.none
+        case .mild: return VisionAnalysisReport.EyeAnalysis.DrynessLevel.mild
+        case .moderate: return VisionAnalysisReport.EyeAnalysis.DrynessLevel.moderate
+        case .severe: return VisionAnalysisReport.EyeAnalysis.DrynessLevel.severe
+        }
     }
     
     private func calculateDrynessTrend(levels: [DailyVisionCheck.EyeCheck.DrynessLevel]) -> VisionAnalysisReport.EyeAnalysis.TrendDirection { // Private function to calculate dryness trend

@@ -68,6 +68,8 @@ A comprehensive SwiftUI-based health and wellness lifestyle optimization applica
   - **Mind-Body**: Yoga, Sun Salutations, Tai Chi, Pilates, Meditation, Body Scanning
   - **Indian Breathing Techniques**: Pranayama, Bhastrika, Anulom Vilom, Kriya
   - **Hearing & Audio**: Music Listening Session, Active Music Listening, Hearing Exercise, Nature Sounds Therapy, Binaural Beats Session, Audio Book Listening
+  - **Tactile & Touch**: Tactile Stimulation, Massage Therapy, Texture Exploration, Temperature Therapy, Reflexology
+  - **Tongue & Oral**: Tongue Exercises, Taste Training, Tongue Scraping, Oil Pulling, Speech Practice
   - **Special**: Laughing exercise
 - **Exercise Tracking**:
   - Daily exercise sessions with duration and calories
@@ -81,6 +83,8 @@ A comprehensive SwiftUI-based health and wellness lifestyle optimization applica
   - Sexual health
   - Hearing health status
   - Music listening patterns
+  - Tactile health status
+  - Tongue health status
 - **Integration with Diet**: Exercise automatically adjusts:
   - Calorie requirements (accounts for calories burned and EPOC)
   - Protein needs (increased for strength training)
@@ -212,11 +216,13 @@ let nutritionFacts = NutritionFactsGenerator.generateNutritionFacts(
 ### Models
 - `Nutrient.swift`: Defines all nutrient types and USDA guidelines
 - `Food.swift`: Food database with nutrients, properties, and seasonal availability
-- `HealthData.swift`: User health information including exercise, mental health, sexual health, medical tests, cognitive assessments, and hearing health
+- `HealthData.swift`: User health information including exercise, mental health, sexual health, medical tests, cognitive assessments, hearing health, tactile health, and tongue health
 - `Exercise.swift`: Exercise activities, sessions, logs, and goals
 - `MedicalTests.swift`: Comprehensive medical test models (blood, urine, semen, bone marrow, saliva, skin, hair, organs, sexual organs, reflexes)
 - `CognitiveAssessment.swift`: IQ, EQ, CQ, spatial/temporal reasoning, tactical/strategic problem-solving, psychic capabilities
 - `HearingData.swift`: Hearing prescription, daily audio hearing tests, music hearing sessions, and hearing analysis reports
+- `TactileData.swift`: Tactile prescription, daily tactile tests, tactile vitality sessions, and tactile analysis reports
+- `TongueData.swift`: Tongue prescription, daily tongue tests, tongue vitality sessions, and tongue analysis reports
 
 ### Solver
 - `DietSolver.swift`: Optimization engine using iterative improvement to balance nutrients, taste, and digestion
@@ -228,6 +234,8 @@ let nutritionFacts = NutritionFactsGenerator.generateNutritionFacts(
 - `MedicalAnalyzer.swift`: Analyzes all medical test types and generates health reports with recommendations
 - `CognitiveAnalyzer.swift`: Analyzes cognitive assessments and provides development recommendations
 - `HearingAnalyzer.swift`: Analyzes hearing tests and music sessions, generates hearing health reports with recommendations
+- `TactileAnalyzer.swift`: Analyzes tactile tests and vitality sessions, generates tactile health reports with recommendations
+- `TongueAnalyzer.swift`: Analyzes tongue tests and vitality sessions, generates tongue health reports with recommendations
 
 ### Generators
 - `RecipeGenerator.swift`: Creates detailed cooking instructions
@@ -251,6 +259,8 @@ let nutritionFacts = NutritionFactsGenerator.generateNutritionFacts(
 - `JournalAnalysisView.swift`: Displays comprehensive journal analysis with insights and recommendations
 - `HearingCheckView.swift`: Input form for daily audio hearing tests
 - `MusicSessionView.swift`: Input form for tracking music listening sessions
+- `TactileCheckView.swift`: Input form for daily tactile tests
+- `TongueCheckView.swift`: Input form for daily tongue tests
 - `ContentView.swift`: Main tab-based navigation controller
 
 ## Optimization Algorithm
@@ -348,6 +358,28 @@ The app includes comprehensive hearing health monitoring:
   - Suggests therapeutic activities for tinnitus
   - Encourages regular music sessions for hearing health
   - Adjusts recommendations based on hearing loss indicators
+
+### Tactile Health Integration
+The app includes comprehensive tactile (touch) health monitoring:
+- **Daily Tactile Tests**: Track pressure sensitivity, temperature sensitivity, vibration sensitivity, two-point discrimination, texture discrimination
+- **Tactile Vitality Sessions**: Monitor massage therapy, texture exploration, temperature therapy, pressure therapy, vibration therapy
+- **Tactile Activities**: Tactile Stimulation, Massage Therapy, Texture Exploration, Temperature Therapy, Reflexology
+- **Context-Aware Recommendations**:
+  - Recommends tactile exercises when tests are infrequent
+  - Suggests therapeutic activities for numbness
+  - Recommends temperature therapy for pain sensitivity
+  - Encourages regular tactile vitality sessions
+
+### Tongue Health Integration
+The app includes comprehensive tongue health monitoring:
+- **Daily Tongue Tests**: Track tongue appearance (color, coating, moisture), taste sensitivity, tongue mobility, symptoms
+- **Tongue Vitality Sessions**: Monitor tongue exercises, taste training, oral hygiene, tongue scraping, oil pulling, speech practice
+- **Tongue Activities**: Tongue Exercises, Taste Training, Tongue Scraping, Oil Pulling, Speech Practice
+- **Context-Aware Recommendations**:
+  - Recommends tongue exercises when tests are infrequent
+  - Suggests taste training for reduced taste sensitivity
+  - Recommends speech practice for mobility issues
+  - Encourages regular tongue vitality sessions
 
 ## Customization
 

@@ -56,8 +56,7 @@ class DietSolverViewModel: ObservableObject { // Define view model class conform
         
         // Analyze cognitive assessments
         if let latestCognitive = healthData.cognitiveAssessments.last { // Check if cognitive assessment exists
-            let cognitiveReport = cognitiveAnalyzer.analyze(latestCognitive) // Analyze latest cognitive assessment
-            // Could store this in healthData if needed
+            _ = cognitiveAnalyzer.analyze(latestCognitive) // Analyze latest cognitive assessment (could store in healthData if needed)
         }
         
         // Analyze sleep records
@@ -219,7 +218,6 @@ class DietSolverViewModel: ObservableObject { // Define view model class conform
         guard let healthData = healthData else { return } // Check if health data exists
         let entries = healthData.journalCollection.entries // Get journal entries
         guard !entries.isEmpty else { return } // Check if entries exist
-        let calendar = Calendar.current // Get calendar instance
         let startDate = entries.map { $0.date }.min() ?? Date() // Get earliest entry date
         let endDate = entries.map { $0.date }.max() ?? Date() // Get latest entry date
         let timeRange = DateInterval(start: startDate, end: endDate) // Create time range
@@ -231,9 +229,9 @@ class DietSolverViewModel: ObservableObject { // Define view model class conform
         guard calendarAccessGranted else { // Check if calendar access granted
             await requestCalendarAccess() // Request calendar access
             guard calendarAccessGranted else { return } // Check again after request
+            return // Exit if access not granted
         }
-        let events = try await calendarScheduler.createEvents(from: calendarScheduleItems) // Create calendar events
-        // Events are automatically saved to calendar
+        _ = try await calendarScheduler.createEvents(from: calendarScheduleItems) // Create calendar events (automatically saved to calendar)
     }
     
     private func generateCalendarSchedule(from plan: TimeBasedPlanningSession) { // Private function to generate calendar schedule from plan
@@ -294,8 +292,10 @@ class DietSolverViewModel: ObservableObject { // Define view model class conform
         let biomarkers = await healthKitManager.readBiomarkers() // Read biomarkers from HealthKit
         if let biomarkers = biomarkers { // Check if biomarkers exist
             healthData.healthKitBiomarkers.append(biomarkers) // Add biomarkers to health data
-            await MainActor.run { // Switch to main actor
-                self.healthData = healthData // Update health data
+            let updatedHealthData = healthData // Capture for MainActor
+            await MainActor.run { [weak self] in // Switch to main actor with weak self
+                guard let self = self else { return } // Check self exists
+                self.healthData = updatedHealthData // Update health data
             }
         }
     }
