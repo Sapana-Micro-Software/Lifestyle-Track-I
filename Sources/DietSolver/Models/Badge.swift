@@ -454,16 +454,28 @@ class BadgeManager {
             return 0.0
             
         case .outstandingHealthStreak:
-            // Calculate outstanding health streak
-            if let healthData = healthData {
-                let currentScore = calculateOverallHealthScore(healthData: healthData)
-                if currentScore >= 95.0 {
-                    // Would need historical data to calculate actual streak days
-                    // For now, return progress based on current score
-                    return min(currentScore / badge.criteria.target, 1.0)
+            // Calculate outstanding health streak using history
+            let history = HealthHistoryManager.shared.getHistory()
+            let streakDays = history.getStreakDays(for: badge.criteria)
+            
+            // Check additional criteria based on condition
+            if let condition = badge.criteria.condition {
+                switch condition {
+                case "grandmaster", "world_grandmaster":
+                    // Require excellent eating and emotional health
+                    if let healthData = healthData {
+                        let eatingScore = healthData.eatingMetrics.isEmpty ? 0.0 : EatingMetricsSummary(metrics: healthData.eatingMetrics).optimalEatingScore
+                        let emotionalScore = healthData.emotionalHealth.isEmpty ? 0.0 : EmotionalHealthSummary(entries: healthData.emotionalHealth).averageOverallScore
+                        if eatingScore < 85.0 || emotionalScore < 90.0 {
+                            return 0.0
+                        }
+                    }
+                default:
+                    break
                 }
             }
-            return 0.0
+            
+            return min(Double(streakDays) / badge.criteria.target, 1.0)
         }
     }
     

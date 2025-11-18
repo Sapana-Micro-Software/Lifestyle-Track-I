@@ -47,6 +47,13 @@ public struct ModernContentView: View {
                         Label("Insights", systemImage: "chart.line.uptrend.xyaxis")
                     }
                     .tag(3)
+                
+                // Badges
+                BadgeGalleryView(controller: DietSolverController(viewModel: viewModel))
+                    .tabItem {
+                        Label("Badges", systemImage: "medal.fill")
+                    }
+                    .tag(4)
             }
             .accentColor(AppDesign.Colors.primary)
         }
@@ -251,6 +258,27 @@ struct HomeDashboardView: View {
                 ) {
                     // Navigate to tongue
                 }
+                QuickActionButton(
+                    title: "Eating",
+                    icon: "fork.knife.circle.fill",
+                    color: AppDesign.Colors.primary
+                ) {
+                    // Navigate to eating metrics
+                }
+                QuickActionButton(
+                    title: "Emotional",
+                    icon: "heart.circle.fill",
+                    color: AppDesign.Colors.accent
+                ) {
+                    // Navigate to emotional health
+                }
+                QuickActionButton(
+                    title: "Badges",
+                    icon: "medal.fill",
+                    color: AppDesign.Colors.secondary
+                ) {
+                    // Navigate to badges
+                }
             }
             .padding(.horizontal, AppDesign.Spacing.md)
         }
@@ -344,6 +372,8 @@ struct HealthTrackingView: View {
         case hearing = "Hearing"
         case tactile = "Tactile"
         case tongue = "Tongue"
+        case eating = "Eating"
+        case emotional = "Emotional"
     }
     
     var body: some View {
@@ -409,6 +439,14 @@ struct HealthTrackingView: View {
                 NavigationView {
                     TongueCheckView(viewModel: viewModel)
                 }
+            case .eating:
+                NavigationView {
+                    EatingMetricsInputView(viewModel: viewModel)
+                }
+            case .emotional:
+                NavigationView {
+                    EmotionalHealthInputView(viewModel: viewModel)
+                }
             }
         }
     }
@@ -471,6 +509,22 @@ struct HealthTrackingView: View {
                         lastTest: healthData.dailyTongueTests.last?.date
                     ) {
                         selectedCategory = .tongue
+                    }
+                    QuickTestCard(
+                        title: "Eating Metrics",
+                        icon: "fork.knife.circle.fill",
+                        color: AppDesign.Colors.primary,
+                        lastTest: healthData.eatingMetrics.last?.date
+                    ) {
+                        selectedCategory = .eating
+                    }
+                    QuickTestCard(
+                        title: "Emotional Health",
+                        icon: "heart.circle.fill",
+                        color: AppDesign.Colors.accent,
+                        lastTest: healthData.emotionalHealth.last?.date
+                    ) {
+                        selectedCategory = .emotional
                     }
                 }
                 .padding(.horizontal, AppDesign.Spacing.md)

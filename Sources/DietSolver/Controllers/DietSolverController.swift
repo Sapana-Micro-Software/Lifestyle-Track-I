@@ -22,7 +22,7 @@ class DietSolverController: ObservableObject {
     private let badgeManager = BadgeManager.shared
     
     // View Model (for backward compatibility)
-    private var viewModel: DietSolverViewModel?
+    weak var viewModel: DietSolverViewModel?
     
     init(viewModel: DietSolverViewModel? = nil) {
         self.viewModel = viewModel
@@ -41,6 +41,7 @@ class DietSolverController: ObservableObject {
     func updateHealthData(_ data: HealthData) {
         healthData = data
         viewModel?.updateHealthData(data)
+        HealthHistoryManager.shared.updateHistory(healthData: data)
         evaluateBadges()
     }
     
