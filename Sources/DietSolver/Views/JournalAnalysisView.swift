@@ -154,7 +154,6 @@ struct JournalAnalysisView: View { // Define JournalAnalysisView struct conformi
                 }
                 .padding() // Add padding around content
             }
-            .navigationTitle("Journal Analysis") // Set navigation title
         }
     }
 }

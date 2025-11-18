@@ -146,7 +146,6 @@ struct PlanningSessionView: View { // Define PlanningSessionView struct conformi
                 }
                 .padding() // Add padding around buttons
             }
-            .navigationTitle("Planning Sessions") // Set navigation title
             .onAppear { // When view appears
                 Task { // Create async task
                     await viewModel.requestCalendarAccess() // Request calendar access

@@ -233,10 +233,23 @@ struct EatingMetricsInputView: View {
                 }
             }
         }
-        .navigationTitle("Eating Metrics")
-        #if os(iOS)
-        .navigationBarTitleDisplayMode(.inline)
-        #endif
+        .safeAreaInset(edge: .top) {
+            HStack {
+                Text("Eating Metrics")
+                    .font(AppDesign.Typography.title)
+                    .fontWeight(.bold)
+                    .padding(.leading, AppDesign.Spacing.md)
+                Spacer()
+                Button("Done") {
+                    dismiss()
+                }
+                .font(AppDesign.Typography.headline)
+                .foregroundColor(AppDesign.Colors.primary)
+                .padding(.trailing, AppDesign.Spacing.md)
+            }
+            .padding(.vertical, AppDesign.Spacing.sm)
+            .background(AppDesign.Colors.surface)
+        }
     }
     
     private func addFoodPiece() {
@@ -269,10 +282,10 @@ struct EatingMetricsInputView: View {
             notes: notes.isEmpty ? nil : notes
         )
         
-        if var healthData = viewModel.healthData {
-            healthData.eatingMetrics.append(metrics)
-            viewModel.updateHealthData(healthData)
-        }
+        // Create health data if it doesn't exist (for fake data testing)
+        var healthData = viewModel.healthData ?? HealthData(age: 30, gender: .male, weight: 70, height: 170, activityLevel: .moderate)
+        healthData.eatingMetrics.append(metrics)
+        viewModel.updateHealthData(healthData)
         dismiss()
     }
 }

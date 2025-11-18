@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MusicSessionView: View {
     @ObservedObject var viewModel: DietSolverViewModel
+    @Environment(\.dismiss) var dismiss
     @State private var musicType: MusicHearingSession.MusicType = .classical
     @State private var genre: String = ""
     @State private var volumeLevel: MusicHearingSession.VolumeLevel = .moderate
@@ -29,6 +30,12 @@ struct MusicSessionView: View {
                     .fontWeight(.bold)
                     .padding(.leading, AppDesign.Spacing.md)
                 Spacer()
+                Button("Done") {
+                    dismiss()
+                }
+                .font(AppDesign.Typography.headline)
+                .foregroundColor(AppDesign.Colors.primary)
+                .padding(.trailing, AppDesign.Spacing.md)
             }
             .padding(.vertical, AppDesign.Spacing.sm)
             .background(AppDesign.Colors.surface)
@@ -98,7 +105,6 @@ struct MusicSessionView: View {
                     .frame(maxWidth: .infinity)
                 }
             }
-            .navigationTitle("Music Session")
         }
     }
     
@@ -122,5 +128,6 @@ struct MusicSessionView: View {
             healthData.musicHearingSessions.append(session)
             viewModel.healthData = healthData
         }
+        dismiss()
     }
 }

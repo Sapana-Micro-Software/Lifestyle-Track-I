@@ -82,6 +82,13 @@ struct HomeDashboardView: View {
     @State private var showLongTermPlan = false
     @State private var showGroceryList = false
     @State private var showRecipeLibrary = false
+    @State private var showVisionCheck = false
+    @State private var showHearingCheck = false
+    @State private var showTactileCheck = false
+    @State private var showTongueCheck = false
+    @State private var showEatingMetrics = false
+    @State private var showEmotionalHealth = false
+    @State private var showBadges = false
     
     var body: some View {
         VStack {
@@ -215,7 +222,7 @@ struct HomeDashboardView: View {
                         HStack {
                             Spacer()
                             FloatingActionButton(icon: "plus") {
-                                // Quick add action
+                                showHealthInput = true
                             }
                             .padding(.trailing, AppDesign.Spacing.lg)
                             .padding(.bottom, AppDesign.Spacing.lg)
@@ -241,6 +248,27 @@ struct HomeDashboardView: View {
             }
             .sheet(isPresented: $showRecipeLibrary) {
                 RecipeLibraryView(viewModel: viewModel)
+            }
+            .sheet(isPresented: $showVisionCheck) {
+                VisionCheckView(viewModel: viewModel)
+            }
+            .sheet(isPresented: $showHearingCheck) {
+                HearingCheckView(viewModel: viewModel)
+            }
+            .sheet(isPresented: $showTactileCheck) {
+                TactileCheckView(viewModel: viewModel)
+            }
+            .sheet(isPresented: $showTongueCheck) {
+                TongueCheckView(viewModel: viewModel)
+            }
+            .sheet(isPresented: $showEatingMetrics) {
+                EatingMetricsInputView(viewModel: viewModel)
+            }
+            .sheet(isPresented: $showEmotionalHealth) {
+                EmotionalHealthInputView(viewModel: viewModel)
+            }
+            .sheet(isPresented: $showBadges) {
+                BadgeGalleryView(controller: DietSolverController(viewModel: viewModel))
             }
         }
     }
@@ -298,7 +326,7 @@ struct HomeDashboardView: View {
     private var todaysPlanSection: some View {
         VStack(alignment: .leading, spacing: AppDesign.Spacing.md) {
             SectionHeader("Today's Plan", action: {
-                // Navigate to full plan
+                showDietPlan = true
             })
             
             if let plan = viewModel.dietPlan {
@@ -329,49 +357,49 @@ struct HomeDashboardView: View {
                     icon: "eye.fill",
                     color: AppDesign.Colors.primary
                 ) {
-                    // Navigate to vision
+                    showVisionCheck = true
                 }
                 QuickActionButton(
                     title: "Hearing",
                     icon: "ear.fill",
                     color: AppDesign.Colors.secondary
                 ) {
-                    // Navigate to hearing
+                    showHearingCheck = true
                 }
                 QuickActionButton(
                     title: "Tactile",
                     icon: "hand.tap.fill",
                     color: AppDesign.Colors.accent
                 ) {
-                    // Navigate to tactile
+                    showTactileCheck = true
                 }
                 QuickActionButton(
                     title: "Tongue",
                     icon: "mouth.fill",
                     color: Color.purple
                 ) {
-                    // Navigate to tongue
+                    showTongueCheck = true
                 }
                 QuickActionButton(
                     title: "Eating",
                     icon: "fork.knife.circle.fill",
                     color: AppDesign.Colors.primary
                 ) {
-                    // Navigate to eating metrics
+                    showEatingMetrics = true
                 }
                 QuickActionButton(
                     title: "Emotional",
                     icon: "heart.circle.fill",
                     color: AppDesign.Colors.accent
                 ) {
-                    // Navigate to emotional health
+                    showEmotionalHealth = true
                 }
                 QuickActionButton(
                     title: "Badges",
                     icon: "medal.fill",
                     color: AppDesign.Colors.secondary
                 ) {
-                    // Navigate to badges
+                    showBadges = true
                 }
             }
             .padding(.horizontal, AppDesign.Spacing.md)

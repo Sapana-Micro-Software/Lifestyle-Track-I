@@ -48,10 +48,23 @@ struct ModernHealthDataInputView: View {
                 navigationButtons
             }
         }
-        .navigationTitle("Health Profile")
-        #if os(iOS)
-        .navigationBarTitleDisplayMode(.inline)
-        #endif
+        .safeAreaInset(edge: .top) {
+            HStack {
+                Text("Health Profile")
+                    .font(AppDesign.Typography.title)
+                    .fontWeight(.bold)
+                    .padding(.leading, AppDesign.Spacing.md)
+                Spacer()
+                Button("Done") {
+                    dismiss()
+                }
+                .font(AppDesign.Typography.headline)
+                .foregroundColor(AppDesign.Colors.primary)
+                .padding(.trailing, AppDesign.Spacing.md)
+            }
+            .padding(.vertical, AppDesign.Spacing.sm)
+            .background(AppDesign.Colors.surface)
+        }
     }
     
     private var progressIndicator: some View {

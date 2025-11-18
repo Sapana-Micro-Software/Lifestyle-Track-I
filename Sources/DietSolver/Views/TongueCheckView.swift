@@ -17,6 +17,7 @@ struct TongueCheckView: View {
 
 struct LegacyTongueCheckView: View {
     @ObservedObject var viewModel: DietSolverViewModel
+    @Environment(\.dismiss) var dismiss
     @State private var testType: DailyTongueTest.TestType = .quick
     @State private var device: DailyTongueTest.TestDevice = .mirror
     @State private var tongueColor: TonguePrescription.TongueAppearance.TongueColor = .pink
@@ -36,6 +37,12 @@ struct LegacyTongueCheckView: View {
                     .fontWeight(.bold)
                     .padding(.leading, AppDesign.Spacing.md)
                 Spacer()
+                Button("Done") {
+                    dismiss()
+                }
+                .font(AppDesign.Typography.headline)
+                .foregroundColor(AppDesign.Colors.primary)
+                .padding(.trailing, AppDesign.Spacing.md)
             }
             .padding(.vertical, AppDesign.Spacing.sm)
             .background(AppDesign.Colors.surface)
@@ -135,9 +142,10 @@ struct LegacyTongueCheckView: View {
         
         test.notes = notes.isEmpty ? nil : notes
         
-        if var healthData = viewModel.healthData {
-            healthData.dailyTongueTests.append(test)
-            viewModel.healthData = healthData
-        }
+        // Create health data if it doesn't exist (for fake data testing)
+        var healthData = viewModel.healthData ?? HealthData(age: 30, gender: .male, weight: 70, height: 170, activityLevel: .moderate)
+        healthData.dailyTongueTests.append(test)
+        viewModel.updateHealthData(healthData)
+        dismiss()
     }
 }

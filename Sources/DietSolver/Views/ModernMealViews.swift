@@ -294,10 +294,23 @@ struct ModernHearingCheckView: View {
                 .padding(.bottom, AppDesign.Spacing.xl)
             }
         }
-        .navigationTitle("Hearing Test")
-        #if os(iOS)
-        .navigationBarTitleDisplayMode(.inline)
-        #endif
+        .safeAreaInset(edge: .top) {
+            HStack {
+                Text("Hearing Test")
+                    .font(AppDesign.Typography.title)
+                    .fontWeight(.bold)
+                    .padding(.leading, AppDesign.Spacing.md)
+                Spacer()
+                Button("Done") {
+                    dismiss()
+                }
+                .font(AppDesign.Typography.headline)
+                .foregroundColor(AppDesign.Colors.primary)
+                .padding(.trailing, AppDesign.Spacing.md)
+            }
+            .padding(.vertical, AppDesign.Spacing.sm)
+            .background(AppDesign.Colors.surface)
+        }
     }
     
     private func saveTest() {
@@ -319,10 +332,10 @@ struct ModernHearingCheckView: View {
         test.rightEar.tinnitusPresence = tinnitus
         test.leftEar.tinnitusPresence = tinnitus
         
-        if var healthData = viewModel.healthData {
-            healthData.dailyAudioHearingTests.append(test)
-            viewModel.healthData = healthData
-        }
+        // Create health data if it doesn't exist (for fake data testing)
+        var healthData = viewModel.healthData ?? HealthData(age: 30, gender: .male, weight: 70, height: 170, activityLevel: .moderate)
+        healthData.dailyAudioHearingTests.append(test)
+        viewModel.updateHealthData(healthData)
         dismiss()
     }
 }
@@ -409,10 +422,23 @@ struct ModernTactileCheckView: View {
                 .padding(.bottom, AppDesign.Spacing.xl)
             }
         }
-        .navigationTitle("Tactile Test")
-        #if os(iOS)
-        .navigationBarTitleDisplayMode(.inline)
-        #endif
+        .safeAreaInset(edge: .top) {
+            HStack {
+                Text("Tactile Test")
+                    .font(AppDesign.Typography.title)
+                    .fontWeight(.bold)
+                    .padding(.leading, AppDesign.Spacing.md)
+                Spacer()
+                Button("Done") {
+                    dismiss()
+                }
+                .font(AppDesign.Typography.headline)
+                .foregroundColor(AppDesign.Colors.primary)
+                .padding(.trailing, AppDesign.Spacing.md)
+            }
+            .padding(.vertical, AppDesign.Spacing.sm)
+            .background(AppDesign.Colors.surface)
+        }
     }
     
     private func saveTest() {
@@ -421,10 +447,10 @@ struct ModernTactileCheckView: View {
         test.results.vibrationSensitivity = vibrationSensitivity
         test.results.numbness = numbness
         
-        if var healthData = viewModel.healthData {
-            healthData.dailyTactileTests.append(test)
-            viewModel.healthData = healthData
-        }
+        // Create health data if it doesn't exist (for fake data testing)
+        var healthData = viewModel.healthData ?? HealthData(age: 30, gender: .male, weight: 70, height: 170, activityLevel: .moderate)
+        healthData.dailyTactileTests.append(test)
+        viewModel.updateHealthData(healthData)
         dismiss()
     }
 }
@@ -506,10 +532,23 @@ struct ModernTongueCheckView: View {
                 .padding(.bottom, AppDesign.Spacing.xl)
             }
         }
-        .navigationTitle("Tongue Test")
-        #if os(iOS)
-        .navigationBarTitleDisplayMode(.inline)
-        #endif
+        .safeAreaInset(edge: .top) {
+            HStack {
+                Text("Tongue Test")
+                    .font(AppDesign.Typography.title)
+                    .fontWeight(.bold)
+                    .padding(.leading, AppDesign.Spacing.md)
+                Spacer()
+                Button("Done") {
+                    dismiss()
+                }
+                .font(AppDesign.Typography.headline)
+                .foregroundColor(AppDesign.Colors.primary)
+                .padding(.trailing, AppDesign.Spacing.md)
+            }
+            .padding(.vertical, AppDesign.Spacing.sm)
+            .background(AppDesign.Colors.surface)
+        }
     }
     
     private func saveTest() {
@@ -531,10 +570,10 @@ struct ModernTongueCheckView: View {
             overallScore: mobilityScore
         )
         
-        if var healthData = viewModel.healthData {
-            healthData.dailyTongueTests.append(test)
-            viewModel.healthData = healthData
-        }
+        // Create health data if it doesn't exist (for fake data testing)
+        var healthData = viewModel.healthData ?? HealthData(age: 30, gender: .male, weight: 70, height: 170, activityLevel: .moderate)
+        healthData.dailyTongueTests.append(test)
+        viewModel.updateHealthData(healthData)
         dismiss()
     }
 }

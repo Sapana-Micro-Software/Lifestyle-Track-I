@@ -156,9 +156,35 @@ struct HealthDataInputView: View {
             
             Section {
                 Button("Exercise & Health Data") {
-                    if viewModel.healthData != nil {
-                        showExerciseInput = true
+                    // Create health data if it doesn't exist yet
+                    if viewModel.healthData == nil {
+                        let converter = UnitConverter.shared
+                        var finalWeight = Double(weight) ?? 70.0
+                        var finalHeight = Double(height) ?? 170.0
+                        
+                        finalWeight = converter.convertWeight(finalWeight, from: viewModel.unitSystem, to: .metric)
+                        
+                        if viewModel.unitSystem == .imperial {
+                            let feet = Int(heightFeet) ?? 0
+                            let inches = Double(heightInches) ?? 0
+                            let totalInches = converter.feetInchesToHeight(feet: feet, inches: inches)
+                            finalHeight = converter.convertHeight(totalInches, from: .imperial, to: .metric)
+                        }
+                        
+                        let healthData = HealthData(
+                            glucose: Double(glucose),
+                            hemoglobin: Double(hemoglobin),
+                            cholesterol: Double(cholesterol),
+                            bloodPressure: createBloodPressure(),
+                            age: Int(age) ?? 30,
+                            gender: gender,
+                            weight: finalWeight,
+                            height: finalHeight,
+                            activityLevel: activityLevel
+                        )
+                        viewModel.setHealthData(healthData)
                     }
+                    showExerciseInput = true
                 }
                 
                 Button("Generate Diet Plan") {
@@ -190,11 +216,12 @@ struct HealthDataInputView: View {
                         activityLevel: activityLevel
                     )
                     viewModel.setHealthData(healthData)
+                    // Actually generate the diet plan
+                    viewModel.solveDiet()
                 }
                 .frame(maxWidth: .infinity)
             }
         }
-        .navigationTitle("Diet Solver")
         .onChange(of: viewModel.unitSystem) { newSystem in
             convertValues(from: previousUnitSystem, to: newSystem)
             previousUnitSystem = newSystem

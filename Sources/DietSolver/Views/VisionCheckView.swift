@@ -9,6 +9,7 @@ import SwiftUI // Import SwiftUI framework for user interface components and dec
 
 struct VisionCheckView: View { // Define VisionCheckView struct conforming to View protocol
     @ObservedObject var viewModel: DietSolverViewModel // Observed object for view model
+    @Environment(\.dismiss) var dismiss // Dismiss environment value
     @State private var rightEyeAcuity: DailyVisionCheck.EyeCheck.VisualAcuity? // State for right eye acuity
     @State private var leftEyeAcuity: DailyVisionCheck.EyeCheck.VisualAcuity? // State for left eye acuity
     @State private var rightEyeStrain: DailyVisionCheck.EyeCheck.EyeStrainLevel = .none // State for right eye strain
@@ -27,6 +28,12 @@ struct VisionCheckView: View { // Define VisionCheckView struct conforming to Vi
                     .fontWeight(.bold)
                     .padding(.leading, AppDesign.Spacing.md)
                 Spacer()
+                Button("Done") {
+                    dismiss()
+                }
+                .font(AppDesign.Typography.headline)
+                .foregroundColor(AppDesign.Colors.primary)
+                .padding(.trailing, AppDesign.Spacing.md)
             }
             .padding(.vertical, AppDesign.Spacing.sm)
             .background(AppDesign.Colors.surface)
@@ -87,12 +94,12 @@ struct VisionCheckView: View { // Define VisionCheckView struct conforming to Vi
                     .frame(maxWidth: .infinity) // Set frame to fill width
                 }
             }
-            .navigationTitle("Daily Vision Check") // Set navigation title
         }
     }
     
     private func saveVisionCheck() { // Private function to save vision check
-        guard var healthData = viewModel.healthData else { return } // Check if health data exists
+        // Create health data if it doesn't exist (for fake data testing)
+        var healthData = viewModel.healthData ?? HealthData(age: 30, gender: .male, weight: 70, height: 170, activityLevel: .moderate)
         
         let rightEye = DailyVisionCheck.EyeCheck( // Create right eye check
             visualAcuity: rightEyeAcuity, // Set visual acuity
@@ -129,5 +136,6 @@ struct VisionCheckView: View { // Define VisionCheckView struct conforming to Vi
         
         healthData.dailyVisionChecks.append(visionCheck) // Add vision check to health data
         viewModel.updateHealthData(healthData) // Update health data in view model
+        dismiss() // Dismiss the view after saving
     }
 }
