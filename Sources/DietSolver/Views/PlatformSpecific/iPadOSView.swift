@@ -86,17 +86,24 @@ struct iPadOSHomeView: View {
 
 struct iPadOSHealthView: View {
     @ObservedObject var controller: DietSolverController
+    @EnvironmentObject var viewModel: DietSolverViewModel
     
     var body: some View {
         ScrollView {
             LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: AppDesign.Spacing.lg) {
                 if let healthData = controller.healthData {
                     HealthOverviewCard(healthData: healthData)
+                        .environmentObject(viewModel)
                 }
             }
             .padding(AppDesign.Spacing.lg)
         }
         .navigationTitle("Health")
+        .toolbar {
+            ToolbarItem(placement: .automatic) {
+                CompactUnitSystemToggle(viewModel: viewModel)
+            }
+        }
     }
 }
 

@@ -44,6 +44,7 @@ struct iOSContentView: View {
 
 struct iOSHomeView: View {
     @ObservedObject var controller: DietSolverController
+    @EnvironmentObject var viewModel: DietSolverViewModel
     @State private var showHealthWizard = false
     
     var body: some View {
@@ -82,13 +83,13 @@ struct iOSHomeView: View {
                         Button(action: { showHealthWizard = true }) {
                             Label("Get Started", systemImage: "person.crop.circle.badge.plus")
                         }
+                    } else {
+                        CompactUnitSystemToggle(viewModel: viewModel)
                     }
                 }
             }
             .sheet(isPresented: $showHealthWizard) {
-                NavigationView {
-                    HealthWizardViewWrapper()
-                }
+                HealthWizardViewWrapper()
             }
         }
     }
@@ -143,6 +144,7 @@ struct iOSHomeView: View {
 
 struct iOSHealthView: View {
     @ObservedObject var controller: DietSolverController
+    @EnvironmentObject var viewModel: DietSolverViewModel
     
     var body: some View {
         NavigationView {
@@ -150,6 +152,7 @@ struct iOSHealthView: View {
                 VStack(spacing: AppDesign.Spacing.lg) {
                     if let healthData = controller.healthData {
                         HealthOverviewCard(healthData: healthData)
+                            .environmentObject(viewModel)
                     }
                 }
             }
@@ -157,6 +160,11 @@ struct iOSHealthView: View {
             #if os(iOS)
             .navigationBarTitleDisplayMode(.large)
             #endif
+            .toolbar {
+                ToolbarItem(placement: .automatic) {
+                    CompactUnitSystemToggle(viewModel: viewModel)
+                }
+            }
         }
     }
 }
@@ -286,6 +294,7 @@ struct iOSBadgePreviewSection: View {
 
 struct HealthOverviewCard: View {
     let healthData: HealthData
+    @EnvironmentObject var viewModel: DietSolverViewModel
     
     var body: some View {
         ModernCard {
@@ -295,7 +304,12 @@ struct HealthOverviewCard: View {
                 
                 HStack {
                     StatCard(title: "Age", value: "\(healthData.age)", icon: "person.fill", color: AppDesign.Colors.primary)
-                    StatCard(title: "Weight", value: String(format: "%.1f kg", healthData.weight), icon: "scalemass.fill", color: AppDesign.Colors.secondary)
+                    StatCard(
+                        title: "Weight",
+                        value: UnitConverter.shared.formatWeight(healthData.weight, system: viewModel.unitSystem),
+                        icon: "scalemass.fill",
+                        color: AppDesign.Colors.secondary
+                    )
                 }
             }
         }

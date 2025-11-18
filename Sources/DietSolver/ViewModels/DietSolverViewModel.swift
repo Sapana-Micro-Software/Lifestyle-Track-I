@@ -19,6 +19,11 @@ class DietSolverViewModel: ObservableObject { // Define view model class conform
     @Published var calendarScheduleItems: [CalendarScheduleItem] = [] // Published array of calendar schedule items
     @Published var journalAnalysis: JournalAnalysisReport? // Published property for journal analysis report
     @Published var calendarAccessGranted: Bool = false // Published property for calendar access status
+    @Published var unitSystem: UnitSystem = .metric { // Published property for unit system preference with didSet observer
+        didSet { // Observer for unit system changes
+            saveUnitSystemPreference() // Save preference when changed
+        }
+    }
     
     private let solver = DietSolver() // Private diet solver instance for optimization calculations
     private let exercisePlanner = ExercisePlanner() // Private exercise planner instance for workout generation
@@ -318,5 +323,25 @@ class DietSolverViewModel: ObservableObject { // Define view model class conform
         currentPlanningSession = nil // Clear current planning session
         calendarScheduleItems = [] // Clear calendar schedule items
         journalAnalysis = nil // Clear journal analysis
+    }
+    
+    // MARK: - Unit System Management
+    init() {
+        loadUnitSystemPreference() // Load saved unit system preference on initialization
+    }
+    
+    private func saveUnitSystemPreference() { // Private function to save unit system preference
+        UserDefaults.standard.set(unitSystem.rawValue, forKey: "unitSystem") // Save unit system to UserDefaults
+    }
+    
+    private func loadUnitSystemPreference() { // Private function to load unit system preference
+        if let saved = UserDefaults.standard.string(forKey: "unitSystem"), // Check if saved preference exists
+           let system = UnitSystem(rawValue: saved) { // Convert string to UnitSystem enum
+            unitSystem = system // Set unit system from saved preference
+        }
+    }
+    
+    func toggleUnitSystem() { // Function to toggle between metric and imperial
+        unitSystem = unitSystem == .metric ? .imperial : .metric // Toggle unit system
     }
 }

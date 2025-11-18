@@ -21,18 +21,19 @@ struct HealthAndWellnessLifestyleSolverAppMain: App { // Define main app struct 
                 .background(Color(red: 0.98, green: 0.98, blue: 0.99)) // Set background color
                 .onAppear {
                     #if os(macOS)
-                    // Bring window to front on macOS
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    // Bring window to front on macOS (with proper error handling)
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                         NSApplication.shared.setActivationPolicy(.regular)
                         NSApplication.shared.activate(ignoringOtherApps: true)
-                        // Get all windows and bring them forward
-                        for window in NSApplication.shared.windows {
-                            window.makeKeyAndOrderFront(nil)
-                            window.center()
-                        }
-                        // If no windows exist yet, create one
-                        if NSApplication.shared.windows.isEmpty {
-                            NSApplication.shared.windows.first?.makeKeyAndOrderFront(nil)
+                        // Safely get and activate windows
+                        let windows = NSApplication.shared.windows
+                        if !windows.isEmpty {
+                            for window in windows {
+                                if window.isVisible {
+                                    window.makeKeyAndOrderFront(nil)
+                                    window.center()
+                                }
+                            }
                         }
                     }
                     #endif

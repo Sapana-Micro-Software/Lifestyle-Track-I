@@ -2,6 +2,7 @@ import SwiftUI
 
 struct ExerciseInputView: View {
     @Binding var healthData: HealthData
+    @EnvironmentObject var viewModel: DietSolverViewModel
     @State private var muscleMass: String = ""
     @State private var bodyFatPercentage: String = ""
     @State private var steps: String = "10000"
@@ -23,7 +24,7 @@ struct ExerciseInputView: View {
         Form {
             Section(header: Text("Fitness Metrics")) {
                 HStack {
-                    Text("Muscle Mass (kg)")
+                    Text("Muscle Mass (\(viewModel.unitSystem.weightUnit))")
                     Spacer()
                     TextField("Optional", text: $muscleMass)
                         #if os(iOS)
@@ -133,7 +134,10 @@ struct ExerciseInputView: View {
     
     private func loadData() {
         if let mm = healthData.muscleMass {
-            muscleMass = String(format: "%.1f", mm)
+            // Convert from metric to display unit system
+            let converter = UnitConverter.shared
+            let displayValue = converter.convertWeight(mm, from: .metric, to: viewModel.unitSystem)
+            muscleMass = String(format: "%.1f", displayValue)
         }
         if let bf = healthData.bodyFatPercentage {
             bodyFatPercentage = String(format: "%.1f", bf)
@@ -157,7 +161,13 @@ struct ExerciseInputView: View {
     }
     
     private func saveData() {
-        healthData.muscleMass = Double(muscleMass)
+        // Convert muscle mass to metric (internal storage is always metric)
+        if let muscleValue = Double(muscleMass), !muscleMass.isEmpty {
+            let converter = UnitConverter.shared
+            healthData.muscleMass = converter.convertWeight(muscleValue, from: viewModel.unitSystem, to: .metric)
+        } else {
+            healthData.muscleMass = nil
+        }
         healthData.bodyFatPercentage = Double(bodyFatPercentage)
         
         var goals = healthData.exerciseGoals ?? ExerciseGoals()

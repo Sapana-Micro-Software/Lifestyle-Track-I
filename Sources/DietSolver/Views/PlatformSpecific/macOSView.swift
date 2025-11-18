@@ -67,6 +67,7 @@ struct macOSContentView: View {
 
 struct macOSHomeView: View {
     @ObservedObject var controller: DietSolverController
+    @EnvironmentObject var viewModel: DietSolverViewModel
     @State private var showHealthWizard = false
     
     var body: some View {
@@ -98,12 +99,16 @@ struct macOSHomeView: View {
                     Button(action: { showHealthWizard = true }) {
                         Label("Get Started", systemImage: "person.crop.circle.badge.plus")
                     }
+                } else {
+                    CompactUnitSystemToggle(viewModel: viewModel)
                 }
             }
         }
         .sheet(isPresented: $showHealthWizard) {
             HealthWizardViewWrapper()
+                #if os(macOS)
                 .frame(minWidth: 800, minHeight: 600)
+                #endif
         }
     }
     
@@ -155,17 +160,24 @@ struct macOSHomeView: View {
 
 struct macOSHealthView: View {
     @ObservedObject var controller: DietSolverController
+    @EnvironmentObject var viewModel: DietSolverViewModel
     
     var body: some View {
         ScrollView {
             LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: AppDesign.Spacing.lg) {
                 if let healthData = controller.healthData {
                     HealthOverviewCard(healthData: healthData)
+                        .environmentObject(viewModel)
                 }
             }
             .padding(AppDesign.Spacing.lg)
         }
         .navigationTitle("Health")
+        .toolbar {
+            ToolbarItem(placement: .automatic) {
+                CompactUnitSystemToggle(viewModel: viewModel)
+            }
+        }
     }
 }
 

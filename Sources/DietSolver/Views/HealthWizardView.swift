@@ -20,7 +20,10 @@ struct HealthWizardView: View {
     @State private var gender: HealthData.Gender = .male
     @State private var weight: String = ""
     @State private var height: String = ""
+    @State private var heightFeet: String = "" // For imperial height input
+    @State private var heightInches: String = "" // For imperial height input
     @State private var activityLevel: HealthData.ActivityLevel = .moderate
+    @State private var previousUnitSystem: UnitSystem = .metric // Track previous unit system for conversion
     
     // Step 2: Medical & Health Metrics
     @State private var glucose: String = ""
@@ -47,7 +50,7 @@ struct HealthWizardView: View {
     @State private var sexualHealthMedications: String = ""
     
     // Step 6: Lifestyle
-    @State private var waterIntake: String = "2.5" // liters per day
+    @State private var waterIntake: String = "2.5" // liters per day (will convert based on unit system)
     @State private var mealFrequency: String = "3" // meals per day
     
     // Step 7: Exercise Goals
@@ -99,6 +102,102 @@ struct HealthWizardView: View {
         #if os(iOS)
         .navigationBarTitleDisplayMode(.inline)
         #endif
+        .toolbar {
+            ToolbarItem(placement: .automatic) {
+                CompactUnitSystemToggle(viewModel: viewModel)
+            }
+        }
+        .onChange(of: viewModel.unitSystem) { newSystem in
+            convertValues(from: previousUnitSystem, to: newSystem)
+            previousUnitSystem = newSystem
+        }
+        .onAppear {
+            previousUnitSystem = viewModel.unitSystem
+            updateDefaultValues()
+        }
+        .onDisappear {
+            // Clean up state when view disappears to prevent ViewBridge errors
+            #if os(macOS)
+            // Give SwiftUI time to properly clean up view hierarchy
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                // Any cleanup needed
+            }
+            #endif
+        }
+    }
+    
+    // MARK: - Update Default Values
+    private func updateDefaultValues() {
+        if viewModel.unitSystem == .imperial {
+            // Set default imperial values if fields are empty
+            if weight.isEmpty {
+                weight = "154" // ~70 kg in lbs
+            }
+            if height.isEmpty {
+                heightFeet = "5"
+                heightInches = "7"
+            }
+            if waterIntake == "2.5" {
+                waterIntake = "0.66" // ~2.5L in gallons
+            }
+        } else {
+            // Set default metric values if fields are empty
+            if weight.isEmpty {
+                weight = "70"
+            }
+            if height.isEmpty {
+                height = "170"
+            }
+            if waterIntake.isEmpty || waterIntake == "0.66" {
+                waterIntake = "2.5"
+            }
+        }
+    }
+    
+    // MARK: - Convert Values
+    private func convertValues(from: UnitSystem, to: UnitSystem) {
+        let converter = UnitConverter.shared
+        
+        // Convert weight
+        if let weightValue = Double(weight), !weight.isEmpty {
+            let converted = converter.convertWeight(weightValue, from: from, to: to)
+            weight = String(format: "%.1f", converted)
+        }
+        
+        // Convert height
+        if viewModel.unitSystem == .imperial {
+            // Convert to feet/inches
+            if let heightValue = Double(height), !height.isEmpty {
+                let inches = converter.convertHeight(heightValue, from: from, to: to)
+                let (feet, remainingInches) = converter.heightToFeetInches(inches)
+                heightFeet = String(feet)
+                heightInches = String(format: "%.1f", remainingInches)
+                height = "" // Clear metric height
+            }
+        } else {
+            // Convert to cm
+            if !heightFeet.isEmpty || !heightInches.isEmpty {
+                let feet = Int(heightFeet) ?? 0
+                let inches = Double(heightInches) ?? 0
+                let totalInches = converter.feetInchesToHeight(feet: feet, inches: inches)
+                let cm = converter.convertHeight(totalInches, from: .imperial, to: .metric)
+                height = String(format: "%.1f", cm)
+                heightFeet = ""
+                heightInches = ""
+            }
+        }
+        
+        // Convert water intake
+        if let waterValue = Double(waterIntake), !waterIntake.isEmpty {
+            let converted = converter.convertVolume(waterValue, from: from, to: to)
+            waterIntake = String(format: "%.2f", converted)
+        }
+        
+        // Convert muscle mass
+        if let muscleValue = Double(muscleMass), !muscleMass.isEmpty {
+            let converted = converter.convertWeight(muscleValue, from: from, to: to)
+            muscleMass = String(format: "%.1f", converted)
+        }
     }
     
     private var wizardContentView: some View {
@@ -236,21 +335,57 @@ struct HealthWizardView: View {
                             title: "Weight",
                             value: $weight,
                             icon: "scalemass.fill",
-                            unit: "kg"
+                            unit: viewModel.unitSystem.weightUnit
                         )
                         #if os(iOS)
                         .keyboardType(.decimalPad)
                         #endif
                         
-                        ModernInputField(
-                            title: "Height",
-                            value: $height,
-                            icon: "ruler.fill",
-                            unit: "cm"
-                        )
-                        #if os(iOS)
-                        .keyboardType(.decimalPad)
-                        #endif
+                        if viewModel.unitSystem == .metric {
+                            ModernInputField(
+                                title: "Height",
+                                value: $height,
+                                icon: "ruler.fill",
+                                unit: viewModel.unitSystem.heightUnit
+                            )
+                            #if os(iOS)
+                            .keyboardType(.decimalPad)
+                            #endif
+                        } else {
+                            // Imperial height input (feet and inches)
+                            VStack(alignment: .leading, spacing: AppDesign.Spacing.xs) {
+                                HStack {
+                                    Image(systemName: "ruler.fill")
+                                        .foregroundColor(AppDesign.Colors.primary)
+                                        .frame(width: 20)
+                                    Text("Height")
+                                        .font(AppDesign.Typography.subheadline)
+                                        .foregroundColor(AppDesign.Colors.textSecondary)
+                                }
+                                
+                                HStack(spacing: AppDesign.Spacing.sm) {
+                                    ModernInputField(
+                                        title: "Feet",
+                                        value: $heightFeet,
+                                        icon: "",
+                                        unit: "ft"
+                                    )
+                                    #if os(iOS)
+                                    .keyboardType(.numberPad)
+                                    #endif
+                                    
+                                    ModernInputField(
+                                        title: "Inches",
+                                        value: $heightInches,
+                                        icon: "",
+                                        unit: "in"
+                                    )
+                                    #if os(iOS)
+                                    .keyboardType(.decimalPad)
+                                    #endif
+                                }
+                            }
+                        }
                         
                         ModernPickerField(
                             title: "Activity Level",
@@ -355,7 +490,7 @@ struct HealthWizardView: View {
                             title: "Muscle Mass",
                             value: $muscleMass,
                             icon: "dumbbell.fill",
-                            unit: "kg"
+                            unit: viewModel.unitSystem.weightUnit
                         )
                         #if os(iOS)
                         .keyboardType(.decimalPad)
@@ -504,7 +639,7 @@ struct HealthWizardView: View {
                             title: "Daily Water Intake",
                             value: $waterIntake,
                             icon: "drop.fill",
-                            unit: "liters"
+                            unit: viewModel.unitSystem == .metric ? "liters" : "gallons"
                         )
                         #if os(iOS)
                         .keyboardType(.decimalPad)
@@ -860,12 +995,33 @@ struct HealthWizardView: View {
         generationProgress = 0.0
         generationStatus = "Building health profile..."
         
-        // Build HealthData from wizard inputs
+        // Convert inputs to metric (internal storage is always metric)
+        let converter = UnitConverter.shared
+        var finalWeight: Double = 70.0
+        var finalHeight: Double = 170.0
+        
+        if let weightValue = Double(weight), !weight.isEmpty {
+            finalWeight = converter.convertWeight(weightValue, from: viewModel.unitSystem, to: .metric)
+        }
+        
+        if viewModel.unitSystem == .metric {
+            if let heightValue = Double(height), !height.isEmpty {
+                finalHeight = heightValue
+            }
+        } else {
+            // Convert feet/inches to cm
+            let feet = Int(heightFeet) ?? 0
+            let inches = Double(heightInches) ?? 0
+            let totalInches = converter.feetInchesToHeight(feet: feet, inches: inches)
+            finalHeight = converter.convertHeight(totalInches, from: .imperial, to: .metric)
+        }
+        
+        // Build HealthData from wizard inputs (always in metric internally)
         var healthData = HealthData(
             age: Int(age) ?? 30,
             gender: gender,
-            weight: Double(weight) ?? 70.0,
-            height: Double(height) ?? 170.0,
+            weight: finalWeight,
+            height: finalHeight,
             activityLevel: activityLevel
         )
         
@@ -897,9 +1053,9 @@ struct HealthWizardView: View {
             self.generationStatus = "Analyzing fitness data..."
         }
         
-        // Add fitness data
+        // Add fitness data (convert to metric)
         if let muscle = Double(muscleMass), !muscleMass.isEmpty {
-            healthData.muscleMass = muscle
+            healthData.muscleMass = converter.convertWeight(muscle, from: viewModel.unitSystem, to: .metric)
         }
         if let bodyFat = Double(bodyFatPercentage), !bodyFatPercentage.isEmpty {
             healthData.bodyFatPercentage = bodyFat
@@ -1010,8 +1166,23 @@ struct HealthWizardView: View {
 // MARK: - Health Wizard Wrapper
 struct HealthWizardViewWrapper: View {
     @EnvironmentObject var viewModel: DietSolverViewModel
+    @Environment(\.dismiss) var dismiss
     
     var body: some View {
-        HealthWizardView(viewModel: viewModel)
+        NavigationView {
+            HealthWizardView(viewModel: viewModel)
+        }
+        #if os(iOS)
+        .navigationViewStyle(.stack)
+        #endif
+        #if os(macOS)
+        .frame(minWidth: 800, minHeight: 600)
+        .onAppear {
+            // Ensure proper window lifecycle on macOS
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                // Window is ready
+            }
+        }
+        #endif
     }
 }
