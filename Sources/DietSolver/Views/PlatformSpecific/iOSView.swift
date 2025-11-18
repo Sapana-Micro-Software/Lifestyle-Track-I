@@ -37,6 +37,12 @@ struct iOSContentView: View {
                     Label("Badges", systemImage: "medal.fill")
                 }
                 .tag(3)
+            
+            HealthStudiesView()
+                .tabItem {
+                    Label("Studies", systemImage: "chart.bar.doc.horizontal.fill")
+                }
+                .tag(4)
         }
         .accentColor(AppDesign.Colors.primary)
     }
@@ -248,7 +254,7 @@ struct iOSBadgeCard: View {
                     Circle()
                         .fill(Color(hex: badge.colorHex)?.opacity(0.2) ?? AppDesign.Colors.primary.opacity(0.2))
                         .frame(width: 60, height: 60)
-                    Image(systemName: badge.icon)
+                    Image(systemName: badge.icon.isEmpty ? "star.fill" : badge.icon)
                         .font(.system(size: 30))
                         .foregroundColor(Color(hex: badge.colorHex) ?? AppDesign.Colors.primary)
                 }

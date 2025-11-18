@@ -97,6 +97,54 @@ class LongTermPlanner {
             ))
         }
         
+        // External health goals (from Vision framework analysis)
+        // Check if external health data has been analyzed
+        if healthData.externalHealth.lastAnalysisDate != nil { // Check if analysis has been performed
+            // Skin health goal - add if there are non-normal conditions
+            if let skinAnalysis = healthData.externalHealth.skinAnalysis {
+                let hasNonNormalConditions = skinAnalysis.conditions.contains { $0 != .normal } // Check for non-normal conditions
+                if hasNonNormalConditions { // If there are issues
+                    goals.append(TransformationGoal( // Add skin health goal
+                        category: .skinHealth, // Set goal category
+                        targetValue: 1.0, // Target: healthy skin
+                        targetDescription: "Improve skin health and address detected conditions", // Set goal description
+                        currentValue: 0.5, // Set current value (has issues)
+                        priority: 6 // Set priority
+                    ))
+                }
+            }
+            
+            // Eye health goal - add if there are non-normal conditions
+            if let eyeAnalysis = healthData.externalHealth.eyeAnalysis {
+                let hasNonNormalConditions = eyeAnalysis.conditions.contains { $0 != .normal } // Check for non-normal conditions
+                if hasNonNormalConditions { // If there are issues
+                    goals.append(TransformationGoal( // Add eye health goal
+                        category: .organHealth, // Set goal category
+                        targetValue: 1.0, // Target: healthy eyes
+                        targetDescription: "Maintain and improve eye health", // Set goal description
+                        currentValue: 0.5, // Set current value (has issues)
+                        priority: 7 // Set priority
+                    ))
+                }
+            }
+        }
+        
+        // Cardiovascular health goal (from wrist pulse)
+        if let wristPulse = healthData.wristPulse { // Check if wrist pulse data exists
+            if let restingPulse = wristPulse.restingPulse { // Check if resting pulse available
+                if restingPulse > 80 { // Check if pulse is high
+                    let targetRestingPulse = 70 // Set target to 70 bpm
+                    goals.append(TransformationGoal( // Add cardiovascular goal
+                        category: .cardiovascular, // Set goal category
+                        targetValue: Double(targetRestingPulse), // Set target value
+                        targetDescription: "Achieve optimal resting heart rate of \(targetRestingPulse) bpm", // Set goal description
+                        currentValue: Double(restingPulse), // Set current value
+                        priority: 8 // Set priority
+                    ))
+                }
+            }
+        }
+        
         // Muscle mass goal
         if let currentMuscle = healthData.muscleMass { // Check if current muscle mass is available
             let targetMuscle = currentMuscle * 1.2 // Calculate target muscle mass (20% increase)

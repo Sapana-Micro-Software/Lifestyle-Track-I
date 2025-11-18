@@ -54,6 +54,13 @@ public struct ModernContentView: View {
                         Label("Badges", systemImage: "medal.fill")
                     }
                     .tag(4)
+                
+                // Health Studies
+                HealthStudiesView()
+                    .tabItem {
+                        Label("Studies", systemImage: "chart.bar.doc.horizontal.fill")
+                    }
+                    .tag(5)
             }
             .accentColor(AppDesign.Colors.primary)
         }
@@ -119,6 +126,29 @@ struct HomeDashboardView: View {
                                 .padding(.horizontal, AppDesign.Spacing.md)
                             }
                             .buttonStyle(PlainButtonStyle())
+                            
+                            // Long-Term Plan Link
+                            if viewModel.longTermPlan != nil {
+                                NavigationLink(destination: LongTermPlanView(viewModel: viewModel)) {
+                                    ModernCard {
+                                        HStack {
+                                            VStack(alignment: .leading, spacing: 4) {
+                                                Text("View Long-Term Plan")
+                                                    .font(AppDesign.Typography.headline)
+                                                Text("See your \(viewModel.longTermPlan?.duration.rawValue ?? "") transformation plan with daily recommendations")
+                                                    .font(AppDesign.Typography.caption)
+                                                    .foregroundColor(AppDesign.Colors.textSecondary)
+                                            }
+                                            Spacer()
+                                            Image(systemName: "calendar.badge.clock")
+                                                .foregroundColor(AppDesign.Colors.primary)
+                                                .font(.title2)
+                                        }
+                                    }
+                                    .padding(.horizontal, AppDesign.Spacing.md)
+                                }
+                                .buttonStyle(PlainButtonStyle())
+                            }
                         }
                     }
                     .padding(.bottom, 80)

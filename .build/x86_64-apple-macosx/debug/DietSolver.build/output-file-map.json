@@ -9,6 +9,13 @@
     "swift-dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/CognitiveAnalyzer.swiftdeps",
     "diagnostics": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/CognitiveAnalyzer.dia"
   },
+  "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Analyzers/ExternalHealthAnalyzer.swift": {
+    "dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ExternalHealthAnalyzer.d",
+    "object": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ExternalHealthAnalyzer.swift.o",
+    "swiftmodule": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ExternalHealthAnalyzer~partial.swiftmodule",
+    "swift-dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ExternalHealthAnalyzer.swiftdeps",
+    "diagnostics": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ExternalHealthAnalyzer.dia"
+  },
   "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Analyzers/HearingAnalyzer.swift": {
     "dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/HearingAnalyzer.d",
     "object": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/HearingAnalyzer.swift.o",
@@ -107,6 +114,34 @@
     "swift-dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/HealthKitManager.swiftdeps",
     "diagnostics": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/HealthKitManager.dia"
   },
+  "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Managers/NFCManager.swift": {
+    "dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/NFCManager.d",
+    "object": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/NFCManager.swift.o",
+    "swiftmodule": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/NFCManager~partial.swiftmodule",
+    "swift-dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/NFCManager.swiftdeps",
+    "diagnostics": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/NFCManager.dia"
+  },
+  "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Managers/PassportManager.swift": {
+    "dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/PassportManager.d",
+    "object": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/PassportManager.swift.o",
+    "swiftmodule": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/PassportManager~partial.swiftmodule",
+    "swift-dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/PassportManager.swiftdeps",
+    "diagnostics": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/PassportManager.dia"
+  },
+  "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Managers/ResearchKitManager.swift": {
+    "dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ResearchKitManager.d",
+    "object": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ResearchKitManager.swift.o",
+    "swiftmodule": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ResearchKitManager~partial.swiftmodule",
+    "swift-dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ResearchKitManager.swiftdeps",
+    "diagnostics": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ResearchKitManager.dia"
+  },
+  "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Managers/WalletManager.swift": {
+    "dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/WalletManager.d",
+    "object": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/WalletManager.swift.o",
+    "swiftmodule": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/WalletManager~partial.swiftmodule",
+    "swift-dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/WalletManager.swiftdeps",
+    "diagnostics": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/WalletManager.dia"
+  },
   "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/Badge.swift": {
     "dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/Badge.d",
     "object": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/Badge.swift.o",
@@ -148,6 +183,13 @@
     "swiftmodule": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/Exercise~partial.swiftmodule",
     "swift-dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/Exercise.swiftdeps",
     "diagnostics": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/Exercise.dia"
+  },
+  "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/ExternalHealthData.swift": {
+    "dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ExternalHealthData.d",
+    "object": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ExternalHealthData.swift.o",
+    "swiftmodule": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ExternalHealthData~partial.swiftmodule",
+    "swift-dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ExternalHealthData.swiftdeps",
+    "diagnostics": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ExternalHealthData.dia"
   },
   "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/Food.swift": {
     "dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/Food.d",
@@ -240,6 +282,13 @@
     "swift-dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/TongueData.swiftdeps",
     "diagnostics": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/TongueData.dia"
   },
+  "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/UnitSystem.swift": {
+    "dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/UnitSystem.d",
+    "object": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/UnitSystem.swift.o",
+    "swiftmodule": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/UnitSystem~partial.swiftmodule",
+    "swift-dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/UnitSystem.swiftdeps",
+    "diagnostics": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/UnitSystem.dia"
+  },
   "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/VisionData.swift": {
     "dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/VisionData.d",
     "object": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/VisionData.swift.o",
@@ -253,6 +302,13 @@
     "swiftmodule": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/VisionGames~partial.swiftmodule",
     "swift-dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/VisionGames.swiftdeps",
     "diagnostics": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/VisionGames.dia"
+  },
+  "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Planners/EnhancedPlanGenerator.swift": {
+    "dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/EnhancedPlanGenerator.d",
+    "object": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/EnhancedPlanGenerator.swift.o",
+    "swiftmodule": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/EnhancedPlanGenerator~partial.swiftmodule",
+    "swift-dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/EnhancedPlanGenerator.swiftdeps",
+    "diagnostics": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/EnhancedPlanGenerator.dia"
   },
   "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Planners/ExercisePlanner.swift": {
     "dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ExercisePlanner.d",
@@ -310,6 +366,13 @@
     "swift-dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ContentView.swiftdeps",
     "diagnostics": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ContentView.dia"
   },
+  "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/DentalFitnessView.swift": {
+    "dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/DentalFitnessView.d",
+    "object": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/DentalFitnessView.swift.o",
+    "swiftmodule": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/DentalFitnessView~partial.swiftmodule",
+    "swift-dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/DentalFitnessView.swiftdeps",
+    "diagnostics": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/DentalFitnessView.dia"
+  },
   "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/DesignSystem.swift": {
     "dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/DesignSystem.d",
     "object": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/DesignSystem.swift.o",
@@ -359,12 +422,40 @@
     "swift-dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ExercisePlanView.swiftdeps",
     "diagnostics": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ExercisePlanView.dia"
   },
+  "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/ExternalHealthAnalysisViews.swift": {
+    "dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ExternalHealthAnalysisViews.d",
+    "object": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ExternalHealthAnalysisViews.swift.o",
+    "swiftmodule": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ExternalHealthAnalysisViews~partial.swiftmodule",
+    "swift-dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ExternalHealthAnalysisViews.swiftdeps",
+    "diagnostics": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ExternalHealthAnalysisViews.dia"
+  },
+  "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/ExternalHealthCaptureView.swift": {
+    "dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ExternalHealthCaptureView.d",
+    "object": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ExternalHealthCaptureView.swift.o",
+    "swiftmodule": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ExternalHealthCaptureView~partial.swiftmodule",
+    "swift-dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ExternalHealthCaptureView.swiftdeps",
+    "diagnostics": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ExternalHealthCaptureView.dia"
+  },
   "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/HealthDataInputView.swift": {
     "dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/HealthDataInputView.d",
     "object": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/HealthDataInputView.swift.o",
     "swiftmodule": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/HealthDataInputView~partial.swiftmodule",
     "swift-dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/HealthDataInputView.swiftdeps",
     "diagnostics": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/HealthDataInputView.dia"
+  },
+  "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/HealthStudiesView.swift": {
+    "dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/HealthStudiesView.d",
+    "object": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/HealthStudiesView.swift.o",
+    "swiftmodule": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/HealthStudiesView~partial.swiftmodule",
+    "swift-dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/HealthStudiesView.swiftdeps",
+    "diagnostics": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/HealthStudiesView.dia"
+  },
+  "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/HealthWizardView.swift": {
+    "dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/HealthWizardView.d",
+    "object": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/HealthWizardView.swift.o",
+    "swiftmodule": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/HealthWizardView~partial.swiftmodule",
+    "swift-dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/HealthWizardView.swiftdeps",
+    "diagnostics": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/HealthWizardView.dia"
   },
   "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/HearingCheckView.swift": {
     "dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/HearingCheckView.d",
@@ -379,6 +470,13 @@
     "swiftmodule": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/JournalAnalysisView~partial.swiftmodule",
     "swift-dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/JournalAnalysisView.swiftdeps",
     "diagnostics": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/JournalAnalysisView.dia"
+  },
+  "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/LongTermPlanView.swift": {
+    "dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/LongTermPlanView.d",
+    "object": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/LongTermPlanView.swift.o",
+    "swiftmodule": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/LongTermPlanView~partial.swiftmodule",
+    "swift-dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/LongTermPlanView.swiftdeps",
+    "diagnostics": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/LongTermPlanView.dia"
   },
   "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/ModernContentView.swift": {
     "dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ModernContentView.d",
@@ -414,6 +512,13 @@
     "swiftmodule": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/MusicSessionView~partial.swiftmodule",
     "swift-dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/MusicSessionView.swiftdeps",
     "diagnostics": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/MusicSessionView.dia"
+  },
+  "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/PassportMRZScannerView.swift": {
+    "dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/PassportMRZScannerView.d",
+    "object": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/PassportMRZScannerView.swift.o",
+    "swiftmodule": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/PassportMRZScannerView~partial.swiftmodule",
+    "swift-dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/PassportMRZScannerView.swiftdeps",
+    "diagnostics": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/PassportMRZScannerView.dia"
   },
   "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/PlanningSessionView.swift": {
     "dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/PlanningSessionView.d",
@@ -491,6 +596,13 @@
     "swiftmodule": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/TongueCheckView~partial.swiftmodule",
     "swift-dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/TongueCheckView.swiftdeps",
     "diagnostics": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/TongueCheckView.dia"
+  },
+  "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/UnitSystemToggleView.swift": {
+    "dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/UnitSystemToggleView.d",
+    "object": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/UnitSystemToggleView.swift.o",
+    "swiftmodule": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/UnitSystemToggleView~partial.swiftmodule",
+    "swift-dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/UnitSystemToggleView.swiftdeps",
+    "diagnostics": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/UnitSystemToggleView.dia"
   },
   "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/UniversalContentView.swift": {
     "dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/UniversalContentView.d",

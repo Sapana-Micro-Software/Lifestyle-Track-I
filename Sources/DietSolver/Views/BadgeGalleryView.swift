@@ -153,7 +153,7 @@ struct BadgeCard: View {
                         Circle()
                             .fill(Color(hex: badge.colorHex)?.opacity(badge.isEarned ? 0.2 : 0.1) ?? AppDesign.Colors.primary.opacity(0.1))
                             .frame(width: 70, height: 70)
-                        Image(systemName: badge.icon)
+                        Image(systemName: badge.icon.isEmpty ? "star.fill" : badge.icon)
                             .font(.system(size: 35))
                             .foregroundColor(Color(hex: badge.colorHex) ?? AppDesign.Colors.primary)
                             .opacity(badge.isEarned ? 1.0 : 0.5)
@@ -212,7 +212,7 @@ struct BadgeDetailView: View {
                         Circle()
                             .fill(Color(hex: badge.colorHex)?.opacity(0.2) ?? AppDesign.Colors.primary.opacity(0.2))
                             .frame(width: 120, height: 120)
-                        Image(systemName: badge.icon)
+                        Image(systemName: badge.icon.isEmpty ? "star.fill" : badge.icon)
                             .font(.system(size: 60))
                             .foregroundColor(Color(hex: badge.colorHex) ?? AppDesign.Colors.primary)
                     }

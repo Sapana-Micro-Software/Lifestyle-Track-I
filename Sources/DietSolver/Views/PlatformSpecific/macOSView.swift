@@ -18,6 +18,7 @@ struct macOSContentView: View {
         case exercise = "Exercise"
         case badges = "Badges"
         case insights = "Insights"
+        case studies = "Studies"
         
         var id: String { rawValue }
         var icon: String {
@@ -27,6 +28,7 @@ struct macOSContentView: View {
             case .exercise: return "figure.run"
             case .badges: return "medal.fill"
             case .insights: return "chart.line.uptrend.xyaxis"
+            case .studies: return "chart.bar.doc.horizontal.fill"
             }
         }
     }
@@ -55,6 +57,8 @@ struct macOSContentView: View {
                     macOSBadgesView(controller: controller)
                 case .insights:
                     macOSInsightsView(controller: controller)
+                case .studies:
+                    HealthStudiesView()
                 case .none:
                     Text("Select an item from the sidebar")
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -108,6 +112,12 @@ struct macOSHomeView: View {
             HealthWizardViewWrapper()
                 #if os(macOS)
                 .frame(minWidth: 800, minHeight: 600)
+                .onDisappear {
+                    // Ensure proper cleanup when sheet dismisses
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                        // Allow view hierarchy to fully clean up
+                    }
+                }
                 #endif
         }
     }
@@ -240,7 +250,7 @@ struct macOSBadgeCard: View {
                     Circle()
                         .fill(Color(hex: badge.colorHex)?.opacity(0.2) ?? AppDesign.Colors.primary.opacity(0.2))
                         .frame(width: 100, height: 100)
-                    Image(systemName: badge.icon)
+                    Image(systemName: badge.icon.isEmpty ? "star.fill" : badge.icon)
                         .font(.system(size: 50))
                         .foregroundColor(Color(hex: badge.colorHex) ?? AppDesign.Colors.primary)
                 }

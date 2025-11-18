@@ -6,11 +6,17 @@
 //
 
 import SwiftUI
+#if canImport(PassKit)
+import PassKit
+#endif
+#if canImport(CoreNFC)
+import CoreNFC
+#endif
 
 // MARK: - Health Wizard View
 struct HealthWizardView: View {
     @ObservedObject var viewModel: DietSolverViewModel
-    @Environment(\.dismiss) var dismiss
+    var dismiss: (() -> Void)?
     
     @State private var currentStep = 0
     @State private var isGeneratingPlan = false
@@ -24,6 +30,11 @@ struct HealthWizardView: View {
     @State private var heightInches: String = "" // For imperial height input
     @State private var activityLevel: HealthData.ActivityLevel = .moderate
     @State private var previousUnitSystem: UnitSystem = .metric // Track previous unit system for conversion
+    @State private var isReadingLicense = false // State for license reading in progress
+    @State private var licenseReadError: String? // State for license reading errors
+    @StateObject private var nfcManager = NFCManager() // NFC manager for reading physical licenses
+    @StateObject private var passportManager = PassportManager() // Passport manager for reading passports
+    @State private var showPassportMRZScanner = false // State for showing MRZ scanner
     
     // Step 2: Medical & Health Metrics
     @State private var glucose: String = ""
@@ -31,6 +42,10 @@ struct HealthWizardView: View {
     @State private var cholesterol: String = ""
     @State private var systolicBP: String = ""
     @State private var diastolicBP: String = ""
+    @State private var restingPulse: String = "" // Resting pulse rate
+    @State private var activePulse: String = "" // Active pulse rate
+    @State private var maxPulse: String = "" // Maximum pulse rate
+    @State private var pulseMeasurementMethod: HealthData.WristPulse.PulseMeasurementMethod = .manual // Pulse measurement method
     
     // Step 3: Fitness & Exercise
     @State private var muscleMass: String = ""
@@ -66,7 +81,15 @@ struct HealthWizardView: View {
     @State private var allergies: String = ""
     @State private var dietaryRestrictions: String = ""
     
-    // Step 9: Plan Preferences
+    // Step 9: Dental Fitness
+    @State private var dailyTeethScrubs: String = "2"
+    @State private var dailyFlossingCount: String = "1"
+    @State private var dailyMouthwashCleans: String = "1"
+    @State private var dailyTongueScrapes: String = "1"
+    @State private var dentalConcerns: String = ""
+    @State private var dentalMedications: String = ""
+    
+    // Step 10: Plan Preferences
     @State private var planDuration: PlanDuration = .tenYears
     @State private var urgencyLevel: UrgencyLevel = .medium
     @State private var customDurationYears: String = "10"
@@ -81,11 +104,32 @@ struct HealthWizardView: View {
         "Lifestyle",
         "Exercise Goals",
         "Sleep & Habits",
+        "Dental Fitness",
+        "External Health",
         "Plan Preferences"
     ]
     
     @State private var generationProgress: Double = 0.0
     @State private var generationStatus: String = "Initializing..."
+    
+    // Computed property for plan duration display text
+    private var planDurationDisplayText: String {
+        if useCustomDuration {
+            if let years = Double(customDurationYears), years > 0 {
+                let totalDays = Int(years * 365.0)
+                if years < 1 {
+                    let months = Int(years * 12.0)
+                    return "Selected: \(totalDays) days (\(months) months)"
+                } else {
+                    return "Selected: \(totalDays) days (\(String(format: "%.1f", years)) years)"
+                }
+            } else {
+                return "Selected: \(planDuration.days) days"
+            }
+        } else {
+            return "Selected: \(planDuration.days) days (\(planDuration.months) months)"
+        }
+    }
     
     var body: some View {
         ZStack {
@@ -96,15 +140,6 @@ struct HealthWizardView: View {
                 planGenerationView
             } else {
                 wizardContentView
-            }
-        }
-        .navigationTitle("Health Wizard")
-        #if os(iOS)
-        .navigationBarTitleDisplayMode(.inline)
-        #endif
-        .toolbar {
-            ToolbarItem(placement: .automatic) {
-                CompactUnitSystemToggle(viewModel: viewModel)
             }
         }
         .onChange(of: viewModel.unitSystem) { newSystem in
@@ -119,8 +154,9 @@ struct HealthWizardView: View {
             // Clean up state when view disappears to prevent ViewBridge errors
             #if os(macOS)
             // Give SwiftUI time to properly clean up view hierarchy
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                // Any cleanup needed
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
+                // Reset any state that might cause issues
+                isGeneratingPlan = false
             }
             #endif
         }
@@ -202,6 +238,9 @@ struct HealthWizardView: View {
     
     private var wizardContentView: some View {
         VStack(spacing: 0) {
+            // Custom Header
+            wizardHeader
+            
             // Progress Indicator
             progressIndicator
             
@@ -215,7 +254,9 @@ struct HealthWizardView: View {
                 lifestyleStep.tag(5)
                 exerciseGoalsStep.tag(6)
                 sleepHabitsStep.tag(7)
-                planPreferencesStep.tag(8)
+                dentalFitnessStep.tag(8)
+                externalHealthStep.tag(9)
+                planPreferencesStep.tag(10)
             }
             #if os(iOS)
             .tabViewStyle(.page(indexDisplayMode: .never))
@@ -225,6 +266,38 @@ struct HealthWizardView: View {
             // Navigation Buttons
             navigationButtons
         }
+    }
+    
+    // MARK: - Wizard Header
+    private var wizardHeader: some View {
+        HStack {
+            Text("Health Wizard")
+                .font(AppDesign.Typography.title2)
+                .fontWeight(.bold)
+                .foregroundColor(AppDesign.Colors.textPrimary)
+            
+            Spacer()
+            
+            CompactUnitSystemToggle(viewModel: viewModel)
+            
+            Button(action: {
+                dismiss?()
+            }) {
+                Image(systemName: "xmark.circle.fill")
+                    .font(.system(size: 24))
+                    .foregroundColor(AppDesign.Colors.textSecondary)
+            }
+            .buttonStyle(PlainButtonStyle())
+        }
+        .padding(.horizontal, AppDesign.Spacing.md)
+        .padding(.vertical, AppDesign.Spacing.sm)
+        .background(AppDesign.Colors.surface)
+        .overlay(
+            Rectangle()
+                .frame(height: 1)
+                .foregroundColor(AppDesign.Colors.textSecondary.opacity(0.2)),
+            alignment: .bottom
+        )
     }
     
     private var planGenerationView: some View {
@@ -312,6 +385,194 @@ struct HealthWizardView: View {
                     title: "Basic Information",
                     description: "Tell us about yourself to personalize your plan"
                 )
+                
+                // Wallet & NFC Integration Buttons
+                VStack(spacing: AppDesign.Spacing.md) {
+                    // Wallet Integration Button (iOS 16+)
+                    #if os(iOS)
+                    if #available(iOS 16.0, *) {
+                        if WalletManager.isAvailable() {
+                            ModernCard {
+                                VStack(spacing: AppDesign.Spacing.sm) {
+                                    Button(action: {
+                                        readDriversLicenseFromWallet()
+                                    }) {
+                                        HStack {
+                                            Image(systemName: "creditcard.fill")
+                                                .font(.system(size: 20))
+                                            Text("Use Driver's License from Wallet")
+                                                .font(AppDesign.Typography.headline)
+                                            Spacer()
+                                            if isReadingLicense {
+                                                ProgressView()
+                                                    .scaleEffect(0.8)
+                                            }
+                                        }
+                                        .foregroundColor(.white)
+                                        .padding(.vertical, AppDesign.Spacing.md)
+                                        .padding(.horizontal, AppDesign.Spacing.md)
+                                        .background(
+                                            LinearGradient(
+                                                colors: [AppDesign.Colors.primary, AppDesign.Colors.secondary],
+                                                startPoint: .leading,
+                                                endPoint: .trailing
+                                            )
+                                        )
+                                        .cornerRadius(AppDesign.Radius.medium)
+                                    }
+                                    .disabled(isReadingLicense)
+                                }
+                            }
+                            .padding(.horizontal, AppDesign.Spacing.md)
+                        }
+                    }
+                    #endif
+                    
+                    // NFC Reading Button (All Platforms)
+                    if NFCManager.isAvailable() {
+                        ModernCard {
+                            VStack(spacing: AppDesign.Spacing.sm) {
+                                Button(action: {
+                                    readDriversLicenseWithNFC()
+                                }) {
+                                    HStack {
+                                        Image(systemName: "wave.3.right.circle.fill")
+                                            .font(.system(size: 20))
+                                        Text("Scan Driver's License with NFC")
+                                            .font(AppDesign.Typography.headline)
+                                        Spacer()
+                                        if nfcManager.isScanning {
+                                            ProgressView()
+                                                .scaleEffect(0.8)
+                                        }
+                                    }
+                                    .foregroundColor(.white)
+                                    .padding(.vertical, AppDesign.Spacing.md)
+                                    .padding(.horizontal, AppDesign.Spacing.md)
+                                    .background(
+                                        LinearGradient(
+                                            colors: [AppDesign.Colors.accent, AppDesign.Colors.primary],
+                                            startPoint: .leading,
+                                            endPoint: .trailing
+                                        )
+                                    )
+                                    .cornerRadius(AppDesign.Radius.medium)
+                                }
+                                .disabled(nfcManager.isScanning || isReadingLicense)
+                                
+                                if !nfcManager.scanProgress.isEmpty {
+                                    Text(nfcManager.scanProgress)
+                                        .font(AppDesign.Typography.caption)
+                                        .foregroundColor(AppDesign.Colors.textSecondary)
+                                        .padding(.top, AppDesign.Spacing.xs)
+                                }
+                                
+                                if let error = nfcManager.errorMessage {
+                                    Text(error)
+                                        .font(AppDesign.Typography.caption)
+                                        .foregroundColor(AppDesign.Colors.error)
+                                        .padding(.top, AppDesign.Spacing.xs)
+                                }
+                            }
+                        }
+                        .padding(.horizontal, AppDesign.Spacing.md)
+                    }
+                    
+                    // Passport Integration Button (All Platforms)
+                    if PassportManager.isAvailable() || PassportManager.isMRZScanningAvailable() {
+                        ModernCard {
+                            VStack(spacing: AppDesign.Spacing.sm) {
+                                if PassportManager.isAvailable() {
+                                    Button(action: {
+                                        readPassportWithNFC()
+                                    }) {
+                                        HStack {
+                                            Image(systemName: "book.closed.fill")
+                                                .font(.system(size: 20))
+                                            Text("Scan Passport with NFC")
+                                                .font(AppDesign.Typography.headline)
+                                            Spacer()
+                                            if passportManager.isScanning {
+                                                ProgressView()
+                                                    .scaleEffect(0.8)
+                                            }
+                                        }
+                                        .foregroundColor(.white)
+                                        .padding(.vertical, AppDesign.Spacing.md)
+                                        .padding(.horizontal, AppDesign.Spacing.md)
+                                        .background(
+                                            LinearGradient(
+                                                colors: [Color.purple, AppDesign.Colors.primary],
+                                                startPoint: .leading,
+                                                endPoint: .trailing
+                                            )
+                                        )
+                                        .cornerRadius(AppDesign.Radius.medium)
+                                    }
+                                    .disabled(passportManager.isScanning || isReadingLicense)
+                                }
+                                
+                                #if canImport(UIKit)
+                                if PassportManager.isMRZScanningAvailable() {
+                                    Button(action: {
+                                        showPassportMRZScanner = true
+                                    }) {
+                                        HStack {
+                                            Image(systemName: "camera.fill")
+                                                .font(.system(size: 20))
+                                            Text("Scan Passport MRZ (Machine Readable Zone)")
+                                                .font(AppDesign.Typography.headline)
+                                            Spacer()
+                                        }
+                                        .foregroundColor(.white)
+                                        .padding(.vertical, AppDesign.Spacing.md)
+                                        .padding(.horizontal, AppDesign.Spacing.md)
+                                        .background(
+                                            LinearGradient(
+                                                colors: [Color.blue, Color.purple],
+                                                startPoint: .leading,
+                                                endPoint: .trailing
+                                            )
+                                        )
+                                        .cornerRadius(AppDesign.Radius.medium)
+                                    }
+                                    .disabled(passportManager.isScanning || isReadingLicense)
+                                }
+                                #endif
+                                
+                                if !passportManager.scanProgress.isEmpty {
+                                    Text(passportManager.scanProgress)
+                                        .font(AppDesign.Typography.caption)
+                                        .foregroundColor(AppDesign.Colors.textSecondary)
+                                        .padding(.top, AppDesign.Spacing.xs)
+                                }
+                                
+                                if let error = passportManager.errorMessage {
+                                    Text(error)
+                                        .font(AppDesign.Typography.caption)
+                                        .foregroundColor(AppDesign.Colors.error)
+                                        .padding(.top, AppDesign.Spacing.xs)
+                                }
+                            }
+                        }
+                        .padding(.horizontal, AppDesign.Spacing.md)
+                    }
+                    
+                    if let error = licenseReadError {
+                        Text(error)
+                            .font(AppDesign.Typography.caption)
+                            .foregroundColor(AppDesign.Colors.error)
+                            .padding(.horizontal, AppDesign.Spacing.md)
+                    }
+                }
+                .sheet(isPresented: $showPassportMRZScanner) {
+                    PassportMRZScannerView(passportManager: passportManager) { passportData in
+                        if let data = passportData {
+                            populateDataFromPassport(data)
+                        }
+                        showPassportMRZScanner = false
+                    }
+                }
                 
                 ModernCard {
                     VStack(spacing: AppDesign.Spacing.md) {
@@ -465,6 +726,56 @@ struct HealthWizardView: View {
                             .keyboardType(.numberPad)
                             #endif
                         }
+                        
+                        // Wrist Pulse Measurements
+                        VStack(alignment: .leading, spacing: AppDesign.Spacing.sm) {
+                            HStack {
+                                Image(systemName: "heart.pulse.fill")
+                                    .foregroundColor(AppDesign.Colors.primary)
+                                    .frame(width: 20)
+                                Text("Wrist Pulse")
+                                    .font(AppDesign.Typography.subheadline)
+                                    .foregroundColor(AppDesign.Colors.textSecondary)
+                            }
+                            
+                            ModernInputField(
+                                title: "Resting Pulse",
+                                value: $restingPulse,
+                                icon: "heart.fill",
+                                unit: "bpm"
+                            )
+                            #if os(iOS)
+                            .keyboardType(.numberPad)
+                            #endif
+                            
+                            ModernInputField(
+                                title: "Active Pulse",
+                                value: $activePulse,
+                                icon: "heart.circle.fill",
+                                unit: "bpm"
+                            )
+                            #if os(iOS)
+                            .keyboardType(.numberPad)
+                            #endif
+                            
+                            ModernInputField(
+                                title: "Maximum Pulse",
+                                value: $maxPulse,
+                                icon: "heart.circle.fill",
+                                unit: "bpm"
+                            )
+                            #if os(iOS)
+                            .keyboardType(.numberPad)
+                            #endif
+                            
+                            ModernPickerField(
+                                title: "Measurement Method",
+                                selection: $pulseMeasurementMethod,
+                                options: HealthData.WristPulse.PulseMeasurementMethod.allCases,
+                                icon: "waveform.path.ecg"
+                            )
+                        }
+                        .padding(.top, AppDesign.Spacing.sm)
                     }
                 }
                 .padding(.horizontal, AppDesign.Spacing.md)
@@ -782,6 +1093,123 @@ struct HealthWizardView: View {
     }
     
     // MARK: - Step 9: Plan Preferences
+    private var dentalFitnessStep: some View {
+        ScrollView {
+            VStack(spacing: AppDesign.Spacing.lg) {
+                stepHeader(
+                    icon: "tooth",
+                    title: "Dental Fitness",
+                    description: "Track your daily dental hygiene routine"
+                )
+                
+                ModernCard {
+                    VStack(spacing: AppDesign.Spacing.md) {
+                        ModernInputField(
+                            title: "Daily Teeth Brushing",
+                            value: $dailyTeethScrubs,
+                            icon: "tooth.fill",
+                            unit: "times/day"
+                        )
+                        #if os(iOS)
+                        .keyboardType(.numberPad)
+                        #endif
+                        
+                        ModernInputField(
+                            title: "Daily Flossing",
+                            value: $dailyFlossingCount,
+                            icon: "line.3.horizontal",
+                            unit: "times/day"
+                        )
+                        #if os(iOS)
+                        .keyboardType(.numberPad)
+                        #endif
+                        
+                        ModernInputField(
+                            title: "Daily Mouthwash",
+                            value: $dailyMouthwashCleans,
+                            icon: "drop.fill",
+                            unit: "times/day"
+                        )
+                        #if os(iOS)
+                        .keyboardType(.numberPad)
+                        #endif
+                        
+                        ModernInputField(
+                            title: "Daily Tongue Scraping",
+                            value: $dailyTongueScrapes,
+                            icon: "mouth",
+                            unit: "times/day"
+                        )
+                        #if os(iOS)
+                        .keyboardType(.numberPad)
+                        #endif
+                        
+                        ModernInputField(
+                            title: "Dental Concerns (optional)",
+                            value: $dentalConcerns,
+                            icon: "exclamationmark.triangle.fill",
+                            placeholder: "e.g., sensitivity, gum issues"
+                        )
+                        
+                        ModernInputField(
+                            title: "Dental Medications (optional)",
+                            value: $dentalMedications,
+                            icon: "pills.fill",
+                            placeholder: "e.g., fluoride, mouthwash type"
+                        )
+                    }
+                }
+                .padding(.horizontal, AppDesign.Spacing.md)
+            }
+        }
+    }
+    
+    // MARK: - Step 10: External Health
+    private var externalHealthStep: some View {
+        ScrollView {
+            VStack(spacing: AppDesign.Spacing.lg) {
+                stepHeader(
+                    icon: "camera.fill",
+                    title: "External Health Analysis",
+                    description: "Capture images of external body parts (skin, eyes, nose, nails, hair, beard) for Vision framework analysis"
+                )
+                
+                ModernCard {
+                    VStack(spacing: AppDesign.Spacing.md) {
+                        Text("Use the camera to capture images of external body parts for health analysis. The Vision framework will analyze these images for potential health conditions.")
+                            .font(AppDesign.Typography.body)
+                            .foregroundColor(AppDesign.Colors.textSecondary)
+                            .multilineTextAlignment(.center)
+                            .padding()
+                        
+                        NavigationLink(destination: ExternalHealthCaptureView()) {
+                            HStack {
+                                Image(systemName: "camera.fill")
+                                Text("Open External Health Capture")
+                                    .font(AppDesign.Typography.headline)
+                            }
+                            .foregroundColor(.white)
+                            .frame(maxWidth: .infinity)
+                            .padding(.vertical, AppDesign.Spacing.md)
+                            .background(
+                                LinearGradient(
+                                    colors: [AppDesign.Colors.primary, AppDesign.Colors.secondary],
+                                    startPoint: .leading,
+                                    endPoint: .trailing
+                                )
+                            )
+                            .cornerRadius(AppDesign.Radius.medium)
+                        }
+                        .padding(.horizontal)
+                    }
+                }
+                .padding(.horizontal, AppDesign.Spacing.md)
+            }
+            .padding(.top, AppDesign.Spacing.lg)
+            .padding(.bottom, 100)
+        }
+    }
+    
     private var planPreferencesStep: some View {
         ScrollView {
             VStack(spacing: AppDesign.Spacing.lg) {
@@ -804,21 +1232,27 @@ struct HealthWizardView: View {
                             }
                             
                             Toggle(isOn: $useCustomDuration) {
-                                Text("Use Custom Duration (10+ years)")
+                                Text("Use Custom Duration (3 months to 10+ years)")
                                     .font(AppDesign.Typography.body)
                             }
                             .padding(.vertical, AppDesign.Spacing.xs)
                             
                             if useCustomDuration {
-                                ModernInputField(
-                                    title: "Years",
-                                    value: $customDurationYears,
-                                    icon: "calendar.badge.clock",
-                                    unit: "years"
-                                )
-                                #if os(iOS)
-                                .keyboardType(.numberPad)
-                                #endif
+                                VStack(alignment: .leading, spacing: AppDesign.Spacing.sm) {
+                                    ModernInputField(
+                                        title: "Duration",
+                                        value: $customDurationYears,
+                                        icon: "calendar.badge.clock",
+                                        unit: "years (e.g., 0.25 for 3 months, 1 for 1 year)"
+                                    )
+                                    #if os(iOS)
+                                    .keyboardType(.decimalPad)
+                                    #endif
+                                    
+                                    Text("Enter duration in years (0.25 = 3 months, 0.5 = 6 months, 1 = 1 year, etc.)")
+                                        .font(AppDesign.Typography.caption)
+                                        .foregroundColor(AppDesign.Colors.textSecondary)
+                                }
                             } else {
                                 Picker("", selection: $planDuration) {
                                     ForEach(PlanDuration.allCases, id: \.self) { duration in
@@ -831,8 +1265,7 @@ struct HealthWizardView: View {
                                 .padding(.vertical, AppDesign.Spacing.sm)
                             }
                             
-                            let totalDays = useCustomDuration ? (Int(customDurationYears) ?? 10) * 365 : planDuration.days
-                            Text("Selected: \(totalDays) days (\(totalDays / 365) years)")
+                            Text(planDurationDisplayText)
                                 .font(AppDesign.Typography.caption)
                                 .foregroundColor(AppDesign.Colors.textSecondary)
                         }
@@ -1048,6 +1481,37 @@ struct HealthWizardView: View {
             )
         }
         
+        // Add wrist pulse measurements
+        var pulseData: HealthData.WristPulse? = nil
+        if let resting = Int(restingPulse), !restingPulse.isEmpty {
+            pulseData = HealthData.WristPulse(
+                restingPulse: resting,
+                activePulse: Int(activePulse).flatMap { !activePulse.isEmpty ? $0 : nil },
+                maxPulse: Int(maxPulse).flatMap { !maxPulse.isEmpty ? $0 : nil },
+                measurementDate: Date(),
+                measurementMethod: pulseMeasurementMethod
+            )
+        } else if let active = Int(activePulse), !activePulse.isEmpty {
+            pulseData = HealthData.WristPulse(
+                restingPulse: nil,
+                activePulse: active,
+                maxPulse: Int(maxPulse).flatMap { !maxPulse.isEmpty ? $0 : nil },
+                measurementDate: Date(),
+                measurementMethod: pulseMeasurementMethod
+            )
+        } else if let max = Int(maxPulse), !maxPulse.isEmpty {
+            pulseData = HealthData.WristPulse(
+                restingPulse: nil,
+                activePulse: nil,
+                maxPulse: max,
+                measurementDate: Date(),
+                measurementMethod: pulseMeasurementMethod
+            )
+        }
+        if pulseData != nil {
+            healthData.wristPulse = pulseData
+        }
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
             self.generationProgress = 0.2
             self.generationStatus = "Analyzing fitness data..."
@@ -1096,6 +1560,18 @@ struct HealthWizardView: View {
             medications: sexualHealthMedications.isEmpty ? [] : [sexualHealthMedications]
         )
         
+        // Add dental fitness data
+        healthData.dentalFitness = HealthData.DentalFitness(
+            dailyTeethScrubs: Int(dailyTeethScrubs) ?? 2,
+            dailyFlossingCount: Int(dailyFlossingCount) ?? 1,
+            dailyMouthwashCleans: Int(dailyMouthwashCleans) ?? 1,
+            dailyTongueScrapes: Int(dailyTongueScrapes) ?? 1,
+            lastDentalCheckup: nil,
+            nextDentalCheckup: nil,
+            dentalConcerns: dentalConcerns.isEmpty ? [] : dentalConcerns.components(separatedBy: ",").map { $0.trimmingCharacters(in: .whitespaces) },
+            dentalMedications: dentalMedications.isEmpty ? [] : dentalMedications.components(separatedBy: ",").map { $0.trimmingCharacters(in: .whitespaces) }
+        )
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
             self.generationProgress = 0.5
             self.generationStatus = "Setting up long-term plan structure..."
@@ -1109,16 +1585,34 @@ struct HealthWizardView: View {
         let totalDays: Int
         
         if useCustomDuration {
-            let years = max(10, Int(customDurationYears) ?? 10) // Minimum 10 years
-            totalDays = years * 365
-            
-            // Use closest matching duration or create custom
-            if years <= 2 {
-                finalDuration = .twoYears
-            } else if years <= 5 {
-                finalDuration = .fiveYears
+            // Parse custom duration (can be in years as decimal, e.g., 0.25 for 3 months)
+            if let years = Double(customDurationYears), years > 0 {
+                // Use closest matching duration based on years
+                if years < 0.5 {
+                    // Less than 6 months - use 3 months
+                    finalDuration = .threeMonths
+                    totalDays = 90
+                } else if years < 1.0 {
+                    // 6 months to 1 year
+                    finalDuration = .sixMonths
+                    totalDays = 180
+                } else if years <= 1.0 {
+                    finalDuration = .oneYear
+                    totalDays = 365
+                } else if years <= 2.0 {
+                    finalDuration = .twoYears
+                    totalDays = 730
+                } else if years <= 5.0 {
+                    finalDuration = .fiveYears
+                    totalDays = 1825
+                } else {
+                    finalDuration = .tenYears // Use 10 years as base for longer plans
+                    totalDays = Int(years * 365.0) // Calculate actual days for custom duration
+                }
             } else {
-                finalDuration = .tenYears // Use 10 years as base, will generate more days
+                // Invalid input, use default
+                finalDuration = planDuration
+                totalDays = planDuration.days
             }
         } else {
             finalDuration = planDuration
@@ -1130,33 +1624,161 @@ struct HealthWizardView: View {
             self.generationStatus = "Generating transformation goals..."
         }
         
-        // Generate long-term plan
+        // Generate long-term plan with enhanced generator (on-device, anonymized)
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
             self.generationProgress = 0.7
-            self.generationStatus = "Creating \(totalDays / 365) year plan..."
+            let yearsText = totalDays >= 365 ? "\(totalDays / 365) year" : "\(totalDays) day"
+            self.generationStatus = "Creating personalized \(yearsText) plan with AI insights..."
             
-            viewModel.generateLongTermPlan(duration: finalDuration, urgency: urgencyLevel)
+            // Generate the plan (all processing happens on-device with anonymized data)
+            // Pass custom days if duration exceeds enum limit
+            let customDays = (useCustomDuration && totalDays > finalDuration.days) ? totalDays : nil // Calculate custom days
+            viewModel.generateLongTermPlan(duration: finalDuration, urgency: urgencyLevel, customDays: customDays)
             
-            // Wait for plan generation to complete
-            // The ViewModel handles generating all daily plans in the background
-            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
-                self.generationProgress = 0.9
-                self.generationStatus = "Finalizing your personalized \(totalDays / 365) year plan..."
+            // Check plan generation progress
+            self.checkPlanGenerationProgress(totalDays: totalDays, startTime: Date())
+        }
+    }
+    
+    // MARK: - Check Plan Generation Progress
+    private func checkPlanGenerationProgress(totalDays: Int, startTime: Date) {
+        // Poll for plan completion
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            // Check if plan is generated
+            if self.viewModel.longTermPlan != nil {
+                self.generationProgress = 0.85
+                self.generationStatus = "Plan structure created. Generating daily plans..."
                 
-                // For very long plans, show extended progress
-                if totalDays > 3650 {
-                    self.generationStatus = "Generating \(totalDays) daily plans... This may take a few minutes."
+                // Check for daily plans completion
+                self.checkDailyPlansProgress(totalDays: totalDays)
+            } else {
+                // Plan not ready yet, check again
+                self.checkPlanGenerationProgress(totalDays: totalDays, startTime: startTime)
+            }
+        }
+    }
+    
+    // MARK: - Read Driver's License from Wallet
+    #if os(iOS)
+    @available(iOS 16.0, *)
+    private func readDriversLicenseFromWallet() {
+        isReadingLicense = true
+        licenseReadError = nil
+        
+        Task {
+            let walletManager = WalletManager()
+            if let licenseData = await walletManager.readDriversLicense() {
+                await MainActor.run {
+                    // Pre-populate age if available
+                    populateAgeFromLicenseData(licenseData.age, dateOfBirth: licenseData.dateOfBirth)
+                    isReadingLicense = false
                 }
-                
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                    self.generationProgress = 1.0
-                    self.generationStatus = "Plan generated successfully! \(totalDays) days ready."
-                    
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                        self.isGeneratingPlan = false
-                        self.dismiss()
+            } else {
+                await MainActor.run {
+                    isReadingLicense = false
+                    licenseReadError = walletManager.errorMessage ?? "Failed to read driver's license"
+                }
+            }
+        }
+    }
+    #endif
+    
+    // MARK: - Read Driver's License with NFC
+    private func readDriversLicenseWithNFC() {
+        guard NFCManager.isAvailable() else { // Check if NFC available
+            licenseReadError = "NFC reading is not available on this device" // Set error message
+            return // Return early
+        }
+        
+        nfcManager.errorMessage = nil // Clear error message
+        nfcManager.scanProgress = "" // Clear progress
+        
+        nfcManager.startScanning { licenseData in // Start NFC scanning
+            DispatchQueue.main.async { // Switch to main thread
+                if let data = licenseData { // Check if data received
+                    // Pre-populate age if available
+                    self.populateAgeFromLicenseData(data.age, dateOfBirth: data.dateOfBirth) // Populate age
+                    self.licenseReadError = nil // Clear error
+                } else { // If no data
+                    if let error = self.nfcManager.errorMessage { // Check if error exists
+                        self.licenseReadError = error // Set error message
                     }
                 }
+            }
+        }
+    }
+    
+    // MARK: - Read Passport with NFC
+    private func readPassportWithNFC() {
+        guard PassportManager.isAvailable() else { // Check if passport reading available
+            licenseReadError = "Passport NFC reading is not available on this device" // Set error message
+            return // Return early
+        }
+        
+        passportManager.errorMessage = nil // Clear error message
+        passportManager.scanProgress = "" // Clear progress
+        
+        passportManager.startScanning { passportData in // Start passport scanning
+            DispatchQueue.main.async { // Switch to main thread
+                if let data = passportData { // Check if data received
+                    // Pre-populate data from passport
+                    self.populateDataFromPassport(data) // Populate data
+                    self.licenseReadError = nil // Clear error
+                } else { // If no data
+                    if let error = self.passportManager.errorMessage { // Check if error exists
+                        self.licenseReadError = error // Set error message
+                    }
+                }
+            }
+        }
+    }
+    
+    // MARK: - Populate Data from Passport
+    private func populateDataFromPassport(_ passportData: PassportData) { // Populate wizard fields from passport data
+        // Pre-populate age
+        populateAgeFromLicenseData(passportData.age, dateOfBirth: passportData.dateOfBirth) // Populate age
+        
+        // Pre-populate gender if available
+        if let healthDataGender = passportData.toHealthDataGender() { // Check if gender can be converted
+            gender = healthDataGender // Set gender
+        }
+    }
+    
+    // MARK: - Populate Age from License Data
+    private func populateAgeFromLicenseData(_ calculatedAge: Int?, dateOfBirth: Date?) { // Populate age field from license data
+        if let ageValue = calculatedAge { // Check if calculated age available
+            age = String(ageValue) // Set age string
+        } else if let dob = dateOfBirth { // Check if date of birth available
+            let calendar = Calendar.current // Get calendar instance
+            let ageComponents = calendar.dateComponents([.year], from: dob, to: Date()) // Calculate age components
+            if let years = ageComponents.year { // Check if years available
+                age = String(years) // Set age string
+            }
+        }
+    }
+    
+    // MARK: - Check Daily Plans Progress
+    private func checkDailyPlansProgress(totalDays: Int) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            let currentCount = self.viewModel.dailyPlans.count
+            
+            if currentCount > 0 {
+                self.generationProgress = 0.7 + (Double(currentCount) / Double(totalDays)) * 0.2
+                self.generationStatus = "Generated \(currentCount) of \(totalDays) daily plans..."
+            }
+            
+            if currentCount >= totalDays {
+                // All plans generated
+                self.generationProgress = 1.0
+                self.generationStatus = "Plan generated successfully! \(totalDays) days ready with personalized recommendations."
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    self.isGeneratingPlan = false
+                    self.dismiss?()
+                }
+            } else {
+                // Continue checking
+                self.checkDailyPlansProgress(totalDays: totalDays)
             }
         }
     }
@@ -1169,18 +1791,21 @@ struct HealthWizardViewWrapper: View {
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
-        NavigationView {
-            HealthWizardView(viewModel: viewModel)
+        VStack(spacing: 0) {
+            HealthWizardView(viewModel: viewModel, dismiss: { dismiss() })
         }
-        #if os(iOS)
-        .navigationViewStyle(.stack)
-        #endif
         #if os(macOS)
         .frame(minWidth: 800, minHeight: 600)
         .onAppear {
             // Ensure proper window lifecycle on macOS
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                // Window is ready - give extra time for sheet to fully initialize
+            }
+        }
+        .onDisappear {
+            // Clean up when wrapper disappears
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                // Window is ready
+                // Allow proper cleanup
             }
         }
         #endif

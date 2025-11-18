@@ -13,6 +13,7 @@ struct HealthData: Codable { // Define HealthData struct conforming to Codable p
     var hemoglobin: Double? // g/dL
     var cholesterol: Double? // mg/dL
     var bloodPressure: BloodPressure?
+    var wristPulse: WristPulse? // Wrist pulse measurements
     var age: Int
     var gender: Gender
     var weight: Double // kg
@@ -81,6 +82,12 @@ struct HealthData: Codable { // Define HealthData struct conforming to Codable p
     // Emotional Health
     var emotionalHealth: [EmotionalHealth] = [] // Array of emotional health records
     
+    // Dental Fitness
+    var dentalFitness: DentalFitness? // Optional dental fitness tracking data
+    
+    // External Health (Vision Framework Analysis)
+    var externalHealth: ExternalHealthData = ExternalHealthData() // External health data from Vision framework analysis
+    
     enum Gender: String, Codable, CaseIterable {
         case male, female, other
     }
@@ -100,6 +107,21 @@ struct HealthData: Codable { // Define HealthData struct conforming to Codable p
             case .active: return 1.725
             case .extraActive: return 1.9
             }
+        }
+    }
+    
+    struct WristPulse: Codable { // Define WristPulse struct for pulse measurements
+        var restingPulse: Int? // Resting pulse rate (bpm)
+        var activePulse: Int? // Active pulse rate (bpm)
+        var maxPulse: Int? // Maximum pulse rate (bpm)
+        var measurementDate: Date? // Date of measurement
+        var measurementMethod: PulseMeasurementMethod? // Method used for measurement
+        
+        enum PulseMeasurementMethod: String, Codable, CaseIterable { // Enum for measurement methods
+            case manual = "manual" // Manual counting
+            case wearable = "wearable" // Wearable device
+            case camera = "camera" // Camera-based (photoplethysmography)
+            case sensor = "sensor" // Dedicated sensor
         }
     }
     
@@ -147,6 +169,28 @@ struct HealthData: Codable { // Define HealthData struct conforming to Codable p
             case fair = "Fair"
             case good = "Good"
             case excellent = "Excellent"
+        }
+    }
+    
+    struct DentalFitness: Codable { // Define DentalFitness struct for dental hygiene tracking
+        var dailyTeethScrubs: Int // Number of teeth brushing sessions per day
+        var dailyFlossingCount: Int // Number of flossing sessions per day
+        var dailyMouthwashCleans: Int // Number of mouthwash uses per day
+        var dailyTongueScrapes: Int // Number of tongue scraping sessions per day
+        var lastDentalCheckup: Date? // Optional date of last dental checkup
+        var nextDentalCheckup: Date? // Optional date of next scheduled dental checkup
+        var dentalConcerns: [String] = [] // Array of dental health concerns
+        var dentalMedications: [String] = [] // Array of dental medications or treatments
+        
+        init(dailyTeethScrubs: Int = 2, dailyFlossingCount: Int = 1, dailyMouthwashCleans: Int = 1, dailyTongueScrapes: Int = 1, lastDentalCheckup: Date? = nil, nextDentalCheckup: Date? = nil, dentalConcerns: [String] = [], dentalMedications: [String] = []) {
+            self.dailyTeethScrubs = dailyTeethScrubs
+            self.dailyFlossingCount = dailyFlossingCount
+            self.dailyMouthwashCleans = dailyMouthwashCleans
+            self.dailyTongueScrapes = dailyTongueScrapes
+            self.lastDentalCheckup = lastDentalCheckup
+            self.nextDentalCheckup = nextDentalCheckup
+            self.dentalConcerns = dentalConcerns
+            self.dentalMedications = dentalMedications
         }
     }
     

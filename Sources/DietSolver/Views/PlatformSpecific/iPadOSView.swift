@@ -166,7 +166,7 @@ struct iPadOSBadgeCard: View {
                     Circle()
                         .fill(Color(hex: badge.colorHex)?.opacity(0.2) ?? AppDesign.Colors.primary.opacity(0.2))
                         .frame(width: 80, height: 80)
-                    Image(systemName: badge.icon)
+                    Image(systemName: badge.icon.isEmpty ? "star.fill" : badge.icon)
                         .font(.system(size: 40))
                         .foregroundColor(Color(hex: badge.colorHex) ?? AppDesign.Colors.primary)
                 }

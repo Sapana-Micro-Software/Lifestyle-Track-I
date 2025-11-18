@@ -30,16 +30,21 @@ class DietSolverViewModel: ObservableObject { // Define view model class conform
     private let medicalAnalyzer = MedicalAnalyzer() // Private medical analyzer instance for test interpretation
     private let cognitiveAnalyzer = CognitiveAnalyzer() // Private cognitive analyzer instance for assessment analysis
     private let longTermPlanner = LongTermPlanner() // Private long-term planner instance for transformation planning
+    private let enhancedPlanGenerator = EnhancedPlanGenerator() // Private enhanced plan generator with NLP support
     private let sleepAnalyzer = SleepAnalyzer() // Private sleep analyzer instance for sleep pattern analysis
     private let timeBasedPlanner = TimeBasedPlanner() // Private time-based planner instance for planning sessions
     private let calendarScheduler = CalendarScheduler() // Private calendar scheduler instance for event creation
     private let journalAnalyzer = JournalAnalyzer() // Private journal analyzer instance for journal analysis
     private let healthKitManager = HealthKitManager() // Private HealthKit manager instance for health data access
+    private let researchKitManager = ResearchKitManager() // Private ResearchKit manager instance for health studies
     private let visionAnalyzer = VisionAnalyzer() // Private vision analyzer instance for vision health analysis
     
     func setHealthData(_ data: HealthData) {
         healthData = data
         dietPlan = nil
+        
+        // Contribute anonymized data to active studies (if user has consented)
+        contributeToActiveStudies(data) // Contribute to studies
         generateExercisePlan()
     }
     
@@ -103,7 +108,7 @@ class DietSolverViewModel: ObservableObject { // Define view model class conform
         }
     }
     
-    func generateLongTermPlan(duration: PlanDuration, urgency: UrgencyLevel) {
+    func generateLongTermPlan(duration: PlanDuration, urgency: UrgencyLevel, customDays: Int? = nil) {
         guard let healthData = healthData else { return } // Check if health data exists before planning
         
         let calendar = Calendar.current // Get calendar instance for date calculations
@@ -116,11 +121,55 @@ class DietSolverViewModel: ObservableObject { // Define view model class conform
         default: season = .fall // Set fall season for remaining months
         }
         
-        let plan = longTermPlanner.generatePlan(for: healthData, duration: duration, urgency: urgency) // Generate long-term plan
+        // Use enhanced plan generator with NLP and anonymization
+        var plan = enhancedPlanGenerator.generatePlan(for: healthData, duration: duration, urgency: urgency) // Generate enhanced long-term plan with NLP
+        
+        // If custom days provided (for durations > 10 years), update plan end date
+        if let customDays = customDays, customDays > duration.days { // Check if custom days exceed enum days
+            let endDate = calendar.date(byAdding: .day, value: customDays, to: plan.startDate) ?? plan.endDate // Calculate custom end date
+            plan.endDate = endDate // Update end date
+        }
+        
         longTermPlan = plan // Store generated plan in published property
         
         DispatchQueue.global(qos: .userInitiated).async { // Execute on background thread for performance
-            let dailyPlans = self.longTermPlanner.generateDailyPlans(for: plan, healthData: healthData, season: season) // Generate all daily plans
+            // Generate daily plans with enhanced generator (all processing stays on-device, data anonymized)
+            // Use custom days if provided, otherwise use plan duration days
+            let totalDays = customDays ?? plan.duration.days // Use custom days or plan duration days
+            var dailyPlans: [DailyPlanEntry] = [] // Initialize daily plans array
+            
+            // Generate daily plans for the actual number of days needed
+            let basePlans = self.enhancedPlanGenerator.generateDailyPlans(for: plan, healthData: healthData, season: season) // Generate base daily plans
+            
+            // If we need more days than the enum provides, extend the plans
+            if totalDays > basePlans.count { // Check if more days needed
+                dailyPlans = basePlans // Start with base plans
+                // Extend plans by repeating the pattern or generating additional days
+                let remainingDays = totalDays - basePlans.count // Calculate remaining days
+                let lastPlan = basePlans.last ?? basePlans.first ?? DailyPlanEntry(date: Date(), dayNumber: 1) // Get last plan
+                
+                for i in 1...remainingDays { // Iterate through remaining days
+                    let dayNumber = basePlans.count + i // Calculate day number
+                    guard let newDate = calendar.date(byAdding: .day, value: dayNumber - 1, to: plan.startDate) else { continue } // Calculate date
+                    
+                    // Create extended plan entry (simplified - in production, would generate new content)
+                    let extendedPlan = DailyPlanEntry( // Create extended plan
+                        date: newDate, // Set date
+                        dayNumber: dayNumber, // Set day number
+                        dietPlan: lastPlan.dietPlan, // Reuse diet plan
+                        exercisePlan: lastPlan.exercisePlan, // Reuse exercise plan
+                        supplements: lastPlan.supplements, // Reuse supplements
+                        meditationMinutes: lastPlan.meditationMinutes, // Reuse meditation
+                        breathingPracticeMinutes: lastPlan.breathingPracticeMinutes, // Reuse breathing
+                        sleepTarget: lastPlan.sleepTarget, // Reuse sleep target
+                        waterIntake: lastPlan.waterIntake, // Reuse water intake
+                        notes: "Continuing your personalized plan journey" // Set note
+                    )
+                    dailyPlans.append(extendedPlan) // Add extended plan
+                }
+            } else {
+                dailyPlans = Array(basePlans.prefix(totalDays)) // Use only needed days
+            }
             
             DispatchQueue.main.async { // Return to main thread for UI updates
                 self.dailyPlans = dailyPlans // Update published daily plans array
@@ -343,5 +392,16 @@ class DietSolverViewModel: ObservableObject { // Define view model class conform
     
     func toggleUnitSystem() { // Function to toggle between metric and imperial
         unitSystem = unitSystem == .metric ? .imperial : .metric // Toggle unit system
+    }
+    
+    // MARK: - ResearchKit Integration
+    func contributeToActiveStudies(_ healthData: HealthData) { // Contribute anonymized data to active studies
+        // Only contribute if user has consented to studies
+        for participation in researchKitManager.participations { // Iterate through participations
+            if participation.isActive { // Check if participation is active
+                // Contribute anonymized data to study
+                researchKitManager.contributeDataToStudy(healthData, studyId: participation.studyId) // Contribute data
+            }
+        }
     }
 }

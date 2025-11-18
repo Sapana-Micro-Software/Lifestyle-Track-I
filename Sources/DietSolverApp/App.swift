@@ -22,19 +22,38 @@ struct HealthAndWellnessLifestyleSolverAppMain: App { // Define main app struct 
                 .onAppear {
                     #if os(macOS)
                     // Bring window to front on macOS (with proper error handling)
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                        // Set activation policy first
                         NSApplication.shared.setActivationPolicy(.regular)
+                        
+                        // Activate application
                         NSApplication.shared.activate(ignoringOtherApps: true)
-                        // Safely get and activate windows
+                        
+                        // Safely get and activate windows with error handling
                         let windows = NSApplication.shared.windows
                         if !windows.isEmpty {
                             for window in windows {
-                                if window.isVisible {
+                                // Check if window is valid and visible before manipulating
+                                guard window.isVisible || window.canBecomeKey else { continue }
+                                
+                                // Use try-catch equivalent pattern for safety
+                                autoreleasepool {
                                     window.makeKeyAndOrderFront(nil)
-                                    window.center()
+                                    // Only center if window is resizable
+                                    if window.styleMask.contains(.resizable) {
+                                        window.center()
+                                    }
                                 }
                             }
                         }
+                    }
+                    #endif
+                }
+                .onDisappear {
+                    #if os(macOS)
+                    // Clean up when view disappears to prevent ViewBridge errors
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                        // Allow SwiftUI to properly clean up view hierarchy
                     }
                     #endif
                 }

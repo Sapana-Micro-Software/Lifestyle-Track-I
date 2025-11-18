@@ -2,11 +2,11 @@
   "": {
     "swift-dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverApp.build/master.swiftdeps"
   },
-  "/Users/shyamalchandra/diet-solver/Sources/DietSolverApp/main.swift": {
-    "dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverApp.build/main.d",
-    "object": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverApp.build/main.swift.o",
-    "swiftmodule": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverApp.build/main~partial.swiftmodule",
-    "swift-dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverApp.build/main.swiftdeps",
-    "diagnostics": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverApp.build/main.dia"
+  "/Users/shyamalchandra/diet-solver/Sources/DietSolverApp/App.swift": {
+    "dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverApp.build/App.d",
+    "object": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverApp.build/App.swift.o",
+    "swiftmodule": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverApp.build/App~partial.swiftmodule",
+    "swift-dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverApp.build/App.swiftdeps",
+    "diagnostics": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverApp.build/App.dia"
   }
 }

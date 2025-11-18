@@ -82,7 +82,7 @@ struct watchOSBadgeCard: View {
     
     var body: some View {
         HStack {
-            Image(systemName: badge.icon)
+            Image(systemName: badge.icon.isEmpty ? "star.fill" : badge.icon)
                 .foregroundColor(Color(hex: badge.colorHex) ?? .blue)
             VStack(alignment: .leading, spacing: 2) {
                 Text(badge.name)

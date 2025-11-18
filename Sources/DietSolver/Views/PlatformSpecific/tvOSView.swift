@@ -90,7 +90,7 @@ struct tvOSBadgeCard: View {
     
     var body: some View {
         VStack(spacing: 20) {
-            Image(systemName: badge.icon)
+            Image(systemName: badge.icon.isEmpty ? "star.fill" : badge.icon)
                 .font(.system(size: 60))
                 .foregroundColor(Color(hex: badge.colorHex) ?? .blue)
             Text(badge.name)
