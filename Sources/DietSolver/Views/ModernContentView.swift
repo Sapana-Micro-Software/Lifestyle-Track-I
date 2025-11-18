@@ -48,6 +48,13 @@ public struct ModernContentView: View {
                     }
                     .tag(3)
                 
+                // Tools
+                ToolsView(viewModel: viewModel)
+                    .tabItem {
+                        Label("Tools", systemImage: "wrench.and.screwdriver.fill")
+                    }
+                    .tag(6)
+                
                 // Badges
                 BadgeGalleryView(controller: DietSolverController(viewModel: viewModel))
                     .tabItem {
@@ -143,6 +150,49 @@ struct HomeDashboardView: View {
                                             Image(systemName: "calendar.badge.clock")
                                                 .foregroundColor(AppDesign.Colors.primary)
                                                 .font(.title2)
+                                        }
+                                    }
+                                    .padding(.horizontal, AppDesign.Spacing.md)
+                                }
+                                .buttonStyle(PlainButtonStyle())
+                            }
+                            
+                            // Quick Tools
+                            VStack(spacing: AppDesign.Spacing.sm) {
+                                NavigationLink(destination: GroceryListView(viewModel: viewModel)) {
+                                    ModernCard {
+                                        HStack {
+                                            Image(systemName: "cart.fill")
+                                                .foregroundColor(AppDesign.Colors.primary)
+                                                .font(.title2)
+                                            VStack(alignment: .leading, spacing: 4) {
+                                                Text("Grocery List")
+                                                    .font(AppDesign.Typography.headline)
+                                                Text("Generate shopping list from meal plans")
+                                                    .font(AppDesign.Typography.caption)
+                                                    .foregroundColor(AppDesign.Colors.textSecondary)
+                                            }
+                                            Spacer()
+                                        }
+                                    }
+                                    .padding(.horizontal, AppDesign.Spacing.md)
+                                }
+                                .buttonStyle(PlainButtonStyle())
+                                
+                                NavigationLink(destination: RecipeLibraryView(viewModel: viewModel)) {
+                                    ModernCard {
+                                        HStack {
+                                            Image(systemName: "book.fill")
+                                                .foregroundColor(AppDesign.Colors.secondary)
+                                                .font(.title2)
+                                            VStack(alignment: .leading, spacing: 4) {
+                                                Text("Recipe Library")
+                                                    .font(AppDesign.Typography.headline)
+                                                Text("Save and organize favorite recipes")
+                                                    .font(AppDesign.Typography.caption)
+                                                    .foregroundColor(AppDesign.Colors.textSecondary)
+                                            }
+                                            Spacer()
                                         }
                                     }
                                     .padding(.horizontal, AppDesign.Spacing.md)

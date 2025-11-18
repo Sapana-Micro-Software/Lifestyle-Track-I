@@ -76,6 +76,14 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Generators/GroceryListGenerator.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Generators/HealthReportGenerator.swift"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Generators/NutritionFactsGenerator.swift"
         },
         {
@@ -96,7 +104,15 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Managers/NotificationManager.swift"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Managers/PassportManager.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Managers/RecipeLibraryManager.swift"
         },
         {
           "kind" : "file",
@@ -212,6 +228,10 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Planners/MealPrepPlanner.swift"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Planners/TimeBasedPlanner.swift"
         },
         {
@@ -276,7 +296,15 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/GroceryListView.swift"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/HealthDataInputView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/HealthReportView.swift"
         },
         {
           "kind" : "file",
@@ -297,6 +325,10 @@
         {
           "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/LongTermPlanView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/MealPrepView.swift"
         },
         {
           "kind" : "file",
@@ -356,6 +388,14 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/ProgressChartsView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/RecipeLibraryView.swift"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/SolvingView.swift"
         },
         {
@@ -365,6 +405,10 @@
         {
           "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/TongueCheckView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/ToolsView.swift"
         },
         {
           "kind" : "file",
@@ -407,12 +451,16 @@
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/DietSolverController.swift.o",
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/PlatformAdapter.swift.o",
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/SiriKitHandler.swift.o",
+        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/GroceryListGenerator.swift.o",
+        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/HealthReportGenerator.swift.o",
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/NutritionFactsGenerator.swift.o",
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/RecipeGenerator.swift.o",
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/SongGenerator.swift.o",
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/HealthKitManager.swift.o",
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/NFCManager.swift.o",
+        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/NotificationManager.swift.o",
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/PassportManager.swift.o",
+        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/RecipeLibraryManager.swift.o",
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ResearchKitManager.swift.o",
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/WalletManager.swift.o",
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/Badge.swift.o",
@@ -441,6 +489,7 @@
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/EnhancedPlanGenerator.swift.o",
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ExercisePlanner.swift.o",
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/LongTermPlanner.swift.o",
+        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/MealPrepPlanner.swift.o",
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/TimeBasedPlanner.swift.o",
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/DietSolver.swift.o",
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/DietSolverViewModel.swift.o",
@@ -457,12 +506,15 @@
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ExercisePlanView.swift.o",
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ExternalHealthAnalysisViews.swift.o",
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ExternalHealthCaptureView.swift.o",
+        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/GroceryListView.swift.o",
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/HealthDataInputView.swift.o",
+        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/HealthReportView.swift.o",
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/HealthStudiesView.swift.o",
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/HealthWizardView.swift.o",
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/HearingCheckView.swift.o",
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/JournalAnalysisView.swift.o",
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/LongTermPlanView.swift.o",
+        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/MealPrepView.swift.o",
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ModernContentView.swift.o",
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ModernExercisePlanView.swift.o",
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ModernInputViews.swift.o",
@@ -477,9 +529,12 @@
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/tvOSView.swift.o",
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/visionOSView.swift.o",
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/watchOSView.swift.o",
+        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ProgressChartsView.swift.o",
+        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/RecipeLibraryView.swift.o",
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/SolvingView.swift.o",
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/TactileCheckView.swift.o",
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/TongueCheckView.swift.o",
+        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ToolsView.swift.o",
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/UnitSystemToggleView.swift.o",
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/UniversalContentView.swift.o",
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/VisionCheckView.swift.o",
@@ -592,6 +647,14 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/GroceryListGenerator.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/HealthReportGenerator.swift.o"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/NutritionFactsGenerator.swift.o"
         },
         {
@@ -612,7 +675,15 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/NotificationManager.swift.o"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/PassportManager.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/RecipeLibraryManager.swift.o"
         },
         {
           "kind" : "file",
@@ -728,6 +799,10 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/MealPrepPlanner.swift.o"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/TimeBasedPlanner.swift.o"
         },
         {
@@ -792,7 +867,15 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/GroceryListView.swift.o"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/HealthDataInputView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/HealthReportView.swift.o"
         },
         {
           "kind" : "file",
@@ -813,6 +896,10 @@
         {
           "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/LongTermPlanView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/MealPrepView.swift.o"
         },
         {
           "kind" : "file",
@@ -872,6 +959,14 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ProgressChartsView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/RecipeLibraryView.swift.o"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/SolvingView.swift.o"
         },
         {
@@ -881,6 +976,10 @@
         {
           "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/TongueCheckView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ToolsView.swift.o"
         },
         {
           "kind" : "file",
@@ -917,12 +1016,16 @@
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Controllers/DietSolverController.swift",
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Controllers/PlatformAdapter.swift",
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Controllers/SiriKitHandler.swift",
+        "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Generators/GroceryListGenerator.swift",
+        "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Generators/HealthReportGenerator.swift",
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Generators/NutritionFactsGenerator.swift",
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Generators/RecipeGenerator.swift",
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Generators/SongGenerator.swift",
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Managers/HealthKitManager.swift",
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Managers/NFCManager.swift",
+        "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Managers/NotificationManager.swift",
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Managers/PassportManager.swift",
+        "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Managers/RecipeLibraryManager.swift",
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Managers/ResearchKitManager.swift",
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Managers/WalletManager.swift",
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/Badge.swift",
@@ -951,6 +1054,7 @@
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Planners/EnhancedPlanGenerator.swift",
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Planners/ExercisePlanner.swift",
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Planners/LongTermPlanner.swift",
+        "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Planners/MealPrepPlanner.swift",
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Planners/TimeBasedPlanner.swift",
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Solver/DietSolver.swift",
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/ViewModels/DietSolverViewModel.swift",
@@ -967,12 +1071,15 @@
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/ExercisePlanView.swift",
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/ExternalHealthAnalysisViews.swift",
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/ExternalHealthCaptureView.swift",
+        "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/GroceryListView.swift",
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/HealthDataInputView.swift",
+        "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/HealthReportView.swift",
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/HealthStudiesView.swift",
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/HealthWizardView.swift",
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/HearingCheckView.swift",
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/JournalAnalysisView.swift",
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/LongTermPlanView.swift",
+        "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/MealPrepView.swift",
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/ModernContentView.swift",
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/ModernExercisePlanView.swift",
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/ModernInputViews.swift",
@@ -987,9 +1094,12 @@
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/PlatformSpecific/tvOSView.swift",
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/PlatformSpecific/visionOSView.swift",
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/PlatformSpecific/watchOSView.swift",
+        "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/ProgressChartsView.swift",
+        "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/RecipeLibraryView.swift",
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/SolvingView.swift",
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/TactileCheckView.swift",
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/TongueCheckView.swift",
+        "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/ToolsView.swift",
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/UnitSystemToggleView.swift",
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/UniversalContentView.swift",
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/VisionCheckView.swift",
@@ -1345,12 +1455,16 @@
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Controllers/DietSolverController.swift",
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Controllers/PlatformAdapter.swift",
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Controllers/SiriKitHandler.swift",
+      "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Generators/GroceryListGenerator.swift",
+      "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Generators/HealthReportGenerator.swift",
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Generators/NutritionFactsGenerator.swift",
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Generators/RecipeGenerator.swift",
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Generators/SongGenerator.swift",
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Managers/HealthKitManager.swift",
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Managers/NFCManager.swift",
+      "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Managers/NotificationManager.swift",
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Managers/PassportManager.swift",
+      "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Managers/RecipeLibraryManager.swift",
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Managers/ResearchKitManager.swift",
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Managers/WalletManager.swift",
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/Badge.swift",
@@ -1379,6 +1493,7 @@
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Planners/EnhancedPlanGenerator.swift",
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Planners/ExercisePlanner.swift",
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Planners/LongTermPlanner.swift",
+      "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Planners/MealPrepPlanner.swift",
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Planners/TimeBasedPlanner.swift",
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Solver/DietSolver.swift",
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/ViewModels/DietSolverViewModel.swift",
@@ -1395,12 +1510,15 @@
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/ExercisePlanView.swift",
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/ExternalHealthAnalysisViews.swift",
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/ExternalHealthCaptureView.swift",
+      "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/GroceryListView.swift",
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/HealthDataInputView.swift",
+      "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/HealthReportView.swift",
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/HealthStudiesView.swift",
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/HealthWizardView.swift",
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/HearingCheckView.swift",
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/JournalAnalysisView.swift",
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/LongTermPlanView.swift",
+      "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/MealPrepView.swift",
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/ModernContentView.swift",
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/ModernExercisePlanView.swift",
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/ModernInputViews.swift",
@@ -1415,9 +1533,12 @@
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/PlatformSpecific/tvOSView.swift",
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/PlatformSpecific/visionOSView.swift",
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/PlatformSpecific/watchOSView.swift",
+      "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/ProgressChartsView.swift",
+      "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/RecipeLibraryView.swift",
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/SolvingView.swift",
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/TactileCheckView.swift",
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/TongueCheckView.swift",
+      "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/ToolsView.swift",
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/UnitSystemToggleView.swift",
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/UniversalContentView.swift",
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/VisionCheckView.swift",
@@ -1775,6 +1896,14 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Generators/GroceryListGenerator.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Generators/HealthReportGenerator.swift"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Generators/NutritionFactsGenerator.swift"
         },
         {
@@ -1795,7 +1924,15 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Managers/NotificationManager.swift"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Managers/PassportManager.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Managers/RecipeLibraryManager.swift"
         },
         {
           "kind" : "file",
@@ -1911,6 +2048,10 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Planners/MealPrepPlanner.swift"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Planners/TimeBasedPlanner.swift"
         },
         {
@@ -1975,7 +2116,15 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/GroceryListView.swift"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/HealthDataInputView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/HealthReportView.swift"
         },
         {
           "kind" : "file",
@@ -1996,6 +2145,10 @@
         {
           "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/LongTermPlanView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/MealPrepView.swift"
         },
         {
           "kind" : "file",
@@ -2055,6 +2208,14 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/ProgressChartsView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/RecipeLibraryView.swift"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/SolvingView.swift"
         },
         {
@@ -2064,6 +2225,10 @@
         {
           "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/TongueCheckView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/ToolsView.swift"
         },
         {
           "kind" : "file",
@@ -2237,6 +2402,14 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/GroceryListGenerator.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/GroceryListView.swift.o"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/HealthCertificate.swift.o"
         },
         {
@@ -2254,6 +2427,14 @@
         {
           "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/HealthKitManager.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/HealthReportGenerator.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/HealthReportView.swift.o"
         },
         {
           "kind" : "file",
@@ -2301,6 +2482,14 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/MealPrepPlanner.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/MealPrepView.swift.o"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/MedicalAnalyzer.swift.o"
         },
         {
@@ -2337,6 +2526,10 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/NotificationManager.swift.o"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/Nutrient.swift.o"
         },
         {
@@ -2361,7 +2554,19 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ProgressChartsView.swift.o"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/RecipeGenerator.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/RecipeLibraryManager.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/RecipeLibraryView.swift.o"
         },
         {
           "kind" : "file",
@@ -2414,6 +2619,10 @@
         {
           "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/TongueData.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ToolsView.swift.o"
         },
         {
           "kind" : "file",
@@ -2621,6 +2830,14 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/GroceryListGenerator.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/GroceryListView.swift.o"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/HealthCertificate.swift.o"
         },
         {
@@ -2638,6 +2855,14 @@
         {
           "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/HealthKitManager.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/HealthReportGenerator.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/HealthReportView.swift.o"
         },
         {
           "kind" : "file",
@@ -2685,6 +2910,14 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/MealPrepPlanner.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/MealPrepView.swift.o"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/MedicalAnalyzer.swift.o"
         },
         {
@@ -2721,6 +2954,10 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/NotificationManager.swift.o"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/Nutrient.swift.o"
         },
         {
@@ -2745,7 +2982,19 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ProgressChartsView.swift.o"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/RecipeGenerator.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/RecipeLibraryManager.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/RecipeLibraryView.swift.o"
         },
         {
           "kind" : "file",
@@ -2798,6 +3047,10 @@
         {
           "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/TongueData.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ToolsView.swift.o"
         },
         {
           "kind" : "file",

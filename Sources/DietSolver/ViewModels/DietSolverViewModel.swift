@@ -29,6 +29,7 @@ class DietSolverViewModel: ObservableObject { // Define view model class conform
     private let exercisePlanner = ExercisePlanner() // Private exercise planner instance for workout generation
     private let medicalAnalyzer = MedicalAnalyzer() // Private medical analyzer instance for test interpretation
     private let cognitiveAnalyzer = CognitiveAnalyzer() // Private cognitive analyzer instance for assessment analysis
+    private let notificationManager = NotificationManager.shared // Notification manager for reminders
     private let longTermPlanner = LongTermPlanner() // Private long-term planner instance for transformation planning
     private let enhancedPlanGenerator = EnhancedPlanGenerator() // Private enhanced plan generator with NLP support
     private let sleepAnalyzer = SleepAnalyzer() // Private sleep analyzer instance for sleep pattern analysis
@@ -173,6 +174,70 @@ class DietSolverViewModel: ObservableObject { // Define view model class conform
             
             DispatchQueue.main.async { // Return to main thread for UI updates
                 self.dailyPlans = dailyPlans // Update published daily plans array
+                
+                // Schedule notifications for meals and exercises
+                self.schedulePlanNotifications(dailyPlans: dailyPlans)
+            }
+        }
+    }
+    
+    // MARK: - Schedule Plan Notifications
+    private func schedulePlanNotifications(dailyPlans: [DailyPlanEntry]) {
+        Task {
+            // Request notification permission
+            let granted = await notificationManager.requestAuthorization()
+            guard granted else { return }
+            
+            // Schedule notifications for first week
+            let firstWeek = Array(dailyPlans.prefix(7))
+            let calendar = Calendar.current
+            
+            for plan in firstWeek {
+                // Schedule meal reminders
+                if let dietPlan = plan.dietPlan {
+                    for meal in dietPlan.meals {
+                        // Estimate meal time based on meal type
+                        var mealHour = 8 // Default breakfast
+                        switch meal.mealType {
+                        case .breakfast: mealHour = 8
+                        case .lunch: mealHour = 13
+                        case .dinner: mealHour = 19
+                        case .snack: mealHour = 15
+                        }
+                        
+                        if let mealDate = calendar.date(bySettingHour: mealHour, minute: 0, second: 0, of: plan.date) {
+                            notificationManager.scheduleMealReminder(mealName: meal.name, date: mealDate, minutesBefore: 15)
+                        }
+                    }
+                }
+                
+                // Schedule exercise reminders
+                if let exercisePlan = plan.exercisePlan {
+                    for dayPlan in exercisePlan.weeklyPlan {
+                        for activity in dayPlan.activities {
+                            var exerciseHour = 9 // Default morning
+                            switch activity.timeOfDay {
+                            case .morning: exerciseHour = 9
+                            case .afternoon: exerciseHour = 14
+                            case .evening: exerciseHour = 18
+                            }
+                            
+                            if let exerciseDate = calendar.date(bySettingHour: exerciseHour, minute: 0, second: 0, of: plan.date) {
+                                notificationManager.scheduleExerciseReminder(activityName: activity.activity.name, date: exerciseDate, minutesBefore: 30)
+                            }
+                        }
+                    }
+                }
+                
+                // Schedule water reminders
+                if let waterDate = calendar.date(bySettingHour: 10, minute: 0, second: 0, of: plan.date) {
+                    notificationManager.scheduleWaterReminder(date: waterDate, intervalMinutes: 120)
+                }
+                
+                // Schedule sleep reminder
+                if let sleepDate = calendar.date(bySettingHour: Int(plan.sleepTarget) - 1, minute: 0, second: 0, of: plan.date) {
+                    notificationManager.scheduleSleepReminder(targetBedtime: sleepDate)
+                }
             }
         }
     }

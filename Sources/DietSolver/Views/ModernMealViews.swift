@@ -115,6 +115,23 @@ struct ModernMealCard: View {
                         Divider()
                             .padding(.vertical, AppDesign.Spacing.sm)
                         
+                        // Save Recipe Button
+                        Button(action: {
+                            RecipeLibraryManager.shared.saveRecipe(from: meal)
+                        }) {
+                            HStack {
+                                Image(systemName: "bookmark.fill")
+                                Text("Save Recipe")
+                            }
+                            .font(AppDesign.Typography.subheadline)
+                            .foregroundColor(AppDesign.Colors.primary)
+                            .frame(maxWidth: .infinity)
+                            .padding(.vertical, AppDesign.Spacing.xs)
+                            .background(AppDesign.Colors.primary.opacity(0.1))
+                            .cornerRadius(8)
+                        }
+                        .padding(.horizontal, AppDesign.Spacing.md)
+                        
                         ForEach(meal.items) { item in
                             MealItemRow(item: item)
                         }
