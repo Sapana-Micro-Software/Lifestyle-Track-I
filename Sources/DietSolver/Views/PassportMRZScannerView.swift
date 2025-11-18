@@ -22,7 +22,24 @@ struct PassportMRZScannerView: View { // Define PassportMRZScannerView struct co
     @State private var showImagePicker = false // State for showing image picker
     
     var body: some View { // Define body property returning view hierarchy
-        NavigationView { // Create navigation view
+        VStack(spacing: 0) { // Create vertical stack
+            // Custom Header
+            HStack {
+                Text("Passport Scanner")
+                    .font(AppDesign.Typography.title)
+                    .fontWeight(.bold)
+                    .padding(.leading, AppDesign.Spacing.md)
+                Spacer()
+                Button("Cancel") { // Cancel button
+                    dismiss() // Dismiss view
+                }
+                .font(AppDesign.Typography.headline)
+                .foregroundColor(AppDesign.Colors.primary)
+                .padding(.trailing, AppDesign.Spacing.md)
+            }
+            .padding(.vertical, AppDesign.Spacing.sm)
+            .background(AppDesign.Colors.surface)
+            
             VStack(spacing: AppDesign.Spacing.lg) { // Create vertical stack
                 if let image = capturedImage { // Check if image captured
                     // Show captured image with processing
@@ -86,15 +103,7 @@ struct PassportMRZScannerView: View { // Define PassportMRZScannerView struct co
                     .padding()
                 }
             }
-            .navigationTitle("Passport Scanner")
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .cancellationAction) {
-                    Button("Cancel") { // Cancel button
-                        dismiss() // Dismiss view
-                    }
-                }
-            }
+            .padding()
         }
         .sheet(isPresented: $showImagePicker) { // Image picker sheet
             ImagePicker(image: $capturedImage) // Image picker

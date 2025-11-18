@@ -64,7 +64,26 @@ struct ExternalHealthCaptureView: View { // Define ExternalHealthCaptureView str
     }
     
     var body: some View { // Define body property returning view hierarchy
-        NavigationView { // Create navigation view
+        VStack(spacing: 0) { // Create vertical stack
+            // Header with Done button
+            HStack {
+                Text("External Health")
+                    .font(AppDesign.Typography.title)
+                    .fontWeight(.bold)
+                    .padding(.leading, AppDesign.Spacing.md)
+                
+                Spacer()
+                
+                Button("Done") {
+                    dismiss() // Dismiss view
+                }
+                .font(AppDesign.Typography.headline)
+                .foregroundColor(AppDesign.Colors.primary)
+                .padding(.trailing, AppDesign.Spacing.md)
+            }
+            .padding(.vertical, AppDesign.Spacing.sm)
+            .background(AppDesign.Colors.surface)
+            
             ScrollView { // Create scrollable view
                 VStack(spacing: AppDesign.Spacing.lg) { // Create vertical stack
                     // Header
@@ -129,11 +148,13 @@ struct ExternalHealthCaptureView: View { // Define ExternalHealthCaptureView str
                                     VStack(spacing: AppDesign.Spacing.md) { // Create vertical stack
                                         #if canImport(UIKit)
                                         // On iOS, PlatformImage is UIImage
-                                        Image(uiImage: image as! UIImage)
-                                            .resizable()
-                                            .scaledToFit()
-                                            .frame(maxHeight: 300)
-                                            .cornerRadius(AppDesign.Radius.medium)
+                                        if let uiImage = image as? UIImage {
+                                            Image(uiImage: uiImage)
+                                                .resizable()
+                                                .scaledToFit()
+                                                .frame(maxHeight: 300)
+                                                .cornerRadius(AppDesign.Radius.medium)
+                                        }
                                         #elseif canImport(AppKit)
                                         // On macOS, PlatformImage is NSImage (no cast needed)
                                         Image(nsImage: image)
@@ -241,25 +262,6 @@ struct ExternalHealthCaptureView: View { // Define ExternalHealthCaptureView str
                     }
                 }
                 .padding(.bottom, AppDesign.Spacing.xl)
-            }
-            .navigationTitle("External Health")
-            #if os(iOS)
-            .navigationBarTitleDisplayMode(.large)
-            #endif
-            .toolbar {
-                #if os(iOS)
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("Done") {
-                        dismiss() // Dismiss view
-                    }
-                }
-                #else
-                ToolbarItem(placement: .automatic) {
-                    Button("Done") {
-                        dismiss() // Dismiss view
-                    }
-                }
-                #endif
             }
         }
         #if canImport(UIKit)

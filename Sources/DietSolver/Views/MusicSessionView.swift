@@ -21,7 +21,18 @@ struct MusicSessionView: View {
     @State private var notes: String = ""
     
     var body: some View {
-        NavigationView {
+        VStack(spacing: 0) {
+            // Custom Header
+            HStack {
+                Text("Music Session")
+                    .font(AppDesign.Typography.title)
+                    .fontWeight(.bold)
+                    .padding(.leading, AppDesign.Spacing.md)
+                Spacer()
+            }
+            .padding(.vertical, AppDesign.Spacing.sm)
+            .background(AppDesign.Colors.surface)
+            
             Form {
                 Section(header: Text("Session Details")) {
                     Picker("Music Type", selection: $musicType) {

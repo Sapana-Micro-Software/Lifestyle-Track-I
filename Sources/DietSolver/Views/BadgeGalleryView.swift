@@ -38,13 +38,9 @@ struct BadgeGalleryView: View {
         #endif
         .sheet(item: $selectedBadge) { badge in
             if badge.level.requiresCertificate, let certificate = getCertificate(for: badge) {
-                NavigationView {
-                    CertificateView(certificate: certificate)
-                }
+                CertificateView(certificate: certificate)
             } else {
-                NavigationView {
-                    BadgeDetailView(badge: badge, controller: controller)
-                }
+                BadgeDetailView(badge: badge, controller: controller)
             }
         }
     }

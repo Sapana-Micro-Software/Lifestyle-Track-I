@@ -13,10 +13,21 @@ struct VisionGamesView: View { // Define VisionGamesView struct conforming to Vi
     @State private var games: [VisionGame] = VisionGameDatabase.shared.loadGames() // State for games list
     
     var body: some View { // Define body property returning view hierarchy
-        NavigationView { // Create navigation view container
+        VStack(spacing: 0) { // Create vertical stack
+            // Custom Header
+            HStack {
+                Text("Vision Games")
+                    .font(AppDesign.Typography.title)
+                    .fontWeight(.bold)
+                    .padding(.leading, AppDesign.Spacing.md)
+                Spacer()
+            }
+            .padding(.vertical, AppDesign.Spacing.sm)
+            .background(AppDesign.Colors.surface)
+            
             List { // Create list container
                 ForEach(games) { game in // Loop through games
-                    NavigationLink(destination: VisionGameDetailView(game: game, viewModel: viewModel)) { // Create navigation link
+                    Button(action: { selectedGame = game }) { // Create button
                         VStack(alignment: .leading, spacing: 8) { // Create vertical stack
                             Text(game.name) // Display game name
                                 .font(.headline) // Set headline font
@@ -44,9 +55,12 @@ struct VisionGamesView: View { // Define VisionGamesView struct conforming to Vi
                         }
                         .padding(.vertical, 4) // Add vertical padding
                     }
+                    .buttonStyle(PlainButtonStyle())
                 }
             }
-            .navigationTitle("Vision Games") // Set navigation title
+            .sheet(item: $selectedGame) { game in
+                VisionGameDetailView(game: game, viewModel: viewModel)
+            }
         }
     }
 }

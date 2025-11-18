@@ -35,6 +35,7 @@ struct HealthWizardView: View {
     @StateObject private var nfcManager = NFCManager() // NFC manager for reading physical licenses
     @StateObject private var passportManager = PassportManager() // Passport manager for reading passports
     @State private var showPassportMRZScanner = false // State for showing MRZ scanner
+    @State private var showExternalHealthCapture = false // State for showing external health capture view
     
     // Step 2: Medical & Health Metrics
     @State private var glucose: String = ""
@@ -572,6 +573,9 @@ struct HealthWizardView: View {
                         }
                         showPassportMRZScanner = false
                     }
+                }
+                .sheet(isPresented: $showExternalHealthCapture) {
+                    ExternalHealthCaptureView()
                 }
                 
                 ModernCard {
@@ -1182,7 +1186,9 @@ struct HealthWizardView: View {
                             .multilineTextAlignment(.center)
                             .padding()
                         
-                        NavigationLink(destination: ExternalHealthCaptureView()) {
+                        Button(action: {
+                            showExternalHealthCapture = true
+                        }) {
                             HStack {
                                 Image(systemName: "camera.fill")
                                 Text("Open External Health Capture")

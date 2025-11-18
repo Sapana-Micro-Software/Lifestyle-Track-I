@@ -54,7 +54,27 @@ struct iOSHomeView: View {
     @State private var showHealthWizard = false
     
     var body: some View {
-        NavigationView {
+        VStack(spacing: 0) {
+            // Custom Header
+            HStack {
+                Text("Home")
+                    .font(AppDesign.Typography.title)
+                    .fontWeight(.bold)
+                    .padding(.leading, AppDesign.Spacing.md)
+                Spacer()
+                if controller.healthData == nil {
+                    Button(action: { showHealthWizard = true }) {
+                        Label("Get Started", systemImage: "person.crop.circle.badge.plus")
+                    }
+                    .padding(.trailing, AppDesign.Spacing.md)
+                } else {
+                    CompactUnitSystemToggle(viewModel: viewModel)
+                        .padding(.trailing, AppDesign.Spacing.md)
+                }
+            }
+            .padding(.vertical, AppDesign.Spacing.sm)
+            .background(AppDesign.Colors.surface)
+            
             Group {
                 if controller.healthData == nil {
                     // Show welcome screen with Health Wizard button
@@ -76,21 +96,6 @@ struct iOSHomeView: View {
                                 iOSBadgePreviewSection(controller: controller)
                             }
                         }
-                    }
-                }
-            }
-            .navigationTitle("Home")
-            #if os(iOS)
-            .navigationBarTitleDisplayMode(.large)
-            #endif
-            .toolbar {
-                ToolbarItem(placement: .automatic) {
-                    if controller.healthData == nil {
-                        Button(action: { showHealthWizard = true }) {
-                            Label("Get Started", systemImage: "person.crop.circle.badge.plus")
-                        }
-                    } else {
-                        CompactUnitSystemToggle(viewModel: viewModel)
                     }
                 }
             }
@@ -153,22 +158,26 @@ struct iOSHealthView: View {
     @EnvironmentObject var viewModel: DietSolverViewModel
     
     var body: some View {
-        NavigationView {
+        VStack(spacing: 0) {
+            // Custom Header
+            HStack {
+                Text("Health")
+                    .font(AppDesign.Typography.title)
+                    .fontWeight(.bold)
+                    .padding(.leading, AppDesign.Spacing.md)
+                Spacer()
+                CompactUnitSystemToggle(viewModel: viewModel)
+                    .padding(.trailing, AppDesign.Spacing.md)
+            }
+            .padding(.vertical, AppDesign.Spacing.sm)
+            .background(AppDesign.Colors.surface)
+            
             ScrollView {
                 VStack(spacing: AppDesign.Spacing.lg) {
                     if let healthData = controller.healthData {
                         HealthOverviewCard(healthData: healthData)
                             .environmentObject(viewModel)
                     }
-                }
-            }
-            .navigationTitle("Health")
-            #if os(iOS)
-            .navigationBarTitleDisplayMode(.large)
-            #endif
-            .toolbar {
-                ToolbarItem(placement: .automatic) {
-                    CompactUnitSystemToggle(viewModel: viewModel)
                 }
             }
         }
@@ -179,16 +188,23 @@ struct iOSExerciseView: View {
     @ObservedObject var controller: DietSolverController
     
     var body: some View {
-        NavigationView {
+        VStack(spacing: 0) {
+            // Custom Header
+            HStack {
+                Text("Exercise")
+                    .font(AppDesign.Typography.title)
+                    .fontWeight(.bold)
+                    .padding(.leading, AppDesign.Spacing.md)
+                Spacer()
+            }
+            .padding(.vertical, AppDesign.Spacing.sm)
+            .background(AppDesign.Colors.surface)
+            
             ScrollView {
                 if let plan = controller.exercisePlan {
                     ExercisePlanView(plan: plan, healthData: controller.healthData ?? HealthData(age: 30, gender: .male, weight: 70, height: 170, activityLevel: .moderate))
                 }
             }
-            .navigationTitle("Exercise")
-            #if os(iOS)
-            .navigationBarTitleDisplayMode(.large)
-            #endif
         }
     }
 }
@@ -198,7 +214,18 @@ struct iOSBadgesView: View {
     @State private var selectedCategory: HealthBadge.BadgeCategory? = nil
     
     var body: some View {
-        NavigationView {
+        VStack(spacing: 0) {
+            // Custom Header
+            HStack {
+                Text("Badges")
+                    .font(AppDesign.Typography.title)
+                    .fontWeight(.bold)
+                    .padding(.leading, AppDesign.Spacing.md)
+                Spacer()
+            }
+            .padding(.vertical, AppDesign.Spacing.sm)
+            .background(AppDesign.Colors.surface)
+            
             ScrollView {
                 VStack(spacing: AppDesign.Spacing.lg) {
                     // Category Filter
@@ -213,10 +240,6 @@ struct iOSBadgesView: View {
                     .padding(.horizontal, AppDesign.Spacing.md)
                 }
             }
-            .navigationTitle("Badges")
-            #if os(iOS)
-            .navigationBarTitleDisplayMode(.large)
-            #endif
         }
     }
     

@@ -78,9 +78,13 @@ public struct ModernContentView: View {
 struct HomeDashboardView: View {
     @ObservedObject var viewModel: DietSolverViewModel
     @State private var showHealthInput = false
+    @State private var showDietPlan = false
+    @State private var showLongTermPlan = false
+    @State private var showGroceryList = false
+    @State private var showRecipeLibrary = false
     
     var body: some View {
-        NavigationView {
+        VStack {
             ZStack {
                 AppDesign.Colors.background
                     .ignoresSafeArea()
@@ -114,7 +118,7 @@ struct HomeDashboardView: View {
                             recentActivitySection
                             
                             // Full Diet Plan Link
-                            NavigationLink(destination: DietPlanView(viewModel: viewModel)) {
+                            Button(action: { showDietPlan = true }) {
                                 ModernCard {
                                     HStack {
                                         VStack(alignment: .leading, spacing: 4) {
@@ -136,7 +140,7 @@ struct HomeDashboardView: View {
                             
                             // Long-Term Plan Link
                             if viewModel.longTermPlan != nil {
-                                NavigationLink(destination: LongTermPlanView(viewModel: viewModel)) {
+                                Button(action: { showLongTermPlan = true }) {
                                     ModernCard {
                                         HStack {
                                             VStack(alignment: .leading, spacing: 4) {
@@ -159,7 +163,7 @@ struct HomeDashboardView: View {
                             
                             // Quick Tools
                             VStack(spacing: AppDesign.Spacing.sm) {
-                                NavigationLink(destination: GroceryListView(viewModel: viewModel)) {
+                                Button(action: { showGroceryList = true }) {
                                     ModernCard {
                                         HStack {
                                             Image(systemName: "cart.fill")
@@ -179,7 +183,7 @@ struct HomeDashboardView: View {
                                 }
                                 .buttonStyle(PlainButtonStyle())
                                 
-                                NavigationLink(destination: RecipeLibraryView(viewModel: viewModel)) {
+                                Button(action: { showRecipeLibrary = true }) {
                                     ModernCard {
                                         HStack {
                                             Image(systemName: "book.fill")
@@ -224,9 +228,19 @@ struct HomeDashboardView: View {
             .navigationBarTitleDisplayMode(.large)
             #endif
             .sheet(isPresented: $showHealthInput) {
-                NavigationView {
-                    ModernHealthDataInputView(viewModel: viewModel)
-                }
+                ModernHealthDataInputView(viewModel: viewModel)
+            }
+            .sheet(isPresented: $showDietPlan) {
+                DietPlanView(viewModel: viewModel)
+            }
+            .sheet(isPresented: $showLongTermPlan) {
+                LongTermPlanView(viewModel: viewModel)
+            }
+            .sheet(isPresented: $showGroceryList) {
+                GroceryListView(viewModel: viewModel)
+            }
+            .sheet(isPresented: $showRecipeLibrary) {
+                RecipeLibraryView(viewModel: viewModel)
             }
         }
     }
@@ -457,7 +471,18 @@ struct HealthTrackingView: View {
     }
     
     var body: some View {
-        NavigationView {
+        VStack(spacing: 0) {
+            // Custom Header
+            HStack {
+                Text("Health Tracking")
+                    .font(AppDesign.Typography.title)
+                    .fontWeight(.bold)
+                    .padding(.leading, AppDesign.Spacing.md)
+                Spacer()
+            }
+            .padding(.vertical, AppDesign.Spacing.sm)
+            .background(AppDesign.Colors.surface)
+            
             ZStack {
                 AppDesign.Colors.background
                     .ignoresSafeArea()
@@ -473,10 +498,6 @@ struct HealthTrackingView: View {
                     .padding(.bottom, 80)
                 }
             }
-            .navigationTitle("Health Tracking")
-            #if os(iOS)
-            .navigationBarTitleDisplayMode(.large)
-            #endif
         }
     }
     
@@ -504,29 +525,17 @@ struct HealthTrackingView: View {
             case .overview:
                 healthOverviewContent
             case .vision:
-                NavigationView {
-                    VisionCheckView(viewModel: viewModel)
-                }
+                VisionCheckView(viewModel: viewModel)
             case .hearing:
-                NavigationView {
-                    HearingCheckView(viewModel: viewModel)
-                }
+                HearingCheckView(viewModel: viewModel)
             case .tactile:
-                NavigationView {
-                    TactileCheckView(viewModel: viewModel)
-                }
+                TactileCheckView(viewModel: viewModel)
             case .tongue:
-                NavigationView {
-                    TongueCheckView(viewModel: viewModel)
-                }
+                TongueCheckView(viewModel: viewModel)
             case .eating:
-                NavigationView {
-                    EatingMetricsInputView(viewModel: viewModel)
-                }
+                EatingMetricsInputView(viewModel: viewModel)
             case .emotional:
-                NavigationView {
-                    EmotionalHealthInputView(viewModel: viewModel)
-                }
+                EmotionalHealthInputView(viewModel: viewModel)
             }
         }
     }
@@ -698,7 +707,18 @@ struct ExerciseDashboardView: View {
     @ObservedObject var viewModel: DietSolverViewModel
     
     var body: some View {
-        NavigationView {
+        VStack(spacing: 0) {
+            // Custom Header
+            HStack {
+                Text("Exercise")
+                    .font(AppDesign.Typography.title)
+                    .fontWeight(.bold)
+                    .padding(.leading, AppDesign.Spacing.md)
+                Spacer()
+            }
+            .padding(.vertical, AppDesign.Spacing.sm)
+            .background(AppDesign.Colors.surface)
+            
             ZStack {
                 AppDesign.Colors.background
                     .ignoresSafeArea()
@@ -731,10 +751,6 @@ struct ExerciseDashboardView: View {
                     }
                 }
             }
-            .navigationTitle("Exercise")
-            #if os(iOS)
-            .navigationBarTitleDisplayMode(.large)
-            #endif
         }
     }
     
@@ -902,7 +918,18 @@ struct InsightsView: View {
     @ObservedObject var viewModel: DietSolverViewModel
     
     var body: some View {
-        NavigationView {
+        VStack(spacing: 0) {
+            // Custom Header
+            HStack {
+                Text("Insights")
+                    .font(AppDesign.Typography.title)
+                    .fontWeight(.bold)
+                    .padding(.leading, AppDesign.Spacing.md)
+                Spacer()
+            }
+            .padding(.vertical, AppDesign.Spacing.sm)
+            .background(AppDesign.Colors.surface)
+            
             ZStack {
                 AppDesign.Colors.background
                     .ignoresSafeArea()
@@ -921,10 +948,6 @@ struct InsightsView: View {
                     .padding(.bottom, 80)
                 }
             }
-            .navigationTitle("Insights")
-            #if os(iOS)
-            .navigationBarTitleDisplayMode(.large)
-            #endif
         }
     }
     

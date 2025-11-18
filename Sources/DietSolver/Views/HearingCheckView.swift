@@ -26,7 +26,18 @@ struct LegacyHearingCheckView: View {
     @State private var notes: String = ""
     
     var body: some View {
-        NavigationView {
+        VStack(spacing: 0) {
+            // Custom Header
+            HStack {
+                Text("Hearing Test")
+                    .font(AppDesign.Typography.title)
+                    .fontWeight(.bold)
+                    .padding(.leading, AppDesign.Spacing.md)
+                Spacer()
+            }
+            .padding(.vertical, AppDesign.Spacing.sm)
+            .background(AppDesign.Colors.surface)
+            
             Form {
                 Section(header: Text("Test Information")) {
                     Picker("Test Type", selection: $testType) {

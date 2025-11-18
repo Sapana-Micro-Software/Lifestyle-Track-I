@@ -12,7 +12,18 @@ struct PlanningSessionView: View { // Define PlanningSessionView struct conformi
     @State private var selectedDate = Date() // State variable for selected date
     
     var body: some View { // Define body property returning view hierarchy
-        NavigationView { // Create navigation view container
+        VStack(spacing: 0) { // Create vertical stack
+            // Custom Header
+            HStack {
+                Text("Planning Session")
+                    .font(AppDesign.Typography.title)
+                    .fontWeight(.bold)
+                    .padding(.leading, AppDesign.Spacing.md)
+                Spacer()
+            }
+            .padding(.vertical, AppDesign.Spacing.sm)
+            .background(AppDesign.Colors.surface)
+            
             VStack(spacing: 20) { // Create vertical stack with spacing
                 DatePicker("Select Date", selection: $selectedDate, displayedComponents: .date) // Create date picker for date selection
                     .padding() // Add padding around date picker

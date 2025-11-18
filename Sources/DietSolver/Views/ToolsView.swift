@@ -11,8 +11,41 @@ import SwiftUI
 struct ToolsView: View {
     @ObservedObject var viewModel: DietSolverViewModel
     
+    @State private var selectedTool: ToolType?
+    
+    enum ToolType: Identifiable {
+        case groceryList
+        case recipeLibrary
+        case mealPrep
+        case progressCharts
+        case healthReport
+        case longTermPlan
+        
+        var id: String {
+            switch self {
+            case .groceryList: return "groceryList"
+            case .recipeLibrary: return "recipeLibrary"
+            case .mealPrep: return "mealPrep"
+            case .progressCharts: return "progressCharts"
+            case .healthReport: return "healthReport"
+            case .longTermPlan: return "longTermPlan"
+            }
+        }
+    }
+    
     var body: some View {
-        NavigationView {
+        VStack(spacing: 0) {
+            // Custom Header
+            HStack {
+                Text("Tools")
+                    .font(AppDesign.Typography.title)
+                    .fontWeight(.bold)
+                    .padding(.leading, AppDesign.Spacing.md)
+                Spacer()
+            }
+            .padding(.vertical, AppDesign.Spacing.sm)
+            .background(AppDesign.Colors.surface)
+            
             ScrollView {
                 VStack(spacing: AppDesign.Spacing.lg) {
                     // Header
@@ -31,7 +64,7 @@ struct ToolsView: View {
                     // Tool Cards
                     VStack(spacing: AppDesign.Spacing.md) {
                         // Grocery List
-                        NavigationLink(destination: GroceryListView(viewModel: viewModel)) {
+                        Button(action: { selectedTool = .groceryList }) {
                             ToolCard(
                                 title: "Grocery List",
                                 description: "Generate shopping lists from your meal plans",
@@ -42,7 +75,7 @@ struct ToolsView: View {
                         .buttonStyle(PlainButtonStyle())
                         
                         // Recipe Library
-                        NavigationLink(destination: RecipeLibraryView(viewModel: viewModel)) {
+                        Button(action: { selectedTool = .recipeLibrary }) {
                             ToolCard(
                                 title: "Recipe Library",
                                 description: "Save and organize your favorite recipes",
@@ -53,7 +86,7 @@ struct ToolsView: View {
                         .buttonStyle(PlainButtonStyle())
                         
                         // Meal Prep Planner
-                        NavigationLink(destination: MealPrepView(viewModel: viewModel)) {
+                        Button(action: { selectedTool = .mealPrep }) {
                             ToolCard(
                                 title: "Meal Prep Planner",
                                 description: "Plan your meal prep schedule for the week",
@@ -64,7 +97,7 @@ struct ToolsView: View {
                         .buttonStyle(PlainButtonStyle())
                         
                         // Progress Charts
-                        NavigationLink(destination: ProgressChartsView(viewModel: viewModel)) {
+                        Button(action: { selectedTool = .progressCharts }) {
                             ToolCard(
                                 title: "Progress Charts",
                                 description: "Visualize your health progress over time",
@@ -75,7 +108,7 @@ struct ToolsView: View {
                         .buttonStyle(PlainButtonStyle())
                         
                         // Health Report
-                        NavigationLink(destination: HealthReportView(viewModel: viewModel)) {
+                        Button(action: { selectedTool = .healthReport }) {
                             ToolCard(
                                 title: "Health Report",
                                 description: "Generate comprehensive health reports",
@@ -87,7 +120,7 @@ struct ToolsView: View {
                         
                         // Long-Term Plan
                         if viewModel.longTermPlan != nil {
-                            NavigationLink(destination: LongTermPlanView(viewModel: viewModel)) {
+                            Button(action: { selectedTool = .longTermPlan }) {
                                 ToolCard(
                                     title: "Long-Term Plan",
                                     description: "View your \(viewModel.longTermPlan?.duration.rawValue ?? "") transformation plan",
@@ -102,10 +135,22 @@ struct ToolsView: View {
                 }
                 .padding(.bottom, AppDesign.Spacing.xl)
             }
-            .navigationTitle("Tools")
-            #if os(iOS)
-            .navigationBarTitleDisplayMode(.large)
-            #endif
+        }
+        .sheet(item: $selectedTool) { tool in
+            switch tool {
+            case .groceryList:
+                GroceryListView(viewModel: viewModel)
+            case .recipeLibrary:
+                RecipeLibraryView(viewModel: viewModel)
+            case .mealPrep:
+                MealPrepView(viewModel: viewModel)
+            case .progressCharts:
+                ProgressChartsView(viewModel: viewModel)
+            case .healthReport:
+                HealthReportView(viewModel: viewModel)
+            case .longTermPlan:
+                LongTermPlanView(viewModel: viewModel)
+            }
         }
     }
 }

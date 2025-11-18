@@ -17,7 +17,7 @@ struct LegacyContentView: View {
     var body: some View {
         TabView { // Create tab view container
             // Main Diet Plan Tab
-            NavigationView { // Create navigation view
+            VStack { // Create vertical stack
                 if viewModel.healthData == nil { // Check if health data exists
                     HealthDataInputView(viewModel: viewModel) // Display health data input view
                 } else if viewModel.dietPlan == nil { // Check if diet plan exists

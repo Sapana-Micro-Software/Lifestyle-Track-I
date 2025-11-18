@@ -6,7 +6,12 @@
 //
 
 import Foundation
+#if canImport(UserNotifications)
 import UserNotifications
+#endif
+#if os(macOS)
+import AppKit
+#endif
 
 // MARK: - Notification Manager
 class NotificationManager: NSObject, ObservableObject {
@@ -21,6 +26,7 @@ class NotificationManager: NSObject, ObservableObject {
     
     // MARK: - Request Authorization
     func requestAuthorization() async -> Bool {
+        #if os(iOS) || os(watchOS) || os(tvOS)
         do {
             let granted = try await UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge])
             await MainActor.run {
@@ -31,21 +37,39 @@ class NotificationManager: NSObject, ObservableObject {
             print("Notification authorization error: \(error)")
             return false
         }
+        #elseif os(macOS)
+        // macOS doesn't support UNUserNotificationCenter in the same way
+        // For now, we'll use a simple approach that doesn't require authorization
+        await MainActor.run {
+            self.notificationsEnabled = true
+        }
+        return true
+        #else
+        return false
+        #endif
     }
     
     // MARK: - Check Authorization Status
     private func checkAuthorizationStatus() {
+        #if os(iOS) || os(watchOS) || os(tvOS)
         UNUserNotificationCenter.current().getNotificationSettings { settings in
             DispatchQueue.main.async {
                 self.notificationsEnabled = settings.authorizationStatus == .authorized
             }
         }
+        #elseif os(macOS)
+        // On macOS, assume notifications are available
+        DispatchQueue.main.async {
+            self.notificationsEnabled = true
+        }
+        #endif
     }
     
     // MARK: - Schedule Meal Reminder
     func scheduleMealReminder(mealName: String, date: Date, minutesBefore: Int = 15) {
         guard notificationsEnabled else { return }
         
+        #if os(iOS) || os(watchOS) || os(tvOS)
         let content = UNMutableNotificationContent()
         content.title = "Meal Time!"
         content.body = "\(mealName) in \(minutesBefore) minutes"
@@ -63,12 +87,18 @@ class NotificationManager: NSObject, ObservableObject {
                 print("Error scheduling meal reminder: \(error)")
             }
         }
+        #elseif os(macOS)
+        // On macOS, use NSUserNotification (deprecated but functional)
+        // For now, just log - can be enhanced with NSUserNotification if needed
+        print("Meal reminder scheduled: \(mealName) at \(date)")
+        #endif
     }
     
     // MARK: - Schedule Exercise Reminder
     func scheduleExerciseReminder(activityName: String, date: Date, minutesBefore: Int = 30) {
         guard notificationsEnabled else { return }
         
+        #if os(iOS) || os(watchOS) || os(tvOS)
         let content = UNMutableNotificationContent()
         content.title = "Exercise Time!"
         content.body = "Time for \(activityName)"
@@ -86,12 +116,16 @@ class NotificationManager: NSObject, ObservableObject {
                 print("Error scheduling exercise reminder: \(error)")
             }
         }
+        #elseif os(macOS)
+        print("Exercise reminder scheduled: \(activityName) at \(date)")
+        #endif
     }
     
     // MARK: - Schedule Water Reminder
     func scheduleWaterReminder(date: Date, intervalMinutes: Int = 120) {
         guard notificationsEnabled else { return }
         
+        #if os(iOS) || os(watchOS) || os(tvOS)
         let content = UNMutableNotificationContent()
         content.title = "Stay Hydrated!"
         content.body = "Time to drink some water"
@@ -108,12 +142,16 @@ class NotificationManager: NSObject, ObservableObject {
                 print("Error scheduling water reminder: \(error)")
             }
         }
+        #elseif os(macOS)
+        print("Water reminder scheduled: every \(intervalMinutes) minutes")
+        #endif
     }
     
     // MARK: - Schedule Sleep Reminder
     func scheduleSleepReminder(targetBedtime: Date) {
         guard notificationsEnabled else { return }
         
+        #if os(iOS) || os(watchOS) || os(tvOS)
         let content = UNMutableNotificationContent()
         content.title = "Time to Wind Down"
         content.body = "Your target bedtime is approaching. Start your evening routine."
@@ -131,12 +169,16 @@ class NotificationManager: NSObject, ObservableObject {
                 print("Error scheduling sleep reminder: \(error)")
             }
         }
+        #elseif os(macOS)
+        print("Sleep reminder scheduled for: \(targetBedtime)")
+        #endif
     }
     
     // MARK: - Schedule Medication Reminder
     func scheduleMedicationReminder(medicationName: String, time: Date, repeats: Bool = true) {
         guard notificationsEnabled else { return }
         
+        #if os(iOS) || os(watchOS) || os(tvOS)
         let content = UNMutableNotificationContent()
         content.title = "Medication Reminder"
         content.body = "Time to take \(medicationName)"
@@ -158,12 +200,16 @@ class NotificationManager: NSObject, ObservableObject {
                 print("Error scheduling medication reminder: \(error)")
             }
         }
+        #elseif os(macOS)
+        print("Medication reminder scheduled: \(medicationName) at \(time), repeats: \(repeats)")
+        #endif
     }
     
     // MARK: - Schedule Health Check-in
     func scheduleHealthCheckIn(date: Date, frequency: HealthCheckInFrequency = .weekly) {
         guard notificationsEnabled else { return }
         
+        #if os(iOS) || os(watchOS) || os(tvOS)
         let content = UNMutableNotificationContent()
         content.title = "Health Check-in"
         content.body = "How are you feeling today? Log your health metrics."
@@ -188,12 +234,16 @@ class NotificationManager: NSObject, ObservableObject {
                 print("Error scheduling health check-in: \(error)")
             }
         }
+        #elseif os(macOS)
+        print("Health check-in scheduled: \(frequency.rawValue) at \(date)")
+        #endif
     }
     
     // MARK: - Schedule Plan Milestone Notification
     func scheduleMilestoneNotification(milestoneName: String, date: Date) {
         guard notificationsEnabled else { return }
         
+        #if os(iOS) || os(watchOS) || os(tvOS)
         let content = UNMutableNotificationContent()
         content.title = "Milestone Achieved! 🎉"
         content.body = "Congratulations! You've reached: \(milestoneName)"
@@ -210,12 +260,16 @@ class NotificationManager: NSObject, ObservableObject {
                 print("Error scheduling milestone notification: \(error)")
             }
         }
+        #elseif os(macOS)
+        print("Milestone notification scheduled: \(milestoneName) at \(date)")
+        #endif
     }
     
     // MARK: - Schedule Badge Achievement Notification
     func scheduleBadgeNotification(badgeName: String) {
         guard notificationsEnabled else { return }
         
+        #if os(iOS) || os(watchOS) || os(tvOS)
         let content = UNMutableNotificationContent()
         content.title = "Badge Earned! 🏆"
         content.body = "You've earned the \(badgeName) badge!"
@@ -232,22 +286,39 @@ class NotificationManager: NSObject, ObservableObject {
                 print("Error scheduling badge notification: \(error)")
             }
         }
+        #elseif os(macOS)
+        print("Badge notification: \(badgeName)")
+        #endif
     }
     
     // MARK: - Cancel All Notifications
     func cancelAllNotifications() {
+        #if os(iOS) || os(watchOS) || os(tvOS)
         UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+        #elseif os(macOS)
+        print("Notifications cancelled (macOS)")
+        #endif
     }
     
     // MARK: - Cancel Specific Notification
     func cancelNotification(identifier: String) {
+        #if os(iOS) || os(watchOS) || os(tvOS)
         UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [identifier])
+        #elseif os(macOS)
+        print("Notification cancelled: \(identifier)")
+        #endif
     }
     
     // MARK: - Get Pending Notifications
+    #if os(iOS) || os(watchOS) || os(tvOS)
     func getPendingNotifications() async -> [UNNotificationRequest] {
         return await UNUserNotificationCenter.current().pendingNotificationRequests()
     }
+    #else
+    func getPendingNotifications() async -> [Any] {
+        return []
+    }
+    #endif
 }
 
 // MARK: - Health Check-in Frequency

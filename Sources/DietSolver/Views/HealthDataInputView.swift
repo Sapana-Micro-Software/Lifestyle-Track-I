@@ -3,6 +3,7 @@ import SwiftUI
 struct HealthDataInputView: View {
     @ObservedObject var viewModel: DietSolverViewModel
     @State private var previousUnitSystem: UnitSystem = .metric
+    @State private var showExerciseInput = false
     
     @State private var glucose: String = ""
     @State private var hemoglobin: String = ""
@@ -154,15 +155,9 @@ struct HealthDataInputView: View {
             }
             
             Section {
-                NavigationLink("Exercise & Health Data") {
-                    if let healthData = viewModel.healthData {
-                        ExerciseInputView(healthData: Binding(
-                            get: { healthData },
-                            set: { viewModel.updateHealthData($0) }
-                        ))
-                        .environmentObject(viewModel)
-                    } else {
-                        Text("Please complete basic health data first")
+                Button("Exercise & Health Data") {
+                    if viewModel.healthData != nil {
+                        showExerciseInput = true
                     }
                 }
                 
@@ -206,6 +201,15 @@ struct HealthDataInputView: View {
         }
         .onAppear {
             previousUnitSystem = viewModel.unitSystem
+        }
+        .sheet(isPresented: $showExerciseInput) {
+            if let healthData = viewModel.healthData {
+                ExerciseInputView(healthData: Binding(
+                    get: { healthData },
+                    set: { viewModel.updateHealthData($0) }
+                ))
+                .environmentObject(viewModel)
+            }
         }
     }
     

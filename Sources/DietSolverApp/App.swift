@@ -15,7 +15,7 @@ import AppKit // Import AppKit framework for macOS window management
 struct HealthAndWellnessLifestyleSolverAppMain: App { // Define main app struct conforming to App protocol for SwiftUI lifecycle
     var body: some Scene { // Define body property returning Scene for app window management
         WindowGroup { // Create window group scene for main application window
-            ContentView() // Instantiate and display main content view as root view
+            ModernContentView() // Instantiate and display main content view as root view
                 .frame(minWidth: 800, minHeight: 600) // Set minimum window size for macOS
                 .frame(maxWidth: .infinity, maxHeight: .infinity) // Ensure full window coverage
                 .background(Color(red: 0.98, green: 0.98, blue: 0.99)) // Set background color

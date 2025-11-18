@@ -19,7 +19,18 @@ struct VisionCheckView: View { // Define VisionCheckView struct conforming to Vi
     @State private var notes: String = "" // State for notes
     
     var body: some View { // Define body property returning view hierarchy
-        NavigationView { // Create navigation view container
+        VStack(spacing: 0) { // Create vertical stack
+            // Custom Header
+            HStack {
+                Text("Vision Check")
+                    .font(AppDesign.Typography.title)
+                    .fontWeight(.bold)
+                    .padding(.leading, AppDesign.Spacing.md)
+                Spacer()
+            }
+            .padding(.vertical, AppDesign.Spacing.sm)
+            .background(AppDesign.Colors.surface)
+            
             Form { // Create form container
                 Section(header: Text("Right Eye")) { // Create section for right eye
                     Picker("Visual Acuity", selection: $rightEyeAcuity) { // Create acuity picker

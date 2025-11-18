@@ -235,7 +235,24 @@ struct RecipeDetailView: View {
     @State private var rating: Double = 0.0
     
     var body: some View {
-        NavigationView {
+        VStack(spacing: 0) {
+            // Custom Header
+            HStack {
+                Text("Recipe Details")
+                    .font(AppDesign.Typography.title)
+                    .fontWeight(.bold)
+                    .padding(.leading, AppDesign.Spacing.md)
+                Spacer()
+                Button("Done") {
+                    dismiss()
+                }
+                .font(AppDesign.Typography.headline)
+                .foregroundColor(AppDesign.Colors.primary)
+                .padding(.trailing, AppDesign.Spacing.md)
+            }
+            .padding(.vertical, AppDesign.Spacing.sm)
+            .background(AppDesign.Colors.surface)
+            
             ScrollView {
                 VStack(alignment: .leading, spacing: AppDesign.Spacing.lg) {
                     // Header
@@ -297,25 +314,6 @@ struct RecipeDetailView: View {
                     }
                 }
                 .padding(AppDesign.Spacing.md)
-            }
-            .navigationTitle("Recipe Details")
-            #if os(iOS)
-            .navigationBarTitleDisplayMode(.inline)
-            #endif
-            .toolbar {
-                #if os(iOS)
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("Done") {
-                        dismiss()
-                    }
-                }
-                #else
-                ToolbarItem(placement: .automatic) {
-                    Button("Done") {
-                        dismiss()
-                    }
-                }
-                #endif
             }
         }
         .onAppear {

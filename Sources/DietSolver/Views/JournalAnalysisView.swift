@@ -11,7 +11,18 @@ struct JournalAnalysisView: View { // Define JournalAnalysisView struct conformi
     @ObservedObject var viewModel: DietSolverViewModel // Observed object for view model
     
     var body: some View { // Define body property returning view hierarchy
-        NavigationView { // Create navigation view container
+        VStack(spacing: 0) { // Create vertical stack
+            // Custom Header
+            HStack {
+                Text("Journal Analysis")
+                    .font(AppDesign.Typography.title)
+                    .fontWeight(.bold)
+                    .padding(.leading, AppDesign.Spacing.md)
+                Spacer()
+            }
+            .padding(.vertical, AppDesign.Spacing.sm)
+            .background(AppDesign.Colors.surface)
+            
             ScrollView { // Create scrollable view
                 VStack(alignment: .leading, spacing: 20) { // Create vertical stack with leading alignment
                     if let analysis = viewModel.journalAnalysis { // Check if analysis exists
