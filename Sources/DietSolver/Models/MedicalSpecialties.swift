@@ -11,7 +11,7 @@ import Foundation
 struct RadiologyAnalysis: Codable, Identifiable {
     let id: UUID
     let date: Date
-    let testType: String = "Radiology"
+    var testType: String { "Radiology" }
     
     var imagingModality: ImagingModality
     var bodyRegion: BodyRegion
@@ -84,7 +84,7 @@ struct RadiologyAnalysis: Codable, Identifiable {
 struct CardiologyAnalysis: Codable, Identifiable {
     let id: UUID
     let date: Date
-    let testType: String = "Cardiology"
+    var testType: String { "Cardiology" }
     
     var ecg: ECGResults?
     var echocardiogram: EchocardiogramResults?
@@ -177,7 +177,7 @@ struct CardiologyAnalysis: Codable, Identifiable {
 struct NuclearMedicineAnalysis: Codable, Identifiable {
     let id: UUID
     let date: Date
-    let testType: String = "Nuclear Medicine"
+    var testType: String { "Nuclear Medicine" }
     
     var studyType: NuclearStudyType
     var radiopharmaceutical: String
@@ -237,7 +237,7 @@ struct NuclearMedicineAnalysis: Codable, Identifiable {
 struct NeurologyAnalysis: Codable, Identifiable {
     let id: UUID
     let date: Date
-    let testType: String = "Neurology"
+    var testType: String { "Neurology" }
     
     var eeg: EEGResults?
     var emg: EMGResults?
@@ -272,7 +272,7 @@ struct NeurologyAnalysis: Codable, Identifiable {
 struct PulmonologyAnalysis: Codable, Identifiable {
     let id: UUID
     let date: Date
-    let testType: String = "Pulmonology"
+    var testType: String { "Pulmonology" }
     
     var spirometry: SpirometryResults?
     var lungVolumes: LungVolumeResults?
@@ -314,7 +314,7 @@ struct PulmonologyAnalysis: Codable, Identifiable {
 struct GastroenterologyAnalysis: Codable, Identifiable {
     let id: UUID
     let date: Date
-    let testType: String = "Gastroenterology"
+    var testType: String { "Gastroenterology" }
     
     var endoscopy: EndoscopyResults?
     var colonoscopy: ColonoscopyResults?

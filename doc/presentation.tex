@@ -7,9 +7,34 @@
 \usepackage{graphicx}
 \usepackage{listings}
 \usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{amssymb}
 
-\title{Hearing Health Integration in Diet Solver}
-\subtitle{Comprehensive Auditory Wellness in Health Optimization}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{swiftstyle}{
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\scriptsize,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2,
+    language=Swift
+}
+
+\title{Health and Wellness Lifestyle Solver}
+\subtitle{Comprehensive Multi-Objective Optimization for Personalized Health}
 \author{Shyamal Chandra}
 \date{\today}
 
@@ -25,165 +50,454 @@
 \section{Introduction}
 
 \begin{frame}
-\frametitle{Motivation}
+\frametitle{The Challenge}
 \begin{itemize}
-    \item Hearing health is critical but often overlooked
-    \item Regular monitoring can detect early hearing loss
-    \item Music therapy provides cognitive and therapeutic benefits
-    \item Integration with overall wellness system enhances value
+    \item Health optimization requires considering \textbf{multiple interconnected factors}
+    \item Traditional apps focus on \textbf{single domains} (diet OR exercise)
+    \item Medical tests, cognitive function, sensory health often \textbf{ignored}
+    \item Need for \textbf{holistic, integrated approach}
 \end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Our Solution}
+\begin{columns}
+\column{0.5\textwidth}
+\textbf{Comprehensive System}
+\begin{itemize}
+    \item Diet optimization
+    \item Exercise planning
+    \item Medical test analysis
+    \item Cognitive assessment
+    \item Sensory health monitoring
+    \item Time-based planning
+\end{itemize}
+
+\column{0.5\textwidth}
+\textbf{Key Features}
+\begin{itemize}
+    \item Multi-objective optimization
+    \item USDA compliance
+    \item Calendar integration
+    \item Long-term planning
+    \item Journal analysis
+    \item Adaptive difficulty
+\end{itemize}
+\end{columns}
 \end{frame}
 
 \begin{frame}
 \frametitle{Objectives}
 \begin{enumerate}
-    \item Design hearing health data models
-    \item Integrate into health data framework
-    \item Incorporate into exercise planning
-    \item Develop comprehensive tests
-    \item Document implementation
+    \item Design comprehensive health data models
+    \item Develop multi-objective optimization algorithms
+    \item Integrate medical test analysis
+    \item Create personalized exercise plans
+    \item Implement sensory health monitoring
+    \item Provide time-based planning
+    \item Generate long-term transformation plans
 \end{enumerate}
 \end{frame}
 
 \section{System Architecture}
 
 \begin{frame}
-\frametitle{Data Models}
+\frametitle{Core Components}
 \begin{columns}
 \column{0.5\textwidth}
-\textbf{Hearing Prescription}
+\textbf{Models}
 \begin{itemize}
-    \item Professional assessments
-    \item Frequency response
-    \item Hearing loss classification
+    \item HealthData
+    \item Food \& Nutrient
+    \item Exercise
+    \item MedicalTests
+    \item CognitiveAssessment
+    \item Sensory Health
 \end{itemize}
 
 \column{0.5\textwidth}
-\textbf{Daily Audio Tests}
+\textbf{Processing}
 \begin{itemize}
-    \item Pure tone thresholds
-    \item Speech recognition
-    \item Tinnitus tracking
+    \item DietSolver
+    \item ExercisePlanner
+    \item MedicalAnalyzer
+    \item CognitiveAnalyzer
+    \item Sensory Analyzers
+    \item JournalAnalyzer
 \end{itemize}
 \end{columns}
 
 \vspace{0.5cm}
 
-\textbf{Music Sessions}
+\textbf{Generators}
 \begin{itemize}
-    \item Session tracking
-    \item Volume monitoring
-    \item Therapeutic modes
+    \item RecipeGenerator
+    \item NutritionFactsGenerator
+    \item SongGenerator
 \end{itemize}
 \end{frame}
 
 \begin{frame}
-\frametitle{Integration Points}
+\frametitle{Data Model Integration}
+\small
+\texttt{struct HealthData: Codable \{}
 \begin{itemize}
-    \item \textbf{HealthData Model}: Stores hearing data alongside other health metrics
-    \item \textbf{ExercisePlanner}: Includes hearing activities in weekly plans
-    \item \textbf{ExerciseDatabase}: New hearing-related activities
-    \item \textbf{Recommendation Engine}: Context-aware suggestions
+    \item Basic metrics: glucose, hemoglobin, age, weight, height
+    \item Medical Tests: MedicalTestCollection
+    \item Cognitive: [CognitiveAssessment]
+    \item Sensory: Hearing, Vision, Tactile, Tongue prescriptions
+    \item Exercise, Sleep, Journal data
+\end{itemize}
+\texttt{\}}
+\end{frame}
+
+\section{Diet Optimization}
+
+\begin{frame}
+\frametitle{Multi-Objective Optimization}
+\begin{block}{Objective Function}
+\[ S = w_n S_n + w_t S_t + w_d S_d + w_v S_v \]
+\end{block}
+
+\begin{itemize}
+    \item $S_n$: Nutrient compliance score
+    \item $S_t$: Taste preference score
+    \item $S_d$: Digestion quality score
+    \item $S_v$: Food variety score
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Optimization Algorithm}
+\begin{enumerate}
+    \item \textbf{Initialization}: Random amounts of seasonal foods
+    \item \textbf{Scoring}: Calculate fitness based on all objectives
+    \item \textbf{Optimization}: Iteratively adjust food amounts
+    \item \textbf{Meal Distribution}: Distribute across breakfast, lunch, dinner
+    \item \textbf{Validation}: Ensure USDA compliance
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{Medical Test Integration}
+\begin{columns}
+\column{0.5\textwidth}
+\textbf{Automatic Adjustments}
+\begin{itemize}
+    \item Blood Glucose → Reduce carbs
+    \item Hemoglobin → Increase iron
+    \item Vitamin D → Boost D intake
+    \item Heavy Metals → Detox nutrients
+    \item Organ Health → Adjust nutrients
+\end{itemize}
+
+\column{0.5\textwidth}
+\textbf{Analysis Features}
+\begin{itemize}
+    \item Issue detection
+    \item Warning system
+    \item Trend analysis
+    \item Recommendations
+\end{itemize}
+\end{columns}
+\end{frame}
+
+\section{Exercise Planning}
+
+\begin{frame}
+\frametitle{Comprehensive Exercise Database}
+\begin{columns}
+\column{0.33\textwidth}
+\textbf{Cardio}
+\begin{itemize}
+    \item Walking
+    \item Running
+    \item Cycling
+    \item Rowing
+\end{itemize}
+
+\column{0.33\textwidth}
+\textbf{Strength}
+\begin{itemize}
+    \item Weight training
+    \item Bodyweight
+    \item Resistance
+\end{itemize}
+
+\column{0.33\textwidth}
+\textbf{Mind-Body}
+\begin{itemize}
+    \item Yoga
+    \item Tai Chi
+    \item Meditation
+    \item Breathing
+\end{itemize}
+\end{columns}
+
+\vspace{0.3cm}
+
+\textbf{Specialized}
+\begin{itemize}
+    \item Indian Breathing (Pranayama, Bhastrika, Anulom Vilom, Kriya)
+    \item Hearing Activities (Music listening, hearing exercises)
+    \item Tactile Activities (Massage, texture exploration)
+    \item Tongue Activities (Taste training, oral exercises)
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Personalized Planning}
+\begin{itemize}
+    \item \textbf{Fitness Goals}: Cardio, strength, flexibility targets
+    \item \textbf{Mental Health}: Stress, anxiety, sleep quality
+    \item \textbf{Muscle Mass}: Strength training recommendations
+    \item \textbf{Sexual Health}: Hormonal balance, cardiovascular health
+    \item \textbf{Sensory Health}: Hearing, vision, tactile, tongue exercises
+    \item \textbf{Exercise History}: Current patterns and progress
+\end{itemize}
+\end{frame}
+
+\section{Medical Test Analysis}
+
+\begin{frame}
+\frametitle{Comprehensive Test Support}
+\begin{columns}
+\column{0.5\textwidth}
+\textbf{Blood Tests}
+\begin{itemize}
+    \item CBC
+    \item Metabolic Panel
+    \item Lipid Panel
+    \item Liver/Kidney Function
+    \item Thyroid
+    \item Vitamins/Minerals
+    \item Hormones
+\end{itemize}
+
+\column{0.5\textwidth}
+\textbf{Other Tests}
+\begin{itemize}
+    \item Urine Analysis
+    \item Semen Analysis
+    \item Bone Marrow
+    \item Saliva
+    \item Skin (multi-part)
+    \item Hair (metals)
+    \item Organ Analysis
+\end{itemize}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\frametitle{Medical Specialties}
+\begin{itemize}
+    \item \textbf{Radiology}: X-Ray, CT, MRI, Ultrasound, PET, SPECT
+    \item \textbf{Cardiology}: ECG, Echocardiogram, Stress Tests
+    \item \textbf{Nuclear Medicine}: Bone scans, perfusion studies
+    \item \textbf{Neurology}: EEG, EMG, Nerve Conduction
+    \item \textbf{Pulmonology}: Spirometry, Lung Volumes
+    \item \textbf{Gastroenterology}: Endoscopy, Colonoscopy
+\end{itemize}
+\end{frame}
+
+\section{Cognitive Assessment}
+
+\begin{frame}
+\frametitle{Assessment Types}
+\begin{columns}
+\column{0.5\textwidth}
+\textbf{Intelligence}
+\begin{itemize}
+    \item IQ (Full-scale, verbal, performance)
+    \item EQ (Emotional intelligence)
+    \item CQ (Creative intelligence)
+\end{itemize}
+
+\textbf{Reasoning}
+\begin{itemize}
+    \item Spatial reasoning
+    \item Temporal reasoning
+\end{itemize}
+
+\column{0.5\textwidth}
+\textbf{Problem-Solving}
+\begin{itemize}
+    \item Tactical (immediate)
+    \item Strategic (long-term)
+\end{itemize}
+
+\textbf{Psychic}
+\begin{itemize}
+    \item Remote viewing
+    \item Clairvoyance
+    \item Telepathy
+    \item Precognition
+\end{itemize}
+\end{columns}
+\end{frame}
+
+\section{Sensory Health}
+
+\begin{frame}
+\frametitle{Comprehensive Monitoring}
+\begin{columns}
+\column{0.5\textwidth}
+\textbf{Vision}
+\begin{itemize}
+    \item Prescription tracking
+    \item Daily vision checks
+    \item Vision game sessions
+\end{itemize}
+
+\textbf{Hearing}
+\begin{itemize}
+    \item Hearing prescription
+    \item Daily audio tests
+    \item Music sessions
+\end{itemize}
+
+\column{0.5\textwidth}
+\textbf{Tactile}
+\begin{itemize}
+    \item Tactile prescription
+    \item Daily tactile tests
+    \item Vitality sessions
+\end{itemize}
+
+\textbf{Tongue}
+\begin{itemize}
+    \item Tongue prescription
+    \item Daily tongue tests
+    \item Vitality sessions
+\end{itemize}
+\end{columns}
+\end{frame}
+
+\section{Time-Based Planning}
+
+\begin{frame}
+\frametitle{Planning Sessions}
+\begin{columns}
+\column{0.33\textwidth}
+\textbf{Day-Level}
+\begin{itemize}
+    \item Day Start
+    \item Day End
+\end{itemize}
+
+\column{0.33\textwidth}
+\textbf{Week-Level}
+\begin{itemize}
+    \item Week Start
+    \item Week End
+\end{itemize}
+
+\column{0.33\textwidth}
+\textbf{Month-Level}
+\begin{itemize}
+    \item Month Start
+    \item Month End
+\end{itemize}
+\end{columns}
+
+\vspace{0.5cm}
+
+\textbf{Features}
+\begin{itemize}
+    \item Calendar integration (EventKit)
+    \item Journal analysis integration
+    \item Automatic scheduling
+    \item Reminder system
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Journal Analysis}
+\begin{itemize}
+    \item \textbf{Structured Entries}: Categorized journal data
+    \item \textbf{Unstructured Entries}: Free-form text analysis
+    \item \textbf{Theme Identification}: Pattern recognition
+    \item \textbf{Emotional Trends}: Mood tracking
+    \item \textbf{Insights}: Recommendations for planning
+\end{itemize}
+\end{frame}
+
+\section{Long-Term Planning}
+
+\begin{frame}
+\frametitle{Transformation Plans}
+\begin{columns}
+\column{0.5\textwidth}
+\textbf{Durations}
+\begin{itemize}
+    \item 3-Month (Intensive)
+    \item 6-Month (Moderate)
+    \item 1-Year (Comprehensive)
+    \item 2-Year (Extended)
+    \item 5-Year (Long-term)
+    \item 10-Year (Lifetime)
+\end{itemize}
+
+\column{0.5\textwidth}
+\textbf{Difficulty Levels}
+\begin{itemize}
+    \item Gentle (Low urgency)
+    \item Moderate (Medium)
+    \item Aggressive (High)
+    \item Extreme (Critical)
+\end{itemize}
+\end{columns}
+
+\vspace{0.3cm}
+
+\textbf{Features}
+\begin{itemize}
+    \item Phased approach
+    \item Daily plans
+    \item Milestones
+    \item Adaptive adjustments
+    \item Multiple goals
 \end{itemize}
 \end{frame}
 
 \section{Implementation}
 
 \begin{frame}
-\frametitle{Hearing Activities}
+\frametitle{Technology Stack}
+\begin{itemize}
+    \item \textbf{Language}: Swift 5.9+
+    \item \textbf{Platform}: iOS 16.0+ / macOS 13.0+
+    \item \textbf{UI}: SwiftUI
+    \item \textbf{Architecture}: MVVM
+    \item \textbf{Persistence}: Codable/JSON
+    \item \textbf{Calendar}: EventKit
+    \item \textbf{Health}: HealthKit support
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Testing}
 \begin{columns}
 \column{0.5\textwidth}
+\textbf{Test Types}
 \begin{itemize}
-    \item Music Listening Session
-    \item Active Music Listening
-    \item Hearing Exercise
+    \item Unit Tests
+    \item Integration Tests
+    \item Regression Tests
+    \item Black Box Tests
+    \item UX Tests
 \end{itemize}
 
 \column{0.5\textwidth}
+\textbf{Coverage}
 \begin{itemize}
-    \item Nature Sounds Therapy
-    \item Binaural Beats Session
-    \item Audio Book Listening
-\end{itemize}
-\end{columns}
-\end{frame}
-
-\begin{frame}
-\frametitle{Weekly Plan Integration}
-\begin{itemize}
-    \item \textbf{Sunday}: Music (30 min) + Hearing Exercise (10 min)
-    \item \textbf{Monday}: Hearing Exercise (10 min)
-    \item \textbf{Tuesday}: Active Music (20 min)
-    \item \textbf{Thursday}: Music Session (30 min)
-    \item \textbf{Friday}: Binaural Beats (20 min)
-    \item \textbf{Saturday}: Nature Sounds (30 min)
-\end{itemize}
-\end{frame}
-
-\begin{frame}
-\frametitle{Recommendation Logic}
-\begin{enumerate}
-    \item Check test frequency → Recommend if low
-    \item Check music sessions → Encourage regular sessions
-    \item Detect hearing loss → Suggest targeted exercises
-    \item Identify tinnitus → Recommend therapy activities
-\end{enumerate}
-\end{frame}
-
-\section{Testing}
-
-\begin{frame}
-\frametitle{Test Coverage}
-\begin{columns}
-\column{0.5\textwidth}
-\textbf{Unit Tests}
-\begin{itemize}
-    \item Data models
-    \item Integration
-    \item Algorithms
-\end{itemize}
-
-\textbf{Regression Tests}
-\begin{itemize}
-    \item Persistence
-    \item Consistency
-\end{itemize}
-
-\column{0.5\textwidth}
-\textbf{Black Box Tests}
-\begin{itemize}
+    \item Core functionality
+    \item Cross-component
+    \item Stability
     \item Edge cases
-    \item Invalid data
-\end{itemize}
-
-\textbf{UX Tests}
-\begin{itemize}
-    \item Accessibility
-    \item Relevance
-\end{itemize}
-
-\textbf{A-B Tests}
-\begin{itemize}
-    \item Variants
-    \item Algorithms
+    \item User experience
 \end{itemize}
 \end{columns}
-\end{frame}
-
-\begin{frame}
-\frametitle{Test Frameworks}
-\begin{itemize}
-    \item \textbf{XCTest}: Traditional testing framework
-    \begin{itemize}
-        \item 26+ test cases
-        \item Comprehensive coverage
-    \end{itemize}
-    \item \textbf{SwiftTesting}: Modern testing framework
-    \begin{itemize}
-        \item 20+ test cases
-        \item Async support
-    \end{itemize}
-\end{itemize}
 \end{frame}
 
 \section{Results}
@@ -191,11 +505,26 @@
 \begin{frame}
 \frametitle{Key Achievements}
 \begin{itemize}
-    \item ✓ Complete hearing data model integration
-    \item ✓ Hearing activities in exercise plans
-    \item ✓ Context-aware recommendations
-    \item ✓ Comprehensive test coverage
-    \item ✓ System stability maintained
+    \item \checkmark Multi-objective diet optimization
+    \item \checkmark Comprehensive medical test integration
+    \item \checkmark Personalized exercise planning
+    \item \checkmark Sensory health monitoring
+    \item \checkmark Cognitive assessment analysis
+    \item \checkmark Time-based planning with calendar
+    \item \checkmark Long-term transformation plans
+    \item \checkmark Journal analysis and insights
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{System Integration}
+\begin{itemize}
+    \item Medical tests → Nutrient adjustments
+    \item Exercise plans → Multiple health factors
+    \item Sensory health → Activity recommendations
+    \item Cognitive assessments → Learning suggestions
+    \item Journal analysis → Planning enhancement
+    \item Calendar integration → Practical scheduling
 \end{itemize}
 \end{frame}
 
@@ -205,9 +534,11 @@
 \column{0.5\textwidth}
 \textbf{For Users}
 \begin{itemize}
-    \item Holistic health tracking
-    \item Proactive recommendations
-    \item Therapeutic integration
+    \item Comprehensive health view
+    \item Integrated optimization
+    \item Proactive management
+    \item Personalized recommendations
+    \item Long-term planning
     \item Self-monitoring tools
 \end{itemize}
 
@@ -218,6 +549,8 @@
     \item Extensible architecture
     \item Well-tested codebase
     \item Clear documentation
+    \item Scalable structure
+    \item Maintainable code
 \end{itemize}
 \end{columns}
 \end{frame}
@@ -227,11 +560,14 @@
 \begin{frame}
 \frametitle{Potential Enhancements}
 \begin{itemize}
-    \item Professional equipment integration
-    \item ML-based trend prediction
+    \item Machine learning for trend prediction
+    \item Wearable device integration
+    \item Real-time health monitoring
     \item Advanced music therapy
-    \item Hearing aid device integration
-    \item Real-time monitoring
+    \item Hearing aid/vision device integration
+    \item Social features
+    \item Healthcare provider integration
+    \item Advanced optimization algorithms
 \end{itemize}
 \end{frame}
 
@@ -240,11 +576,13 @@
 \begin{frame}
 \frametitle{Summary}
 \begin{itemize}
-    \item Successfully integrated hearing health into Diet Solver
-    \item Comprehensive data models and integration
-    \item Extensive test coverage ensures reliability
+    \item Comprehensive health optimization system
+    \item Multi-objective optimization approach
+    \item Integration of all health domains
+    \item Personalized recommendations
+    \item Long-term planning support
+    \item Holistic wellness approach
     \item Foundation for future enhancements
-    \item Holistic approach to wellness
 \end{itemize}
 \end{frame}
 
@@ -253,6 +591,11 @@
 \centering
 \Large
 Questions?
+
+\vspace{1cm}
+
+\normalsize
+Contact: Shyamal Chandra
 \end{frame}
 
 \end{document}

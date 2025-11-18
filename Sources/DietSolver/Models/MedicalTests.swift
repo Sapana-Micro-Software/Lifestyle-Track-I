@@ -18,7 +18,7 @@ protocol MedicalTest: Codable { // Define MedicalTest protocol requiring Codable
 struct BloodTestReport: MedicalTest, Identifiable {
     let id: UUID
     let date: Date
-    let testType: String = "Blood Test"
+    var testType: String { "Blood Test" }
     
     // Complete Blood Count (CBC)
     var whiteBloodCellCount: Double? // cells/μL
@@ -116,7 +116,7 @@ struct BloodTestReport: MedicalTest, Identifiable {
 struct UrineAnalysis: MedicalTest, Identifiable {
     let id: UUID
     let date: Date
-    let testType: String = "Urine Analysis"
+    var testType: String { "Urine Analysis" }
     
     // Physical Properties
     var color: String?
@@ -159,7 +159,7 @@ struct UrineAnalysis: MedicalTest, Identifiable {
 struct SemenAnalysis: MedicalTest, Identifiable {
     let id: UUID
     let date: Date
-    let testType: String = "Semen Analysis"
+    var testType: String { "Semen Analysis" }
     
     // Volume & Physical
     var volume: Double? // mL
@@ -206,7 +206,7 @@ struct SemenAnalysis: MedicalTest, Identifiable {
 struct BoneMarrowAnalysis: MedicalTest, Identifiable {
     let id: UUID
     let date: Date
-    let testType: String = "Bone Marrow Analysis"
+    var testType: String { "Bone Marrow Analysis" }
     
     var cellularity: Double? // %
     var myeloidErythroidRatio: Double?
@@ -237,7 +237,7 @@ struct BoneMarrowAnalysis: MedicalTest, Identifiable {
 struct SalivaAnalysis: MedicalTest, Identifiable {
     let id: UUID
     let date: Date
-    let testType: String = "Saliva Analysis"
+    var testType: String { "Saliva Analysis" }
     
     var volume: Double? // mL/min
     var pH: Double?
@@ -271,7 +271,7 @@ struct SalivaAnalysis: MedicalTest, Identifiable {
 struct SkinAnalysis: MedicalTest, Identifiable {
     let id: UUID
     let date: Date
-    let testType: String = "Skin Analysis"
+    var testType: String { "Skin Analysis" }
     
     var bodyPart: BodyPart
     var moistureLevel: Double? // 0-100
@@ -323,7 +323,7 @@ struct SkinAnalysis: MedicalTest, Identifiable {
 struct HairAnalysis: MedicalTest, Identifiable {
     let id: UUID
     let date: Date
-    let testType: String = "Hair Analysis"
+    var testType: String { "Hair Analysis" }
     
     // Heavy Metals
     var mercury: Double? // ppm
@@ -375,7 +375,7 @@ struct HairAnalysis: MedicalTest, Identifiable {
 struct OrganAnalysis: MedicalTest, Identifiable {
     let id: UUID
     let date: Date
-    let testType: String = "Organ Analysis"
+    var testType: String { "Organ Analysis" }
     
     var organ: OrganType
     var condition: OrganCondition
@@ -428,7 +428,7 @@ struct OrganAnalysis: MedicalTest, Identifiable {
 struct SexualOrganAnalysis: MedicalTest, Identifiable {
     let id: UUID
     let date: Date
-    let testType: String = "Sexual Organ Analysis"
+    var testType: String { "Sexual Organ Analysis" }
     
     var organPart: SexualOrganPart
     var condition: OrganCondition
@@ -483,7 +483,7 @@ struct SexualOrganAnalysis: MedicalTest, Identifiable {
 struct ReflexAnalysis: MedicalTest, Identifiable {
     let id: UUID
     let date: Date
-    let testType: String = "Reflex Analysis"
+    var testType: String { "Reflex Analysis" }
     
     var reflexes: [ReflexTest]
     

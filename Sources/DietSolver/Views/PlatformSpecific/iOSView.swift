@@ -9,7 +9,7 @@ import SwiftUI
 
 // MARK: - iOS Specific Views
 struct iOSContentView: View {
-    @StateObject private var controller = DietSolverController()
+    @EnvironmentObject var controller: DietSolverController
     @State private var selectedTab = 0
     
     var body: some View {
@@ -44,23 +44,31 @@ struct iOSContentView: View {
 
 struct iOSHomeView: View {
     @ObservedObject var controller: DietSolverController
+    @State private var showHealthWizard = false
     
     var body: some View {
         NavigationView {
-            ScrollView {
-                VStack(spacing: AppDesign.Spacing.lg) {
-                    // Quick Stats
-                    LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: AppDesign.Spacing.md) {
-                        if let plan = controller.dietPlan {
-                            StatCard(title: "Meals", value: "\(plan.meals.count)", icon: "fork.knife", color: AppDesign.Colors.primary)
-                            StatCard(title: "Calories", value: "\(Int(plan.totalNutrients.calories))", icon: "flame.fill", color: AppDesign.Colors.accent)
+            Group {
+                if controller.healthData == nil {
+                    // Show welcome screen with Health Wizard button
+                    welcomeScreen
+                } else {
+                    ScrollView {
+                        VStack(spacing: AppDesign.Spacing.lg) {
+                            // Quick Stats
+                            LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: AppDesign.Spacing.md) {
+                                if let plan = controller.dietPlan {
+                                    StatCard(title: "Meals", value: "\(plan.meals.count)", icon: "fork.knife", color: AppDesign.Colors.primary)
+                                    StatCard(title: "Calories", value: "\(Int(plan.totalNutrients.calories))", icon: "flame.fill", color: AppDesign.Colors.accent)
+                                }
+                            }
+                            .padding(.horizontal, AppDesign.Spacing.md)
+                            
+                            // Earned Badges Preview
+                            if !controller.getEarnedBadges().isEmpty {
+                                iOSBadgePreviewSection(controller: controller)
+                            }
                         }
-                    }
-                    .padding(.horizontal, AppDesign.Spacing.md)
-                    
-                    // Earned Badges Preview
-                    if !controller.getEarnedBadges().isEmpty {
-                        iOSBadgePreviewSection(controller: controller)
                     }
                 }
             }
@@ -68,7 +76,68 @@ struct iOSHomeView: View {
             #if os(iOS)
             .navigationBarTitleDisplayMode(.large)
             #endif
+            .toolbar {
+                ToolbarItem(placement: .automatic) {
+                    if controller.healthData == nil {
+                        Button(action: { showHealthWizard = true }) {
+                            Label("Get Started", systemImage: "person.crop.circle.badge.plus")
+                        }
+                    }
+                }
+            }
+            .sheet(isPresented: $showHealthWizard) {
+                NavigationView {
+                    HealthWizardViewWrapper()
+                }
+            }
         }
+    }
+    
+    private var welcomeScreen: some View {
+        VStack(spacing: AppDesign.Spacing.xl) {
+            Spacer()
+            
+            Image(systemName: "heart.text.square.fill")
+                .font(.system(size: 80))
+                .foregroundColor(AppDesign.Colors.primary)
+            
+            Text("Welcome to Health & Wellness Lifestyle Solver")
+                .font(AppDesign.Typography.title)
+                .foregroundColor(AppDesign.Colors.textPrimary)
+                .multilineTextAlignment(.center)
+                .padding(.horizontal, AppDesign.Spacing.lg)
+            
+            Text("Create your personalized 10+ year daily plan")
+                .font(AppDesign.Typography.body)
+                .foregroundColor(AppDesign.Colors.textSecondary)
+                .multilineTextAlignment(.center)
+                .padding(.horizontal, AppDesign.Spacing.lg)
+            
+            Button(action: { showHealthWizard = true }) {
+                HStack {
+                    Text("Get Started")
+                        .font(AppDesign.Typography.headline)
+                    Image(systemName: "arrow.right")
+                }
+                .foregroundColor(.white)
+                .padding(.horizontal, AppDesign.Spacing.xl)
+                .padding(.vertical, AppDesign.Spacing.md)
+                .background(
+                    LinearGradient(
+                        colors: [AppDesign.Colors.gradientStart, AppDesign.Colors.gradientEnd],
+                        startPoint: .leading,
+                        endPoint: .trailing
+                    )
+                )
+                .cornerRadius(AppDesign.Radius.medium)
+                .shadow(color: AppDesign.Shadow.medium.color, radius: AppDesign.Shadow.medium.radius, x: AppDesign.Shadow.medium.x, y: AppDesign.Shadow.medium.y)
+            }
+            .padding(.top, AppDesign.Spacing.lg)
+            
+            Spacer()
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(AppDesign.Colors.background)
     }
 }
 

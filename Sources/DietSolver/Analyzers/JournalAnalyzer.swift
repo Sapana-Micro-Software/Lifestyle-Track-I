@@ -203,7 +203,6 @@ struct JournalAnalysisReport: Codable { // Define JournalAnalysisReport struct f
 // MARK: - Journal Analyzer
 class JournalAnalyzer { // Define JournalAnalyzer class for analyzing journal entries
     func analyze(entries: [JournalEntry], timeRange: DateInterval? = nil) -> JournalAnalysisReport { // Function to analyze journal entries
-        let calendar = Calendar.current // Get calendar instance
         let effectiveTimeRange = timeRange ?? DateInterval(start: entries.first?.date ?? Date(), end: entries.last?.date ?? Date()) // Determine effective time range
         let sortedEntries = entries.sorted { $0.date < $1.date } // Sort entries by date
         
@@ -281,9 +280,10 @@ class JournalAnalyzer { // Define JournalAnalyzer class for analyzing journal en
         var moodDistribution: [String: Int] = [:] // Initialize mood distribution dictionary
         var moodCounts: [JournalEntry.MoodRating: Int] = [:] // Initialize mood counts dictionary
         
-        for (_, rating) in moodsWithRatings { // Loop through mood ratings
-            let moodString = entries.first { $0.mood != nil }?.mood?.rawValue ?? "" // Get mood string
-            moodDistribution[moodString, default: 0] += 1 // Increment distribution count
+        for entry in entries { // Loop through entries to build mood distribution
+            if let mood = entry.mood { // Check if mood exists
+                moodDistribution[mood.rawValue, default: 0] += 1 // Increment distribution count
+            }
         }
         
         for entry in entries { // Loop through entries

@@ -7,10 +7,38 @@
 \usepackage{listings}
 \usepackage{xcolor}
 \usepackage{geometry}
+\usepackage{booktabs}
+\usepackage{multirow}
 \geometry{margin=1in}
 
-\title{Hearing Health Integration in Diet Solver:\\
-A Comprehensive Approach to Auditory Wellness}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{swiftstyle}{
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2,
+    language=Swift
+}
+
+\title{Health and Wellness Lifestyle Solver:\\
+A Comprehensive Multi-Objective Optimization System\\
+for Personalized Diet, Exercise, and Lifestyle Planning}
 \author{Shyamal Chandra}
 \date{\today}
 
@@ -19,234 +47,501 @@ A Comprehensive Approach to Auditory Wellness}
 \maketitle
 
 \begin{abstract}
-This paper presents the integration of hearing health monitoring and music listening sessions into the Diet Solver system, a comprehensive health and wellness optimization platform. The implementation includes daily audio hearing tests, music hearing sessions, and their integration into exercise and activity recommendations. We detail the data models, integration architecture, testing methodology, and demonstrate how hearing health considerations enhance the overall wellness optimization framework.
+This paper presents the Health and Wellness Lifestyle Solver, a comprehensive Swift-based system that uses multi-objective optimization algorithms to create personalized meal plans, exercise routines, and lifestyle recommendations. The system integrates USDA nutrient guidelines, comprehensive medical test analysis, cognitive assessments, sensory health monitoring (vision, hearing, tactile, tongue), sleep analysis, journal analysis, and calendar-based planning. We detail the architecture, optimization algorithms, data models, integration strategies, and demonstrate how the holistic approach enhances overall wellness optimization. The system provides both short-term daily planning and long-term transformation plans spanning from 3 months to 10 years, with adaptive difficulty levels based on health urgency.
 \end{abstract}
 
 \section{Introduction}
 
-The Diet Solver system is a comprehensive health and wellness platform that optimizes diet, exercise, and lifestyle recommendations based on individual health data. This work extends the system to include hearing health monitoring through daily audio hearing tests and music listening sessions, integrating these auditory wellness components into the exercise and activity recommendation system.
+The Health and Wellness Lifestyle Solver is a comprehensive health and wellness optimization platform that addresses the complex, multi-faceted nature of human health. Unlike traditional diet or fitness applications that focus on single aspects of wellness, this system provides an integrated approach that considers diet, exercise, medical test results, cognitive function, sensory health, sleep patterns, emotional well-being, and lifestyle planning.
 
 \subsection{Motivation}
 
-Hearing health is a critical but often overlooked aspect of overall wellness. Regular monitoring of hearing capabilities, combined with therapeutic music listening sessions, can:
+Modern health optimization requires consideration of numerous interconnected factors:
 \begin{itemize}
-    \item Detect early signs of hearing loss
-    \item Support cognitive health through auditory stimulation
-    \item Provide therapeutic benefits for conditions like tinnitus
-    \item Enhance overall quality of life through music therapy
+    \item \textbf{Nutritional Requirements}: Vary based on age, gender, activity level, medical conditions, and test results
+    \item \textbf{Exercise Needs}: Must balance cardiovascular health, strength training, flexibility, and mental wellness
+    \item \textbf{Medical Integration}: Blood tests, organ function, and specialty analyses inform dietary and lifestyle adjustments
+    \item \textbf{Cognitive Health}: Intelligence assessments, reasoning capabilities, and problem-solving skills influence recommendations
+    \item \textbf{Sensory Wellness}: Vision, hearing, tactile, and tongue health contribute to overall quality of life
+    \item \textbf{Temporal Planning}: Day-to-day, weekly, monthly, and long-term planning requires different strategies
 \end{itemize}
 
 \subsection{Objectives}
 
 The primary objectives of this work are:
 \begin{enumerate}
-    \item Design comprehensive data models for hearing health tracking
-    \item Integrate hearing tests and music sessions into the health data framework
-    \item Incorporate hearing-based recommendations into exercise planning
-    \item Develop comprehensive test suites for validation
-    \item Document the implementation for future development
+    \item Design comprehensive data models for all health domains
+    \item Develop multi-objective optimization algorithms for diet planning
+    \item Integrate medical test analysis with nutrient requirements
+    \item Create personalized exercise plans based on multiple health factors
+    \item Implement sensory health monitoring and recommendations
+    \item Provide time-based planning sessions with calendar integration
+    \item Generate long-term transformation plans with adaptive difficulty
+    \item Develop comprehensive analysis and reporting systems
 \end{enumerate}
 
 \section{Related Work}
 
-Previous work in health monitoring systems has focused primarily on cardiovascular, metabolic, and musculoskeletal health. While some systems include vision health monitoring, auditory health has received less attention. This work builds upon:
+Previous work in health optimization has typically focused on narrow domains:
 
 \begin{itemize}
-    \item \textbf{Health Data Models}: Existing frameworks for structured health data representation
-    \item \textbf{Exercise Planning}: Activity recommendation systems based on health status
-    \item \textbf{Wellness Integration}: Holistic approaches to health optimization
+    \item \textbf{Diet Planning Systems}: Focus on calorie counting or macro tracking, often ignoring medical test integration
+    \item \textbf{Fitness Applications}: Emphasize exercise tracking without considering holistic health factors
+    \item \textbf{Medical Test Analysis}: Provide interpretation but lack integration with lifestyle recommendations
+    \item \textbf{Wellness Platforms}: Offer fragmented features without unified optimization
 \end{itemize}
+
+This work integrates these domains into a cohesive system with unified optimization objectives.
 
 \section{System Architecture}
 
-\subsection{Data Models}
+\subsection{Core Components}
 
-\subsubsection{Hearing Prescription}
-The \texttt{HearingPrescription} model captures professional hearing assessments, including:
+The system is organized into several key components:
+
+\subsubsection{Models}
+Comprehensive data models represent all health domains:
 \begin{itemize}
-    \item Frequency response characteristics
-    \item Amplification levels
-    \item Hearing loss type and severity
-    \item Hearing aid settings (if applicable)
+    \item \texttt{HealthData}: Central health information repository
+    \item \texttt{Food}: Food database with complete nutrient profiles
+    \item \texttt{Nutrient}: USDA-compliant nutrient definitions and requirements
+    \item \texttt{Exercise}: Exercise activities, sessions, and goals
+    \item \texttt{MedicalTests}: Comprehensive medical test models
+    \item \texttt{CognitiveAssessment}: IQ, EQ, CQ, and reasoning assessments
+    \item \texttt{HearingData}, \texttt{VisionData}, \texttt{TactileData}, \texttt{TongueData}: Sensory health models
+    \item \texttt{SleepAnalysis}: Sleep pattern tracking and analysis
+    \item \texttt{Journal}: Structured and unstructured journal entries
 \end{itemize}
 
-\subsubsection{Daily Audio Hearing Test}
-The \texttt{DailyAudioHearingTest} model records daily self-administered hearing assessments:
-\begin{itemize}
-    \item Pure tone thresholds across frequencies
-    \item Speech recognition scores
-    \item Word recognition tests
-    \item Tinnitus presence and severity
-    \item Ear pressure and pain levels
-    \item Binaural hearing capabilities
-\end{itemize}
-
-\subsubsection{Music Hearing Session}
-The \texttt{MusicHearingSession} model tracks music listening activities:
-\begin{itemize}
-    \item Session duration and timing
-    \item Music type and genre
-    \item Volume levels
-    \item Device used
-    \item Listening mode (active, background, therapeutic)
-    \item Hearing protection usage
-    \item Hearing fatigue assessment
-    \item Enjoyment levels
-\end{itemize}
-
-\subsection{Integration with Health Data}
-
-Hearing data is integrated into the \texttt{HealthData} model alongside existing health metrics:
-\begin{lstlisting}[language=Swift, basicstyle=\small]
-struct HealthData: Codable {
-    // ... existing fields ...
-    
-    // Hearing Data
-    var hearingPrescription: HearingPrescription?
-    var dailyAudioHearingTests: [DailyAudioHearingTest] = []
-    var musicHearingSessions: [MusicHearingSession] = []
-    var hearingAnalysis: HearingAnalysisReport?
+\subsubsection{Solver}
+The \texttt{DietSolver} class implements multi-objective optimization:
+\begin{lstlisting}[style=swiftstyle]
+class DietSolver {
+    func solve(healthData: HealthData, season: Season) -> DailyDietPlan {
+        let requirements = healthData.adjustedNutrientRequirements()
+        let availableFoods = foodDatabase.foodsForSeason(season)
+        // Optimization algorithm implementation
+    }
 }
 \end{lstlisting}
 
-\subsection{Exercise Planner Integration}
-
-The \texttt{ExercisePlanner} class has been extended to:
-\begin{enumerate}
-    \item Include hearing-related activities in weekly plans
-    \item Recommend hearing exercises based on test results
-    \item Suggest music listening sessions for therapeutic benefits
-    \item Identify focus areas related to hearing health
-\end{enumerate}
-
-\subsubsection{Hearing Activities}
-New exercise activities have been added to the \texttt{ExerciseDatabase}:
+\subsubsection{Planners}
 \begin{itemize}
-    \item Music Listening Session
-    \item Active Music Listening
-    \item Hearing Exercise
-    \item Nature Sounds Therapy
-    \item Binaural Beats Session
-    \item Audio Book Listening
+    \item \texttt{ExercisePlanner}: Generates weekly exercise plans
+    \item \texttt{TimeBasedPlanner}: Creates planning sessions for day/week/month
+    \item \texttt{LongTermPlanner}: Generates transformation plans (3 months to 10 years)
 \end{itemize}
 
-\subsubsection{Recommendation Logic}
-The recommendation algorithm considers:
+\subsubsection{Analyzers}
 \begin{itemize}
-    \item Frequency of hearing tests (recommends if insufficient)
-    \item Frequency of music sessions (encourages regular sessions)
-    \item Hearing loss indicators (suggests targeted exercises)
-    \item Tinnitus presence (recommends therapeutic activities)
+    \item \texttt{MedicalAnalyzer}: Interprets medical test results
+    \item \texttt{CognitiveAnalyzer}: Analyzes cognitive assessments
+    \item \texttt{HearingAnalyzer}, \texttt{VisionAnalyzer}, \texttt{TactileAnalyzer}, \texttt{TongueAnalyzer}: Sensory health analysis
+    \item \texttt{SleepAnalyzer}: Sleep pattern analysis
+    \item \texttt{JournalAnalyzer}: Journal entry analysis and insights
+\end{itemize}
+
+\subsubsection{Generators}
+\begin{itemize}
+    \item \texttt{RecipeGenerator}: Creates detailed cooking instructions
+    \item \texttt{NutritionFactsGenerator}: Generates nutrition labels
+    \item \texttt{SongGenerator}: Creates memorable songs about meals
+\end{itemize}
+
+\subsection{Data Model Integration}
+
+The \texttt{HealthData} model serves as the central repository, integrating all health domains:
+
+\begin{lstlisting}[style=swiftstyle]
+struct HealthData: Codable {
+    // Basic health metrics
+    var glucose, hemoglobin, cholesterol: Double?
+    var bloodPressure: BloodPressure?
+    var age: Int
+    var gender: Gender
+    var weight, height: Double
+    var activityLevel: ActivityLevel
+    
+    // Exercise & Fitness
+    var exerciseLogs: [DailyExerciseLog] = []
+    var exerciseGoals: ExerciseGoals?
+    var muscleMass, bodyFatPercentage: Double?
+    
+    // Medical Tests
+    var medicalTests: MedicalTestCollection
+    var medicalAnalysis: MedicalAnalysisReport?
+    
+    // Cognitive Assessment
+    var cognitiveAssessments: [CognitiveAssessment] = []
+    
+    // Sensory Health
+    var hearingPrescription: HearingPrescription?
+    var dailyAudioHearingTests: [DailyAudioHearingTest] = []
+    var visionPrescription: VisionPrescription?
+    var dailyVisionChecks: [DailyVisionCheck] = []
+    var tactilePrescription: TactilePrescription?
+    var dailyTactileTests: [DailyTactileTest] = []
+    var tonguePrescription: TonguePrescription?
+    var dailyTongueTests: [DailyTongueTest] = []
+    
+    // Sleep & Journal
+    var sleepRecords: [SleepRecord] = []
+    var sleepAnalysis: SleepAnalysis?
+    var journalCollection: JournalCollection
+    
+    // Additional metrics
+    var eatingMetrics: [EatingMetrics] = []
+    var emotionalHealth: [EmotionalHealth] = []
+}
+\end{lstlisting}
+
+\section{Optimization Algorithm}
+
+\subsection{Diet Optimization}
+
+The diet solver uses an iterative improvement algorithm to optimize meal plans:
+
+\subsubsection{Objective Function}
+
+The optimization minimizes a composite score:
+\begin{equation}
+S = w_n S_n + w_t S_t + w_d S_d + w_v S_v
+\end{equation}
+
+where:
+\begin{itemize}
+    \item $S_n$: Nutrient deficiency/excess score
+    \item $S_t$: Taste preference score
+    \item $S_d$: Digestion quality score
+    \item $S_v$: Food variety score
+    \item $w_n, w_t, w_d, w_v$: Weight coefficients
+\end{itemize}
+
+\subsubsection{Algorithm Steps}
+
+\begin{enumerate}
+    \item \textbf{Initialization}: Random amounts of seasonal foods
+    \item \textbf{Scoring}: Calculate fitness based on all objectives
+    \item \textbf{Optimization}: Iteratively adjust food amounts using gradient descent-like approach
+    \item \textbf{Meal Distribution}: Distribute optimized foods across breakfast, lunch, dinner
+    \item \textbf{Validation}: Ensure USDA nutrient compliance
+\end{enumerate}
+
+\subsubsection{Medical Test Integration}
+
+Nutrient requirements are dynamically adjusted based on medical test results:
+
+\begin{itemize}
+    \item \textbf{Blood Glucose/HbA1c}: Reduces carbohydrate requirements for diabetes/prediabetes
+    \item \textbf{Hemoglobin/Ferritin}: Increases iron requirements for anemia
+    \item \textbf{Vitamin Deficiencies}: Boosts specific vitamin requirements
+    \item \textbf{Heavy Metals}: Increases detoxification nutrients (selenium for mercury, calcium/iron for lead)
+    \item \textbf{Organ Conditions}: Adjusts nutrients based on liver, kidney, and other organ health
+    \item \textbf{Hormonal Imbalances}: Modifies nutrients for hormonal support
+\end{itemize}
+
+\subsection{Exercise Planning}
+
+The exercise planner generates weekly plans considering:
+
+\begin{itemize}
+    \item Fitness goals (cardio, strength, flexibility, mind-body)
+    \item Mental health needs (stress, anxiety, sleep quality)
+    \item Muscle mass goals
+    \item Sexual health considerations
+    \item Sensory health status (hearing, vision, tactile, tongue)
+    \item Current exercise history and patterns
+\end{itemize}
+
+\subsubsection{Activity Categories}
+
+The system includes comprehensive exercise categories:
+\begin{itemize}
+    \item \textbf{Cardio}: Walking, jogging, running, rowing, cycling
+    \item \textbf{Strength}: Weight training with session tracking
+    \item \textbf{Dance Fitness}: Zumba, U-Jam, Jane Fonda's workout
+    \item \textbf{Martial Arts}: Kickboxing
+    \item \textbf{Mind-Body}: Yoga, Tai Chi, Pilates, Meditation
+    \item \textbf{Indian Breathing}: Pranayama, Bhastrika, Anulom Vilom, Kriya
+    \item \textbf{Hearing \& Audio}: Music listening, hearing exercises, binaural beats
+    \item \textbf{Tactile \& Touch}: Massage therapy, texture exploration, reflexology
+    \item \textbf{Tongue \& Oral}: Tongue exercises, taste training, oil pulling
+\end{itemize}
+
+\section{Medical Test Analysis}
+
+\subsection{Comprehensive Test Support}
+
+The system supports extensive medical test types:
+
+\subsubsection{Blood Tests}
+\begin{itemize}
+    \item Complete Blood Count (CBC)
+    \item Metabolic Panel (Basic/Comprehensive)
+    \item Lipid Panel
+    \item Liver Function Tests
+    \item Kidney Function Tests
+    \item Thyroid Function Tests
+    \item Vitamins and Minerals
+    \item Hormones
+    \item Inflammatory Markers
+\end{itemize}
+
+\subsubsection{Other Test Types}
+\begin{itemize}
+    \item Urine Analysis
+    \item Semen Analysis
+    \item Bone Marrow Analysis
+    \item Saliva Analysis
+    \item Skin Analysis (multi-body-part)
+    \item Hair Analysis (heavy metals, minerals)
+    \item Organ Analysis (heart, lungs, liver, kidneys, etc.)
+    \item Sexual Organ Analysis
+    \item Reflex Analysis
+\end{itemize}
+
+\subsubsection{Medical Specialties}
+\begin{itemize}
+    \item Radiology (X-Ray, CT, MRI, Ultrasound, PET, SPECT)
+    \item Cardiology (ECG, Echocardiogram, Stress Tests)
+    \item Nuclear Medicine
+    \item Neurology (EEG, EMG, Nerve Conduction)
+    \item Pulmonology (Spirometry, Lung Volumes)
+    \item Gastroenterology (Endoscopy, Colonoscopy)
+\end{itemize}
+
+\subsection{Analysis Features}
+
+The \texttt{MedicalAnalyzer} provides:
+\begin{itemize}
+    \item \textbf{Issue Detection}: Identifies abnormal values and health concerns
+    \item \textbf{Warning System}: Flags borderline values
+    \item \textbf{Trend Analysis}: Tracks changes over time
+    \item \textbf{Recommendation Engine}: Generates dietary, exercise, and lifestyle recommendations
+\end{itemize}
+
+\section{Cognitive Assessment Integration}
+
+\subsection{Assessment Types}
+
+\subsubsection{Intelligence Quotients}
+\begin{itemize}
+    \item \textbf{IQ}: Full-scale, verbal, performance, working memory, processing speed
+    \item \textbf{EQ (Emotional Intelligence)}: Self-awareness, self-regulation, motivation, empathy, social skills
+    \item \textbf{CQ (Creative Intelligence)}: Fluency, flexibility, originality, elaboration
+\end{itemize}
+
+\subsubsection{Reasoning Assessments}
+\begin{itemize}
+    \item \textbf{Spatial Reasoning}: Mental rotation, spatial visualization, navigation
+    \item \textbf{Temporal Reasoning}: Time estimation, temporal sequencing, pattern recognition
+\end{itemize}
+
+\subsubsection{Problem-Solving}
+\begin{itemize}
+    \item \textbf{Tactical}: Quick decision-making, immediate problem-solving
+    \item \textbf{Strategic}: Long-term planning, systems thinking, risk assessment
+\end{itemize}
+
+\subsubsection{Psychic Capabilities}
+\begin{itemize}
+    \item Remote viewing, clairvoyance, telepathy, precognition, psychokinesis
+\end{itemize}
+
+\subsection{Personalized Recommendations}
+
+The \texttt{CognitiveAnalyzer} identifies strengths and areas for improvement, providing targeted recommendations for cognitive enhancement.
+
+\section{Sensory Health Monitoring}
+
+\subsection{Vision Health}
+
+\begin{itemize}
+    \item \textbf{Vision Prescription}: Professional eye exam data
+    \item \textbf{Daily Vision Checks}: Self-administered vision tests
+    \item \textbf{Vision Game Sessions}: Eye exercise games
+    \item \textbf{Analysis}: Vision health reports with recommendations
+\end{itemize}
+
+\subsection{Hearing Health}
+
+\begin{itemize}
+    \item \textbf{Hearing Prescription}: Professional hearing assessments
+    \item \textbf{Daily Audio Hearing Tests}: Pure tone thresholds, speech recognition, tinnitus tracking
+    \item \textbf{Music Hearing Sessions}: Music listening tracking with volume monitoring
+    \item \textbf{Activities}: Music listening, hearing exercises, binaural beats, nature sounds
+\end{itemize}
+
+\subsection{Tactile Health}
+
+\begin{itemize}
+    \item \textbf{Tactile Prescription}: Professional tactile assessments
+    \item \textbf{Daily Tactile Tests}: Pressure, temperature, vibration sensitivity
+    \item \textbf{Tactile Vitality Sessions}: Massage therapy, texture exploration, temperature therapy
+    \item \textbf{Activities}: Tactile stimulation, massage therapy, reflexology
+\end{itemize}
+
+\subsection{Tongue Health}
+
+\begin{itemize}
+    \item \textbf{Tongue Prescription}: Professional tongue assessments
+    \item \textbf{Daily Tongue Tests}: Appearance, taste sensitivity, mobility
+    \item \textbf{Tongue Vitality Sessions}: Tongue exercises, taste training, oral hygiene
+    \item \textbf{Activities}: Tongue exercises, taste training, oil pulling, speech practice
+\end{itemize}
+
+\section{Time-Based Planning}
+
+\subsection{Planning Sessions}
+
+The system provides structured planning sessions:
+
+\subsubsection{Day-Level Planning}
+\begin{itemize}
+    \item \textbf{Day Start}: Morning planning with tasks, priorities, reflections
+    \item \textbf{Day End}: Evening planning with reflections, journal prompts, next day preparation
+\end{itemize}
+
+\subsubsection{Week-Level Planning}
+\begin{itemize}
+    \item \textbf{Week Start}: Weekly goal setting, priority identification, week overview
+    \item \textbf{Week End}: Weekly review with accomplishments, challenges, insights
+\end{itemize}
+
+\subsubsection{Month-Level Planning}
+\begin{itemize}
+    \item \textbf{Month Start}: Monthly goal setting and intention setting
+    \item \textbf{Month End}: Monthly review and reflection
+\end{itemize}
+
+\subsection{Calendar Integration}
+
+The system integrates with EventKit to:
+\begin{itemize}
+    \item Schedule planned activities automatically
+    \item Set reminders for important tasks
+    \item Sync with device calendar
+    \item Manage calendar permissions
+\end{itemize}
+
+\subsection{Journal Analysis}
+
+The \texttt{JournalAnalyzer} processes both structured and unstructured journal entries:
+\begin{itemize}
+    \item Identifies themes and patterns
+    \item Tracks emotional trends
+    \item Provides insights for planning sessions
+    \item Generates recommendations based on journal content
+\end{itemize}
+
+\section{Long-Term Transformation Plans}
+
+\subsection{Plan Durations}
+
+The system generates comprehensive transformation plans:
+\begin{itemize}
+    \item \textbf{3-Month Plans}: Intensive short-term transformation
+    \item \textbf{6-Month Plans}: Moderate-term lifestyle changes
+    \item \textbf{1-Year Plans}: Comprehensive annual transformation
+    \item \textbf{2-Year Plans}: Extended lifestyle optimization
+    \item \textbf{5-Year Plans}: Long-term health transformation
+    \item \textbf{10-Year Plans}: Lifetime health optimization
+\end{itemize}
+
+\subsection{Difficulty Levels}
+
+Plans adapt based on urgency:
+\begin{itemize}
+    \item \textbf{Gentle} (Low urgency): Gradual, sustainable changes
+    \item \textbf{Moderate} (Medium urgency): Balanced approach
+    \item \textbf{Aggressive} (High urgency): Intensive transformation
+    \item \textbf{Extreme} (Critical urgency): Maximum intensity changes
+\end{itemize}
+
+\subsection{Plan Features}
+
+\begin{itemize}
+    \item \textbf{Phased Approach}: Plans divided into phases (Foundation, Building, Optimization)
+    \item \textbf{Daily Plans}: Complete daily meal plans, exercise routines, supplements
+    \item \textbf{Milestones}: Regular checkpoints to assess progress
+    \item \textbf{Adaptive Adjustments}: Plans adjust based on progress and phase
+    \item \textbf{Goal-Oriented}: Multiple transformation goals (weight, muscle, cardiovascular, mental health)
 \end{itemize}
 
 \section{Implementation Details}
 
-\subsection{Weekly Plan Generation}
+\subsection{Technology Stack}
 
-The weekly exercise plan now includes hearing-related activities distributed across the week:
 \begin{itemize}
-    \item \textbf{Sunday}: Music Listening Session (30 min), Hearing Exercise (10 min)
-    \item \textbf{Monday}: Hearing Exercise (10 min)
-    \item \textbf{Tuesday}: Active Music Listening (20 min)
-    \item \textbf{Thursday}: Music Listening Session (30 min)
-    \item \textbf{Friday}: Binaural Beats Session (20 min)
-    \item \textbf{Saturday}: Nature Sounds Therapy (30 min)
+    \item \textbf{Language}: Swift 5.9+
+    \item \textbf{Platform}: iOS 16.0+ / macOS 13.0+
+    \item \textbf{UI Framework}: SwiftUI
+    \item \textbf{Architecture}: MVVM (Model-View-ViewModel)
+    \item \textbf{Data Persistence}: Codable protocol with JSON encoding/decoding
+    \item \textbf{Calendar Integration}: EventKit framework
+    \item \textbf{Health Integration}: HealthKit framework support
 \end{itemize}
 
-\subsection{Focus Areas}
+\subsection{Data Persistence}
 
-The system identifies focus areas based on hearing health status:
+All data models conform to the \texttt{Codable} protocol, enabling:
 \begin{itemize}
-    \item \textbf{Hearing Health Monitoring}: When no tests are recorded
-    \item \textbf{Music Listening Habit}: When no music sessions exist
-    \item \textbf{Regular Music Listening}: When sessions are infrequent
-    \item \textbf{Daily Hearing Tests}: When test frequency is low
+    \item JSON serialization/deserialization
+    \item Date encoding/decoding with ISO8601 format
+    \item Nested structure support
+    \item Optional field handling
 \end{itemize}
 
-\subsection{Recommendation Algorithm}
+\subsection{Testing}
 
-The recommendation algorithm follows this logic:
+The system includes comprehensive test suites:
+\begin{itemize}
+    \item \textbf{Unit Tests}: Core functionality testing
+    \item \textbf{Integration Tests}: Cross-component testing
+    \item \textbf{Regression Tests}: Stability verification
+    \item \textbf{Black Box Tests}: Edge case handling
+    \item \textbf{UX Tests}: User experience validation
+\end{itemize}
+
+\section{Results and Evaluation}
+
+\subsection{Functional Capabilities}
+
+The system successfully provides:
 \begin{enumerate}
-    \item Check for missing hearing tests → recommend Hearing Exercise
-    \item Check for missing music sessions → recommend Music Listening
-    \item Check for hearing loss (threshold > 25 dB) → recommend Hearing Exercise
-    \item Check for tinnitus → recommend Nature Sounds or Binaural Beats
+    \item Multi-objective diet optimization with USDA compliance
+    \item Comprehensive medical test integration
+    \item Personalized exercise planning
+    \item Sensory health monitoring and recommendations
+    \item Cognitive assessment analysis
+    \item Time-based planning with calendar integration
+    \item Long-term transformation planning
+    \item Journal analysis and insights
 \end{enumerate}
 
-\section{Testing Methodology}
+\subsection{System Integration}
 
-\subsection{Test Suite Organization}
-
-Comprehensive test suites were developed using both XCTest and SwiftTesting frameworks:
-
-\subsubsection{Unit Tests}
+All components integrate seamlessly:
 \begin{itemize}
-    \item Data model creation and validation
-    \item Health data integration
-    \item Exercise planner functionality
-    \item Recommendation algorithm correctness
-\end{itemize}
-
-\subsubsection{Regression Tests}
-\begin{itemize}
-    \item Data persistence (encoding/decoding)
-    \item Algorithm consistency
-    \item Recommendation stability
-\end{itemize}
-
-\subsubsection{Black Box Tests}
-\begin{itemize}
-    \item System behavior with no hearing data
-    \item System behavior with extensive hearing data
-    \item System behavior with invalid/edge case data
-\end{itemize}
-
-\subsubsection{UX Tests}
-\begin{itemize}
-    \item Activity accessibility
-    \item Recommendation relevance
-    \item Data collection simplicity
-\end{itemize}
-
-\subsubsection{A-B Tests}
-\begin{itemize}
-    \item Activity variant comparison
-    \item Recommendation algorithm variants
-    \item User experience variations
-\end{itemize}
-
-\section{Results}
-
-\subsection{Functional Results}
-
-The implementation successfully:
-\begin{enumerate}
-    \item Integrates hearing data models into the health framework
-    \item Includes hearing activities in weekly exercise plans
-    \item Provides context-aware recommendations based on hearing status
-    \item Maintains system consistency and performance
-\end{enumerate}
-
-\subsection{Test Coverage}
-
-The test suites provide comprehensive coverage:
-\begin{itemize}
-    \item \textbf{Unit Tests}: 15+ test cases covering core functionality
-    \item \textbf{Regression Tests}: 3 test cases ensuring stability
-    \item \textbf{Black Box Tests}: 3 test cases for edge cases
-    \item \textbf{UX Tests}: 3 test cases for user experience
-    \item \textbf{A-B Tests}: 2 test cases for variant comparison
+    \item Medical tests automatically adjust nutrient requirements
+    \item Exercise plans consider multiple health factors
+    \item Sensory health influences activity recommendations
+    \item Cognitive assessments inform learning and development suggestions
+    \item Journal analysis enhances planning sessions
+    \item Calendar integration provides practical scheduling
 \end{itemize}
 
 \section{Discussion}
 
 \subsection{Benefits}
 
-The integration of hearing health into the Diet Solver system provides:
+The holistic approach provides:
 \begin{itemize}
-    \item \textbf{Holistic Health Monitoring}: Comprehensive tracking of auditory wellness
-    \item \textbf{Proactive Recommendations}: Early detection and intervention suggestions
-    \item \textbf{Therapeutic Integration}: Music therapy as part of wellness routine
+    \item \textbf{Comprehensive Health View}: Single system for all health domains
+    \item \textbf{Integrated Optimization}: Recommendations consider all factors
+    \item \textbf{Proactive Health Management}: Early detection and intervention
+    \item \textbf{Personalized Recommendations}: Tailored to individual health status
+    \item \textbf{Long-Term Planning}: Supports sustainable lifestyle changes
     \item \textbf{User Empowerment}: Tools for self-monitoring and improvement
 \end{itemize}
 
@@ -255,45 +550,67 @@ The integration of hearing health into the Diet Solver system provides:
 Current limitations include:
 \begin{itemize}
     \item Self-administered tests may have accuracy limitations
-    \item Recommendations are based on available data quality
-    \item Integration with professional audiometry equipment not yet implemented
+    \item Recommendations depend on data quality and completeness
+    \item Integration with professional medical equipment varies
+    \item Optimization algorithm complexity may require tuning
+    \item Long-term plan effectiveness requires user adherence
 \end{itemize}
 
 \subsection{Future Work}
 
 Potential enhancements:
 \begin{enumerate}
-    \item Integration with professional hearing test equipment
-    \item Machine learning models for hearing trend prediction
+    \item Machine learning models for trend prediction
+    \item Integration with wearable devices
+    \item Real-time health monitoring
     \item Advanced music therapy recommendations
-    \item Integration with hearing aid devices
-    \item Real-time hearing monitoring during activities
+    \item Integration with hearing aid and vision correction devices
+    \item Social features for community support
+    \item Professional healthcare provider integration
+    \item Advanced optimization algorithms (genetic algorithms, simulated annealing)
 \end{enumerate}
 
 \section{Conclusion}
 
-This work successfully integrates hearing health monitoring and music listening sessions into the Diet Solver system. The implementation provides comprehensive data models, integrates hearing considerations into exercise planning, and includes extensive test coverage. The system now offers a more holistic approach to health and wellness, recognizing the importance of auditory health in overall well-being.
+This work presents a comprehensive Health and Wellness Lifestyle Solver that integrates multiple health domains into a unified optimization system. The system successfully combines diet planning, exercise recommendations, medical test analysis, cognitive assessment, sensory health monitoring, and time-based planning into a cohesive platform.
 
-The modular design allows for future enhancements while maintaining system stability and performance. The comprehensive test suites ensure reliability and provide a foundation for continued development.
+The modular design allows for future enhancements while maintaining system stability. The comprehensive data models, optimization algorithms, and analysis systems provide a foundation for continued development and improvement.
+
+The holistic approach recognizes that health optimization requires consideration of numerous interconnected factors, and the system provides the tools and framework to address this complexity effectively.
 
 \section{Acknowledgments}
 
-This work extends the Diet Solver system developed by Shyamal Chandra. The implementation follows best practices in software engineering, health data modeling, and user experience design.
+This work was developed by Shyamal Chandra. The implementation follows best practices in software engineering, health data modeling, optimization algorithms, and user experience design.
 
 \bibliographystyle{plain}
 \begin{thebibliography}{9}
 
+\bibitem{usda}
+USDA Dietary Guidelines. United States Department of Agriculture.
+
 \bibitem{healthdata}
 Health Data Models and Standards. Various health data modeling frameworks.
 
-\bibitem{exercise}
-Exercise Planning Systems. Activity recommendation algorithms.
+\bibitem{optimization}
+Multi-Objective Optimization Algorithms. Iterative improvement and gradient descent methods.
 
-\bibitem{hearing}
-Hearing Health Monitoring. Auditory health assessment methodologies.
+\bibitem{exercise}
+Exercise Planning Systems. Activity recommendation algorithms and fitness planning.
+
+\bibitem{medical}
+Medical Test Analysis. Clinical test interpretation and health assessment.
+
+\bibitem{cognitive}
+Cognitive Assessment. Intelligence testing and cognitive evaluation frameworks.
+
+\bibitem{sensory}
+Sensory Health Monitoring. Vision, hearing, tactile, and taste health assessment.
 
 \bibitem{wellness}
 Holistic Wellness Approaches. Integrated health optimization systems.
+
+\bibitem{planning}
+Time-Based Planning. Calendar integration and scheduling systems.
 
 \end{thebibliography}
 

@@ -8,6 +8,8 @@
 \usepackage{xcolor}
 \usepackage{geometry}
 \usepackage{fancyvrb}
+\usepackage{booktabs}
+\usepackage{longtable}
 \geometry{margin=1in}
 
 \definecolor{codegreen}{rgb}{0,0.6,0}
@@ -35,8 +37,8 @@
     language=Swift
 }
 
-\title{Diet Solver Hearing Health Integration\\
-Reference Manual}
+\title{Health and Wellness Lifestyle Solver\\
+Complete Reference Manual}
 \author{Shyamal Chandra}
 \date{\today}
 
@@ -49,15 +51,495 @@ Reference Manual}
 
 \section{Introduction}
 
-This reference manual provides comprehensive documentation for the hearing health integration in the Diet Solver system. It includes API references, usage examples, and best practices for working with hearing data models and exercise recommendations.
+This reference manual provides comprehensive API documentation for the Health and Wellness Lifestyle Solver system. It includes detailed information about all data models, classes, methods, and usage examples for working with diet optimization, exercise planning, medical test analysis, cognitive assessment, sensory health monitoring, and time-based planning.
 
-\section{Data Models}
+\section{Getting Started}
 
-\subsection{HearingPrescription}
+\subsection{Installation}
 
-The \texttt{HearingPrescription} model represents professional hearing assessments.
+The system is a Swift Package. Add it to your project:
+
+\begin{lstlisting}[style=swiftstyle]
+// Package.swift
+dependencies: [
+    .package(path: "path/to/diet-solver")
+]
+\end{lstlisting}
+
+\subsection{Basic Import}
+
+\begin{lstlisting}[style=swiftstyle]
+import DietSolver
+\end{lstlisting}
+
+\section{Core Data Models}
+
+\subsection{HealthData}
+
+The central health information repository.
 
 \subsubsection{Structure}
+
+\begin{lstlisting}[style=swiftstyle]
+struct HealthData: Codable {
+    // Basic Health Metrics
+    var glucose: Double?              // mg/dL
+    var hemoglobin: Double?          // g/dL
+    var cholesterol: Double?          // mg/dL
+    var bloodPressure: BloodPressure?
+    var age: Int
+    var gender: Gender
+    var weight: Double                // kg
+    var height: Double                // cm
+    var activityLevel: ActivityLevel
+    
+    // Exercise & Fitness
+    var exerciseLogs: [DailyExerciseLog] = []
+    var exerciseGoals: ExerciseGoals?
+    var muscleMass: Double?           // kg
+    var bodyFatPercentage: Double?    // %
+    
+    // Sexual Health
+    var sexualHealth: SexualHealth?
+    
+    // Mental Health
+    var mentalHealth: MentalHealth?
+    
+    // Medical Tests
+    var medicalTests: MedicalTestCollection
+    var medicalAnalysis: MedicalAnalysisReport?
+    
+    // Cognitive Assessment
+    var cognitiveAssessments: [CognitiveAssessment] = []
+    
+    // Medical Specialties
+    var medicalSpecialties: MedicalSpecialtyCollection
+    
+    // Sleep Data
+    var sleepRecords: [SleepRecord] = []
+    var sleepAnalysis: SleepAnalysis?
+    
+    // Journal Data
+    var journalCollection: JournalCollection
+    
+    // Vision Data
+    var visionPrescription: VisionPrescription?
+    var dailyVisionChecks: [DailyVisionCheck] = []
+    var visionGameSessions: [VisionGameSession] = []
+    var visionAnalysis: VisionAnalysisReport?
+    
+    // Hearing Data
+    var hearingPrescription: HearingPrescription?
+    var dailyAudioHearingTests: [DailyAudioHearingTest] = []
+    var musicHearingSessions: [MusicHearingSession] = []
+    var hearingAnalysis: HearingAnalysisReport?
+    
+    // Tactile Data
+    var tactilePrescription: TactilePrescription?
+    var dailyTactileTests: [DailyTactileTest] = []
+    var tactileVitalitySessions: [TactileVitalitySession] = []
+    var tactileAnalysis: TactileAnalysisReport?
+    
+    // Tongue Data
+    var tonguePrescription: TonguePrescription?
+    var dailyTongueTests: [DailyTongueTest] = []
+    var tongueVitalitySessions: [TongueVitalitySession] = []
+    var tongueAnalysis: TongueAnalysisReport?
+    
+    // HealthKit Data
+    var healthKitBiomarkers: [HealthKitBiomarkers] = []
+    
+    // Eating Metrics
+    var eatingMetrics: [EatingMetrics] = []
+    
+    // Emotional Health
+    var emotionalHealth: [EmotionalHealth] = []
+}
+\end{lstlisting}
+
+\subsubsection{Key Methods}
+
+\begin{lstlisting}[style=swiftstyle]
+// Calculate adjusted nutrient requirements based on health data
+func adjustedNutrientRequirements() -> NutrientRequirements
+
+// Calculate BMR (Basal Metabolic Rate)
+func calculateBMR() -> Double
+
+// Calculate TDEE (Total Daily Energy Expenditure)
+func calculateTDEE() -> Double
+\end{lstlisting}
+
+\subsubsection{Example Usage}
+
+\begin{lstlisting}[style=swiftstyle]
+// Initialize health data
+var healthData = HealthData(
+    glucose: 95.0,
+    hemoglobin: 14.5,
+    cholesterol: 180.0,
+    bloodPressure: HealthData.BloodPressure(systolic: 120, diastolic: 80),
+    age: 35,
+    gender: .male,
+    weight: 75.0,
+    height: 175.0,
+    activityLevel: .moderate
+)
+
+// Get adjusted nutrient requirements
+let requirements = healthData.adjustedNutrientRequirements()
+print("Daily calories: \(requirements.calories)")
+\end{lstlisting}
+
+\subsection{Food and Nutrient Models}
+
+\subsubsection{Food}
+
+\begin{lstlisting}[style=swiftstyle]
+struct Food: Codable, Identifiable, Hashable {
+    let id: UUID
+    let name: String
+    let category: FoodCategory
+    let nutrientContent: NutrientContent
+    let properties: FoodProperties
+    let seasonalAvailability: [Season]
+}
+
+enum FoodCategory: String, Codable {
+    case vegetable, fruit, grain, protein
+    case legume, nut, herb, spice, dairy
+}
+\end{lstlisting}
+
+\subsubsection{NutrientContent}
+
+\begin{lstlisting}[style=swiftstyle]
+struct NutrientContent: Codable {
+    // Macronutrients
+    var calories: Double = 0
+    var protein: Double = 0        // grams
+    var carbohydrates: Double = 0  // grams
+    var fat: Double = 0            // grams
+    var fiber: Double = 0          // grams
+    
+    // Vitamins
+    var vitaminA: Double = 0        // IU
+    var vitaminC: Double = 0      // mg
+    var vitaminD: Double = 0      // IU
+    var vitaminE: Double = 0      // mg
+    var vitaminK: Double = 0      // mcg
+    var thiamine: Double = 0       // mg (B1)
+    var riboflavin: Double = 0     // mg (B2)
+    var niacin: Double = 0         // mg (B3)
+    var vitaminB6: Double = 0      // mg
+    var folate: Double = 0         // mcg
+    var vitaminB12: Double = 0    // mcg
+    var biotin: Double = 0        // mcg
+    var pantothenicAcid: Double = 0 // mg
+    
+    // Minerals
+    var calcium: Double = 0        // mg
+    var iron: Double = 0           // mg
+    var magnesium: Double = 0      // mg
+    var phosphorus: Double = 0     // mg
+    var potassium: Double = 0      // mg
+    var sodium: Double = 0         // mg
+    var zinc: Double = 0           // mg
+    var copper: Double = 0         // mg
+    var manganese: Double = 0      // mg
+    var selenium: Double = 0       // mcg
+    var iodine: Double = 0        // mcg
+    var chromium: Double = 0       // mcg
+    var molybdenum: Double = 0    // mcg
+    
+    // Operators
+    static func + (lhs: NutrientContent, rhs: NutrientContent) -> NutrientContent
+    func scaled(by factor: Double) -> NutrientContent
+}
+\end{lstlisting}
+
+\section{Diet Solver}
+
+\subsection{DietSolver Class}
+
+Main optimization engine for diet planning.
+
+\subsubsection{Initialization}
+
+\begin{lstlisting}[style=swiftstyle]
+let solver = DietSolver()
+\end{lstlisting}
+
+\subsubsection{Main Method}
+
+\begin{lstlisting}[style=swiftstyle]
+func solve(healthData: HealthData, season: Season) -> DailyDietPlan
+\end{lstlisting}
+
+\subsubsection{Example Usage}
+
+\begin{lstlisting}[style=swiftstyle]
+// Create solver
+let solver = DietSolver()
+
+// Solve diet plan
+let season = Season.spring
+let dietPlan = solver.solve(healthData: healthData, season: season)
+
+// Access results
+print("Meals: \(dietPlan.meals.count)")
+print("Total calories: \(dietPlan.totalNutrients.calories)")
+print("Taste score: \(dietPlan.overallTasteScore)")
+print("Digestion score: \(dietPlan.overallDigestionScore)")
+
+// Access individual meals
+for meal in dietPlan.meals {
+    print("\(meal.name): \(meal.mealType)")
+    for item in meal.items {
+        print("  - \(item.food.name): \(item.amount)g")
+    }
+}
+\end{lstlisting}
+
+\subsection{DailyDietPlan}
+
+Result structure from diet solver.
+
+\begin{lstlisting}[style=swiftstyle]
+struct DailyDietPlan: Codable {
+    var meals: [Meal]
+    let season: Season
+    let healthData: HealthData
+    
+    var totalNutrients: NutrientContent
+    var overallTasteScore: Double
+    var overallDigestionScore: Double
+}
+\end{lstlisting}
+
+\section{Exercise Planning}
+
+\subsection{ExercisePlanner Class}
+
+Generates personalized weekly exercise plans.
+
+\subsubsection{Initialization}
+
+\begin{lstlisting}[style=swiftstyle]
+let planner = ExercisePlanner()
+\end{lstlisting}
+
+\subsubsection{Key Methods}
+
+\begin{lstlisting}[style=swiftstyle]
+// Generate weekly exercise plan
+func generateWeeklyPlan(
+    for healthData: HealthData,
+    goals: ExerciseGoals
+) -> ExercisePlan
+
+// Get exercise recommendations for specific day
+func recommendExercises(
+    for healthData: HealthData,
+    dayOfWeek: Int  // 0 = Sunday, 6 = Saturday
+) -> [ExerciseActivity]
+\end{lstlisting}
+
+\subsubsection{ExerciseGoals}
+
+\begin{lstlisting}[style=swiftstyle]
+struct ExerciseGoals: Codable {
+    var weeklyCardioMinutes: Int = 150
+    var weeklyStrengthSessions: Int = 2
+    var weeklyFlexibilityMinutes: Int = 60
+    var weeklyMindBodyMinutes: Int = 120
+}
+\end{lstlisting}
+
+\subsubsection{Example Usage}
+
+\begin{lstlisting}[style=swiftstyle]
+// Create planner
+let planner = ExercisePlanner()
+
+// Define goals
+let goals = ExerciseGoals(
+    weeklyCardioMinutes: 150,
+    weeklyStrengthSessions: 2,
+    weeklyFlexibilityMinutes: 60,
+    weeklyMindBodyMinutes: 120
+)
+
+// Generate plan
+let plan = planner.generateWeeklyPlan(for: healthData, goals: goals)
+
+// Access weekly plan
+for dayPlan in plan.weeklyPlan {
+    print("\(dayPlan.dayOfWeek):")
+    for activity in dayPlan.activities {
+        print("  - \(activity.activity.name): \(activity.duration) min")
+    }
+}
+
+// Get recommendations
+let recommendations = planner.recommendExercises(
+    for: healthData,
+    dayOfWeek: 0  // Sunday
+)
+\end{lstlisting}
+
+\section{Medical Test Analysis}
+
+\subsection{MedicalAnalyzer Class}
+
+Analyzes medical test results and generates recommendations.
+
+\subsubsection{Initialization}
+
+\begin{lstlisting}[style=swiftstyle]
+let analyzer = MedicalAnalyzer()
+\end{lstlisting}
+
+\subsubsection{Key Methods}
+
+\begin{lstlisting}[style=swiftstyle]
+// Analyze medical tests
+func analyze(medicalTests: MedicalTestCollection) -> MedicalAnalysisReport
+
+// Analyze specific test type
+func analyzeBloodTest(_ test: BloodTest) -> BloodTestAnalysis
+\end{lstlisting}
+
+\subsection{Medical Test Models}
+
+\subsubsection{BloodTest}
+
+\begin{lstlisting}[style=swiftstyle]
+struct BloodTest: Codable, Identifiable {
+    let id: UUID
+    var date: Date
+    var testType: BloodTestType
+    var bloodSource: BloodSource
+    var cbc: CBCResults?
+    var metabolicPanel: MetabolicPanelResults?
+    var lipidPanel: LipidPanelResults?
+    var liverFunction: LiverFunctionResults?
+    var kidneyFunction: KidneyFunctionResults?
+    var thyroid: ThyroidResults?
+    var vitamins: VitaminResults?
+    var minerals: MineralResults?
+    var hormones: HormoneResults?
+    var inflammatoryMarkers: InflammatoryMarkerResults?
+}
+\end{lstlisting}
+
+\subsubsection{Example Usage}
+
+\begin{lstlisting}[style=swiftstyle]
+// Create blood test
+var bloodTest = BloodTest(
+    date: Date(),
+    testType: .comprehensive,
+    bloodSource: BloodSource.venous
+)
+
+// Add CBC results
+bloodTest.cbc = CBCResults(
+    whiteBloodCellCount: 7.0,
+    redBloodCellCount: 4.5,
+    hemoglobin: 14.5,
+    hematocrit: 42.0,
+    plateletCount: 250.0
+)
+
+// Add to health data
+healthData.medicalTests.bloodTests.append(bloodTest)
+
+// Analyze
+let analyzer = MedicalAnalyzer()
+let report = analyzer.analyze(medicalTests: healthData.medicalTests)
+healthData.medicalAnalysis = report
+
+// Access recommendations
+if let report = healthData.medicalAnalysis {
+    for issue in report.issues {
+        print("Issue: \(issue.description)")
+        print("Severity: \(issue.severity)")
+    }
+    for recommendation in report.recommendations {
+        print("Recommendation: \(recommendation)")
+    }
+}
+\end{lstlisting}
+
+\section{Cognitive Assessment}
+
+\subsection{CognitiveAnalyzer Class}
+
+Analyzes cognitive assessments.
+
+\subsubsection{Initialization}
+
+\begin{lstlisting}[style=swiftstyle]
+let analyzer = CognitiveAnalyzer()
+\end{lstlisting}
+
+\subsubsection{Key Methods}
+
+\begin{lstlisting}[style=swiftstyle]
+func analyze(_ assessment: CognitiveAssessment) -> CognitiveAnalysisReport
+\end{lstlisting}
+
+\subsection{CognitiveAssessment Model}
+
+\begin{lstlisting}[style=swiftstyle]
+struct CognitiveAssessment: Codable, Identifiable {
+    let id: UUID
+    var date: Date
+    var iq: IQAssessment?
+    var eq: EQAssessment?
+    var cq: CQAssessment?
+    var spatialReasoning: SpatialReasoningAssessment?
+    var temporalReasoning: TemporalReasoningAssessment?
+    var tacticalProblemSolving: TacticalProblemSolvingAssessment?
+    var strategicProblemSolving: StrategicProblemSolvingAssessment?
+    var psychicCapabilities: PsychicCapabilitiesAssessment?
+}
+\end{lstlisting}
+
+\subsubsection{Example Usage}
+
+\begin{lstlisting}[style=swiftstyle]
+// Create cognitive assessment
+var assessment = CognitiveAssessment(date: Date())
+
+// Add IQ assessment
+assessment.iq = IQAssessment(
+    fullScaleIQ: 115,
+    verbalIQ: 120,
+    performanceIQ: 110,
+    workingMemory: 118,
+    processingSpeed: 112
+)
+
+// Add to health data
+healthData.cognitiveAssessments.append(assessment)
+
+// Analyze
+let analyzer = CognitiveAnalyzer()
+let report = analyzer.analyze(assessment)
+
+// Access results
+print("Strengths: \(report.strengths)")
+print("Areas for improvement: \(report.areasForImprovement)")
+print("Recommendations: \(report.recommendations)")
+\end{lstlisting}
+
+\section{Sensory Health}
+
+\subsection{Hearing Health}
+
+\subsubsection{HearingPrescription}
 
 \begin{lstlisting}[style=swiftstyle]
 struct HearingPrescription: Codable {
@@ -70,33 +552,7 @@ struct HearingPrescription: Codable {
 }
 \end{lstlisting}
 
-\subsubsection{Example Usage}
-
-\begin{lstlisting}[style=swiftstyle]
-// Create a hearing prescription
-let prescription = HearingPrescription(
-    date: Date(),
-    expirationDate: Calendar.current.date(byAdding: .year, value: 1, to: Date()),
-    rightEar: HearingPrescription.EarPrescription(
-        hearingLossType: .sensorineural,
-        hearingLossSeverity: .mild
-    ),
-    leftEar: HearingPrescription.EarPrescription(
-        hearingLossType: .sensorineural,
-        hearingLossSeverity: .mild
-    ),
-    notes: "Regular monitoring recommended"
-)
-
-// Store in health data
-healthData.hearingPrescription = prescription
-\end{lstlisting}
-
-\subsection{DailyAudioHearingTest}
-
-The \texttt{DailyAudioHearingTest} model records daily self-administered hearing tests.
-
-\subsubsection{Structure}
+\subsubsection{DailyAudioHearingTest}
 
 \begin{lstlisting}[style=swiftstyle]
 struct DailyAudioHearingTest: Codable, Identifiable {
@@ -113,58 +569,7 @@ struct DailyAudioHearingTest: Codable, Identifiable {
 }
 \end{lstlisting}
 
-\subsubsection{Example Usage}
-
-\begin{lstlisting}[style=swiftstyle]
-// Create a quick hearing test
-var test = DailyAudioHearingTest(
-    date: Date(),
-    time: Date(),
-    testType: .quick,
-    device: .iphone,
-    environment: DailyAudioHearingTest.TestEnvironment(
-        backgroundNoise: .quiet,
-        roomAcoustics: .normal
-    )
-)
-
-// Add pure tone threshold for right ear
-test.rightEar.pureToneThresholds = [
-    DailyAudioHearingTest.EarTest.FrequencyThreshold(
-        frequency: 1000,  // Hz
-        threshold: 20.0,   // dB HL
-        ear: .right
-    ),
-    DailyAudioHearingTest.EarTest.FrequencyThreshold(
-        frequency: 2000,
-        threshold: 25.0,
-        ear: .right
-    )
-]
-
-// Check for tinnitus
-test.rightEar.tinnitusPresence = true
-test.rightEar.tinnitusSeverity = .mild
-
-// Add to health data
-healthData.dailyAudioHearingTests.append(test)
-\end{lstlisting}
-
-\subsubsection{Test Types}
-
-\begin{itemize}
-    \item \texttt{.pureTone}: Pure tone audiometry
-    \item \texttt{.speech}: Speech recognition test
-    \item \texttt{.word}: Word recognition test
-    \item \texttt{.comprehensive}: Full hearing assessment
-    \item \texttt{.quick}: Quick daily check
-\end{itemize}
-
-\subsection{MusicHearingSession}
-
-The \texttt{MusicHearingSession} model tracks music listening activities.
-
-\subsubsection{Structure}
+\subsubsection{MusicHearingSession}
 
 \begin{lstlisting}[style=swiftstyle]
 struct MusicHearingSession: Codable, Identifiable {
@@ -185,301 +590,337 @@ struct MusicHearingSession: Codable, Identifiable {
 }
 \end{lstlisting}
 
+\subsubsection{HearingAnalyzer}
+
+\begin{lstlisting}[style=swiftstyle]
+let analyzer = HearingAnalyzer()
+let report = analyzer.analyze(hearingData: healthData.hearingData)
+\end{lstlisting}
+
+\subsection{Vision Health}
+
+\subsubsection{VisionPrescription}
+
+\begin{lstlisting}[style=swiftstyle]
+struct VisionPrescription: Codable {
+    var date: Date
+    var expirationDate: Date?
+    var rightEye: EyePrescription
+    var leftEye: EyePrescription
+    var notes: String?
+}
+\end{lstlisting}
+
+\subsubsection{DailyVisionCheck}
+
+\begin{lstlisting}[style=swiftstyle]
+struct DailyVisionCheck: Codable, Identifiable {
+    let id: UUID
+    var date: Date
+    var time: Date
+    var rightEye: EyeCheck
+    var leftEye: EyeCheck
+    var bothEyes: BothEyesCheck
+    var testType: VisionTestType
+    var device: VisionTestDevice
+    var environment: VisionTestEnvironment
+    var notes: String?
+}
+\end{lstlisting}
+
+\subsection{Tactile Health}
+
+\subsubsection{TactilePrescription}
+
+\begin{lstlisting}[style=swiftstyle]
+struct TactilePrescription: Codable {
+    var date: Date
+    var expirationDate: Date?
+    var bodyParts: [BodyPartTactilePrescription]
+    var notes: String?
+}
+\end{lstlisting}
+
+\subsubsection{DailyTactileTest}
+
+\begin{lstlisting}[style=swiftstyle]
+struct DailyTactileTest: Codable, Identifiable {
+    let id: UUID
+    var date: Date
+    var time: Date
+    var bodyParts: [BodyPartTactileTest]
+    var testType: TactileTestType
+    var notes: String?
+}
+\end{lstlisting}
+
+\subsection{Tongue Health}
+
+\subsubsection{TonguePrescription}
+
+\begin{lstlisting}[style=swiftstyle]
+struct TonguePrescription: Codable {
+    var date: Date
+    var expirationDate: Date?
+    var appearance: TongueAppearance
+    var tasteSensitivity: TasteSensitivityAssessment
+    var mobility: TongueMobilityAssessment
+    var notes: String?
+}
+\end{lstlisting}
+
+\subsubsection{DailyTongueTest}
+
+\begin{lstlisting}[style=swiftstyle]
+struct DailyTongueTest: Codable, Identifiable {
+    let id: UUID
+    var date: Date
+    var time: Date
+    var appearance: TongueAppearance
+    var tasteSensitivity: TasteSensitivityTest
+    var mobility: TongueMobilityTest
+    var symptoms: [TongueSymptom]
+    var notes: String?
+}
+\end{lstlisting}
+
+\section{Time-Based Planning}
+
+\subsection{TimeBasedPlanner Class}
+
+Generates planning sessions for day/week/month.
+
+\subsubsection{Initialization}
+
+\begin{lstlisting}[style=swiftstyle]
+let planner = TimeBasedPlanner()
+\end{lstlisting}
+
+\subsubsection{Key Methods}
+
+\begin{lstlisting}[style=swiftstyle]
+// Generate day start planning session
+func generateDayStartSession(
+    for date: Date,
+    healthData: HealthData,
+    journalAnalysis: JournalAnalysisReport?
+) -> TimeBasedPlanningSession
+
+// Generate day end planning session
+func generateDayEndSession(
+    for date: Date,
+    healthData: HealthData,
+    journalAnalysis: JournalAnalysisReport?
+) -> TimeBasedPlanningSession
+
+// Generate week start planning session
+func generateWeekStartSession(
+    for date: Date,
+    healthData: HealthData,
+    journalAnalysis: JournalAnalysisReport?
+) -> TimeBasedPlanningSession
+
+// Generate week end planning session
+func generateWeekEndSession(
+    for date: Date,
+    healthData: HealthData,
+    journalAnalysis: JournalAnalysisReport?
+) -> TimeBasedPlanningSession
+
+// Generate month start planning session
+func generateMonthStartSession(
+    for date: Date,
+    healthData: HealthData,
+    journalAnalysis: JournalAnalysisReport?
+) -> TimeBasedPlanningSession
+
+// Generate month end planning session
+func generateMonthEndSession(
+    for date: Date,
+    healthData: HealthData,
+    journalAnalysis: JournalAnalysisReport?
+) -> TimeBasedPlanningSession
+\end{lstlisting}
+
 \subsubsection{Example Usage}
 
 \begin{lstlisting}[style=swiftstyle]
-// Create a music listening session
-let startTime = Date()
-let session = MusicHearingSession(
-    date: startTime,
-    startTime: startTime,
-    duration: 30.0,  // 30 minutes
-    musicType: .classical,
-    genre: "Baroque",
-    volumeLevel: .moderate,
-    device: .airpodsPro,
-    listeningMode: .active,
-    hearingProtection: false,
-    hearingFatigue: .none,
-    enjoyment: .high,
-    notes: "Morning listening session"
+let planner = TimeBasedPlanner()
+
+// Generate day start session
+let dayStart = planner.generateDayStartSession(
+    for: Date(),
+    healthData: healthData,
+    journalAnalysis: journalAnalysis
 )
 
-// Add to health data
-healthData.musicHearingSessions.append(session)
+// Access planning content
+print("Tasks: \(dayStart.tasks)")
+print("Priorities: \(dayStart.priorities)")
+print("Reflections: \(dayStart.reflections)")
+
+// Generate week start session
+let weekStart = planner.generateWeekStartSession(
+    for: Date(),
+    healthData: healthData,
+    journalAnalysis: journalAnalysis
+)
 \end{lstlisting}
 
-\subsubsection{Music Types}
+\section{Long-Term Planning}
 
-\begin{itemize}
-    \item \texttt{.classical}, \texttt{.jazz}, \texttt{.rock}, \texttt{.pop}
-    \item \texttt{.electronic}, \texttt{.world}, \texttt{.instrumental}
-    \item \texttt{.vocal}, \texttt{.therapeutic}, \texttt{.binaural}
-    \item \texttt{.nature}, \texttt{.meditation}, \texttt{.other}
-\end{itemize}
+\subsection{LongTermPlanner Class}
 
-\subsubsection{Listening Modes}
+Generates transformation plans.
 
-\begin{itemize}
-    \item \texttt{.active}: Focused, attentive listening
-    \item \texttt{.background}: Background music
-    \item \texttt{.focused}: Deep concentration
-    \item \texttt{.therapeutic}: Therapeutic/healing focus
-    \item \texttt{.exercise}: During physical activity
-    \item \texttt{.relaxation}: For relaxation
-\end{itemize}
-
-\section{Integration with HealthData}
-
-\subsection{Adding Hearing Data}
+\subsubsection{Initialization}
 
 \begin{lstlisting}[style=swiftstyle]
-// Initialize health data
-var healthData = HealthData(
-    age: 30,
-    gender: .male,
-    weight: 75.0,
-    height: 175.0,
-    activityLevel: .moderate
+let planner = LongTermPlanner()
+\end{lstlisting}
+
+\subsubsection{Key Methods}
+
+\begin{lstlisting}[style=swiftstyle]
+// Generate long-term plan
+func generatePlan(
+    duration: PlanDuration,
+    difficulty: PlanDifficulty,
+    healthData: HealthData,
+    goals: TransformationGoals
+) -> LongTermPlan
+\end{lstlisting}
+
+\subsubsection{PlanDuration}
+
+\begin{lstlisting}[style=swiftstyle]
+enum PlanDuration: String, Codable {
+    case threeMonths = "3 Months"
+    case sixMonths = "6 Months"
+    case oneYear = "1 Year"
+    case twoYears = "2 Years"
+    case fiveYears = "5 Years"
+    case tenYears = "10 Years"
+}
+\end{lstlisting}
+
+\subsubsection{PlanDifficulty}
+
+\begin{lstlisting}[style=swiftstyle]
+enum PlanDifficulty: String, Codable {
+    case gentle = "Gentle"
+    case moderate = "Moderate"
+    case aggressive = "Aggressive"
+    case extreme = "Extreme"
+}
+\end{lstlisting}
+
+\subsubsection{Example Usage}
+
+\begin{lstlisting}[style=swiftstyle]
+let planner = LongTermPlanner()
+
+let goals = TransformationGoals(
+    weightGoal: 70.0,
+    muscleMassGoal: 20.0,
+    cardiovascularGoal: .improve,
+    mentalHealthGoal: .improve
 )
 
-// Add hearing prescription
-healthData.hearingPrescription = HearingPrescription(...)
-
-// Add daily tests
-healthData.dailyAudioHearingTests.append(DailyAudioHearingTest(...))
-
-// Add music sessions
-healthData.musicHearingSessions.append(MusicHearingSession(...))
-\end{lstlisting}
-
-\subsection{Accessing Hearing Data}
-
-\begin{lstlisting}[style=swiftstyle]
-// Get latest hearing test
-if let latestTest = healthData.dailyAudioHearingTests.last {
-    print("Latest test date: \(latestTest.date)")
-    if let threshold = latestTest.rightEar.pureToneThresholds?.first?.threshold {
-        print("Right ear threshold: \(threshold) dB HL")
-    }
-}
-
-// Get recent music sessions
-let recentSessions = healthData.musicHearingSessions.filter { session in
-    Calendar.current.dateInterval(of: .weekOfYear, for: Date())?
-        .contains(session.date) ?? false
-}
-print("Sessions this week: \(recentSessions.count)")
-
-// Calculate average session duration
-let avgDuration = healthData.musicHearingSessions
-    .map { $0.duration }
-    .reduce(0, +) / Double(max(1, healthData.musicHearingSessions.count))
-print("Average duration: \(avgDuration) minutes")
-\end{lstlisting}
-
-\section{Exercise Planner Integration}
-
-\subsection{Generating Weekly Plans}
-
-\begin{lstlisting}[style=swiftstyle]
-// Create exercise planner
-let planner = ExercisePlanner()
-
-// Define exercise goals
-let goals = ExerciseGoals(
-    weeklyCardioMinutes: 150,
-    weeklyStrengthSessions: 2,
-    weeklyFlexibilityMinutes: 60,
-    weeklyMindBodyMinutes: 120
+let plan = planner.generatePlan(
+    duration: .oneYear,
+    difficulty: .moderate,
+    healthData: healthData,
+    goals: goals
 )
 
-// Generate weekly plan with hearing activities
-let plan = planner.generateWeeklyPlan(for: healthData, goals: goals)
-
-// Access hearing-related activities
-for dayPlan in plan.weeklyPlan {
-    let hearingActivities = dayPlan.activities.filter { activity in
-        activity.activity.name.contains("Music") ||
-        activity.activity.name.contains("Hearing") ||
-        activity.activity.name.contains("Binaural") ||
-        activity.activity.name.contains("Nature Sounds")
-    }
-    
-    if !hearingActivities.isEmpty {
-        print("Day \(dayPlan.dayOfWeek) has \(hearingActivities.count) hearing activities")
-    }
+// Access plan
+print("Plan duration: \(plan.duration)")
+print("Phases: \(plan.phases.count)")
+for phase in plan.phases {
+    print("Phase: \(phase.name)")
+    print("Duration: \(phase.duration) days")
 }
 \end{lstlisting}
 
-\subsection{Getting Recommendations}
+\section{Journal Analysis}
+
+\subsection{JournalAnalyzer Class}
+
+Analyzes journal entries.
+
+\subsubsection{Initialization}
 
 \begin{lstlisting}[style=swiftstyle]
-// Get exercise recommendations based on hearing data
-let recommendations = planner.recommendExercises(
-    for: healthData,
-    dayOfWeek: 0  // Sunday
+let analyzer = JournalAnalyzer()
+\end{lstlisting}
+
+\subsubsection{Key Methods}
+
+\begin{lstlisting}[style=swiftstyle]
+// Analyze journal collection
+func analyze(_ journalCollection: JournalCollection) -> JournalAnalysisReport
+\end{lstlisting}
+
+\subsubsection{Example Usage}
+
+\begin{lstlisting}[style=swiftstyle]
+// Add journal entry
+var entry = JournalEntry(
+    date: Date(),
+    type: .unstructured,
+    content: "Feeling great today after morning workout"
 )
+healthData.journalCollection.entries.append(entry)
 
-// Filter hearing-related recommendations
-let hearingRecommendations = recommendations.filter { activity in
-    activity.name.contains("Music") ||
-    activity.name.contains("Hearing") ||
-    activity.name.contains("Binaural") ||
-    activity.name.contains("Nature Sounds")
-}
+// Analyze
+let analyzer = JournalAnalyzer()
+let report = analyzer.analyze(healthData.journalCollection)
 
-// Display recommendations
-for activity in hearingRecommendations {
-    print("Recommended: \(activity.name)")
-    print("Benefits: \(activity.benefits.joined(separator: ", "))")
-}
+// Access insights
+print("Themes: \(report.themes)")
+print("Emotional trends: \(report.emotionalTrends)")
+print("Insights: \(report.insights)")
 \end{lstlisting}
 
-\subsection{Focus Areas}
+\section{Generators}
+
+\subsection{RecipeGenerator}
+
+Generates cooking instructions.
 
 \begin{lstlisting}[style=swiftstyle]
-// Generate plan to see focus areas
-let plan = planner.generateWeeklyPlan(for: healthData, goals: goals)
-
-// Check for hearing-related focus areas
-let hearingFocusAreas = plan.focusAreas.filter { area in
-    area.contains("Hearing") || area.contains("Music")
-}
-
-if !hearingFocusAreas.isEmpty {
-    print("Hearing focus areas:")
-    for area in hearingFocusAreas {
-        print("  - \(area)")
-    }
-}
+let recipe = RecipeGenerator.generateRecipe(for: meal)
+print(recipe.instructions)
 \end{lstlisting}
 
-\section{Exercise Database}
+\subsection{NutritionFactsGenerator}
 
-\subsection{Accessing Hearing Activities}
+Generates nutrition labels.
 
 \begin{lstlisting}[style=swiftstyle]
-// Get exercise database
-let database = ExerciseDatabase.shared
-
-// Find all hearing-related activities
-let hearingActivities = database.activities.filter { activity in
-    activity.name.contains("Music") ||
-    activity.name.contains("Hearing") ||
-    activity.name.contains("Binaural") ||
-    activity.name.contains("Nature Sounds") ||
-    activity.name.contains("Audio Book")
-}
-
-// Display available activities
-for activity in hearingActivities {
-    print("\(activity.name):")
-    print("  Category: \(activity.category)")
-    print("  Intensity: \(activity.intensity)")
-    print("  Benefits: \(activity.benefits.joined(separator: ", "))")
-}
+let facts = NutritionFactsGenerator.generateNutritionFacts(
+    for: dietPlan,
+    requirements: healthData.adjustedNutrientRequirements()
+)
+print(facts.label)
 \end{lstlisting}
 
-\subsection{Available Hearing Activities}
+\subsection{SongGenerator}
 
-\begin{itemize}
-    \item \textbf{Music Listening Session}: General music listening for hearing health
-    \item \textbf{Active Music Listening}: Focused, attentive music listening
-    \item \textbf{Hearing Exercise}: Specific exercises for hearing health
-    \item \textbf{Nature Sounds Therapy}: Therapeutic nature sounds
-    \item \textbf{Binaural Beats Session}: Binaural beats for focus and meditation
-    \item \textbf{Audio Book Listening}: Educational audio content
-\end{itemize}
-
-\section{Best Practices}
-
-\subsection{Regular Testing}
+Generates songs about meals.
 
 \begin{lstlisting}[style=swiftstyle]
-// Perform daily hearing test
-func performDailyHearingTest() {
-    let test = DailyAudioHearingTest(
-        date: Date(),
-        testType: .quick,
-        device: .iphone,
-        environment: DailyAudioHearingTest.TestEnvironment(
-            backgroundNoise: .quiet,
-            roomAcoustics: .normal
-        )
-    )
-    
-    // Add test results
-    // ... configure test results ...
-    
-    healthData.dailyAudioHearingTests.append(test)
-}
-\end{lstlisting}
-
-\subsection{Music Session Tracking}
-
-\begin{lstlisting}[style=swiftstyle]
-// Track music listening session
-func trackMusicSession(
-    duration: Double,
-    musicType: MusicHearingSession.MusicType,
-    volumeLevel: MusicHearingSession.VolumeLevel
-) {
-    let session = MusicHearingSession(
-        date: Date(),
-        startTime: Date(),
-        duration: duration,
-        musicType: musicType,
-        volumeLevel: volumeLevel,
-        device: .airpodsPro,
-        listeningMode: .active,
-        hearingProtection: false
-    )
-    
-    healthData.musicHearingSessions.append(session)
-}
-\end{lstlisting}
-
-\subsection{Monitoring Hearing Health}
-
-\begin{lstlisting}[style=swiftstyle]
-// Monitor hearing health trends
-func analyzeHearingHealth() {
-    // Check test frequency
-    let recentTests = healthData.dailyAudioHearingTests.filter { test in
-        Calendar.current.dateInterval(of: .weekOfYear, for: Date())?
-            .contains(test.date) ?? false
-    }
-    
-    if recentTests.count < 3 {
-        print("Warning: Low test frequency. Consider daily tests.")
-    }
-    
-    // Check for hearing loss indicators
-    if let latestTest = healthData.dailyAudioHearingTests.last {
-        if let threshold = latestTest.rightEar.pureToneThresholds?.first?.threshold {
-            if threshold > 25 {
-                print("Warning: Possible hearing loss detected (\(threshold) dB HL)")
-            }
-        }
-    }
-    
-    // Check for tinnitus
-    if let latestTest = healthData.dailyAudioHearingTests.last {
-        if latestTest.rightEar.tinnitusPresence == true ||
-           latestTest.leftEar.tinnitusPresence == true {
-            print("Tinnitus detected. Consider therapeutic activities.")
-        }
-    }
-}
+let song = SongGenerator.generateSong(for: dietPlan)
+print(song.lyrics)
 \end{lstlisting}
 
 \section{Data Persistence}
 
-\subsection{Encoding and Decoding}
+\subsection{Encoding}
 
 \begin{lstlisting}[style=swiftstyle]
-// Encode health data with hearing information
+// Encode health data
 func saveHealthData(_ healthData: HealthData) throws {
     let encoder = JSONEncoder()
     encoder.dateEncodingStrategy = .iso8601
@@ -488,7 +929,11 @@ func saveHealthData(_ healthData: HealthData) throws {
     let data = try encoder.encode(healthData)
     try data.write(to: fileURL)
 }
+\end{lstlisting}
 
+\subsection{Decoding}
+
+\begin{lstlisting}[style=swiftstyle]
 // Decode health data
 func loadHealthData() throws -> HealthData {
     let data = try Data(contentsOf: fileURL)
@@ -499,109 +944,197 @@ func loadHealthData() throws -> HealthData {
 }
 \end{lstlisting}
 
-\section{Troubleshooting}
+\section{Calendar Integration}
 
-\subsection{Common Issues}
+\subsection{CalendarScheduler}
 
-\subsubsection{Missing Hearing Activities}
+Manages calendar event creation.
 
-If hearing activities don't appear in recommendations:
-
-\begin{lstlisting}[style=swiftstyle]
-// Verify activities exist in database
-let database = ExerciseDatabase.shared
-let musicActivity = database.activities.first { $0.name == "Music Listening Session" }
-assert(musicActivity != nil, "Music Listening Session should exist")
-\end{lstlisting}
-
-\subsubsection{Recommendations Not Appearing}
-
-If recommendations don't match expected behavior:
+\subsubsection{Initialization}
 
 \begin{lstlisting}[style=swiftstyle]
-// Check health data has hearing information
-if healthData.dailyAudioHearingTests.isEmpty {
-    print("No hearing tests found. Recommendations may be limited.")
-}
-
-// Verify planner is using latest health data
-let recommendations = planner.recommendExercises(
-    for: healthData,
-    dayOfWeek: 0
-)
-print("Recommendations count: \(recommendations.count)")
+let scheduler = CalendarScheduler()
 \end{lstlisting}
+
+\subsubsection{Key Methods}
+
+\begin{lstlisting}[style=swiftstyle]
+// Request calendar access
+func requestCalendarAccess() async -> Bool
+
+// Create calendar event
+func createEvent(
+    title: String,
+    startDate: Date,
+    endDate: Date,
+    notes: String?
+) throws -> EKEvent
+
+// Schedule planning session
+func schedulePlanningSession(_ session: TimeBasedPlanningSession) throws
+\end{lstlisting}
+
+\section{Best Practices}
+
+\subsection{Health Data Management}
+
+\begin{itemize}
+    \item Always validate health data before optimization
+    \item Update medical tests regularly for accurate recommendations
+    \item Maintain complete exercise logs for better planning
+    \item Track sensory health consistently for trend analysis
+\end{itemize}
+
+\subsection{Optimization}
+
+\begin{itemize}
+    \item Use appropriate season for food availability
+    \item Review nutrient requirements after medical test updates
+    \item Adjust exercise goals based on progress
+    \item Consider all health factors in planning
+\end{itemize}
+
+\subsection{Data Persistence}
+
+\begin{itemize}
+    \item Save health data regularly
+    \item Use ISO8601 date encoding for compatibility
+    \item Validate data after loading
+    \item Handle encoding/decoding errors gracefully
+\end{itemize}
 
 \section{API Reference Summary}
 
-\subsection{Key Types}
+\subsection{Core Classes}
 
-\begin{itemize}
-    \item \texttt{HearingPrescription}: Professional hearing assessment
-    \item \texttt{DailyAudioHearingTest}: Daily self-administered test
-    \item \texttt{MusicHearingSession}: Music listening activity
-    \item \texttt{HearingHealthSummary}: Summary of hearing health
-    \item \texttt{HearingAnalysisReport}: Comprehensive analysis report
-\end{itemize}
+\begin{longtable}{p{0.3\textwidth}p{0.65\textwidth}}
+\toprule
+\textbf{Class} & \textbf{Purpose} \\
+\midrule
+\texttt{DietSolver} & Diet optimization engine \\
+\texttt{ExercisePlanner} & Exercise plan generation \\
+\texttt{MedicalAnalyzer} & Medical test analysis \\
+\texttt{CognitiveAnalyzer} & Cognitive assessment analysis \\
+\texttt{HearingAnalyzer} & Hearing health analysis \\
+\texttt{VisionAnalyzer} & Vision health analysis \\
+\texttt{TactileAnalyzer} & Tactile health analysis \\
+\texttt{TongueAnalyzer} & Tongue health analysis \\
+\texttt{SleepAnalyzer} & Sleep pattern analysis \\
+\texttt{JournalAnalyzer} & Journal entry analysis \\
+\texttt{TimeBasedPlanner} & Planning session generation \\
+\texttt{LongTermPlanner} & Transformation plan generation \\
+\texttt{CalendarScheduler} & Calendar event management \\
+\bottomrule
+\end{longtable}
 
-\subsection{Key Methods}
+\subsection{Key Data Models}
 
-\begin{itemize}
-    \item \texttt{ExercisePlanner.generateWeeklyPlan(for:goals:)}: Generate weekly plan
-    \item \texttt{ExercisePlanner.recommendExercises(for:dayOfWeek:)}: Get recommendations
-    \item \texttt{ExerciseDatabase.shared}: Access exercise database
-\end{itemize}
+\begin{longtable}{p{0.3\textwidth}p{0.65\textwidth}}
+\toprule
+\textbf{Model} & \textbf{Purpose} \\
+\midrule
+\texttt{HealthData} & Central health repository \\
+\texttt{Food} & Food database entry \\
+\texttt{NutrientContent} & Nutrient information \\
+\texttt{DailyDietPlan} & Optimized meal plan \\
+\texttt{ExercisePlan} & Weekly exercise plan \\
+\texttt{MedicalTestCollection} & Medical test data \\
+\texttt{CognitiveAssessment} & Cognitive test results \\
+\texttt{HearingData} & Hearing health data \\
+\texttt{VisionData} & Vision health data \\
+\texttt{TactileData} & Tactile health data \\
+\texttt{TongueData} & Tongue health data \\
+\texttt{TimeBasedPlanningSession} & Planning session data \\
+\texttt{LongTermPlan} & Transformation plan \\
+\texttt{JournalCollection} & Journal entries \\
+\bottomrule
+\end{longtable}
 
-\section{Examples}
-
-\subsection{Complete Workflow}
+\section{Complete Workflow Example}
 
 \begin{lstlisting}[style=swiftstyle]
 // 1. Initialize health data
 var healthData = HealthData(
-    age: 30,
+    age: 35,
     gender: .male,
     weight: 75.0,
     height: 175.0,
     activityLevel: .moderate
 )
 
-// 2. Perform daily hearing test
-let test = DailyAudioHearingTest(
-    date: Date(),
-    testType: .quick,
-    device: .iphone
-)
-healthData.dailyAudioHearingTests.append(test)
+// 2. Add medical test
+var bloodTest = BloodTest(date: Date(), testType: .comprehensive, bloodSource: .venous)
+bloodTest.cbc = CBCResults(hemoglobin: 14.5, ...)
+healthData.medicalTests.bloodTests.append(bloodTest)
 
-// 3. Track music session
-let session = MusicHearingSession(
-    date: Date(),
-    duration: 30.0,
-    musicType: .classical,
-    volumeLevel: .moderate
-)
-healthData.musicHearingSessions.append(session)
+// 3. Analyze medical tests
+let medicalAnalyzer = MedicalAnalyzer()
+healthData.medicalAnalysis = medicalAnalyzer.analyze(medicalTests: healthData.medicalTests)
 
-// 4. Generate exercise plan
-let planner = ExercisePlanner()
+// 4. Solve diet
+let solver = DietSolver()
+let dietPlan = solver.solve(healthData: healthData, season: .spring)
+
+// 5. Generate exercise plan
+let exercisePlanner = ExercisePlanner()
 let goals = ExerciseGoals()
-let plan = planner.generateWeeklyPlan(for: healthData, goals: goals)
+let exercisePlan = exercisePlanner.generateWeeklyPlan(for: healthData, goals: goals)
 
-// 5. Get recommendations
-let recommendations = planner.recommendExercises(
-    for: healthData,
-    dayOfWeek: 0
+// 6. Generate planning session
+let timePlanner = TimeBasedPlanner()
+let dayStart = timePlanner.generateDayStartSession(
+    for: Date(),
+    healthData: healthData,
+    journalAnalysis: nil
 )
 
-// 6. Display results
-print("Weekly plan has \(plan.weeklyPlan.count) days")
-print("Focus areas: \(plan.focusAreas.joined(separator: ", "))")
-print("Recommendations: \(recommendations.count) activities")
+// 7. Generate long-term plan
+let longTermPlanner = LongTermPlanner()
+let transformationGoals = TransformationGoals(...)
+let longTermPlan = longTermPlanner.generatePlan(
+    duration: .oneYear,
+    difficulty: .moderate,
+    healthData: healthData,
+    goals: transformationGoals
+)
+
+// 8. Save data
+let encoder = JSONEncoder()
+encoder.dateEncodingStrategy = .iso8601
+let data = try encoder.encode(healthData)
+try data.write(to: fileURL)
 \end{lstlisting}
+
+\section{Troubleshooting}
+
+\subsection{Common Issues}
+
+\subsubsection{Diet Optimization Fails}
+
+\begin{itemize}
+    \item Check that health data has valid age, weight, height
+    \item Ensure season is appropriate for food availability
+    \item Verify nutrient requirements are reasonable
+\end{itemize}
+
+\subsubsection{Exercise Recommendations Missing}
+
+\begin{itemize}
+    \item Verify exercise goals are set
+    \item Check that health data includes necessary information
+    \item Ensure exercise database is properly initialized
+\end{itemize}
+
+\subsubsection{Medical Analysis Errors}
+
+\begin{itemize}
+    \item Validate medical test data format
+    \item Check that test results are within expected ranges
+    \item Ensure test dates are valid
+\end{itemize}
 
 \section{Conclusion}
 
-This reference manual provides comprehensive documentation for working with hearing health integration in the Diet Solver system. For additional information, refer to the complete paper and source code documentation.
+This reference manual provides comprehensive documentation for the Health and Wellness Lifestyle Solver system. For additional information, refer to the complete paper and source code documentation.
 
 \end{document}

@@ -203,6 +203,7 @@ struct ModernInputField: View {
     var keyboardType: UIKeyboardType = .default
     #endif
     var unit: String? = nil
+    var placeholder: String = ""
     
     var body: some View {
         VStack(alignment: .leading, spacing: AppDesign.Spacing.xs) {
@@ -217,12 +218,12 @@ struct ModernInputField: View {
             
             HStack {
                 #if os(iOS)
-                TextField("", text: $value)
+                TextField(placeholder, text: $value)
                     .keyboardType(keyboardType)
                     .font(AppDesign.Typography.title2)
                     .foregroundColor(AppDesign.Colors.textPrimary)
                 #else
-                TextField("", text: $value)
+                TextField(placeholder, text: $value)
                     .font(AppDesign.Typography.title2)
                     .foregroundColor(AppDesign.Colors.textPrimary)
                 #endif

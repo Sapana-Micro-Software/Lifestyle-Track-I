@@ -9,7 +9,7 @@ import SwiftUI
 
 // MARK: - iPadOS Specific Views
 struct iPadOSContentView: View {
-    @StateObject private var controller = DietSolverController()
+    @EnvironmentObject var controller: DietSolverController
     @State private var selectedSidebar: SidebarItem? = .home
     
     enum SidebarItem: String, CaseIterable, Identifiable {

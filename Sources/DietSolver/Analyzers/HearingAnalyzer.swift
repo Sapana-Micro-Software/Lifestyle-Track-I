@@ -141,7 +141,7 @@ class HearingAnalyzer {
         }
         
         // Analyze fatigue patterns
-        let fatigueSessions = sessions.filter { $0.hearingFatigue != nil && $0.hearingFatigue != .none }
+        let fatigueSessions = sessions.filter { $0.hearingFatigue.map { $0 != .none } ?? false }
         if !fatigueSessions.isEmpty {
             patterns.fatiguePatterns = "Fatigue reported in \(fatigueSessions.count) sessions"
         }
