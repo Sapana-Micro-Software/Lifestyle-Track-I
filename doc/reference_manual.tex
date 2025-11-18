@@ -1,0 +1,607 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{geometry}
+\usepackage{fancyvrb}
+\geometry{margin=1in}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{swiftstyle}{
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2,
+    language=Swift
+}
+
+\title{Diet Solver Hearing Health Integration\\
+Reference Manual}
+\author{Shyamal Chandra}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+\newpage
+
+\section{Introduction}
+
+This reference manual provides comprehensive documentation for the hearing health integration in the Diet Solver system. It includes API references, usage examples, and best practices for working with hearing data models and exercise recommendations.
+
+\section{Data Models}
+
+\subsection{HearingPrescription}
+
+The \texttt{HearingPrescription} model represents professional hearing assessments.
+
+\subsubsection{Structure}
+
+\begin{lstlisting}[style=swiftstyle]
+struct HearingPrescription: Codable {
+    var date: Date
+    var expirationDate: Date?
+    var rightEar: EarPrescription
+    var leftEar: EarPrescription
+    var hearingAidSettings: HearingAidSettings?
+    var notes: String?
+}
+\end{lstlisting}
+
+\subsubsection{Example Usage}
+
+\begin{lstlisting}[style=swiftstyle]
+// Create a hearing prescription
+let prescription = HearingPrescription(
+    date: Date(),
+    expirationDate: Calendar.current.date(byAdding: .year, value: 1, to: Date()),
+    rightEar: HearingPrescription.EarPrescription(
+        hearingLossType: .sensorineural,
+        hearingLossSeverity: .mild
+    ),
+    leftEar: HearingPrescription.EarPrescription(
+        hearingLossType: .sensorineural,
+        hearingLossSeverity: .mild
+    ),
+    notes: "Regular monitoring recommended"
+)
+
+// Store in health data
+healthData.hearingPrescription = prescription
+\end{lstlisting}
+
+\subsection{DailyAudioHearingTest}
+
+The \texttt{DailyAudioHearingTest} model records daily self-administered hearing tests.
+
+\subsubsection{Structure}
+
+\begin{lstlisting}[style=swiftstyle]
+struct DailyAudioHearingTest: Codable, Identifiable {
+    let id: UUID
+    var date: Date
+    var time: Date
+    var rightEar: EarTest
+    var leftEar: EarTest
+    var bothEars: BothEarsTest
+    var testType: TestType
+    var device: TestDevice
+    var environment: TestEnvironment
+    var notes: String?
+}
+\end{lstlisting}
+
+\subsubsection{Example Usage}
+
+\begin{lstlisting}[style=swiftstyle]
+// Create a quick hearing test
+var test = DailyAudioHearingTest(
+    date: Date(),
+    time: Date(),
+    testType: .quick,
+    device: .iphone,
+    environment: DailyAudioHearingTest.TestEnvironment(
+        backgroundNoise: .quiet,
+        roomAcoustics: .normal
+    )
+)
+
+// Add pure tone threshold for right ear
+test.rightEar.pureToneThresholds = [
+    DailyAudioHearingTest.EarTest.FrequencyThreshold(
+        frequency: 1000,  // Hz
+        threshold: 20.0,   // dB HL
+        ear: .right
+    ),
+    DailyAudioHearingTest.EarTest.FrequencyThreshold(
+        frequency: 2000,
+        threshold: 25.0,
+        ear: .right
+    )
+]
+
+// Check for tinnitus
+test.rightEar.tinnitusPresence = true
+test.rightEar.tinnitusSeverity = .mild
+
+// Add to health data
+healthData.dailyAudioHearingTests.append(test)
+\end{lstlisting}
+
+\subsubsection{Test Types}
+
+\begin{itemize}
+    \item \texttt{.pureTone}: Pure tone audiometry
+    \item \texttt{.speech}: Speech recognition test
+    \item \texttt{.word}: Word recognition test
+    \item \texttt{.comprehensive}: Full hearing assessment
+    \item \texttt{.quick}: Quick daily check
+\end{itemize}
+
+\subsection{MusicHearingSession}
+
+The \texttt{MusicHearingSession} model tracks music listening activities.
+
+\subsubsection{Structure}
+
+\begin{lstlisting}[style=swiftstyle]
+struct MusicHearingSession: Codable, Identifiable {
+    let id: UUID
+    var date: Date
+    var startTime: Date
+    var endTime: Date?
+    var duration: Double  // minutes
+    var musicType: MusicType
+    var genre: String?
+    var volumeLevel: VolumeLevel
+    var device: MusicDevice
+    var listeningMode: ListeningMode
+    var hearingProtection: Bool
+    var hearingFatigue: HearingFatigueLevel?
+    var enjoyment: EnjoymentLevel
+    var notes: String?
+}
+\end{lstlisting}
+
+\subsubsection{Example Usage}
+
+\begin{lstlisting}[style=swiftstyle]
+// Create a music listening session
+let startTime = Date()
+let session = MusicHearingSession(
+    date: startTime,
+    startTime: startTime,
+    duration: 30.0,  // 30 minutes
+    musicType: .classical,
+    genre: "Baroque",
+    volumeLevel: .moderate,
+    device: .airpodsPro,
+    listeningMode: .active,
+    hearingProtection: false,
+    hearingFatigue: .none,
+    enjoyment: .high,
+    notes: "Morning listening session"
+)
+
+// Add to health data
+healthData.musicHearingSessions.append(session)
+\end{lstlisting}
+
+\subsubsection{Music Types}
+
+\begin{itemize}
+    \item \texttt{.classical}, \texttt{.jazz}, \texttt{.rock}, \texttt{.pop}
+    \item \texttt{.electronic}, \texttt{.world}, \texttt{.instrumental}
+    \item \texttt{.vocal}, \texttt{.therapeutic}, \texttt{.binaural}
+    \item \texttt{.nature}, \texttt{.meditation}, \texttt{.other}
+\end{itemize}
+
+\subsubsection{Listening Modes}
+
+\begin{itemize}
+    \item \texttt{.active}: Focused, attentive listening
+    \item \texttt{.background}: Background music
+    \item \texttt{.focused}: Deep concentration
+    \item \texttt{.therapeutic}: Therapeutic/healing focus
+    \item \texttt{.exercise}: During physical activity
+    \item \texttt{.relaxation}: For relaxation
+\end{itemize}
+
+\section{Integration with HealthData}
+
+\subsection{Adding Hearing Data}
+
+\begin{lstlisting}[style=swiftstyle]
+// Initialize health data
+var healthData = HealthData(
+    age: 30,
+    gender: .male,
+    weight: 75.0,
+    height: 175.0,
+    activityLevel: .moderate
+)
+
+// Add hearing prescription
+healthData.hearingPrescription = HearingPrescription(...)
+
+// Add daily tests
+healthData.dailyAudioHearingTests.append(DailyAudioHearingTest(...))
+
+// Add music sessions
+healthData.musicHearingSessions.append(MusicHearingSession(...))
+\end{lstlisting}
+
+\subsection{Accessing Hearing Data}
+
+\begin{lstlisting}[style=swiftstyle]
+// Get latest hearing test
+if let latestTest = healthData.dailyAudioHearingTests.last {
+    print("Latest test date: \(latestTest.date)")
+    if let threshold = latestTest.rightEar.pureToneThresholds?.first?.threshold {
+        print("Right ear threshold: \(threshold) dB HL")
+    }
+}
+
+// Get recent music sessions
+let recentSessions = healthData.musicHearingSessions.filter { session in
+    Calendar.current.dateInterval(of: .weekOfYear, for: Date())?
+        .contains(session.date) ?? false
+}
+print("Sessions this week: \(recentSessions.count)")
+
+// Calculate average session duration
+let avgDuration = healthData.musicHearingSessions
+    .map { $0.duration }
+    .reduce(0, +) / Double(max(1, healthData.musicHearingSessions.count))
+print("Average duration: \(avgDuration) minutes")
+\end{lstlisting}
+
+\section{Exercise Planner Integration}
+
+\subsection{Generating Weekly Plans}
+
+\begin{lstlisting}[style=swiftstyle]
+// Create exercise planner
+let planner = ExercisePlanner()
+
+// Define exercise goals
+let goals = ExerciseGoals(
+    weeklyCardioMinutes: 150,
+    weeklyStrengthSessions: 2,
+    weeklyFlexibilityMinutes: 60,
+    weeklyMindBodyMinutes: 120
+)
+
+// Generate weekly plan with hearing activities
+let plan = planner.generateWeeklyPlan(for: healthData, goals: goals)
+
+// Access hearing-related activities
+for dayPlan in plan.weeklyPlan {
+    let hearingActivities = dayPlan.activities.filter { activity in
+        activity.activity.name.contains("Music") ||
+        activity.activity.name.contains("Hearing") ||
+        activity.activity.name.contains("Binaural") ||
+        activity.activity.name.contains("Nature Sounds")
+    }
+    
+    if !hearingActivities.isEmpty {
+        print("Day \(dayPlan.dayOfWeek) has \(hearingActivities.count) hearing activities")
+    }
+}
+\end{lstlisting}
+
+\subsection{Getting Recommendations}
+
+\begin{lstlisting}[style=swiftstyle]
+// Get exercise recommendations based on hearing data
+let recommendations = planner.recommendExercises(
+    for: healthData,
+    dayOfWeek: 0  // Sunday
+)
+
+// Filter hearing-related recommendations
+let hearingRecommendations = recommendations.filter { activity in
+    activity.name.contains("Music") ||
+    activity.name.contains("Hearing") ||
+    activity.name.contains("Binaural") ||
+    activity.name.contains("Nature Sounds")
+}
+
+// Display recommendations
+for activity in hearingRecommendations {
+    print("Recommended: \(activity.name)")
+    print("Benefits: \(activity.benefits.joined(separator: ", "))")
+}
+\end{lstlisting}
+
+\subsection{Focus Areas}
+
+\begin{lstlisting}[style=swiftstyle]
+// Generate plan to see focus areas
+let plan = planner.generateWeeklyPlan(for: healthData, goals: goals)
+
+// Check for hearing-related focus areas
+let hearingFocusAreas = plan.focusAreas.filter { area in
+    area.contains("Hearing") || area.contains("Music")
+}
+
+if !hearingFocusAreas.isEmpty {
+    print("Hearing focus areas:")
+    for area in hearingFocusAreas {
+        print("  - \(area)")
+    }
+}
+\end{lstlisting}
+
+\section{Exercise Database}
+
+\subsection{Accessing Hearing Activities}
+
+\begin{lstlisting}[style=swiftstyle]
+// Get exercise database
+let database = ExerciseDatabase.shared
+
+// Find all hearing-related activities
+let hearingActivities = database.activities.filter { activity in
+    activity.name.contains("Music") ||
+    activity.name.contains("Hearing") ||
+    activity.name.contains("Binaural") ||
+    activity.name.contains("Nature Sounds") ||
+    activity.name.contains("Audio Book")
+}
+
+// Display available activities
+for activity in hearingActivities {
+    print("\(activity.name):")
+    print("  Category: \(activity.category)")
+    print("  Intensity: \(activity.intensity)")
+    print("  Benefits: \(activity.benefits.joined(separator: ", "))")
+}
+\end{lstlisting}
+
+\subsection{Available Hearing Activities}
+
+\begin{itemize}
+    \item \textbf{Music Listening Session}: General music listening for hearing health
+    \item \textbf{Active Music Listening}: Focused, attentive music listening
+    \item \textbf{Hearing Exercise}: Specific exercises for hearing health
+    \item \textbf{Nature Sounds Therapy}: Therapeutic nature sounds
+    \item \textbf{Binaural Beats Session}: Binaural beats for focus and meditation
+    \item \textbf{Audio Book Listening}: Educational audio content
+\end{itemize}
+
+\section{Best Practices}
+
+\subsection{Regular Testing}
+
+\begin{lstlisting}[style=swiftstyle]
+// Perform daily hearing test
+func performDailyHearingTest() {
+    let test = DailyAudioHearingTest(
+        date: Date(),
+        testType: .quick,
+        device: .iphone,
+        environment: DailyAudioHearingTest.TestEnvironment(
+            backgroundNoise: .quiet,
+            roomAcoustics: .normal
+        )
+    )
+    
+    // Add test results
+    // ... configure test results ...
+    
+    healthData.dailyAudioHearingTests.append(test)
+}
+\end{lstlisting}
+
+\subsection{Music Session Tracking}
+
+\begin{lstlisting}[style=swiftstyle]
+// Track music listening session
+func trackMusicSession(
+    duration: Double,
+    musicType: MusicHearingSession.MusicType,
+    volumeLevel: MusicHearingSession.VolumeLevel
+) {
+    let session = MusicHearingSession(
+        date: Date(),
+        startTime: Date(),
+        duration: duration,
+        musicType: musicType,
+        volumeLevel: volumeLevel,
+        device: .airpodsPro,
+        listeningMode: .active,
+        hearingProtection: false
+    )
+    
+    healthData.musicHearingSessions.append(session)
+}
+\end{lstlisting}
+
+\subsection{Monitoring Hearing Health}
+
+\begin{lstlisting}[style=swiftstyle]
+// Monitor hearing health trends
+func analyzeHearingHealth() {
+    // Check test frequency
+    let recentTests = healthData.dailyAudioHearingTests.filter { test in
+        Calendar.current.dateInterval(of: .weekOfYear, for: Date())?
+            .contains(test.date) ?? false
+    }
+    
+    if recentTests.count < 3 {
+        print("Warning: Low test frequency. Consider daily tests.")
+    }
+    
+    // Check for hearing loss indicators
+    if let latestTest = healthData.dailyAudioHearingTests.last {
+        if let threshold = latestTest.rightEar.pureToneThresholds?.first?.threshold {
+            if threshold > 25 {
+                print("Warning: Possible hearing loss detected (\(threshold) dB HL)")
+            }
+        }
+    }
+    
+    // Check for tinnitus
+    if let latestTest = healthData.dailyAudioHearingTests.last {
+        if latestTest.rightEar.tinnitusPresence == true ||
+           latestTest.leftEar.tinnitusPresence == true {
+            print("Tinnitus detected. Consider therapeutic activities.")
+        }
+    }
+}
+\end{lstlisting}
+
+\section{Data Persistence}
+
+\subsection{Encoding and Decoding}
+
+\begin{lstlisting}[style=swiftstyle]
+// Encode health data with hearing information
+func saveHealthData(_ healthData: HealthData) throws {
+    let encoder = JSONEncoder()
+    encoder.dateEncodingStrategy = .iso8601
+    encoder.outputFormatting = .prettyPrinted
+    
+    let data = try encoder.encode(healthData)
+    try data.write(to: fileURL)
+}
+
+// Decode health data
+func loadHealthData() throws -> HealthData {
+    let data = try Data(contentsOf: fileURL)
+    let decoder = JSONDecoder()
+    decoder.dateDecodingStrategy = .iso8601
+    
+    return try decoder.decode(HealthData.self, from: data)
+}
+\end{lstlisting}
+
+\section{Troubleshooting}
+
+\subsection{Common Issues}
+
+\subsubsection{Missing Hearing Activities}
+
+If hearing activities don't appear in recommendations:
+
+\begin{lstlisting}[style=swiftstyle]
+// Verify activities exist in database
+let database = ExerciseDatabase.shared
+let musicActivity = database.activities.first { $0.name == "Music Listening Session" }
+assert(musicActivity != nil, "Music Listening Session should exist")
+\end{lstlisting}
+
+\subsubsection{Recommendations Not Appearing}
+
+If recommendations don't match expected behavior:
+
+\begin{lstlisting}[style=swiftstyle]
+// Check health data has hearing information
+if healthData.dailyAudioHearingTests.isEmpty {
+    print("No hearing tests found. Recommendations may be limited.")
+}
+
+// Verify planner is using latest health data
+let recommendations = planner.recommendExercises(
+    for: healthData,
+    dayOfWeek: 0
+)
+print("Recommendations count: \(recommendations.count)")
+\end{lstlisting}
+
+\section{API Reference Summary}
+
+\subsection{Key Types}
+
+\begin{itemize}
+    \item \texttt{HearingPrescription}: Professional hearing assessment
+    \item \texttt{DailyAudioHearingTest}: Daily self-administered test
+    \item \texttt{MusicHearingSession}: Music listening activity
+    \item \texttt{HearingHealthSummary}: Summary of hearing health
+    \item \texttt{HearingAnalysisReport}: Comprehensive analysis report
+\end{itemize}
+
+\subsection{Key Methods}
+
+\begin{itemize}
+    \item \texttt{ExercisePlanner.generateWeeklyPlan(for:goals:)}: Generate weekly plan
+    \item \texttt{ExercisePlanner.recommendExercises(for:dayOfWeek:)}: Get recommendations
+    \item \texttt{ExerciseDatabase.shared}: Access exercise database
+\end{itemize}
+
+\section{Examples}
+
+\subsection{Complete Workflow}
+
+\begin{lstlisting}[style=swiftstyle]
+// 1. Initialize health data
+var healthData = HealthData(
+    age: 30,
+    gender: .male,
+    weight: 75.0,
+    height: 175.0,
+    activityLevel: .moderate
+)
+
+// 2. Perform daily hearing test
+let test = DailyAudioHearingTest(
+    date: Date(),
+    testType: .quick,
+    device: .iphone
+)
+healthData.dailyAudioHearingTests.append(test)
+
+// 3. Track music session
+let session = MusicHearingSession(
+    date: Date(),
+    duration: 30.0,
+    musicType: .classical,
+    volumeLevel: .moderate
+)
+healthData.musicHearingSessions.append(session)
+
+// 4. Generate exercise plan
+let planner = ExercisePlanner()
+let goals = ExerciseGoals()
+let plan = planner.generateWeeklyPlan(for: healthData, goals: goals)
+
+// 5. Get recommendations
+let recommendations = planner.recommendExercises(
+    for: healthData,
+    dayOfWeek: 0
+)
+
+// 6. Display results
+print("Weekly plan has \(plan.weeklyPlan.count) days")
+print("Focus areas: \(plan.focusAreas.joined(separator: ", "))")
+print("Recommendations: \(recommendations.count) activities")
+\end{lstlisting}
+
+\section{Conclusion}
+
+This reference manual provides comprehensive documentation for working with hearing health integration in the Diet Solver system. For additional information, refer to the complete paper and source code documentation.
+
+\end{document}

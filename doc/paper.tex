@@ -1,0 +1,300 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{geometry}
+\geometry{margin=1in}
+
+\title{Hearing Health Integration in Diet Solver:\\
+A Comprehensive Approach to Auditory Wellness}
+\author{Shyamal Chandra}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+This paper presents the integration of hearing health monitoring and music listening sessions into the Diet Solver system, a comprehensive health and wellness optimization platform. The implementation includes daily audio hearing tests, music hearing sessions, and their integration into exercise and activity recommendations. We detail the data models, integration architecture, testing methodology, and demonstrate how hearing health considerations enhance the overall wellness optimization framework.
+\end{abstract}
+
+\section{Introduction}
+
+The Diet Solver system is a comprehensive health and wellness platform that optimizes diet, exercise, and lifestyle recommendations based on individual health data. This work extends the system to include hearing health monitoring through daily audio hearing tests and music listening sessions, integrating these auditory wellness components into the exercise and activity recommendation system.
+
+\subsection{Motivation}
+
+Hearing health is a critical but often overlooked aspect of overall wellness. Regular monitoring of hearing capabilities, combined with therapeutic music listening sessions, can:
+\begin{itemize}
+    \item Detect early signs of hearing loss
+    \item Support cognitive health through auditory stimulation
+    \item Provide therapeutic benefits for conditions like tinnitus
+    \item Enhance overall quality of life through music therapy
+\end{itemize}
+
+\subsection{Objectives}
+
+The primary objectives of this work are:
+\begin{enumerate}
+    \item Design comprehensive data models for hearing health tracking
+    \item Integrate hearing tests and music sessions into the health data framework
+    \item Incorporate hearing-based recommendations into exercise planning
+    \item Develop comprehensive test suites for validation
+    \item Document the implementation for future development
+\end{enumerate}
+
+\section{Related Work}
+
+Previous work in health monitoring systems has focused primarily on cardiovascular, metabolic, and musculoskeletal health. While some systems include vision health monitoring, auditory health has received less attention. This work builds upon:
+
+\begin{itemize}
+    \item \textbf{Health Data Models}: Existing frameworks for structured health data representation
+    \item \textbf{Exercise Planning}: Activity recommendation systems based on health status
+    \item \textbf{Wellness Integration}: Holistic approaches to health optimization
+\end{itemize}
+
+\section{System Architecture}
+
+\subsection{Data Models}
+
+\subsubsection{Hearing Prescription}
+The \texttt{HearingPrescription} model captures professional hearing assessments, including:
+\begin{itemize}
+    \item Frequency response characteristics
+    \item Amplification levels
+    \item Hearing loss type and severity
+    \item Hearing aid settings (if applicable)
+\end{itemize}
+
+\subsubsection{Daily Audio Hearing Test}
+The \texttt{DailyAudioHearingTest} model records daily self-administered hearing assessments:
+\begin{itemize}
+    \item Pure tone thresholds across frequencies
+    \item Speech recognition scores
+    \item Word recognition tests
+    \item Tinnitus presence and severity
+    \item Ear pressure and pain levels
+    \item Binaural hearing capabilities
+\end{itemize}
+
+\subsubsection{Music Hearing Session}
+The \texttt{MusicHearingSession} model tracks music listening activities:
+\begin{itemize}
+    \item Session duration and timing
+    \item Music type and genre
+    \item Volume levels
+    \item Device used
+    \item Listening mode (active, background, therapeutic)
+    \item Hearing protection usage
+    \item Hearing fatigue assessment
+    \item Enjoyment levels
+\end{itemize}
+
+\subsection{Integration with Health Data}
+
+Hearing data is integrated into the \texttt{HealthData} model alongside existing health metrics:
+\begin{lstlisting}[language=Swift, basicstyle=\small]
+struct HealthData: Codable {
+    // ... existing fields ...
+    
+    // Hearing Data
+    var hearingPrescription: HearingPrescription?
+    var dailyAudioHearingTests: [DailyAudioHearingTest] = []
+    var musicHearingSessions: [MusicHearingSession] = []
+    var hearingAnalysis: HearingAnalysisReport?
+}
+\end{lstlisting}
+
+\subsection{Exercise Planner Integration}
+
+The \texttt{ExercisePlanner} class has been extended to:
+\begin{enumerate}
+    \item Include hearing-related activities in weekly plans
+    \item Recommend hearing exercises based on test results
+    \item Suggest music listening sessions for therapeutic benefits
+    \item Identify focus areas related to hearing health
+\end{enumerate}
+
+\subsubsection{Hearing Activities}
+New exercise activities have been added to the \texttt{ExerciseDatabase}:
+\begin{itemize}
+    \item Music Listening Session
+    \item Active Music Listening
+    \item Hearing Exercise
+    \item Nature Sounds Therapy
+    \item Binaural Beats Session
+    \item Audio Book Listening
+\end{itemize}
+
+\subsubsection{Recommendation Logic}
+The recommendation algorithm considers:
+\begin{itemize}
+    \item Frequency of hearing tests (recommends if insufficient)
+    \item Frequency of music sessions (encourages regular sessions)
+    \item Hearing loss indicators (suggests targeted exercises)
+    \item Tinnitus presence (recommends therapeutic activities)
+\end{itemize}
+
+\section{Implementation Details}
+
+\subsection{Weekly Plan Generation}
+
+The weekly exercise plan now includes hearing-related activities distributed across the week:
+\begin{itemize}
+    \item \textbf{Sunday}: Music Listening Session (30 min), Hearing Exercise (10 min)
+    \item \textbf{Monday}: Hearing Exercise (10 min)
+    \item \textbf{Tuesday}: Active Music Listening (20 min)
+    \item \textbf{Thursday}: Music Listening Session (30 min)
+    \item \textbf{Friday}: Binaural Beats Session (20 min)
+    \item \textbf{Saturday}: Nature Sounds Therapy (30 min)
+\end{itemize}
+
+\subsection{Focus Areas}
+
+The system identifies focus areas based on hearing health status:
+\begin{itemize}
+    \item \textbf{Hearing Health Monitoring}: When no tests are recorded
+    \item \textbf{Music Listening Habit}: When no music sessions exist
+    \item \textbf{Regular Music Listening}: When sessions are infrequent
+    \item \textbf{Daily Hearing Tests}: When test frequency is low
+\end{itemize}
+
+\subsection{Recommendation Algorithm}
+
+The recommendation algorithm follows this logic:
+\begin{enumerate}
+    \item Check for missing hearing tests → recommend Hearing Exercise
+    \item Check for missing music sessions → recommend Music Listening
+    \item Check for hearing loss (threshold > 25 dB) → recommend Hearing Exercise
+    \item Check for tinnitus → recommend Nature Sounds or Binaural Beats
+\end{enumerate}
+
+\section{Testing Methodology}
+
+\subsection{Test Suite Organization}
+
+Comprehensive test suites were developed using both XCTest and SwiftTesting frameworks:
+
+\subsubsection{Unit Tests}
+\begin{itemize}
+    \item Data model creation and validation
+    \item Health data integration
+    \item Exercise planner functionality
+    \item Recommendation algorithm correctness
+\end{itemize}
+
+\subsubsection{Regression Tests}
+\begin{itemize}
+    \item Data persistence (encoding/decoding)
+    \item Algorithm consistency
+    \item Recommendation stability
+\end{itemize}
+
+\subsubsection{Black Box Tests}
+\begin{itemize}
+    \item System behavior with no hearing data
+    \item System behavior with extensive hearing data
+    \item System behavior with invalid/edge case data
+\end{itemize}
+
+\subsubsection{UX Tests}
+\begin{itemize}
+    \item Activity accessibility
+    \item Recommendation relevance
+    \item Data collection simplicity
+\end{itemize}
+
+\subsubsection{A-B Tests}
+\begin{itemize}
+    \item Activity variant comparison
+    \item Recommendation algorithm variants
+    \item User experience variations
+\end{itemize}
+
+\section{Results}
+
+\subsection{Functional Results}
+
+The implementation successfully:
+\begin{enumerate}
+    \item Integrates hearing data models into the health framework
+    \item Includes hearing activities in weekly exercise plans
+    \item Provides context-aware recommendations based on hearing status
+    \item Maintains system consistency and performance
+\end{enumerate}
+
+\subsection{Test Coverage}
+
+The test suites provide comprehensive coverage:
+\begin{itemize}
+    \item \textbf{Unit Tests}: 15+ test cases covering core functionality
+    \item \textbf{Regression Tests}: 3 test cases ensuring stability
+    \item \textbf{Black Box Tests}: 3 test cases for edge cases
+    \item \textbf{UX Tests}: 3 test cases for user experience
+    \item \textbf{A-B Tests}: 2 test cases for variant comparison
+\end{itemize}
+
+\section{Discussion}
+
+\subsection{Benefits}
+
+The integration of hearing health into the Diet Solver system provides:
+\begin{itemize}
+    \item \textbf{Holistic Health Monitoring}: Comprehensive tracking of auditory wellness
+    \item \textbf{Proactive Recommendations}: Early detection and intervention suggestions
+    \item \textbf{Therapeutic Integration}: Music therapy as part of wellness routine
+    \item \textbf{User Empowerment}: Tools for self-monitoring and improvement
+\end{itemize}
+
+\subsection{Limitations}
+
+Current limitations include:
+\begin{itemize}
+    \item Self-administered tests may have accuracy limitations
+    \item Recommendations are based on available data quality
+    \item Integration with professional audiometry equipment not yet implemented
+\end{itemize}
+
+\subsection{Future Work}
+
+Potential enhancements:
+\begin{enumerate}
+    \item Integration with professional hearing test equipment
+    \item Machine learning models for hearing trend prediction
+    \item Advanced music therapy recommendations
+    \item Integration with hearing aid devices
+    \item Real-time hearing monitoring during activities
+\end{enumerate}
+
+\section{Conclusion}
+
+This work successfully integrates hearing health monitoring and music listening sessions into the Diet Solver system. The implementation provides comprehensive data models, integrates hearing considerations into exercise planning, and includes extensive test coverage. The system now offers a more holistic approach to health and wellness, recognizing the importance of auditory health in overall well-being.
+
+The modular design allows for future enhancements while maintaining system stability and performance. The comprehensive test suites ensure reliability and provide a foundation for continued development.
+
+\section{Acknowledgments}
+
+This work extends the Diet Solver system developed by Shyamal Chandra. The implementation follows best practices in software engineering, health data modeling, and user experience design.
+
+\bibliographystyle{plain}
+\begin{thebibliography}{9}
+
+\bibitem{healthdata}
+Health Data Models and Standards. Various health data modeling frameworks.
+
+\bibitem{exercise}
+Exercise Planning Systems. Activity recommendation algorithms.
+
+\bibitem{hearing}
+Hearing Health Monitoring. Auditory health assessment methodologies.
+
+\bibitem{wellness}
+Holistic Wellness Approaches. Integrated health optimization systems.
+
+\end{thebibliography}
+
+\end{document}

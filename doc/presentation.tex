@@ -1,0 +1,258 @@
+\documentclass[aspectratio=169]{beamer}
+\usetheme{Madrid}
+\usecolortheme{default}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{xcolor}
+
+\title{Hearing Health Integration in Diet Solver}
+\subtitle{Comprehensive Auditory Wellness in Health Optimization}
+\author{Shyamal Chandra}
+\date{\today}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}
+\frametitle{Overview}
+\tableofcontents
+\end{frame}
+
+\section{Introduction}
+
+\begin{frame}
+\frametitle{Motivation}
+\begin{itemize}
+    \item Hearing health is critical but often overlooked
+    \item Regular monitoring can detect early hearing loss
+    \item Music therapy provides cognitive and therapeutic benefits
+    \item Integration with overall wellness system enhances value
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Objectives}
+\begin{enumerate}
+    \item Design hearing health data models
+    \item Integrate into health data framework
+    \item Incorporate into exercise planning
+    \item Develop comprehensive tests
+    \item Document implementation
+\end{enumerate}
+\end{frame}
+
+\section{System Architecture}
+
+\begin{frame}
+\frametitle{Data Models}
+\begin{columns}
+\column{0.5\textwidth}
+\textbf{Hearing Prescription}
+\begin{itemize}
+    \item Professional assessments
+    \item Frequency response
+    \item Hearing loss classification
+\end{itemize}
+
+\column{0.5\textwidth}
+\textbf{Daily Audio Tests}
+\begin{itemize}
+    \item Pure tone thresholds
+    \item Speech recognition
+    \item Tinnitus tracking
+\end{itemize}
+\end{columns}
+
+\vspace{0.5cm}
+
+\textbf{Music Sessions}
+\begin{itemize}
+    \item Session tracking
+    \item Volume monitoring
+    \item Therapeutic modes
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Integration Points}
+\begin{itemize}
+    \item \textbf{HealthData Model}: Stores hearing data alongside other health metrics
+    \item \textbf{ExercisePlanner}: Includes hearing activities in weekly plans
+    \item \textbf{ExerciseDatabase}: New hearing-related activities
+    \item \textbf{Recommendation Engine}: Context-aware suggestions
+\end{itemize}
+\end{frame}
+
+\section{Implementation}
+
+\begin{frame}
+\frametitle{Hearing Activities}
+\begin{columns}
+\column{0.5\textwidth}
+\begin{itemize}
+    \item Music Listening Session
+    \item Active Music Listening
+    \item Hearing Exercise
+\end{itemize}
+
+\column{0.5\textwidth}
+\begin{itemize}
+    \item Nature Sounds Therapy
+    \item Binaural Beats Session
+    \item Audio Book Listening
+\end{itemize}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\frametitle{Weekly Plan Integration}
+\begin{itemize}
+    \item \textbf{Sunday}: Music (30 min) + Hearing Exercise (10 min)
+    \item \textbf{Monday}: Hearing Exercise (10 min)
+    \item \textbf{Tuesday}: Active Music (20 min)
+    \item \textbf{Thursday}: Music Session (30 min)
+    \item \textbf{Friday}: Binaural Beats (20 min)
+    \item \textbf{Saturday}: Nature Sounds (30 min)
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Recommendation Logic}
+\begin{enumerate}
+    \item Check test frequency → Recommend if low
+    \item Check music sessions → Encourage regular sessions
+    \item Detect hearing loss → Suggest targeted exercises
+    \item Identify tinnitus → Recommend therapy activities
+\end{enumerate}
+\end{frame}
+
+\section{Testing}
+
+\begin{frame}
+\frametitle{Test Coverage}
+\begin{columns}
+\column{0.5\textwidth}
+\textbf{Unit Tests}
+\begin{itemize}
+    \item Data models
+    \item Integration
+    \item Algorithms
+\end{itemize}
+
+\textbf{Regression Tests}
+\begin{itemize}
+    \item Persistence
+    \item Consistency
+\end{itemize}
+
+\column{0.5\textwidth}
+\textbf{Black Box Tests}
+\begin{itemize}
+    \item Edge cases
+    \item Invalid data
+\end{itemize}
+
+\textbf{UX Tests}
+\begin{itemize}
+    \item Accessibility
+    \item Relevance
+\end{itemize}
+
+\textbf{A-B Tests}
+\begin{itemize}
+    \item Variants
+    \item Algorithms
+\end{itemize}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\frametitle{Test Frameworks}
+\begin{itemize}
+    \item \textbf{XCTest}: Traditional testing framework
+    \begin{itemize}
+        \item 26+ test cases
+        \item Comprehensive coverage
+    \end{itemize}
+    \item \textbf{SwiftTesting}: Modern testing framework
+    \begin{itemize}
+        \item 20+ test cases
+        \item Async support
+    \end{itemize}
+\end{itemize}
+\end{frame}
+
+\section{Results}
+
+\begin{frame}
+\frametitle{Key Achievements}
+\begin{itemize}
+    \item ✓ Complete hearing data model integration
+    \item ✓ Hearing activities in exercise plans
+    \item ✓ Context-aware recommendations
+    \item ✓ Comprehensive test coverage
+    \item ✓ System stability maintained
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Benefits}
+\begin{columns}
+\column{0.5\textwidth}
+\textbf{For Users}
+\begin{itemize}
+    \item Holistic health tracking
+    \item Proactive recommendations
+    \item Therapeutic integration
+    \item Self-monitoring tools
+\end{itemize}
+
+\column{0.5\textwidth}
+\textbf{For System}
+\begin{itemize}
+    \item Modular design
+    \item Extensible architecture
+    \item Well-tested codebase
+    \item Clear documentation
+\end{itemize}
+\end{columns}
+\end{frame}
+
+\section{Future Work}
+
+\begin{frame}
+\frametitle{Potential Enhancements}
+\begin{itemize}
+    \item Professional equipment integration
+    \item ML-based trend prediction
+    \item Advanced music therapy
+    \item Hearing aid device integration
+    \item Real-time monitoring
+\end{itemize}
+\end{frame}
+
+\section{Conclusion}
+
+\begin{frame}
+\frametitle{Summary}
+\begin{itemize}
+    \item Successfully integrated hearing health into Diet Solver
+    \item Comprehensive data models and integration
+    \item Extensive test coverage ensures reliability
+    \item Foundation for future enhancements
+    \item Holistic approach to wellness
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Thank You}
+\centering
+\Large
+Questions?
+\end{frame}
+
+\end{document}

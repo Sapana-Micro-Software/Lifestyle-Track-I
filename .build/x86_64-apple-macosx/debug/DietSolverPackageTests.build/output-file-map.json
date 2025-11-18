@@ -1,0 +1,12 @@
+{
+  "": {
+    "swift-dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverPackageTests.build/master.swiftdeps"
+  },
+  "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverPackageTests.derived/runner.swift": {
+    "dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverPackageTests.build/runner.d",
+    "object": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverPackageTests.build/runner.swift.o",
+    "swiftmodule": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverPackageTests.build/runner~partial.swiftmodule",
+    "swift-dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverPackageTests.build/runner.swiftdeps",
+    "diagnostics": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverPackageTests.build/runner.dia"
+  }
+}

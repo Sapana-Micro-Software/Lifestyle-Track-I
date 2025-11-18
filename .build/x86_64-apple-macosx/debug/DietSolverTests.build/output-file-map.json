@@ -1,0 +1,19 @@
+{
+  "": {
+    "swift-dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build/master.swiftdeps"
+  },
+  "/Users/shyamalchandra/diet-solver/Tests/DietSolverTests/HearingIntegrationSwiftTestingTests.swift": {
+    "dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build/HearingIntegrationSwiftTestingTests.d",
+    "object": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build/HearingIntegrationSwiftTestingTests.swift.o",
+    "swiftmodule": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build/HearingIntegrationSwiftTestingTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build/HearingIntegrationSwiftTestingTests.swiftdeps",
+    "diagnostics": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build/HearingIntegrationSwiftTestingTests.dia"
+  },
+  "/Users/shyamalchandra/diet-solver/Tests/DietSolverTests/HearingIntegrationTests.swift": {
+    "dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build/HearingIntegrationTests.d",
+    "object": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build/HearingIntegrationTests.swift.o",
+    "swiftmodule": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build/HearingIntegrationTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build/HearingIntegrationTests.swiftdeps",
+    "diagnostics": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build/HearingIntegrationTests.dia"
+  }
+}

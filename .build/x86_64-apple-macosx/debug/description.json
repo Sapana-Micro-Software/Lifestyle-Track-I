@@ -1,0 +1,1749 @@
+{
+  "builtTestProducts" : [
+    {
+      "binaryPath" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverPackageTests.xctest/Contents/MacOS/DietSolverPackageTests",
+      "packagePath" : "/Users/shyamalchandra/diet-solver",
+      "productName" : "DietSolverPackageTests"
+    }
+  ],
+  "copyCommands" : {
+
+  },
+  "explicitTargetDependencyImportCheckingMode" : {
+    "none" : {
+
+    }
+  },
+  "generatedSourceTargetSet" : [
+
+  ],
+  "pluginDescriptions" : [
+
+  ],
+  "swiftCommands" : {
+    "C.DietSolver-x86_64-apple-macosx15.0-debug.module" : {
+      "executable" : "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc",
+      "fileList" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/sources",
+      "importPath" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/Modules",
+      "inputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Analyzers/CognitiveAnalyzer.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Analyzers/JournalAnalyzer.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Analyzers/MedicalAnalyzer.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Analyzers/SleepAnalyzer.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Analyzers/VisionAnalyzer.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Generators/NutritionFactsGenerator.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Generators/RecipeGenerator.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Generators/SongGenerator.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Managers/HealthKitManager.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/CalendarSchedule.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/CognitiveAssessment.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/Exercise.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/Food.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/HealthData.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/HearingData.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/Journal.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/LongTermPlan.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/MedicalSpecialties.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/MedicalTests.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/Nutrient.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/SleepAnalysis.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/VisionData.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/VisionGames.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Planners/ExercisePlanner.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Planners/LongTermPlanner.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Planners/TimeBasedPlanner.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Solver/DietSolver.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/ViewModels/DietSolverViewModel.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/ContentView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/DietPlanView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/ExerciseInputView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/ExerciseLogView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/ExercisePlanView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/HealthDataInputView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/JournalAnalysisView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/PlanningSessionView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/SolvingView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/VisionCheckView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/VisionGamesView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/sources"
+        }
+      ],
+      "isLibrary" : true,
+      "moduleName" : "DietSolver",
+      "moduleOutputPath" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/Modules/DietSolver.swiftmodule",
+      "objects" : [
+        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/CognitiveAnalyzer.swift.o",
+        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/JournalAnalyzer.swift.o",
+        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/MedicalAnalyzer.swift.o",
+        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/SleepAnalyzer.swift.o",
+        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/VisionAnalyzer.swift.o",
+        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/NutritionFactsGenerator.swift.o",
+        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/RecipeGenerator.swift.o",
+        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/SongGenerator.swift.o",
+        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/HealthKitManager.swift.o",
+        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/CalendarSchedule.swift.o",
+        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/CognitiveAssessment.swift.o",
+        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/Exercise.swift.o",
+        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/Food.swift.o",
+        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/HealthData.swift.o",
+        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/HearingData.swift.o",
+        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/Journal.swift.o",
+        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/LongTermPlan.swift.o",
+        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/MedicalSpecialties.swift.o",
+        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/MedicalTests.swift.o",
+        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/Nutrient.swift.o",
+        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/SleepAnalysis.swift.o",
+        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/VisionData.swift.o",
+        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/VisionGames.swift.o",
+        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ExercisePlanner.swift.o",
+        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/LongTermPlanner.swift.o",
+        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/TimeBasedPlanner.swift.o",
+        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/DietSolver.swift.o",
+        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/DietSolverViewModel.swift.o",
+        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ContentView.swift.o",
+        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/DietPlanView.swift.o",
+        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ExerciseInputView.swift.o",
+        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ExerciseLogView.swift.o",
+        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ExercisePlanView.swift.o",
+        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/HealthDataInputView.swift.o",
+        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/JournalAnalysisView.swift.o",
+        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/PlanningSessionView.swift.o",
+        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/SolvingView.swift.o",
+        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/VisionCheckView.swift.o",
+        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/VisionGamesView.swift.o"
+      ],
+      "otherArguments" : [
+        "-target",
+        "x86_64-apple-macosx13.0",
+        "-incremental",
+        "-enable-batch-mode",
+        "-serialize-diagnostics",
+        "-index-store-path",
+        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/index/store",
+        "-Onone",
+        "-enable-testing",
+        "-j16",
+        "-DSWIFT_PACKAGE",
+        "-DDEBUG",
+        "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+        "-module-cache-path",
+        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/ModuleCache",
+        "-parseable-output",
+        "-parse-as-library",
+        "-emit-objc-header",
+        "-emit-objc-header-path",
+        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/include/DietSolver-Swift.h",
+        "-swift-version",
+        "5",
+        "-plugin-path",
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing",
+        "-sdk",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.1.sdk",
+        "-F",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+        "-F",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/PrivateFrameworks",
+        "-I",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+        "-L",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+        "-g",
+        "-Xcc",
+        "-isysroot",
+        "-Xcc",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.1.sdk",
+        "-Xcc",
+        "-F",
+        "-Xcc",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+        "-Xcc",
+        "-F",
+        "-Xcc",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/PrivateFrameworks",
+        "-Xcc",
+        "-fPIC",
+        "-Xcc",
+        "-g",
+        "-package-name",
+        "diet_solver"
+      ],
+      "outputFileMapPath" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/output-file-map.json",
+      "outputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/CognitiveAnalyzer.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/JournalAnalyzer.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/MedicalAnalyzer.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/SleepAnalyzer.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/VisionAnalyzer.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/NutritionFactsGenerator.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/RecipeGenerator.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/SongGenerator.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/HealthKitManager.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/CalendarSchedule.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/CognitiveAssessment.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/Exercise.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/Food.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/HealthData.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/HearingData.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/Journal.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/LongTermPlan.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/MedicalSpecialties.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/MedicalTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/Nutrient.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/SleepAnalysis.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/VisionData.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/VisionGames.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ExercisePlanner.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/LongTermPlanner.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/TimeBasedPlanner.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/DietSolver.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/DietSolverViewModel.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ContentView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/DietPlanView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ExerciseInputView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ExerciseLogView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ExercisePlanView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/HealthDataInputView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/JournalAnalysisView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/PlanningSessionView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/SolvingView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/VisionCheckView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/VisionGamesView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/Modules/DietSolver.swiftmodule"
+        }
+      ],
+      "prepareForIndexing" : false,
+      "sources" : [
+        "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Analyzers/CognitiveAnalyzer.swift",
+        "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Analyzers/JournalAnalyzer.swift",
+        "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Analyzers/MedicalAnalyzer.swift",
+        "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Analyzers/SleepAnalyzer.swift",
+        "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Analyzers/VisionAnalyzer.swift",
+        "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Generators/NutritionFactsGenerator.swift",
+        "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Generators/RecipeGenerator.swift",
+        "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Generators/SongGenerator.swift",
+        "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Managers/HealthKitManager.swift",
+        "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/CalendarSchedule.swift",
+        "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/CognitiveAssessment.swift",
+        "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/Exercise.swift",
+        "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/Food.swift",
+        "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/HealthData.swift",
+        "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/HearingData.swift",
+        "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/Journal.swift",
+        "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/LongTermPlan.swift",
+        "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/MedicalSpecialties.swift",
+        "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/MedicalTests.swift",
+        "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/Nutrient.swift",
+        "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/SleepAnalysis.swift",
+        "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/VisionData.swift",
+        "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/VisionGames.swift",
+        "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Planners/ExercisePlanner.swift",
+        "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Planners/LongTermPlanner.swift",
+        "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Planners/TimeBasedPlanner.swift",
+        "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Solver/DietSolver.swift",
+        "/Users/shyamalchandra/diet-solver/Sources/DietSolver/ViewModels/DietSolverViewModel.swift",
+        "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/ContentView.swift",
+        "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/DietPlanView.swift",
+        "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/ExerciseInputView.swift",
+        "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/ExerciseLogView.swift",
+        "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/ExercisePlanView.swift",
+        "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/HealthDataInputView.swift",
+        "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/JournalAnalysisView.swift",
+        "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/PlanningSessionView.swift",
+        "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/SolvingView.swift",
+        "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/VisionCheckView.swift",
+        "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/VisionGamesView.swift"
+      ],
+      "tempsPath" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build",
+      "wholeModuleOptimization" : false
+    },
+    "C.DietSolverApp-x86_64-apple-macosx15.0-debug.module" : {
+      "executable" : "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc",
+      "fileList" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverApp.build/sources",
+      "importPath" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/Modules",
+      "inputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolverApp/main.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/Modules/DietSolver.swiftmodule"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverApp.build/sources"
+        }
+      ],
+      "isLibrary" : false,
+      "moduleName" : "DietSolverApp",
+      "moduleOutputPath" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/Modules/DietSolverApp.swiftmodule",
+      "objects" : [
+        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverApp.build/main.swift.o"
+      ],
+      "otherArguments" : [
+        "-target",
+        "x86_64-apple-macosx13.0",
+        "-incremental",
+        "-enable-batch-mode",
+        "-serialize-diagnostics",
+        "-index-store-path",
+        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/index/store",
+        "-Onone",
+        "-enable-testing",
+        "-j16",
+        "-DSWIFT_PACKAGE",
+        "-DDEBUG",
+        "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+        "-module-cache-path",
+        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/ModuleCache",
+        "-parseable-output",
+        "-Xfrontend",
+        "-entry-point-function-name",
+        "-Xfrontend",
+        "DietSolverApp_main",
+        "-parse-as-library",
+        "-swift-version",
+        "5",
+        "-plugin-path",
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing",
+        "-sdk",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.1.sdk",
+        "-F",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+        "-F",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/PrivateFrameworks",
+        "-I",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+        "-L",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+        "-g",
+        "-Xcc",
+        "-isysroot",
+        "-Xcc",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.1.sdk",
+        "-Xcc",
+        "-F",
+        "-Xcc",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+        "-Xcc",
+        "-F",
+        "-Xcc",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/PrivateFrameworks",
+        "-Xcc",
+        "-fPIC",
+        "-Xcc",
+        "-g",
+        "-package-name",
+        "diet_solver"
+      ],
+      "outputFileMapPath" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverApp.build/output-file-map.json",
+      "outputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverApp.build/main.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/Modules/DietSolverApp.swiftmodule"
+        }
+      ],
+      "prepareForIndexing" : false,
+      "sources" : [
+        "/Users/shyamalchandra/diet-solver/Sources/DietSolverApp/main.swift"
+      ],
+      "tempsPath" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverApp.build",
+      "wholeModuleOptimization" : false
+    },
+    "C.DietSolverPackageTests-x86_64-apple-macosx15.0-debug.module" : {
+      "executable" : "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc",
+      "fileList" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverPackageTests.build/sources",
+      "importPath" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/Modules",
+      "inputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverPackageTests.derived/runner.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/Modules/DietSolverTests.swiftmodule"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverPackageTests.build/sources"
+        }
+      ],
+      "isLibrary" : true,
+      "moduleName" : "DietSolverPackageTests",
+      "moduleOutputPath" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/Modules/DietSolverPackageTests.swiftmodule",
+      "objects" : [
+        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverPackageTests.build/runner.swift.o"
+      ],
+      "otherArguments" : [
+        "-target",
+        "x86_64-apple-macosx13.0",
+        "-incremental",
+        "-enable-batch-mode",
+        "-serialize-diagnostics",
+        "-index-store-path",
+        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/index/store",
+        "-Onone",
+        "-enable-testing",
+        "-Xfrontend",
+        "-enable-cross-import-overlays",
+        "-j16",
+        "-DSWIFT_PACKAGE",
+        "-DDEBUG",
+        "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+        "-module-cache-path",
+        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/ModuleCache",
+        "-parseable-output",
+        "-parse-as-library",
+        "-emit-objc-header",
+        "-emit-objc-header-path",
+        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverPackageTests.build/include/DietSolverPackageTests-Swift.h",
+        "-plugin-path",
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing",
+        "-sdk",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.1.sdk",
+        "-F",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+        "-F",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/PrivateFrameworks",
+        "-I",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+        "-L",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+        "-g",
+        "-Xcc",
+        "-isysroot",
+        "-Xcc",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.1.sdk",
+        "-Xcc",
+        "-F",
+        "-Xcc",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+        "-Xcc",
+        "-F",
+        "-Xcc",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/PrivateFrameworks",
+        "-Xcc",
+        "-fPIC",
+        "-Xcc",
+        "-g",
+        "-package-name",
+        "diet_solver"
+      ],
+      "outputFileMapPath" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverPackageTests.build/output-file-map.json",
+      "outputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverPackageTests.build/runner.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/Modules/DietSolverPackageTests.swiftmodule"
+        }
+      ],
+      "prepareForIndexing" : false,
+      "sources" : [
+        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverPackageTests.derived/runner.swift"
+      ],
+      "tempsPath" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverPackageTests.build",
+      "wholeModuleOptimization" : false
+    },
+    "C.DietSolverTests-x86_64-apple-macosx15.0-debug.module" : {
+      "executable" : "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc",
+      "fileList" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build/sources",
+      "importPath" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/Modules",
+      "inputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Tests/DietSolverTests/HearingIntegrationSwiftTestingTests.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Tests/DietSolverTests/HearingIntegrationTests.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/Modules/DietSolver.swiftmodule"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build/sources"
+        }
+      ],
+      "isLibrary" : true,
+      "moduleName" : "DietSolverTests",
+      "moduleOutputPath" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/Modules/DietSolverTests.swiftmodule",
+      "objects" : [
+        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build/HearingIntegrationSwiftTestingTests.swift.o",
+        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build/HearingIntegrationTests.swift.o"
+      ],
+      "otherArguments" : [
+        "-target",
+        "x86_64-apple-macosx14.0",
+        "-incremental",
+        "-enable-batch-mode",
+        "-serialize-diagnostics",
+        "-index-store-path",
+        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/index/store",
+        "-Onone",
+        "-enable-testing",
+        "-Xfrontend",
+        "-enable-cross-import-overlays",
+        "-j16",
+        "-DSWIFT_PACKAGE",
+        "-DDEBUG",
+        "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+        "-module-cache-path",
+        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/ModuleCache",
+        "-parseable-output",
+        "-parse-as-library",
+        "-swift-version",
+        "5",
+        "-plugin-path",
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing",
+        "-sdk",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.1.sdk",
+        "-F",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+        "-F",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/PrivateFrameworks",
+        "-I",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+        "-L",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+        "-g",
+        "-Xcc",
+        "-isysroot",
+        "-Xcc",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.1.sdk",
+        "-Xcc",
+        "-F",
+        "-Xcc",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+        "-Xcc",
+        "-F",
+        "-Xcc",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/PrivateFrameworks",
+        "-Xcc",
+        "-fPIC",
+        "-Xcc",
+        "-g",
+        "-package-name",
+        "diet_solver"
+      ],
+      "outputFileMapPath" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build/output-file-map.json",
+      "outputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build/HearingIntegrationSwiftTestingTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build/HearingIntegrationTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/Modules/DietSolverTests.swiftmodule"
+        }
+      ],
+      "prepareForIndexing" : false,
+      "sources" : [
+        "/Users/shyamalchandra/diet-solver/Tests/DietSolverTests/HearingIntegrationSwiftTestingTests.swift",
+        "/Users/shyamalchandra/diet-solver/Tests/DietSolverTests/HearingIntegrationTests.swift"
+      ],
+      "tempsPath" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build",
+      "wholeModuleOptimization" : false
+    }
+  },
+  "swiftFrontendCommands" : {
+
+  },
+  "swiftTargetScanArgs" : {
+    "DietSolver" : [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc",
+      "-module-name",
+      "DietSolver",
+      "-package-name",
+      "diet_solver",
+      "-c",
+      "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Analyzers/CognitiveAnalyzer.swift",
+      "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Analyzers/JournalAnalyzer.swift",
+      "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Analyzers/MedicalAnalyzer.swift",
+      "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Analyzers/SleepAnalyzer.swift",
+      "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Analyzers/VisionAnalyzer.swift",
+      "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Generators/NutritionFactsGenerator.swift",
+      "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Generators/RecipeGenerator.swift",
+      "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Generators/SongGenerator.swift",
+      "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Managers/HealthKitManager.swift",
+      "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/CalendarSchedule.swift",
+      "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/CognitiveAssessment.swift",
+      "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/Exercise.swift",
+      "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/Food.swift",
+      "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/HealthData.swift",
+      "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/HearingData.swift",
+      "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/Journal.swift",
+      "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/LongTermPlan.swift",
+      "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/MedicalSpecialties.swift",
+      "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/MedicalTests.swift",
+      "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/Nutrient.swift",
+      "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/SleepAnalysis.swift",
+      "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/VisionData.swift",
+      "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/VisionGames.swift",
+      "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Planners/ExercisePlanner.swift",
+      "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Planners/LongTermPlanner.swift",
+      "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Planners/TimeBasedPlanner.swift",
+      "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Solver/DietSolver.swift",
+      "/Users/shyamalchandra/diet-solver/Sources/DietSolver/ViewModels/DietSolverViewModel.swift",
+      "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/ContentView.swift",
+      "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/DietPlanView.swift",
+      "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/ExerciseInputView.swift",
+      "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/ExerciseLogView.swift",
+      "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/ExercisePlanView.swift",
+      "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/HealthDataInputView.swift",
+      "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/JournalAnalysisView.swift",
+      "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/PlanningSessionView.swift",
+      "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/SolvingView.swift",
+      "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/VisionCheckView.swift",
+      "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/VisionGamesView.swift",
+      "-I",
+      "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/Modules",
+      "-target",
+      "x86_64-apple-macosx13.0",
+      "-incremental",
+      "-enable-batch-mode",
+      "-serialize-diagnostics",
+      "-index-store-path",
+      "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/index/store",
+      "-Onone",
+      "-enable-testing",
+      "-j16",
+      "-DSWIFT_PACKAGE",
+      "-DDEBUG",
+      "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+      "-module-cache-path",
+      "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/ModuleCache",
+      "-parseable-output",
+      "-parse-as-library",
+      "-emit-objc-header",
+      "-emit-objc-header-path",
+      "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/include/DietSolver-Swift.h",
+      "-swift-version",
+      "5",
+      "-plugin-path",
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing",
+      "-sdk",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.1.sdk",
+      "-F",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+      "-F",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/PrivateFrameworks",
+      "-I",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+      "-L",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+      "-g",
+      "-Xcc",
+      "-isysroot",
+      "-Xcc",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.1.sdk",
+      "-Xcc",
+      "-F",
+      "-Xcc",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+      "-Xcc",
+      "-F",
+      "-Xcc",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/PrivateFrameworks",
+      "-Xcc",
+      "-fPIC",
+      "-Xcc",
+      "-g",
+      "-package-name",
+      "diet_solver",
+      "-driver-use-frontend-path",
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc"
+    ],
+    "DietSolverApp" : [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc",
+      "-module-name",
+      "DietSolverApp",
+      "-package-name",
+      "diet_solver",
+      "-c",
+      "/Users/shyamalchandra/diet-solver/Sources/DietSolverApp/main.swift",
+      "-I",
+      "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/Modules",
+      "-target",
+      "x86_64-apple-macosx13.0",
+      "-incremental",
+      "-enable-batch-mode",
+      "-serialize-diagnostics",
+      "-index-store-path",
+      "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/index/store",
+      "-Onone",
+      "-enable-testing",
+      "-j16",
+      "-DSWIFT_PACKAGE",
+      "-DDEBUG",
+      "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+      "-module-cache-path",
+      "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/ModuleCache",
+      "-parseable-output",
+      "-Xfrontend",
+      "-entry-point-function-name",
+      "-Xfrontend",
+      "DietSolverApp_main",
+      "-parse-as-library",
+      "-swift-version",
+      "5",
+      "-plugin-path",
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing",
+      "-sdk",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.1.sdk",
+      "-F",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+      "-F",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/PrivateFrameworks",
+      "-I",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+      "-L",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+      "-g",
+      "-Xcc",
+      "-isysroot",
+      "-Xcc",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.1.sdk",
+      "-Xcc",
+      "-F",
+      "-Xcc",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+      "-Xcc",
+      "-F",
+      "-Xcc",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/PrivateFrameworks",
+      "-Xcc",
+      "-fPIC",
+      "-Xcc",
+      "-g",
+      "-package-name",
+      "diet_solver",
+      "-driver-use-frontend-path",
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc"
+    ],
+    "DietSolverPackageTests" : [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc",
+      "-module-name",
+      "DietSolverPackageTests",
+      "-package-name",
+      "diet_solver",
+      "-c",
+      "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverPackageTests.derived/runner.swift",
+      "-I",
+      "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/Modules",
+      "-target",
+      "x86_64-apple-macosx13.0",
+      "-incremental",
+      "-enable-batch-mode",
+      "-serialize-diagnostics",
+      "-index-store-path",
+      "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/index/store",
+      "-Onone",
+      "-enable-testing",
+      "-Xfrontend",
+      "-enable-cross-import-overlays",
+      "-j16",
+      "-DSWIFT_PACKAGE",
+      "-DDEBUG",
+      "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+      "-module-cache-path",
+      "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/ModuleCache",
+      "-parseable-output",
+      "-parse-as-library",
+      "-emit-objc-header",
+      "-emit-objc-header-path",
+      "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverPackageTests.build/include/DietSolverPackageTests-Swift.h",
+      "-plugin-path",
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing",
+      "-sdk",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.1.sdk",
+      "-F",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+      "-F",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/PrivateFrameworks",
+      "-I",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+      "-L",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+      "-g",
+      "-Xcc",
+      "-isysroot",
+      "-Xcc",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.1.sdk",
+      "-Xcc",
+      "-F",
+      "-Xcc",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+      "-Xcc",
+      "-F",
+      "-Xcc",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/PrivateFrameworks",
+      "-Xcc",
+      "-fPIC",
+      "-Xcc",
+      "-g",
+      "-package-name",
+      "diet_solver",
+      "-driver-use-frontend-path",
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc"
+    ],
+    "DietSolverTests" : [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc",
+      "-module-name",
+      "DietSolverTests",
+      "-package-name",
+      "diet_solver",
+      "-c",
+      "/Users/shyamalchandra/diet-solver/Tests/DietSolverTests/HearingIntegrationSwiftTestingTests.swift",
+      "/Users/shyamalchandra/diet-solver/Tests/DietSolverTests/HearingIntegrationTests.swift",
+      "-I",
+      "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/Modules",
+      "-target",
+      "x86_64-apple-macosx14.0",
+      "-incremental",
+      "-enable-batch-mode",
+      "-serialize-diagnostics",
+      "-index-store-path",
+      "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/index/store",
+      "-Onone",
+      "-enable-testing",
+      "-Xfrontend",
+      "-enable-cross-import-overlays",
+      "-j16",
+      "-DSWIFT_PACKAGE",
+      "-DDEBUG",
+      "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+      "-module-cache-path",
+      "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/ModuleCache",
+      "-parseable-output",
+      "-parse-as-library",
+      "-swift-version",
+      "5",
+      "-plugin-path",
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing",
+      "-sdk",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.1.sdk",
+      "-F",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+      "-F",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/PrivateFrameworks",
+      "-I",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+      "-L",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+      "-g",
+      "-Xcc",
+      "-isysroot",
+      "-Xcc",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.1.sdk",
+      "-Xcc",
+      "-F",
+      "-Xcc",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+      "-Xcc",
+      "-F",
+      "-Xcc",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/PrivateFrameworks",
+      "-Xcc",
+      "-fPIC",
+      "-Xcc",
+      "-g",
+      "-package-name",
+      "diet_solver",
+      "-driver-use-frontend-path",
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc"
+    ]
+  },
+  "targetDependencyMap" : {
+    "DietSolver" : [
+
+    ],
+    "DietSolverApp" : [
+      "DietSolver"
+    ],
+    "DietSolverPackageTests" : [
+      "DietSolverTests",
+      "DietSolver"
+    ],
+    "DietSolverTests" : [
+      "DietSolver"
+    ]
+  },
+  "testDiscoveryCommands" : {
+
+  },
+  "testEntryPointCommands" : {
+    "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverPackageTests.derived/runner.swift" : {
+      "inputs" : [
+
+      ],
+      "outputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverPackageTests.derived/runner.swift"
+        }
+      ]
+    }
+  },
+  "traitConfiguration" : {
+    "default" : {
+
+    }
+  },
+  "writeCommands" : {
+    "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/sources" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<sources-file-list>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Analyzers/CognitiveAnalyzer.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Analyzers/JournalAnalyzer.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Analyzers/MedicalAnalyzer.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Analyzers/SleepAnalyzer.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Analyzers/VisionAnalyzer.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Generators/NutritionFactsGenerator.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Generators/RecipeGenerator.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Generators/SongGenerator.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Managers/HealthKitManager.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/CalendarSchedule.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/CognitiveAssessment.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/Exercise.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/Food.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/HealthData.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/HearingData.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/Journal.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/LongTermPlan.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/MedicalSpecialties.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/MedicalTests.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/Nutrient.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/SleepAnalysis.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/VisionData.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/VisionGames.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Planners/ExercisePlanner.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Planners/LongTermPlanner.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Planners/TimeBasedPlanner.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Solver/DietSolver.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/ViewModels/DietSolverViewModel.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/ContentView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/DietPlanView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/ExerciseInputView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/ExerciseLogView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/ExercisePlanView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/HealthDataInputView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/JournalAnalysisView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/PlanningSessionView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/SolvingView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/VisionCheckView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/VisionGamesView.swift"
+        }
+      ],
+      "outputFilePath" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/sources"
+    },
+    "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverApp-entitlement.plist" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<entitlement-plist>"
+        },
+        {
+          "kind" : "virtual",
+          "name" : "<com.apple.security.get-task-allow>"
+        }
+      ],
+      "outputFilePath" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverApp-entitlement.plist"
+    },
+    "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverApp.build/sources" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<sources-file-list>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolverApp/main.swift"
+        }
+      ],
+      "outputFilePath" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverApp.build/sources"
+    },
+    "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverApp.product/Objects.LinkFileList" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<link-file-list>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/CalendarSchedule.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/CognitiveAnalyzer.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/CognitiveAssessment.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ContentView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/DietPlanView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/DietSolver.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/DietSolverViewModel.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/Exercise.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ExerciseInputView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ExerciseLogView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ExercisePlanView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ExercisePlanner.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/Food.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/HealthData.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/HealthDataInputView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/HealthKitManager.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/HearingData.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/Journal.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/JournalAnalysisView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/JournalAnalyzer.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/LongTermPlan.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/LongTermPlanner.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/MedicalAnalyzer.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/MedicalSpecialties.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/MedicalTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/Nutrient.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/NutritionFactsGenerator.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/PlanningSessionView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/RecipeGenerator.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/SleepAnalysis.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/SleepAnalyzer.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/SolvingView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/SongGenerator.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/TimeBasedPlanner.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/VisionAnalyzer.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/VisionCheckView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/VisionData.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/VisionGames.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/VisionGamesView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverApp.build/main.swift.o"
+        }
+      ],
+      "outputFilePath" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverApp.product/Objects.LinkFileList"
+    },
+    "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverPackageTests.build/sources" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<sources-file-list>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverPackageTests.derived/runner.swift"
+        }
+      ],
+      "outputFilePath" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverPackageTests.build/sources"
+    },
+    "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverPackageTests.product/Objects.LinkFileList" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<link-file-list>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/CalendarSchedule.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/CognitiveAnalyzer.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/CognitiveAssessment.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ContentView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/DietPlanView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/DietSolver.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/DietSolverViewModel.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/Exercise.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ExerciseInputView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ExerciseLogView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ExercisePlanView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ExercisePlanner.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/Food.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/HealthData.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/HealthDataInputView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/HealthKitManager.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/HearingData.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/Journal.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/JournalAnalysisView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/JournalAnalyzer.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/LongTermPlan.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/LongTermPlanner.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/MedicalAnalyzer.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/MedicalSpecialties.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/MedicalTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/Nutrient.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/NutritionFactsGenerator.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/PlanningSessionView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/RecipeGenerator.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/SleepAnalysis.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/SleepAnalyzer.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/SolvingView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/SongGenerator.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/TimeBasedPlanner.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/VisionAnalyzer.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/VisionCheckView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/VisionData.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/VisionGames.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/VisionGamesView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverPackageTests.build/runner.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build/HearingIntegrationSwiftTestingTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build/HearingIntegrationTests.swift.o"
+        }
+      ],
+      "outputFilePath" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverPackageTests.product/Objects.LinkFileList"
+    },
+    "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build/sources" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<sources-file-list>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Tests/DietSolverTests/HearingIntegrationSwiftTestingTests.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Tests/DietSolverTests/HearingIntegrationTests.swift"
+        }
+      ],
+      "outputFilePath" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build/sources"
+    },
+    "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt" : {
+      "alwaysOutOfDate" : true,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<swift-get-version>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc"
+        }
+      ],
+      "outputFilePath" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt"
+    }
+  }
+}
