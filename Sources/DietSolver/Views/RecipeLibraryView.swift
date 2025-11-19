@@ -45,44 +45,49 @@ struct RecipeLibraryView: View {
             // Search and Filters
             VStack(spacing: AppDesign.Spacing.md) {
                 // Search Bar
-                HStack {
-                    Image(systemName: "magnifyingglass")
-                        .foregroundColor(AppDesign.Colors.textSecondary)
-                    TextField("Search recipes...", text: $searchText)
-                        .foregroundColor(.black)
-                        .textFieldStyle(PlainTextFieldStyle())
+                ModernCard(shadow: AppDesign.Shadow.small, gradient: false) {
+                    HStack(spacing: AppDesign.Spacing.sm) {
+                        IconBadge(icon: "magnifyingglass", color: AppDesign.Colors.primary, size: 20)
+                        TextField("Search recipes...", text: $searchText)
+                            .foregroundColor(AppDesign.Colors.textPrimary)
+                            .textFieldStyle(PlainTextFieldStyle())
+                    }
                 }
-                .padding()
-                .background(AppDesign.Colors.surface)
-                .cornerRadius(12)
                 .padding(.horizontal, AppDesign.Spacing.md)
                 
                 // Filters
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: AppDesign.Spacing.sm) {
                         // Meal Type Filter
-                        Picker("Meal Type", selection: $selectedMealType) {
-                            Text("All").tag(Meal.MealType?.none)
-                            ForEach(Meal.MealType.allCases, id: \.self) { type in
-                                Text(type.rawValue.capitalized).tag(Meal.MealType?.some(type))
+                        ModernCard(shadow: AppDesign.Shadow.small, gradient: false) {
+                            Picker("Meal Type", selection: $selectedMealType) {
+                                Text("All").tag(Meal.MealType?.none)
+                                ForEach(Meal.MealType.allCases, id: \.self) { type in
+                                    Text(type.rawValue.capitalized).tag(Meal.MealType?.some(type))
+                                }
                             }
+                            .pickerStyle(.menu)
+                            .foregroundColor(AppDesign.Colors.textPrimary)
                         }
-                        .pickerStyle(.menu)
-                        .padding(.horizontal, AppDesign.Spacing.md)
-                        .padding(.vertical, AppDesign.Spacing.xs)
-                        .background(AppDesign.Colors.surface)
-                        .cornerRadius(8)
                         
                         // Rating Filter
-                        Toggle("Min Rating", isOn: $showRatingFilter)
-                            .padding(.horizontal, AppDesign.Spacing.md)
-                            .padding(.vertical, AppDesign.Spacing.xs)
-                            .background(AppDesign.Colors.surface)
-                            .cornerRadius(8)
+                        ModernCard(shadow: AppDesign.Shadow.small, gradient: false) {
+                            Toggle("Min Rating", isOn: $showRatingFilter)
+                                .foregroundColor(AppDesign.Colors.textPrimary)
+                        }
                         
                         if showRatingFilter {
-                            Slider(value: $minRating, in: 0...5, step: 0.5)
-                                .frame(width: 150)
+                            ModernCard(shadow: AppDesign.Shadow.small, gradient: false) {
+                                HStack(spacing: AppDesign.Spacing.sm) {
+                                    Text("\(String(format: "%.1f", minRating))")
+                                        .font(AppDesign.Typography.caption)
+                                        .foregroundColor(AppDesign.Colors.textPrimary)
+                                        .frame(width: 30)
+                                    Slider(value: $minRating, in: 0...5, step: 0.5)
+                                        .tint(AppDesign.Colors.accent)
+                                }
+                                .frame(width: 180)
+                            }
                         }
                     }
                     .padding(.horizontal, AppDesign.Spacing.md)
@@ -94,24 +99,22 @@ struct RecipeLibraryView: View {
             // Recipe List
             if filteredRecipes.isEmpty {
                 Spacer()
-                VStack(spacing: AppDesign.Spacing.md) {
-                    Image(systemName: "book.closed")
-                        .font(.system(size: 50))
-                        .foregroundColor(AppDesign.Colors.textSecondary)
-                    Text("No recipes found")
-                        .font(AppDesign.Typography.headline)
-                    Text(searchText.isEmpty ? "Save recipes from your meal plans to build your library" : "Try adjusting your search or filters")
-                        .font(AppDesign.Typography.body)
-                        .foregroundColor(AppDesign.Colors.textSecondary)
-                        .multilineTextAlignment(.center)
-                }
-                .padding()
+                EmptyStateView(
+                    icon: "book.closed",
+                    title: "No recipes found",
+                    message: searchText.isEmpty ? "Save recipes from your meal plans to build your library" : "Try adjusting your search or filters"
+                )
                 Spacer()
             } else {
                 ScrollView {
                     LazyVStack(spacing: AppDesign.Spacing.md) {
-                        ForEach(filteredRecipes) { recipe in
+                        ForEach(Array(filteredRecipes.enumerated()), id: \.element.id) { index, recipe in
                             RecipeCard(recipe: recipe, libraryManager: libraryManager)
+                                .transition(.move(edge: .leading).combined(with: .opacity))
+                                .animation(
+                                    AppDesign.Animation.spring.delay(Double(index) * 0.05),
+                                    value: filteredRecipes.count
+                                )
                         }
                     }
                     .padding(.horizontal, AppDesign.Spacing.md)
@@ -123,6 +126,7 @@ struct RecipeLibraryView: View {
         #if os(iOS)
         .navigationBarTitleDisplayMode(.large)
         #endif
+        .background(AppDesign.Colors.background.ignoresSafeArea())
         .toolbar {
             #if os(iOS)
             ToolbarItem(placement: .navigationBarTrailing) {
@@ -159,15 +163,24 @@ struct RecipeCard: View {
     let recipe: SavedRecipe
     @ObservedObject var libraryManager: RecipeLibraryManager
     @State private var showDetails = false
+    @State private var isHovered = false
     
     var body: some View {
-        ModernCard {
+        ModernCard(shadow: AppDesign.Shadow.medium, gradient: true) {
             VStack(alignment: .leading, spacing: AppDesign.Spacing.sm) {
-                HStack {
+                HStack(alignment: .top) {
+                    IconBadge(
+                        icon: mealTypeIcon(recipe.mealType),
+                        color: AppDesign.Colors.primary,
+                        size: 40,
+                        gradient: true
+                    )
+                    
                     VStack(alignment: .leading, spacing: AppDesign.Spacing.xs) {
                         Text(recipe.mealName)
                             .font(AppDesign.Typography.headline)
                             .fontWeight(.semibold)
+                            .foregroundColor(AppDesign.Colors.textPrimary)
                         
                         HStack(spacing: AppDesign.Spacing.sm) {
                             Label(recipe.mealType.rawValue.capitalized, systemImage: mealTypeIcon(recipe.mealType))
@@ -175,9 +188,17 @@ struct RecipeCard: View {
                                 .foregroundColor(AppDesign.Colors.textSecondary)
                             
                             if recipe.timesMade > 0 {
-                                Label("\(recipe.timesMade)x", systemImage: "checkmark.circle.fill")
-                                    .font(AppDesign.Typography.caption)
-                                    .foregroundColor(AppDesign.Colors.success)
+                                HStack(spacing: 4) {
+                                    Image(systemName: "checkmark.circle.fill")
+                                        .font(.system(size: 10))
+                                    Text("\(recipe.timesMade)x")
+                                }
+                                .font(AppDesign.Typography.caption)
+                                .foregroundColor(AppDesign.Colors.success)
+                                .padding(.horizontal, AppDesign.Spacing.xs)
+                                .padding(.vertical, 2)
+                                .background(AppDesign.Colors.success.opacity(0.1))
+                                .cornerRadius(AppDesign.Radius.small)
                             }
                         }
                     }
@@ -186,39 +207,68 @@ struct RecipeCard: View {
                     
                     // Rating
                     if let rating = recipe.rating {
-                        HStack(spacing: 2) {
+                        HStack(spacing: 4) {
                             Image(systemName: "star.fill")
                                 .foregroundColor(AppDesign.Colors.accent)
-                                .font(.system(size: 12))
+                                .font(.system(size: 14))
                             Text(String(format: "%.1f", rating))
                                 .font(AppDesign.Typography.subheadline)
-                                .fontWeight(.semibold)
+                                .fontWeight(.bold)
+                                .foregroundColor(AppDesign.Colors.textPrimary)
                         }
+                        .padding(.horizontal, AppDesign.Spacing.sm)
+                        .padding(.vertical, AppDesign.Spacing.xs)
+                        .background(AppDesign.Colors.accent.opacity(0.1))
+                        .cornerRadius(AppDesign.Radius.small)
                     }
                 }
                 
                 // Items Preview
-                Text("\(recipe.items.count) ingredients")
-                    .font(AppDesign.Typography.caption)
-                    .foregroundColor(AppDesign.Colors.textSecondary)
+                HStack(spacing: 4) {
+                    Image(systemName: "list.bullet")
+                        .font(.system(size: 10))
+                        .foregroundColor(AppDesign.Colors.primary)
+                    Text("\(recipe.items.count) ingredients")
+                        .font(AppDesign.Typography.caption)
+                        .foregroundColor(AppDesign.Colors.textSecondary)
+                }
                 
                 // Actions
-                HStack {
-                    Button(action: { showDetails.toggle() }) {
-                        Label("View Recipe", systemImage: "eye.fill")
-                            .font(AppDesign.Typography.subheadline)
+                HStack(spacing: AppDesign.Spacing.sm) {
+                    GradientButton(
+                        title: "View Recipe",
+                        icon: "eye.fill",
+                        action: { showDetails.toggle() },
+                        style: .secondary
+                    )
+                    
+                    Button(action: {
+                        withAnimation(AppDesign.Animation.spring) {
+                            libraryManager.markRecipeAsMade(recipe.id)
+                        }
+                    }) {
+                        HStack(spacing: 4) {
+                            Image(systemName: "checkmark")
+                            Text("Made")
+                        }
+                        .font(AppDesign.Typography.subheadline)
+                        .foregroundColor(AppDesign.Colors.success)
+                        .padding(.horizontal, AppDesign.Spacing.md)
+                        .padding(.vertical, AppDesign.Spacing.sm)
+                        .background(AppDesign.Colors.success.opacity(0.1))
+                        .cornerRadius(AppDesign.Radius.small)
                     }
                     
-                    Spacer()
-                    
-                    Button(action: { libraryManager.markRecipeAsMade(recipe.id) }) {
-                        Label("Made", systemImage: "checkmark")
-                            .font(AppDesign.Typography.subheadline)
-                    }
-                    
-                    Button(action: { libraryManager.deleteRecipe(recipe.id) }) {
+                    Button(action: {
+                        withAnimation(AppDesign.Animation.spring) {
+                            libraryManager.deleteRecipe(recipe.id)
+                        }
+                    }) {
                         Image(systemName: "trash")
-                            .foregroundColor(.red)
+                            .foregroundColor(AppDesign.Colors.error)
+                            .padding(AppDesign.Spacing.sm)
+                            .background(AppDesign.Colors.error.opacity(0.1))
+                            .clipShape(Circle())
                     }
                 }
                 .padding(.top, AppDesign.Spacing.xs)
@@ -240,6 +290,16 @@ struct RecipeCard: View {
     }
 }
 
+// MARK: - Helper Function
+private func mealTypeIcon(_ type: Meal.MealType) -> String {
+    switch type {
+    case .breakfast: return "sunrise.fill"
+    case .lunch: return "sun.max.fill"
+    case .dinner: return "moon.fill"
+    case .snack: return "leaf.fill"
+    }
+}
+
 // MARK: - Recipe Detail View
 struct RecipeDetailView: View {
     let recipe: SavedRecipe
@@ -250,83 +310,126 @@ struct RecipeDetailView: View {
     var body: some View {
         VStack(spacing: 0) {
             // Custom Header
-            HStack {
-                Text("Recipe Details")
-                    .font(AppDesign.Typography.title)
-                    .fontWeight(.bold)
-                    .padding(.leading, AppDesign.Spacing.md)
-                Spacer()
-                Button("Done") {
-                    dismiss()
+            ModernCard(shadow: AppDesign.Shadow.medium, gradient: true) {
+                HStack {
+                    IconBadge(icon: mealTypeIcon(recipe.mealType), color: AppDesign.Colors.primary, size: 32, gradient: true)
+                    Text("Recipe Details")
+                        .font(AppDesign.Typography.title)
+                        .fontWeight(.bold)
+                        .foregroundColor(AppDesign.Colors.textPrimary)
+                    Spacer()
+                    GradientButton(
+                        title: "Done",
+                        icon: nil,
+                        action: { dismiss() },
+                        style: .secondary
+                    )
+                    .frame(width: 80)
                 }
-                .font(AppDesign.Typography.headline)
-                .foregroundColor(AppDesign.Colors.primary)
-                .padding(.trailing, AppDesign.Spacing.md)
             }
-            .padding(.vertical, AppDesign.Spacing.sm)
-            .background(AppDesign.Colors.surface)
+            .padding(.horizontal, AppDesign.Spacing.md)
+            .padding(.top, AppDesign.Spacing.sm)
             
             ScrollView {
                 VStack(alignment: .leading, spacing: AppDesign.Spacing.lg) {
                     // Header
-                    VStack(alignment: .leading, spacing: AppDesign.Spacing.sm) {
-                        Text(recipe.mealName)
-                            .font(AppDesign.Typography.title)
-                            .fontWeight(.bold)
-                        
-                        Text(recipe.mealType.rawValue.capitalized)
-                            .font(AppDesign.Typography.body)
-                            .foregroundColor(AppDesign.Colors.textSecondary)
-                    }
-                    
-                    // Ingredients
-                    VStack(alignment: .leading, spacing: AppDesign.Spacing.sm) {
-                        Text("Ingredients")
-                            .font(AppDesign.Typography.headline)
-                        
-                        ForEach(recipe.items) { item in
-                            HStack {
-                                Circle()
-                                    .fill(AppDesign.Colors.primary.opacity(0.2))
-                                    .frame(width: 8, height: 8)
-                                Text(item.foodName)
-                                Spacer()
-                                Text("\(String(format: "%.1f", item.amount)) \(item.unit)")
+                    ModernCard(shadow: AppDesign.Shadow.small, gradient: true) {
+                        VStack(alignment: .leading, spacing: AppDesign.Spacing.sm) {
+                            Text(recipe.mealName)
+                                .font(AppDesign.Typography.title)
+                                .fontWeight(.bold)
+                                .foregroundColor(AppDesign.Colors.textPrimary)
+                            
+                            HStack(spacing: AppDesign.Spacing.sm) {
+                                IconBadge(icon: mealTypeIcon(recipe.mealType), color: AppDesign.Colors.primary, size: 24)
+                                Text(recipe.mealType.rawValue.capitalized)
+                                    .font(AppDesign.Typography.body)
                                     .foregroundColor(AppDesign.Colors.textSecondary)
                             }
-                            .font(AppDesign.Typography.body)
                         }
                     }
+                    .padding(.horizontal, AppDesign.Spacing.md)
+                    
+                    // Ingredients
+                    ModernCard(shadow: AppDesign.Shadow.small, gradient: true) {
+                        VStack(alignment: .leading, spacing: AppDesign.Spacing.sm) {
+                            HStack {
+                                IconBadge(icon: "list.bullet", color: AppDesign.Colors.primary, size: 24)
+                                Text("Ingredients")
+                                    .font(AppDesign.Typography.headline)
+                                    .foregroundColor(AppDesign.Colors.textPrimary)
+                            }
+                            
+                            ForEach(recipe.items) { item in
+                                HStack(spacing: AppDesign.Spacing.sm) {
+                                    Circle()
+                                        .fill(AppDesign.Gradients.primary)
+                                        .frame(width: 10, height: 10)
+                                    Text(item.foodName)
+                                        .font(AppDesign.Typography.body)
+                                        .foregroundColor(AppDesign.Colors.textPrimary)
+                                    Spacer()
+                                    Text("\(String(format: "%.1f", item.amount)) \(item.unit)")
+                                        .font(AppDesign.Typography.body)
+                                        .fontWeight(.semibold)
+                                        .foregroundColor(AppDesign.Colors.primary)
+                                }
+                                .padding(.vertical, AppDesign.Spacing.xs)
+                            }
+                        }
+                    }
+                    .padding(.horizontal, AppDesign.Spacing.md)
                     
                     // Recipe Instructions
-                    VStack(alignment: .leading, spacing: AppDesign.Spacing.sm) {
-                        Text("Instructions")
-                            .font(AppDesign.Typography.headline)
-                        
-                        Text(recipe.recipeText)
-                            .font(AppDesign.Typography.body)
-                            .foregroundColor(AppDesign.Colors.textPrimary)
+                    ModernCard(shadow: AppDesign.Shadow.small, gradient: true) {
+                        VStack(alignment: .leading, spacing: AppDesign.Spacing.sm) {
+                            HStack {
+                                IconBadge(icon: "book.fill", color: AppDesign.Colors.accent, size: 24)
+                                Text("Instructions")
+                                    .font(AppDesign.Typography.headline)
+                                    .foregroundColor(AppDesign.Colors.textPrimary)
+                            }
+                            
+                            Text(recipe.recipeText)
+                                .font(AppDesign.Typography.body)
+                                .foregroundColor(AppDesign.Colors.textPrimary)
+                                .lineSpacing(4)
+                        }
                     }
+                    .padding(.horizontal, AppDesign.Spacing.md)
                     
                     // Rating
-                    VStack(alignment: .leading, spacing: AppDesign.Spacing.sm) {
-                        Text("Rate this recipe")
-                            .font(AppDesign.Typography.headline)
-                        
-                        HStack {
-                            ForEach(1...5, id: \.self) { star in
-                                Button(action: { 
-                                    rating = Double(star)
-                                    libraryManager.rateRecipe(recipe.id, rating: rating)
-                                }) {
-                                    Image(systemName: star <= Int(rating) ? "star.fill" : "star")
-                                        .foregroundColor(star <= Int(rating) ? AppDesign.Colors.accent : AppDesign.Colors.textSecondary)
+                    ModernCard(shadow: AppDesign.Shadow.small, gradient: true) {
+                        VStack(alignment: .leading, spacing: AppDesign.Spacing.sm) {
+                            HStack {
+                                IconBadge(icon: "star.fill", color: AppDesign.Colors.accent, size: 24)
+                                Text("Rate this recipe")
+                                    .font(AppDesign.Typography.headline)
+                                    .foregroundColor(AppDesign.Colors.textPrimary)
+                            }
+                            
+                            HStack(spacing: AppDesign.Spacing.sm) {
+                                ForEach(1...5, id: \.self) { star in
+                                    Button(action: { 
+                                        withAnimation(AppDesign.Animation.spring) {
+                                            rating = Double(star)
+                                            libraryManager.rateRecipe(recipe.id, rating: rating)
+                                        }
+                                    }) {
+                                        Image(systemName: star <= Int(rating) ? "star.fill" : "star")
+                                            .font(.system(size: 28, weight: .medium))
+                                            .foregroundColor(star <= Int(rating) ? AppDesign.Colors.accent : AppDesign.Colors.textSecondary)
+                                            #if os(iOS)
+                                            .symbolEffect(.bounce, value: rating)
+                                            #endif
+                                    }
                                 }
                             }
                         }
                     }
+                    .padding(.horizontal, AppDesign.Spacing.md)
                 }
-                .padding(AppDesign.Spacing.md)
+                .padding(.vertical, AppDesign.Spacing.md)
             }
         }
         .onAppear {

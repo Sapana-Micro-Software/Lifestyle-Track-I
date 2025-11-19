@@ -19,23 +19,31 @@ struct MealPrepView: View {
             VStack(spacing: AppDesign.Spacing.lg) {
                 // Header
                 VStack(alignment: .leading, spacing: AppDesign.Spacing.sm) {
-                    Text("Meal Prep Planner")
-                        .font(AppDesign.Typography.title)
-                        .fontWeight(.bold)
-                    
-                    Text("Plan your meal prep schedule for efficient cooking")
-                        .font(AppDesign.Typography.body)
-                        .foregroundColor(AppDesign.Colors.textSecondary)
+                    HStack(spacing: AppDesign.Spacing.sm) {
+                        IconBadge(icon: "calendar.badge.clock", color: AppDesign.Colors.primary, size: 40, gradient: true)
+                        VStack(alignment: .leading, spacing: 4) {
+                            Text("Meal Prep Planner")
+                                .font(AppDesign.Typography.title)
+                                .fontWeight(.bold)
+                                .foregroundColor(AppDesign.Colors.textPrimary)
+                            
+                            Text("Plan your meal prep schedule for efficient cooking")
+                                .font(AppDesign.Typography.body)
+                                .foregroundColor(AppDesign.Colors.textSecondary)
+                        }
+                    }
                 }
                 .padding(.horizontal, AppDesign.Spacing.md)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 
                 // Generation Controls
-                ModernCard {
+                ModernCard(shadow: AppDesign.Shadow.medium, gradient: true) {
                     VStack(spacing: AppDesign.Spacing.md) {
                         HStack {
+                            IconBadge(icon: "calendar", color: AppDesign.Colors.primary, size: 24)
                             Text("Days to plan:")
                                 .font(AppDesign.Typography.body)
+                                .foregroundColor(AppDesign.Colors.textPrimary)
                             Spacer()
                             Picker("", selection: $daysToPlan) {
                                 Text("3 days").tag(3)
@@ -43,25 +51,25 @@ struct MealPrepView: View {
                                 Text("14 days").tag(14)
                             }
                             .pickerStyle(.menu)
+                            .foregroundColor(AppDesign.Colors.textPrimary)
                         }
                         
-                        Button(action: generateMealPrepSchedule) {
-                            HStack {
+                        GradientButton(
+                            title: isGenerating ? "Generating..." : "Generate Meal Prep Schedule",
+                            icon: isGenerating ? nil : "calendar.badge.clock",
+                            action: generateMealPrepSchedule,
+                            style: .primary
+                        )
+                        .disabled(isGenerating || (viewModel.dailyPlans.isEmpty && viewModel.dietPlan == nil))
+                        .opacity(isGenerating ? 0.7 : 1.0)
+                        .overlay(
+                            Group {
                                 if isGenerating {
                                     ProgressView()
                                         .progressViewStyle(CircularProgressViewStyle(tint: .white))
-                                } else {
-                                    Image(systemName: "calendar.badge.clock")
-                                    Text("Generate Meal Prep Schedule")
                                 }
                             }
-                            .frame(maxWidth: .infinity)
-                            .padding()
-                            .background(AppDesign.Colors.primary)
-                            .foregroundColor(.white)
-                            .cornerRadius(12)
-                        }
-                        .disabled(isGenerating || (viewModel.dailyPlans.isEmpty && viewModel.dietPlan == nil))
+                        )
                     }
                     .padding(AppDesign.Spacing.md)
                 }
@@ -70,20 +78,13 @@ struct MealPrepView: View {
                 // Schedule Display
                 if let schedule = mealPrepSchedule {
                     mealPrepScheduleContent(schedule: schedule)
+                        .transition(.move(edge: .bottom).combined(with: .opacity))
                 } else if !isGenerating {
-                    ModernCard {
-                        VStack(spacing: AppDesign.Spacing.md) {
-                            Image(systemName: "calendar.badge.clock")
-                                .font(.system(size: 50))
-                                .foregroundColor(AppDesign.Colors.textSecondary)
-                            Text("No meal prep schedule generated yet")
-                                .font(AppDesign.Typography.headline)
-                            Text("Generate a schedule from your meal plans")
-                                .font(AppDesign.Typography.body)
-                                .foregroundColor(AppDesign.Colors.textSecondary)
-                        }
-                        .padding()
-                    }
+                    EmptyStateView(
+                        icon: "calendar.badge.clock",
+                        title: "No meal prep schedule generated yet",
+                        message: "Generate a schedule from your meal plans"
+                    )
                     .padding(.horizontal, AppDesign.Spacing.md)
                 }
             }
@@ -93,6 +94,7 @@ struct MealPrepView: View {
         #if os(iOS)
         .navigationBarTitleDisplayMode(.large)
         #endif
+        .background(AppDesign.Colors.background.ignoresSafeArea())
     }
     
     // MARK: - Generate Schedule
@@ -145,19 +147,24 @@ struct MealPrepView: View {
     private func mealPrepScheduleContent(schedule: MealPrepSchedule) -> some View {
         VStack(spacing: AppDesign.Spacing.md) {
             // Summary
-            ModernCard {
+            ModernCard(shadow: AppDesign.Shadow.medium, gradient: true) {
                 VStack(spacing: AppDesign.Spacing.sm) {
                     HStack {
-                        Text("Schedule Summary")
-                            .font(AppDesign.Typography.headline)
+                        HStack(spacing: AppDesign.Spacing.xs) {
+                            IconBadge(icon: "calendar.badge.clock", color: AppDesign.Colors.primary, size: 32)
+                            Text("Schedule Summary")
+                                .font(AppDesign.Typography.headline)
+                                .foregroundColor(AppDesign.Colors.textPrimary)
+                        }
                         Spacer()
                     }
                     
-                    HStack {
-                        VStack(alignment: .leading) {
+                    HStack(spacing: AppDesign.Spacing.lg) {
+                        VStack(alignment: .leading, spacing: AppDesign.Spacing.xs) {
                             Text("\(schedule.tasks.count)")
                                 .font(AppDesign.Typography.title2)
                                 .fontWeight(.bold)
+                                .foregroundColor(AppDesign.Colors.primary)
                             Text("Tasks")
                                 .font(AppDesign.Typography.caption)
                                 .foregroundColor(AppDesign.Colors.textSecondary)
@@ -165,10 +172,11 @@ struct MealPrepView: View {
                         
                         Spacer()
                         
-                        VStack(alignment: .trailing) {
+                        VStack(alignment: .trailing, spacing: AppDesign.Spacing.xs) {
                             Text("\(schedule.totalEstimatedTime) min")
                                 .font(AppDesign.Typography.title2)
                                 .fontWeight(.bold)
+                                .foregroundColor(AppDesign.Colors.accent)
                             Text("Total Time")
                                 .font(AppDesign.Typography.caption)
                                 .foregroundColor(AppDesign.Colors.textSecondary)
@@ -178,6 +186,7 @@ struct MealPrepView: View {
                 .padding(AppDesign.Spacing.md)
             }
             .padding(.horizontal, AppDesign.Spacing.md)
+            .transition(.move(edge: .top).combined(with: .opacity))
             
             // Batch Cooking Recommendations
             let recommendations = MealPrepPlanner.shared.getBatchCookingRecommendations(from: viewModel.dailyPlans)
@@ -207,51 +216,66 @@ struct MealPrepView: View {
     // MARK: - Batch Cooking Section
     private func batchCookingSection(recommendations: [BatchCookingRecommendation]) -> some View {
         VStack(alignment: .leading, spacing: AppDesign.Spacing.sm) {
-            Text("Batch Cooking Recommendations")
-                .font(AppDesign.Typography.headline)
-                .padding(.horizontal, AppDesign.Spacing.md)
+            HStack {
+                IconBadge(icon: "flame.fill", color: AppDesign.Colors.accent, size: 28)
+                Text("Batch Cooking Recommendations")
+                    .font(AppDesign.Typography.headline)
+                    .foregroundColor(AppDesign.Colors.textPrimary)
+            }
+            .padding(.horizontal, AppDesign.Spacing.md)
             
             ForEach(recommendations) { recommendation in
-                ModernCard {
+                ModernCard(shadow: AppDesign.Shadow.small, gradient: true) {
                     VStack(alignment: .leading, spacing: AppDesign.Spacing.sm) {
                         HStack {
+                            IconBadge(icon: "fork.knife", color: AppDesign.Colors.accent, size: 24)
                             Text(recommendation.food)
                                 .font(AppDesign.Typography.headline)
+                                .foregroundColor(AppDesign.Colors.textPrimary)
                             Spacer()
-                            Text("Used \(recommendation.frequency)x this week")
+                            Text("Used \(recommendation.frequency)x")
                                 .font(AppDesign.Typography.caption)
-                                .foregroundColor(AppDesign.Colors.textSecondary)
+                                .fontWeight(.semibold)
+                                .foregroundColor(AppDesign.Colors.accent)
+                                .padding(.horizontal, AppDesign.Spacing.sm)
+                                .padding(.vertical, AppDesign.Spacing.xs)
+                                .background(AppDesign.Colors.accent.opacity(0.1))
+                                .cornerRadius(AppDesign.Radius.small)
                         }
                         
                         VStack(alignment: .leading, spacing: AppDesign.Spacing.xs) {
-                            HStack {
-                                Text("Batch Size:")
+                            HStack(spacing: 4) {
+                                Image(systemName: "scalemass")
+                                    .font(.system(size: 10))
+                                    .foregroundColor(AppDesign.Colors.primary)
+                                Text("Batch Size: \(recommendation.recommendedBatchSize)")
                                     .font(AppDesign.Typography.subheadline)
-                                    .fontWeight(.semibold)
-                                Text(recommendation.recommendedBatchSize)
+                                    .foregroundColor(AppDesign.Colors.textPrimary)
                             }
                             
-                            HStack {
-                                Text("Storage:")
-                                    .font(AppDesign.Typography.subheadline)
-                                    .fontWeight(.semibold)
-                                Text(recommendation.storageMethod)
+                            HStack(spacing: 4) {
+                                Image(systemName: "archivebox")
+                                    .font(.system(size: 10))
+                                    .foregroundColor(AppDesign.Colors.primary)
+                                Text("Storage: \(recommendation.storageMethod)")
                                     .font(AppDesign.Typography.caption)
+                                    .foregroundColor(AppDesign.Colors.textSecondary)
                             }
                             
-                            HStack {
-                                Text("Instructions:")
-                                    .font(AppDesign.Typography.subheadline)
-                                    .fontWeight(.semibold)
-                                Text(recommendation.prepInstructions)
+                            HStack(alignment: .top, spacing: 4) {
+                                Image(systemName: "list.bullet.rectangle")
+                                    .font(.system(size: 10))
+                                    .foregroundColor(AppDesign.Colors.primary)
+                                Text("Instructions: \(recommendation.prepInstructions)")
                                     .font(AppDesign.Typography.caption)
+                                    .foregroundColor(AppDesign.Colors.textSecondary)
                             }
                         }
-                        .foregroundColor(AppDesign.Colors.textSecondary)
                     }
                     .padding(AppDesign.Spacing.md)
                 }
                 .padding(.horizontal, AppDesign.Spacing.md)
+                .transition(.move(edge: .leading).combined(with: .opacity))
             }
         }
     }
@@ -259,17 +283,22 @@ struct MealPrepView: View {
     // MARK: - Task Section
     private func taskSection(title: String, tasks: [MealPrepTask], schedule: MealPrepSchedule) -> some View {
         VStack(alignment: .leading, spacing: AppDesign.Spacing.sm) {
-            Text(title)
-                .font(AppDesign.Typography.headline)
-                .padding(.horizontal, AppDesign.Spacing.md)
+            HStack {
+                IconBadge(icon: "checklist", color: AppDesign.Colors.primary, size: 28)
+                Text(title)
+                    .font(AppDesign.Typography.headline)
+                    .foregroundColor(AppDesign.Colors.textPrimary)
+            }
+            .padding(.horizontal, AppDesign.Spacing.md)
             
-            ForEach(tasks) { task in
-                ModernCard {
+            ForEach(Array(tasks.enumerated()), id: \.element.id) { index, task in
+                ModernCard(shadow: AppDesign.Shadow.small, gradient: true) {
                     VStack(alignment: .leading, spacing: AppDesign.Spacing.sm) {
-                        HStack {
+                        HStack(alignment: .top) {
                             VStack(alignment: .leading, spacing: AppDesign.Spacing.xs) {
                                 Text(task.title)
                                     .font(AppDesign.Typography.headline)
+                                    .foregroundColor(AppDesign.Colors.textPrimary)
                                 
                                 Text(task.description)
                                     .font(AppDesign.Typography.caption)
@@ -278,43 +307,72 @@ struct MealPrepView: View {
                             
                             Spacer()
                             
-                            VStack(alignment: .trailing) {
-                                Text("\(task.estimatedTime) min")
-                                    .font(AppDesign.Typography.subheadline)
-                                    .fontWeight(.semibold)
+                            VStack(alignment: .trailing, spacing: AppDesign.Spacing.xs) {
+                                HStack(spacing: 4) {
+                                    Image(systemName: "clock")
+                                        .font(.system(size: 12))
+                                    Text("\(task.estimatedTime) min")
+                                        .font(AppDesign.Typography.subheadline)
+                                        .fontWeight(.semibold)
+                                        .foregroundColor(AppDesign.Colors.textPrimary)
+                                }
                                 
                                 // Priority badge
                                 Text(task.priority.rawValue)
                                     .font(AppDesign.Typography.caption)
-                                    .padding(.horizontal, 6)
-                                    .padding(.vertical, 2)
+                                    .fontWeight(.semibold)
+                                    .padding(.horizontal, 8)
+                                    .padding(.vertical, 4)
                                     .background(priorityColor(task.priority).opacity(0.2))
                                     .foregroundColor(priorityColor(task.priority))
-                                    .cornerRadius(4)
+                                    .cornerRadius(AppDesign.Radius.small)
                             }
                         }
                         
                         // Date
-                        Text(formatDate(task.scheduledDate))
-                            .font(AppDesign.Typography.caption)
-                            .foregroundColor(AppDesign.Colors.textSecondary)
-                        
-                        // Items
-                        if !task.items.isEmpty {
-                            Text("Items: \(task.items.joined(separator: ", "))")
+                        HStack(spacing: 4) {
+                            Image(systemName: "calendar")
+                                .font(.system(size: 10))
+                                .foregroundColor(AppDesign.Colors.primary)
+                            Text(formatDate(task.scheduledDate))
                                 .font(AppDesign.Typography.caption)
                                 .foregroundColor(AppDesign.Colors.textSecondary)
                         }
                         
+                        // Items
+                        if !task.items.isEmpty {
+                            HStack(spacing: 4) {
+                                Image(systemName: "list.bullet")
+                                    .font(.system(size: 10))
+                                    .foregroundColor(AppDesign.Colors.accent)
+                                Text("Items: \(task.items.joined(separator: ", "))")
+                                    .font(AppDesign.Typography.caption)
+                                    .foregroundColor(AppDesign.Colors.textSecondary)
+                            }
+                        }
+                        
                         // Completion Toggle
-                        Toggle("Completed", isOn: Binding(
-                            get: { task.isCompleted },
-                            set: { _ in toggleTask(task, in: schedule) }
-                        ))
+                        HStack {
+                            Text("Completed")
+                                .font(AppDesign.Typography.subheadline)
+                                .foregroundColor(AppDesign.Colors.textPrimary)
+                            Spacer()
+                            Toggle("", isOn: Binding(
+                                get: { task.isCompleted },
+                                set: { _ in
+                                    withAnimation(AppDesign.Animation.spring) {
+                                        toggleTask(task, in: schedule)
+                                    }
+                                }
+                            ))
+                            .tint(AppDesign.Colors.success)
+                        }
+                        .padding(.top, AppDesign.Spacing.xs)
                     }
                     .padding(AppDesign.Spacing.md)
                 }
                 .padding(.horizontal, AppDesign.Spacing.md)
+                .transition(.move(edge: .leading).combined(with: .opacity))
             }
         }
     }

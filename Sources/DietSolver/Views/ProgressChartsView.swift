@@ -26,12 +26,14 @@ struct ProgressChartsView: View {
         ScrollView {
             VStack(spacing: AppDesign.Spacing.lg) {
                 // Timeframe Selector
-                Picker("Timeframe", selection: $selectedTimeframe) {
-                    ForEach(Timeframe.allCases, id: \.self) { timeframe in
-                        Text(timeframe.rawValue).tag(timeframe)
+                ModernCard(shadow: AppDesign.Shadow.small, gradient: false) {
+                    Picker("Timeframe", selection: $selectedTimeframe) {
+                        ForEach(Timeframe.allCases, id: \.self) { timeframe in
+                            Text(timeframe.rawValue).tag(timeframe)
+                        }
                     }
+                    .pickerStyle(.segmented)
                 }
-                .pickerStyle(.segmented)
                 .padding(.horizontal, AppDesign.Spacing.md)
                 
                 // Weight Trend Chart
@@ -60,16 +62,22 @@ struct ProgressChartsView: View {
         #if os(iOS)
         .navigationBarTitleDisplayMode(.large)
         #endif
+        .background(AppDesign.Colors.background.ignoresSafeArea())
     }
     
     // MARK: - Weight Chart
     @available(iOS 16.0, macOS 13.0, *)
     @ViewBuilder
     private func weightChartSection(data: [WeightDataPoint]) -> some View {
-        ModernCard {
+        ModernCard(shadow: AppDesign.Shadow.medium, gradient: true) {
             VStack(alignment: .leading, spacing: AppDesign.Spacing.md) {
-                Text("Weight Trend")
-                    .font(AppDesign.Typography.headline)
+                HStack {
+                    IconBadge(icon: "chart.line.uptrend.xyaxis", color: AppDesign.Colors.primary, size: 32, gradient: true)
+                    Text("Weight Trend")
+                        .font(AppDesign.Typography.headline)
+                        .foregroundColor(AppDesign.Colors.textPrimary)
+                    Spacer()
+                }
                 
                 #if canImport(Charts)
                 Chart(data) { point in
@@ -77,8 +85,9 @@ struct ProgressChartsView: View {
                         x: .value("Date", point.date),
                         y: .value("Weight", point.weight)
                     )
-                    .foregroundStyle(AppDesign.Colors.primary)
+                    .foregroundStyle(AppDesign.Gradients.primary)
                     .interpolationMethod(.catmullRom)
+                    .lineStyle(StrokeStyle(lineWidth: 3, lineCap: .round))
                     
                     AreaMark(
                         x: .value("Date", point.date),
@@ -86,14 +95,34 @@ struct ProgressChartsView: View {
                     )
                     .foregroundStyle(
                         LinearGradient(
-                            colors: [AppDesign.Colors.primary.opacity(0.3), AppDesign.Colors.primary.opacity(0.0)],
+                            colors: [
+                                AppDesign.Colors.primary.opacity(0.4),
+                                AppDesign.Colors.primary.opacity(0.1),
+                                AppDesign.Colors.primary.opacity(0.0)
+                            ],
                             startPoint: .top,
                             endPoint: .bottom
                         )
                     )
                     .interpolationMethod(.catmullRom)
                 }
-                .frame(height: 200)
+                .frame(height: 220)
+                .chartXAxis {
+                    AxisMarks(values: .automatic) { _ in
+                        AxisGridLine()
+                            .foregroundStyle(AppDesign.Colors.textSecondary.opacity(0.2))
+                        AxisValueLabel()
+                            .foregroundStyle(AppDesign.Colors.textSecondary)
+                    }
+                }
+                .chartYAxis {
+                    AxisMarks { _ in
+                        AxisGridLine()
+                            .foregroundStyle(AppDesign.Colors.textSecondary.opacity(0.2))
+                        AxisValueLabel()
+                            .foregroundStyle(AppDesign.Colors.textSecondary)
+                    }
+                }
                 #else
                 Text("Charts not available on this platform")
                     .foregroundColor(AppDesign.Colors.textSecondary)
@@ -103,16 +132,22 @@ struct ProgressChartsView: View {
             .padding(AppDesign.Spacing.md)
         }
         .padding(.horizontal, AppDesign.Spacing.md)
+        .transition(.move(edge: .leading).combined(with: .opacity))
     }
     
     // MARK: - Health Score Chart
     @available(iOS 16.0, macOS 13.0, *)
     @ViewBuilder
     private func healthScoreChartSection(data: [HealthScoreDataPoint]) -> some View {
-        ModernCard {
+        ModernCard(shadow: AppDesign.Shadow.medium, gradient: true) {
             VStack(alignment: .leading, spacing: AppDesign.Spacing.md) {
-                Text("Health Score")
-                    .font(AppDesign.Typography.headline)
+                HStack {
+                    IconBadge(icon: "heart.fill", color: AppDesign.Colors.success, size: 32, gradient: true)
+                    Text("Health Score")
+                        .font(AppDesign.Typography.headline)
+                        .foregroundColor(AppDesign.Colors.textPrimary)
+                    Spacer()
+                }
                 
                 #if canImport(Charts)
                 Chart(data) { point in
@@ -120,9 +155,26 @@ struct ProgressChartsView: View {
                         x: .value("Date", point.date),
                         y: .value("Score", point.score)
                     )
-                    .foregroundStyle(AppDesign.Colors.success)
+                    .foregroundStyle(AppDesign.Gradients.success)
+                    .cornerRadius(4)
                 }
-                .frame(height: 200)
+                .frame(height: 220)
+                .chartXAxis {
+                    AxisMarks(values: .automatic) { _ in
+                        AxisGridLine()
+                            .foregroundStyle(AppDesign.Colors.textSecondary.opacity(0.2))
+                        AxisValueLabel()
+                            .foregroundStyle(AppDesign.Colors.textSecondary)
+                    }
+                }
+                .chartYAxis {
+                    AxisMarks { _ in
+                        AxisGridLine()
+                            .foregroundStyle(AppDesign.Colors.textSecondary.opacity(0.2))
+                        AxisValueLabel()
+                            .foregroundStyle(AppDesign.Colors.textSecondary)
+                    }
+                }
                 #else
                 Text("Charts not available on this platform")
                     .foregroundColor(AppDesign.Colors.textSecondary)
@@ -132,16 +184,22 @@ struct ProgressChartsView: View {
             .padding(AppDesign.Spacing.md)
         }
         .padding(.horizontal, AppDesign.Spacing.md)
+        .transition(.move(edge: .leading).combined(with: .opacity))
     }
     
     // MARK: - Exercise Chart
     @available(iOS 16.0, macOS 13.0, *)
     @ViewBuilder
     private func exerciseChartSection(data: [ExerciseDataPoint]) -> some View {
-        ModernCard {
+        ModernCard(shadow: AppDesign.Shadow.medium, gradient: true) {
             VStack(alignment: .leading, spacing: AppDesign.Spacing.md) {
-                Text("Exercise Minutes")
-                    .font(AppDesign.Typography.headline)
+                HStack {
+                    IconBadge(icon: "figure.run", color: AppDesign.Colors.accent, size: 32, gradient: true)
+                    Text("Exercise Minutes")
+                        .font(AppDesign.Typography.headline)
+                        .foregroundColor(AppDesign.Colors.textPrimary)
+                    Spacer()
+                }
                 
                 #if canImport(Charts)
                 Chart(data) { point in
@@ -149,9 +207,26 @@ struct ProgressChartsView: View {
                         x: .value("Date", point.date),
                         y: .value("Minutes", point.minutes)
                     )
-                    .foregroundStyle(AppDesign.Colors.accent)
+                    .foregroundStyle(AppDesign.Gradients.secondary)
+                    .cornerRadius(4)
                 }
-                .frame(height: 200)
+                .frame(height: 220)
+                .chartXAxis {
+                    AxisMarks(values: .automatic) { _ in
+                        AxisGridLine()
+                            .foregroundStyle(AppDesign.Colors.textSecondary.opacity(0.2))
+                        AxisValueLabel()
+                            .foregroundStyle(AppDesign.Colors.textSecondary)
+                    }
+                }
+                .chartYAxis {
+                    AxisMarks { _ in
+                        AxisGridLine()
+                            .foregroundStyle(AppDesign.Colors.textSecondary.opacity(0.2))
+                        AxisValueLabel()
+                            .foregroundStyle(AppDesign.Colors.textSecondary)
+                    }
+                }
                 #else
                 Text("Charts not available on this platform")
                     .foregroundColor(AppDesign.Colors.textSecondary)
@@ -161,16 +236,22 @@ struct ProgressChartsView: View {
             .padding(AppDesign.Spacing.md)
         }
         .padding(.horizontal, AppDesign.Spacing.md)
+        .transition(.move(edge: .leading).combined(with: .opacity))
     }
     
     // MARK: - Nutrient Chart
     @available(iOS 16.0, macOS 13.0, *)
     @ViewBuilder
     private func nutrientChartSection(data: [NutrientDataPoint]) -> some View {
-        ModernCard {
+        ModernCard(shadow: AppDesign.Shadow.medium, gradient: true) {
             VStack(alignment: .leading, spacing: AppDesign.Spacing.md) {
-                Text("Daily Nutrient Intake")
-                    .font(AppDesign.Typography.headline)
+                HStack {
+                    IconBadge(icon: "chart.bar.fill", color: AppDesign.Colors.primary, size: 32, gradient: true)
+                    Text("Daily Nutrient Intake")
+                        .font(AppDesign.Typography.headline)
+                        .foregroundColor(AppDesign.Colors.textPrimary)
+                    Spacer()
+                }
                 
                 #if canImport(Charts)
                 Chart(data) { point in
@@ -178,9 +259,32 @@ struct ProgressChartsView: View {
                         x: .value("Nutrient", point.nutrient),
                         y: .value("Amount", point.amount)
                     )
-                    .foregroundStyle(point.color)
+                    .foregroundStyle(
+                        LinearGradient(
+                            colors: [point.color, point.color.opacity(0.7)],
+                            startPoint: .top,
+                            endPoint: .bottom
+                        )
+                    )
+                    .cornerRadius(6)
                 }
-                .frame(height: 200)
+                .frame(height: 220)
+                .chartXAxis {
+                    AxisMarks { _ in
+                        AxisGridLine()
+                            .foregroundStyle(AppDesign.Colors.textSecondary.opacity(0.2))
+                        AxisValueLabel()
+                            .foregroundStyle(AppDesign.Colors.textSecondary)
+                    }
+                }
+                .chartYAxis {
+                    AxisMarks { _ in
+                        AxisGridLine()
+                            .foregroundStyle(AppDesign.Colors.textSecondary.opacity(0.2))
+                        AxisValueLabel()
+                            .foregroundStyle(AppDesign.Colors.textSecondary)
+                    }
+                }
                 #else
                 Text("Charts not available on this platform")
                     .foregroundColor(AppDesign.Colors.textSecondary)
@@ -190,6 +294,7 @@ struct ProgressChartsView: View {
             .padding(AppDesign.Spacing.md)
         }
         .padding(.horizontal, AppDesign.Spacing.md)
+        .transition(.move(edge: .leading).combined(with: .opacity))
     }
     
     // MARK: - Data Generation (Real data from HealthKit and HealthHistory)

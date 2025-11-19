@@ -19,23 +19,31 @@ struct GroceryListView: View {
             VStack(spacing: AppDesign.Spacing.lg) {
                 // Header
                 VStack(alignment: .leading, spacing: AppDesign.Spacing.sm) {
-                    Text("Grocery List Generator")
-                        .font(AppDesign.Typography.title)
-                        .fontWeight(.bold)
-                    
-                    Text("Generate shopping lists from your meal plans")
-                        .font(AppDesign.Typography.body)
-                        .foregroundColor(AppDesign.Colors.textSecondary)
+                    HStack(spacing: AppDesign.Spacing.sm) {
+                        IconBadge(icon: "cart.fill", color: AppDesign.Colors.primary, size: 40, gradient: true)
+                        VStack(alignment: .leading, spacing: 4) {
+                            Text("Grocery List Generator")
+                                .font(AppDesign.Typography.title)
+                                .fontWeight(.bold)
+                                .foregroundColor(AppDesign.Colors.textPrimary)
+                            
+                            Text("Generate shopping lists from your meal plans")
+                                .font(AppDesign.Typography.body)
+                                .foregroundColor(AppDesign.Colors.textSecondary)
+                        }
+                    }
                 }
                 .padding(.horizontal, AppDesign.Spacing.md)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 
                 // Generation Controls
-                ModernCard {
+                ModernCard(shadow: AppDesign.Shadow.medium, gradient: true) {
                     VStack(spacing: AppDesign.Spacing.md) {
                         HStack {
+                            IconBadge(icon: "calendar", color: AppDesign.Colors.primary, size: 24)
                             Text("Days to include:")
                                 .font(AppDesign.Typography.body)
+                                .foregroundColor(AppDesign.Colors.textPrimary)
                             Spacer()
                             Picker("", selection: $daysToGenerate) {
                                 Text("3 days").tag(3)
@@ -44,25 +52,25 @@ struct GroceryListView: View {
                                 Text("30 days").tag(30)
                             }
                             .pickerStyle(.menu)
+                            .foregroundColor(AppDesign.Colors.textPrimary)
                         }
                         
-                        Button(action: generateGroceryList) {
-                            HStack {
+                        GradientButton(
+                            title: isGenerating ? "Generating..." : "Generate Grocery List",
+                            icon: isGenerating ? nil : "cart.fill",
+                            action: generateGroceryList,
+                            style: .primary
+                        )
+                        .disabled(isGenerating || (viewModel.dailyPlans.isEmpty && viewModel.dietPlan == nil))
+                        .opacity(isGenerating ? 0.7 : 1.0)
+                        .overlay(
+                            Group {
                                 if isGenerating {
                                     ProgressView()
                                         .progressViewStyle(CircularProgressViewStyle(tint: .white))
-                                } else {
-                                    Image(systemName: "cart.fill")
-                                    Text("Generate Grocery List")
                                 }
                             }
-                            .frame(maxWidth: .infinity)
-                            .padding()
-                            .background(AppDesign.Colors.primary)
-                            .foregroundColor(.white)
-                            .cornerRadius(12)
-                        }
-                        .disabled(isGenerating || (viewModel.dailyPlans.isEmpty && viewModel.dietPlan == nil))
+                        )
                     }
                     .padding(AppDesign.Spacing.md)
                 }
@@ -71,20 +79,13 @@ struct GroceryListView: View {
                 // Grocery List Display
                 if let list = groceryList {
                     groceryListContent(list: list)
+                        .transition(.move(edge: .bottom).combined(with: .opacity))
                 } else if !isGenerating {
-                    ModernCard {
-                        VStack(spacing: AppDesign.Spacing.md) {
-                            Image(systemName: "cart")
-                                .font(.system(size: 50))
-                                .foregroundColor(AppDesign.Colors.textSecondary)
-                            Text("No grocery list generated yet")
-                                .font(AppDesign.Typography.headline)
-                            Text("Generate a list from your meal plans")
-                                .font(AppDesign.Typography.body)
-                                .foregroundColor(AppDesign.Colors.textSecondary)
-                        }
-                        .padding()
-                    }
+                    EmptyStateView(
+                        icon: "cart",
+                        title: "No grocery list generated yet",
+                        message: "Generate a list from your meal plans"
+                    )
                     .padding(.horizontal, AppDesign.Spacing.md)
                 }
             }
@@ -94,6 +95,7 @@ struct GroceryListView: View {
         #if os(iOS)
         .navigationBarTitleDisplayMode(.large)
         #endif
+        .background(AppDesign.Colors.background.ignoresSafeArea())
         .toolbar {
             #if os(iOS)
             ToolbarItem(placement: .navigationBarTrailing) {
@@ -142,19 +144,24 @@ struct GroceryListView: View {
     private func groceryListContent(list: GroceryList) -> some View {
         VStack(spacing: AppDesign.Spacing.md) {
             // Summary
-            ModernCard {
+            ModernCard(shadow: AppDesign.Shadow.medium, gradient: true) {
                 VStack(spacing: AppDesign.Spacing.sm) {
                     HStack {
-                        Text("Summary")
-                            .font(AppDesign.Typography.headline)
+                        HStack(spacing: AppDesign.Spacing.xs) {
+                            IconBadge(icon: "cart.fill", color: AppDesign.Colors.primary, size: 32)
+                            Text("Summary")
+                                .font(AppDesign.Typography.headline)
+                                .foregroundColor(AppDesign.Colors.textPrimary)
+                        }
                         Spacer()
                     }
                     
-                    HStack {
-                        VStack(alignment: .leading) {
+                    HStack(spacing: AppDesign.Spacing.lg) {
+                        VStack(alignment: .leading, spacing: AppDesign.Spacing.xs) {
                             Text("\(list.items.count)")
                                 .font(AppDesign.Typography.title2)
                                 .fontWeight(.bold)
+                                .foregroundColor(AppDesign.Colors.primary)
                             Text("Items")
                                 .font(AppDesign.Typography.caption)
                                 .foregroundColor(AppDesign.Colors.textSecondary)
@@ -162,10 +169,11 @@ struct GroceryListView: View {
                         
                         Spacer()
                         
-                        VStack(alignment: .trailing) {
+                        VStack(alignment: .trailing, spacing: AppDesign.Spacing.xs) {
                             Text("$\(String(format: "%.2f", list.totalEstimatedCost))")
                                 .font(AppDesign.Typography.title2)
                                 .fontWeight(.bold)
+                                .foregroundColor(AppDesign.Colors.success)
                             Text("Estimated Cost")
                                 .font(AppDesign.Typography.caption)
                                 .foregroundColor(AppDesign.Colors.textSecondary)
@@ -175,6 +183,7 @@ struct GroceryListView: View {
                 .padding(AppDesign.Spacing.md)
             }
             .padding(.horizontal, AppDesign.Spacing.md)
+            .transition(.move(edge: .top).combined(with: .opacity))
             
             // Items by Category
             ForEach(GroceryCategory.allCases, id: \.self) { category in
@@ -190,54 +199,80 @@ struct GroceryListView: View {
     private func categorySection(category: GroceryCategory, items: [GroceryItem]) -> some View {
         VStack(alignment: .leading, spacing: AppDesign.Spacing.sm) {
             HStack {
-                Image(systemName: category.icon)
-                    .foregroundColor(AppDesign.Colors.primary)
+                IconBadge(icon: category.icon, color: AppDesign.Colors.primary, size: 28)
                 Text(category.rawValue)
                     .font(AppDesign.Typography.headline)
                     .fontWeight(.semibold)
+                    .foregroundColor(AppDesign.Colors.textPrimary)
                 Spacer()
                 Text("\(items.count) items")
                     .font(AppDesign.Typography.caption)
                     .foregroundColor(AppDesign.Colors.textSecondary)
+                    .padding(.horizontal, AppDesign.Spacing.sm)
+                    .padding(.vertical, AppDesign.Spacing.xs)
+                    .background(AppDesign.Colors.primary.opacity(0.1))
+                    .cornerRadius(AppDesign.Radius.small)
             }
             .padding(.horizontal, AppDesign.Spacing.md)
             
-            ModernCard {
+            ModernCard(gradient: true) {
                 VStack(spacing: AppDesign.Spacing.xs) {
-                    ForEach(items) { item in
-                        HStack {
-                            Button(action: { toggleItem(item) }) {
-                                Image(systemName: item.isChecked ? "checkmark.circle.fill" : "circle")
-                                    .foregroundColor(item.isChecked ? AppDesign.Colors.success : AppDesign.Colors.textSecondary)
+                    ForEach(Array(items.enumerated()), id: \.element.id) { index, item in
+                        HStack(spacing: AppDesign.Spacing.sm) {
+                            Button(action: { 
+                                withAnimation(AppDesign.Animation.spring) {
+                                    toggleItem(item)
+                                }
+                            }) {
+                                ZStack {
+                                    Circle()
+                                        .fill(item.isChecked ? AppDesign.Colors.success.opacity(0.2) : Color.clear)
+                                        .frame(width: 28, height: 28)
+                                    Image(systemName: item.isChecked ? "checkmark.circle.fill" : "circle")
+                                        .font(.system(size: 24, weight: .medium))
+                                        .foregroundColor(item.isChecked ? AppDesign.Colors.success : AppDesign.Colors.textSecondary)
+                                        #if os(iOS)
+                                        .symbolEffect(.bounce, value: item.isChecked)
+                                        #endif
+                                }
                             }
                             
                             VStack(alignment: .leading, spacing: 2) {
                                 Text(item.name)
                                     .font(AppDesign.Typography.body)
+                                    .foregroundColor(AppDesign.Colors.textPrimary)
                                     .strikethrough(item.isChecked)
                                 
                                 if !item.meals.isEmpty {
-                                    Text("Used in: \(item.meals.joined(separator: ", "))")
-                                        .font(AppDesign.Typography.caption)
-                                        .foregroundColor(AppDesign.Colors.textSecondary)
+                                    HStack(spacing: 4) {
+                                        Image(systemName: "fork.knife")
+                                            .font(.system(size: 10))
+                                            .foregroundColor(AppDesign.Colors.accent)
+                                        Text("Used in: \(item.meals.joined(separator: ", "))")
+                                            .font(AppDesign.Typography.caption)
+                                            .foregroundColor(AppDesign.Colors.textSecondary)
+                                    }
                                 }
                             }
                             
                             Spacer()
                             
-                            VStack(alignment: .trailing) {
+                            VStack(alignment: .trailing, spacing: 2) {
                                 Text("\(String(format: "%.1f", item.quantity)) \(item.unit)")
                                     .font(AppDesign.Typography.body)
                                     .fontWeight(.semibold)
+                                    .foregroundColor(AppDesign.Colors.textPrimary)
                                 Text("$\(String(format: "%.2f", item.estimatedCost))")
                                     .font(AppDesign.Typography.caption)
-                                    .foregroundColor(AppDesign.Colors.textSecondary)
+                                    .foregroundColor(AppDesign.Colors.success)
                             }
                         }
                         .padding(.vertical, AppDesign.Spacing.xs)
+                        .transition(.move(edge: .leading).combined(with: .opacity))
                         
-                        if item.id != items.last?.id {
+                        if index < items.count - 1 {
                             Divider()
+                                .background(AppDesign.Colors.textSecondary.opacity(0.2))
                         }
                     }
                 }
