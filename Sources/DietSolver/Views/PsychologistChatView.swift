@@ -27,6 +27,10 @@ struct PsychologistChatView: View {
     @State private var showCamera: Bool = false
     @State private var showCrisisAlert: Bool = false
     @State private var showProgress: Bool = false
+    @State private var showCBTTools: Bool = false
+    @State private var showEmotionRegulation: Bool = false
+    @State private var showBreathing: Bool = false
+    @State private var showTemplates: Bool = false
     
     var body: some View {
         VStack(spacing: 0) {
@@ -107,6 +111,18 @@ struct PsychologistChatView: View {
         .sheet(isPresented: $showProgress) {
             PsychologistProgressView()
         }
+        .sheet(isPresented: $showCBTTools) {
+            CBTToolsView()
+        }
+        .sheet(isPresented: $showEmotionRegulation) {
+            EmotionRegulationView()
+        }
+        .sheet(isPresented: $showBreathing) {
+            BreathingVisualizationView(technique: .box)
+        }
+        .sheet(isPresented: $showTemplates) {
+            ConversationTemplatesView()
+        }
     }
     
     private var chatHeader: some View {
@@ -126,8 +142,24 @@ struct PsychologistChatView: View {
             
             Spacer()
             
-            Button(action: { showProgress = true }) {
-                Image(systemName: "chart.line.uptrend.xyaxis")
+            Menu {
+                Button(action: { showCBTTools = true }) {
+                    Label("CBT Tools", systemImage: "brain.head.profile")
+                }
+                Button(action: { showEmotionRegulation = true }) {
+                    Label("Emotion Regulation", systemImage: "heart.circle")
+                }
+                Button(action: { showBreathing = true }) {
+                    Label("Breathing", systemImage: "wind")
+                }
+                Button(action: { showTemplates = true }) {
+                    Label("Templates", systemImage: "doc.text")
+                }
+                Button(action: { showProgress = true }) {
+                    Label("Progress", systemImage: "chart.line.uptrend.xyaxis")
+                }
+            } label: {
+                Image(systemName: "ellipsis.circle")
                     .font(.title3)
                     .foregroundColor(AppDesign.Colors.primary)
             }
@@ -316,9 +348,42 @@ struct MessageBubble: View {
                 
                 // Therapy technique indicator
                 if let technique = message.therapyTechnique, message.role == .psychologist {
-                    Text(technique.rawValue)
-                        .font(AppDesign.Typography.caption)
-                        .foregroundColor(AppDesign.Colors.textSecondary)
+                    HStack(spacing: AppDesign.Spacing.xs) {
+                        Text(technique.rawValue)
+                            .font(AppDesign.Typography.caption)
+                            .foregroundColor(AppDesign.Colors.textSecondary)
+                        
+                        // Feedback buttons
+                        HStack(spacing: 4) {
+                            Button(action: {
+                                let feedback = MessageFeedback(
+                                    messageId: message.id,
+                                    helpful: true,
+                                    therapyTechnique: technique
+                                )
+                                FeedbackLearningManager.shared.recordFeedback(feedback)
+                            }) {
+                                Image(systemName: "hand.thumbsup.fill")
+                                    .font(.caption2)
+                                    .foregroundColor(AppDesign.Colors.success)
+                            }
+                            .buttonStyle(PlainButtonStyle())
+                            
+                            Button(action: {
+                                let feedback = MessageFeedback(
+                                    messageId: message.id,
+                                    helpful: false,
+                                    therapyTechnique: technique
+                                )
+                                FeedbackLearningManager.shared.recordFeedback(feedback)
+                            }) {
+                                Image(systemName: "hand.thumbsdown.fill")
+                                    .font(.caption2)
+                                    .foregroundColor(AppDesign.Colors.error)
+                            }
+                            .buttonStyle(PlainButtonStyle())
+                        }
+                    }
                 }
                 
                 // Image analysis

@@ -459,6 +459,13 @@ class PsychologistChatbotManager: ObservableObject {
         sentiment: SentimentAnalysis,
         intent: ChatMessage.MessageIntent
     ) -> TherapyTechnique {
+        // Check feedback learning for preferred techniques
+        let feedbackManager = FeedbackLearningManager.shared
+        if let preferredTechnique = feedbackManager.preferredTherapyTechniques.first,
+           feedbackManager.shouldUseTechnique(preferredTechnique) {
+            return preferredTechnique
+        }
+        
         // Select technique based on context
         switch intent {
         case .crisis:
@@ -557,7 +564,24 @@ class PsychologistChatbotManager: ObservableObject {
     }
     
     private func generatePersonCenteredResponse(to message: ChatMessage, sentiment: SentimentAnalysis) -> String {
-        var response = "Thank you for trusting me with that. "
+        let feedbackManager = FeedbackLearningManager.shared
+        let style = feedbackManager.getRecommendedStyle()
+        
+        var response = ""
+        
+        // Adapt based on learned communication style
+        switch style {
+        case .empathetic:
+            response = "Thank you for trusting me with that. "
+        case .supportive:
+            response = "I'm here to support you. "
+        case .direct:
+            response = "I understand. "
+        case .analytical:
+            response = "Let's explore this together. "
+        case .encouraging:
+            response = "I appreciate you sharing that with me. "
+        }
         
         if sentiment.score < 0 {
             response += "It sounds like this is really important to you, and I want you to know that your feelings are valid. "
@@ -949,6 +973,23 @@ class PsychologistChatbotManager: ObservableObject {
         self.emotionalHealthHistory = healthData.emotionalHealth
         // Extract journal entries
         self.journalEntries = healthData.journalCollection.entries
+        
+        // Check for badges
+        let sessionCount = userProfile.conversationHistory.count
+        let moodImprovement = userProfile.progressMetrics.sentimentTrend == .improving
+        let copingStrategiesUsed = userProfile.copingStrategies.count
+        let mindfulnessCount = userProfile.conversationHistory.filter { $0.therapyApproach == .mindfulness }.count
+        let goalsCompleted = userProfile.goals.filter { $0.progress >= 1.0 }.count
+        let crisisResilience = userProfile.conversationHistory.filter { $0.crisisDetected && $0.crisisLevel != .critical }.count
+        
+        PsychologistBadgeTracker.shared.checkPsychologistBadges(
+            sessionCount: sessionCount,
+            moodImprovement: moodImprovement,
+            copingStrategiesUsed: copingStrategiesUsed,
+            mindfulnessCount: mindfulnessCount,
+            goalsCompleted: goalsCompleted,
+            crisisResilience: crisisResilience
+        )
     }
     
     private func updateUserProfile(with message: ChatMessage) {
