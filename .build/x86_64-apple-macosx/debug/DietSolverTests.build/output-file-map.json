@@ -2,6 +2,20 @@
   "": {
     "swift-dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build/master.swiftdeps"
   },
+  "/Users/shyamalchandra/diet-solver/Tests/DietSolverTests/ABTesting.swift": {
+    "dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build/ABTesting.d",
+    "object": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build/ABTesting.swift.o",
+    "swiftmodule": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build/ABTesting~partial.swiftmodule",
+    "swift-dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build/ABTesting.swiftdeps",
+    "diagnostics": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build/ABTesting.dia"
+  },
+  "/Users/shyamalchandra/diet-solver/Tests/DietSolverTests/BlackBoxTests.swift": {
+    "dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build/BlackBoxTests.d",
+    "object": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build/BlackBoxTests.swift.o",
+    "swiftmodule": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build/BlackBoxTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build/BlackBoxTests.swiftdeps",
+    "diagnostics": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build/BlackBoxTests.dia"
+  },
   "/Users/shyamalchandra/diet-solver/Tests/DietSolverTests/HearingIntegrationSwiftTestingTests.swift": {
     "dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build/HearingIntegrationSwiftTestingTests.d",
     "object": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build/HearingIntegrationSwiftTestingTests.swift.o",
@@ -16,11 +30,39 @@
     "swift-dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build/HearingIntegrationTests.swiftdeps",
     "diagnostics": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build/HearingIntegrationTests.dia"
   },
+  "/Users/shyamalchandra/diet-solver/Tests/DietSolverTests/RegressionTests.swift": {
+    "dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build/RegressionTests.d",
+    "object": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build/RegressionTests.swift.o",
+    "swiftmodule": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build/RegressionTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build/RegressionTests.swiftdeps",
+    "diagnostics": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build/RegressionTests.dia"
+  },
   "/Users/shyamalchandra/diet-solver/Tests/DietSolverTests/TactileTongueIntegrationTests.swift": {
     "dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build/TactileTongueIntegrationTests.d",
     "object": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build/TactileTongueIntegrationTests.swift.o",
     "swiftmodule": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build/TactileTongueIntegrationTests~partial.swiftmodule",
     "swift-dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build/TactileTongueIntegrationTests.swiftdeps",
     "diagnostics": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build/TactileTongueIntegrationTests.dia"
+  },
+  "/Users/shyamalchandra/diet-solver/Tests/DietSolverTests/TestRunner.swift": {
+    "dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build/TestRunner.d",
+    "object": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build/TestRunner.swift.o",
+    "swiftmodule": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build/TestRunner~partial.swiftmodule",
+    "swift-dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build/TestRunner.swiftdeps",
+    "diagnostics": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build/TestRunner.dia"
+  },
+  "/Users/shyamalchandra/diet-solver/Tests/DietSolverTests/UXTests.swift": {
+    "dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build/UXTests.d",
+    "object": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build/UXTests.swift.o",
+    "swiftmodule": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build/UXTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build/UXTests.swiftdeps",
+    "diagnostics": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build/UXTests.dia"
+  },
+  "/Users/shyamalchandra/diet-solver/Tests/DietSolverTests/UnitTests.swift": {
+    "dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build/UnitTests.d",
+    "object": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build/UnitTests.swift.o",
+    "swiftmodule": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build/UnitTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build/UnitTests.swiftdeps",
+    "diagnostics": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build/UnitTests.dia"
   }
 }

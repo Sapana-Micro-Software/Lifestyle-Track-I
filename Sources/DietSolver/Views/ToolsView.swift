@@ -20,6 +20,7 @@ struct ToolsView: View {
         case progressCharts
         case healthReport
         case longTermPlan
+        case psychologistChat
         
         var id: String {
             switch self {
@@ -29,6 +30,7 @@ struct ToolsView: View {
             case .progressCharts: return "progressCharts"
             case .healthReport: return "healthReport"
             case .longTermPlan: return "longTermPlan"
+            case .psychologistChat: return "psychologistChat"
             }
         }
     }
@@ -130,6 +132,17 @@ struct ToolsView: View {
                             }
                             .buttonStyle(PlainButtonStyle())
                         }
+                        
+                        // Psychologist Chat
+                        Button(action: { selectedTool = .psychologistChat }) {
+                            ToolCard(
+                                title: "Psychologist Chat",
+                                description: "Talk with an AI psychologist for personalized mental health support",
+                                icon: "message.fill",
+                                color: Color.green
+                            )
+                        }
+                        .buttonStyle(PlainButtonStyle())
                     }
                     .padding(.horizontal, AppDesign.Spacing.md)
                 }
@@ -150,6 +163,8 @@ struct ToolsView: View {
                 HealthReportView(viewModel: viewModel)
             case .longTermPlan:
                 LongTermPlanView(viewModel: viewModel)
+            case .psychologistChat:
+                PsychologistChatView(viewModel: viewModel)
             }
         }
     }

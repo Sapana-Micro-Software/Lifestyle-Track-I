@@ -1318,6 +1318,14 @@
       "inputs" : [
         {
           "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Tests/DietSolverTests/ABTesting.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Tests/DietSolverTests/BlackBoxTests.swift"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/Tests/DietSolverTests/HearingIntegrationSwiftTestingTests.swift"
         },
         {
@@ -1326,7 +1334,23 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Tests/DietSolverTests/RegressionTests.swift"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/Tests/DietSolverTests/TactileTongueIntegrationTests.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Tests/DietSolverTests/TestRunner.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Tests/DietSolverTests/UXTests.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Tests/DietSolverTests/UnitTests.swift"
         },
         {
           "kind" : "file",
@@ -1345,9 +1369,15 @@
       "moduleName" : "DietSolverTests",
       "moduleOutputPath" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/Modules/DietSolverTests.swiftmodule",
       "objects" : [
+        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build/ABTesting.swift.o",
+        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build/BlackBoxTests.swift.o",
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build/HearingIntegrationSwiftTestingTests.swift.o",
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build/HearingIntegrationTests.swift.o",
-        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build/TactileTongueIntegrationTests.swift.o"
+        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build/RegressionTests.swift.o",
+        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build/TactileTongueIntegrationTests.swift.o",
+        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build/TestRunner.swift.o",
+        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build/UXTests.swift.o",
+        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build/UnitTests.swift.o"
       ],
       "otherArguments" : [
         "-target",
@@ -1407,6 +1437,14 @@
       "outputs" : [
         {
           "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build/ABTesting.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build/BlackBoxTests.swift.o"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build/HearingIntegrationSwiftTestingTests.swift.o"
         },
         {
@@ -1415,7 +1453,23 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build/RegressionTests.swift.o"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build/TactileTongueIntegrationTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build/TestRunner.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build/UXTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build/UnitTests.swift.o"
         },
         {
           "kind" : "file",
@@ -1424,9 +1478,15 @@
       ],
       "prepareForIndexing" : false,
       "sources" : [
+        "/Users/shyamalchandra/diet-solver/Tests/DietSolverTests/ABTesting.swift",
+        "/Users/shyamalchandra/diet-solver/Tests/DietSolverTests/BlackBoxTests.swift",
         "/Users/shyamalchandra/diet-solver/Tests/DietSolverTests/HearingIntegrationSwiftTestingTests.swift",
         "/Users/shyamalchandra/diet-solver/Tests/DietSolverTests/HearingIntegrationTests.swift",
-        "/Users/shyamalchandra/diet-solver/Tests/DietSolverTests/TactileTongueIntegrationTests.swift"
+        "/Users/shyamalchandra/diet-solver/Tests/DietSolverTests/RegressionTests.swift",
+        "/Users/shyamalchandra/diet-solver/Tests/DietSolverTests/TactileTongueIntegrationTests.swift",
+        "/Users/shyamalchandra/diet-solver/Tests/DietSolverTests/TestRunner.swift",
+        "/Users/shyamalchandra/diet-solver/Tests/DietSolverTests/UXTests.swift",
+        "/Users/shyamalchandra/diet-solver/Tests/DietSolverTests/UnitTests.swift"
       ],
       "tempsPath" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build",
       "wholeModuleOptimization" : false
@@ -1741,9 +1801,15 @@
       "-package-name",
       "diet_solver",
       "-c",
+      "/Users/shyamalchandra/diet-solver/Tests/DietSolverTests/ABTesting.swift",
+      "/Users/shyamalchandra/diet-solver/Tests/DietSolverTests/BlackBoxTests.swift",
       "/Users/shyamalchandra/diet-solver/Tests/DietSolverTests/HearingIntegrationSwiftTestingTests.swift",
       "/Users/shyamalchandra/diet-solver/Tests/DietSolverTests/HearingIntegrationTests.swift",
+      "/Users/shyamalchandra/diet-solver/Tests/DietSolverTests/RegressionTests.swift",
       "/Users/shyamalchandra/diet-solver/Tests/DietSolverTests/TactileTongueIntegrationTests.swift",
+      "/Users/shyamalchandra/diet-solver/Tests/DietSolverTests/TestRunner.swift",
+      "/Users/shyamalchandra/diet-solver/Tests/DietSolverTests/UXTests.swift",
+      "/Users/shyamalchandra/diet-solver/Tests/DietSolverTests/UnitTests.swift",
       "-I",
       "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/Modules",
       "-target",
@@ -3118,6 +3184,14 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build/ABTesting.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build/BlackBoxTests.swift.o"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build/HearingIntegrationSwiftTestingTests.swift.o"
         },
         {
@@ -3126,7 +3200,23 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build/RegressionTests.swift.o"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build/TactileTongueIntegrationTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build/TestRunner.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build/UXTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build/UnitTests.swift.o"
         }
       ],
       "outputFilePath" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverPackageTests.product/Objects.LinkFileList"
@@ -3140,6 +3230,14 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Tests/DietSolverTests/ABTesting.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Tests/DietSolverTests/BlackBoxTests.swift"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/Tests/DietSolverTests/HearingIntegrationSwiftTestingTests.swift"
         },
         {
@@ -3148,7 +3246,23 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Tests/DietSolverTests/RegressionTests.swift"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/Tests/DietSolverTests/TactileTongueIntegrationTests.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Tests/DietSolverTests/TestRunner.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Tests/DietSolverTests/UXTests.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Tests/DietSolverTests/UnitTests.swift"
         }
       ],
       "outputFilePath" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolverTests.build/sources"

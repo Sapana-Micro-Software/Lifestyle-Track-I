@@ -89,6 +89,7 @@ struct HomeDashboardView: View {
     @State private var showEatingMetrics = false
     @State private var showEmotionalHealth = false
     @State private var showBadges = false
+    @State private var showPsychologistChat = false
     
     var body: some View {
         VStack {
@@ -270,6 +271,9 @@ struct HomeDashboardView: View {
             .sheet(isPresented: $showBadges) {
                 BadgeGalleryView(controller: DietSolverController(viewModel: viewModel))
             }
+            .sheet(isPresented: $showPsychologistChat) {
+                PsychologistChatView(viewModel: viewModel)
+            }
         }
     }
     
@@ -393,6 +397,13 @@ struct HomeDashboardView: View {
                     color: AppDesign.Colors.accent
                 ) {
                     showEmotionalHealth = true
+                }
+                QuickActionButton(
+                    title: "Chat",
+                    icon: "message.fill",
+                    color: Color.green
+                ) {
+                    showPsychologistChat = true
                 }
                 QuickActionButton(
                     title: "Badges",
