@@ -33,7 +33,7 @@ struct VisionGamesView: View { // Define VisionGamesView struct conforming to Vi
                                 .font(.headline) // Set headline font
                             Text(game.description) // Display game description
                                 .font(.caption) // Set caption font
-                                .foregroundColor(.secondary) // Set secondary color
+                                .foregroundColor(AppDesign.Colors.textSecondary) // Set secondary color
                             HStack { // Create horizontal stack
                                 Text(game.targetSkill.rawValue) // Display target skill
                                     .font(.caption) // Set caption font
@@ -50,7 +50,7 @@ struct VisionGamesView: View { // Define VisionGamesView struct conforming to Vi
                                 Spacer() // Add spacer
                                 Text("\(Int(game.duration / 60)) min") // Display duration
                                     .font(.caption) // Set caption font
-                                    .foregroundColor(.secondary) // Set secondary color
+                                    .foregroundColor(AppDesign.Colors.textSecondary) // Set secondary color
                             }
                         }
                         .padding(.vertical, 4) // Add vertical padding

@@ -38,7 +38,7 @@ struct PlanningSessionView: View { // Define PlanningSessionView struct conformi
                                     .bold() // Make text bold
                                 Text(session.date, style: .date) // Display session date
                                     .font(.subheadline) // Set subheadline font
-                                    .foregroundColor(.secondary) // Set secondary color
+                                    .foregroundColor(AppDesign.Colors.textSecondary) // Set secondary color
                             }
                             .padding() // Add padding around header
                             
@@ -121,10 +121,10 @@ struct PlanningSessionView: View { // Define PlanningSessionView struct conformi
                 } else { // If no session
                     VStack(spacing: 16) { // Create vertical stack
                         Text("No planning session generated") // Display message
-                            .foregroundColor(.secondary) // Set secondary color
+                            .foregroundColor(AppDesign.Colors.textSecondary) // Set secondary color
                         Text("Select a planning type below") // Display instruction
                             .font(.subheadline) // Set subheadline font
-                            .foregroundColor(.secondary) // Set secondary color
+                            .foregroundColor(AppDesign.Colors.textSecondary) // Set secondary color
                     }
                     .padding() // Add padding
                 }
@@ -163,10 +163,11 @@ struct TaskRowView: View { // Define TaskRowView struct for displaying tasks
             VStack(alignment: .leading, spacing: 4) { // Create vertical stack with leading alignment
                 Text(task.title) // Display task title
                     .font(.headline) // Set headline font
+                    .foregroundColor(AppDesign.Colors.textPrimary)
                 if let description = task.description { // Check if description exists
                     Text(description) // Display description
                         .font(.caption) // Set caption font
-                        .foregroundColor(.secondary) // Set secondary color
+                        .foregroundColor(AppDesign.Colors.textSecondary) // Set secondary color
                 }
                 HStack { // Create horizontal stack
                     Text(task.category.rawValue) // Display category
@@ -184,7 +185,7 @@ struct TaskRowView: View { // Define TaskRowView struct for displaying tasks
                     if let duration = task.estimatedDuration { // Check if duration exists
                         Text("\(Int(duration)) min") // Display duration
                             .font(.caption) // Set caption font
-                            .foregroundColor(.secondary) // Set secondary color
+                            .foregroundColor(AppDesign.Colors.textSecondary) // Set secondary color
                     }
                 }
             }
@@ -207,16 +208,20 @@ struct ReflectionRowView: View { // Define ReflectionRowView struct for displayi
         VStack(alignment: .leading, spacing: 8) { // Create vertical stack with leading alignment
             Text(reflection.category.rawValue) // Display category
                 .font(.headline) // Set headline font
+                .foregroundColor(AppDesign.Colors.textPrimary)
             Text(reflection.content) // Display content
                 .font(.body) // Set body font
+                .foregroundColor(AppDesign.Colors.textPrimary)
             if !reflection.insights.isEmpty { // Check if insights exist
                 VStack(alignment: .leading, spacing: 4) { // Create vertical stack for insights
                     Text("Insights:") // Display insights label
                         .font(.subheadline) // Set subheadline font
                         .bold() // Make text bold
+                        .foregroundColor(AppDesign.Colors.textPrimary)
                     ForEach(reflection.insights, id: \.self) { insight in // Loop through insights
                         Text("• \(insight)") // Display insight
                             .font(.caption) // Set caption font
+                            .foregroundColor(AppDesign.Colors.textPrimary)
                     }
                 }
             }
@@ -260,7 +265,7 @@ struct PriorityRowView: View { // Define PriorityRowView struct for displaying p
                 if let description = priority.description { // Check if description exists
                     Text(description) // Display description
                         .font(.caption) // Set caption font
-                        .foregroundColor(.secondary) // Set secondary color
+                        .foregroundColor(AppDesign.Colors.textSecondary) // Set secondary color
                 }
             }
             Spacer() // Add spacer

@@ -60,7 +60,7 @@ struct tvOSStatCard: View {
                 .font(.system(size: 48, weight: .bold))
             Text(title)
                 .font(.title2)
-                .foregroundColor(.secondary)
+                .foregroundColor(AppDesign.Colors.textSecondary)
         }
         .frame(width: 300, height: 300)
         .background(Color.gray.opacity(0.2))

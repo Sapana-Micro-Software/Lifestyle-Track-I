@@ -132,6 +132,7 @@ struct HomeDashboardView: View {
                                         VStack(alignment: .leading, spacing: 4) {
                                             Text("View Full Diet Plan")
                                                 .font(AppDesign.Typography.headline)
+                                                .foregroundColor(AppDesign.Colors.textPrimary)
                                             Text("See all meals, recipes, and nutrition details")
                                                 .font(AppDesign.Typography.caption)
                                                 .foregroundColor(AppDesign.Colors.textSecondary)
@@ -154,6 +155,7 @@ struct HomeDashboardView: View {
                                             VStack(alignment: .leading, spacing: 4) {
                                                 Text("View Long-Term Plan")
                                                     .font(AppDesign.Typography.headline)
+                                                    .foregroundColor(AppDesign.Colors.textPrimary)
                                                 Text("See your \(viewModel.longTermPlan?.duration.rawValue ?? "") transformation plan with daily recommendations")
                                                     .font(AppDesign.Typography.caption)
                                                     .foregroundColor(AppDesign.Colors.textSecondary)
@@ -180,6 +182,7 @@ struct HomeDashboardView: View {
                                             VStack(alignment: .leading, spacing: 4) {
                                                 Text("Grocery List")
                                                     .font(AppDesign.Typography.headline)
+                                                    .foregroundColor(AppDesign.Colors.textPrimary)
                                                 Text("Generate shopping list from meal plans")
                                                     .font(AppDesign.Typography.caption)
                                                     .foregroundColor(AppDesign.Colors.textSecondary)
@@ -200,6 +203,7 @@ struct HomeDashboardView: View {
                                             VStack(alignment: .leading, spacing: 4) {
                                                 Text("Recipe Library")
                                                     .font(AppDesign.Typography.headline)
+                                                    .foregroundColor(AppDesign.Colors.textPrimary)
                                                 Text("Save and organize favorite recipes")
                                                     .font(AppDesign.Typography.caption)
                                                     .foregroundColor(AppDesign.Colors.textSecondary)
@@ -447,6 +451,7 @@ struct MealRowCard: View {
             VStack(alignment: .leading, spacing: 4) {
                 Text(meal.name)
                     .font(AppDesign.Typography.headline)
+                    .foregroundColor(AppDesign.Colors.textPrimary)
                 Text("\(meal.items.count) items")
                     .font(AppDesign.Typography.caption)
                     .foregroundColor(AppDesign.Colors.textSecondary)
@@ -455,6 +460,7 @@ struct MealRowCard: View {
             VStack(alignment: .trailing, spacing: 4) {
                 Text("\(Int(meal.totalNutrients.calories))")
                     .font(AppDesign.Typography.headline)
+                    .foregroundColor(AppDesign.Colors.textPrimary)
                 Text("kcal")
                     .font(AppDesign.Typography.caption)
                     .foregroundColor(AppDesign.Colors.textSecondary)

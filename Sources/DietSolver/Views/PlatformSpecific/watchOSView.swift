@@ -90,7 +90,7 @@ struct watchOSBadgeCard: View {
                     .lineLimit(1)
                 Text(badge.level.rawValue)
                     .font(.caption2)
-                    .foregroundColor(.secondary)
+                    .foregroundColor(AppDesign.Colors.textSecondary)
             }
             Spacer()
         }

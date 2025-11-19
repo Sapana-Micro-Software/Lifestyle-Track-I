@@ -75,7 +75,7 @@ struct DayPlanView: View {
                             .bold()
                         Text("\(String(format: "%.0f", activity.duration)) min • \(activity.timeOfDay.rawValue)")
                             .font(.caption)
-                            .foregroundColor(.secondary)
+                            .foregroundColor(AppDesign.Colors.textSecondary)
                     }
                     Spacer()
                     Text(activity.activity.category.rawValue)

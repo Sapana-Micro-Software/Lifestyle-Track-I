@@ -16,8 +16,8 @@ struct AppDesign {
         static let accent = Color(red: 0.9, green: 0.5, blue: 0.3)
         static let background = Color(red: 0.98, green: 0.98, blue: 0.99)
         static let surface = Color.white
-        static let textPrimary = Color.primary
-        static let textSecondary = Color.secondary
+        static let textPrimary = Color(red: 0.1, green: 0.1, blue: 0.1) // Dark color for primary text
+        static let textSecondary = Color(red: 0.4, green: 0.4, blue: 0.4) // Medium gray for secondary text
         static let success = Color.green
         static let warning = Color.orange
         static let error = Color.red
@@ -203,7 +203,7 @@ struct StatCard: View {
                     if let trend = trend {
                         Text(trend)
                             .font(AppDesign.Typography.caption)
-                            .foregroundColor(.secondary)
+                            .foregroundColor(AppDesign.Colors.textSecondary)
                     }
                 }
                 Text(value)

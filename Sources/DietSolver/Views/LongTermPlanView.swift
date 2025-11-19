@@ -414,6 +414,7 @@ struct StatItem: View { // Define StatItem struct
             Text(value)
                 .font(AppDesign.Typography.headline)
                 .fontWeight(.bold)
+                .foregroundColor(AppDesign.Colors.textPrimary)
             
             Text(label)
                 .font(AppDesign.Typography.caption)

@@ -41,7 +41,7 @@ struct ExerciseLogView: View {
                     let calories = calculateCalories()
                     Text("Estimated Calories: \(String(format: "%.0f", calories)) kcal")
                         .font(.caption)
-                        .foregroundColor(.secondary)
+                        .foregroundColor(AppDesign.Colors.textSecondary)
                 }
             }
             

@@ -33,10 +33,10 @@ struct JournalAnalysisView: View { // Define JournalAnalysisView struct conformi
                                 .bold() // Make text bold
                             Text("\(analysis.entryCount) entries analyzed") // Display entry count
                                 .font(.subheadline) // Set subheadline font
-                                .foregroundColor(.secondary) // Set secondary color
+                                .foregroundColor(AppDesign.Colors.textSecondary) // Set secondary color
                             Text("Structured: \(analysis.structuredEntryCount), Unstructured: \(analysis.unstructuredEntryCount), Mixed: \(analysis.mixedEntryCount)") // Display entry types
                                 .font(.caption) // Set caption font
-                                .foregroundColor(.secondary) // Set secondary color
+                                .foregroundColor(AppDesign.Colors.textSecondary) // Set secondary color
                         }
                         .padding() // Add padding around summary
                         
@@ -128,7 +128,7 @@ struct JournalAnalysisView: View { // Define JournalAnalysisView struct conformi
                                             .font(.caption) // Set caption font
                                         Text("Interactions: \(insight.interactionCount) (Positive: \(insight.positiveCount), Negative: \(insight.negativeCount))") // Display interaction counts
                                             .font(.caption) // Set caption font
-                                            .foregroundColor(.secondary) // Set secondary color
+                                            .foregroundColor(AppDesign.Colors.textSecondary) // Set secondary color
                                     }
                                     .padding(.vertical, 4) // Add vertical padding
                                 }
@@ -140,7 +140,7 @@ struct JournalAnalysisView: View { // Define JournalAnalysisView struct conformi
                     } else { // If no analysis
                         VStack(spacing: 16) { // Create vertical stack
                             Text("No journal analysis available") // Display message
-                                .foregroundColor(.secondary) // Set secondary color
+                                .foregroundColor(AppDesign.Colors.textSecondary) // Set secondary color
                             Button("Analyze Journal") { // Create analyze button
                                 viewModel.analyzeJournal() // Call analyze function
                             }

@@ -77,6 +77,7 @@ struct PassportMRZScannerView: View { // Define PassportMRZScannerView struct co
                         Text("Scan Passport MRZ")
                             .font(AppDesign.Typography.title2)
                             .fontWeight(.bold)
+                            .foregroundColor(AppDesign.Colors.textPrimary)
                         
                         Text("Position the Machine Readable Zone (MRZ) at the bottom of your passport within the frame")
                             .font(AppDesign.Typography.body)
