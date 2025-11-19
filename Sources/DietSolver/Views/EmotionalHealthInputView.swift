@@ -161,6 +161,7 @@ struct EmotionalHealthInputView: View {
                             
                             VStack(spacing: AppDesign.Spacing.sm) {
                                 TextField("Trigger description", text: $currentTrigger.trigger)
+                                    .foregroundColor(.black)
                                     .textFieldStyle(.roundedBorder)
                                 
                                 HStack {
@@ -223,6 +224,7 @@ struct EmotionalHealthInputView: View {
                             
                             VStack(spacing: AppDesign.Spacing.sm) {
                                 TextField("Strategy description", text: $currentStrategy.strategy)
+                                    .foregroundColor(.black)
                                     .textFieldStyle(.roundedBorder)
                                 
                                 HStack {
@@ -283,6 +285,7 @@ struct EmotionalHealthInputView: View {
                             Text("Notes")
                                 .font(AppDesign.Typography.subheadline)
                             TextEditor(text: $notes)
+                                .foregroundColor(.black)
                                 .frame(height: 100)
                                 .overlay(
                                     RoundedRectangle(cornerRadius: AppDesign.Radius.small)

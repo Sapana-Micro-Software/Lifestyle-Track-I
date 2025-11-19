@@ -30,6 +30,7 @@ struct ExerciseLogView: View {
                     Text("Duration (minutes)")
                     Spacer()
                     TextField("30", text: $duration)
+                        .foregroundColor(.black)
                         #if os(iOS)
                         .keyboardType(.decimalPad)
                         #endif
@@ -50,6 +51,7 @@ struct ExerciseLogView: View {
                     Text("Average HR")
                     Spacer()
                     TextField("Optional", text: $heartRateAvg)
+                        .foregroundColor(.black)
                         #if os(iOS)
                         .keyboardType(.numberPad)
                         #endif
@@ -61,6 +63,7 @@ struct ExerciseLogView: View {
                     Text("Max HR")
                     Spacer()
                     TextField("Optional", text: $heartRateMax)
+                        .foregroundColor(.black)
                         #if os(iOS)
                         .keyboardType(.numberPad)
                         #endif
@@ -74,6 +77,7 @@ struct ExerciseLogView: View {
                     Text("Steps")
                     Spacer()
                     TextField("Optional", text: $steps)
+                        .foregroundColor(.black)
                         #if os(iOS)
                         .keyboardType(.numberPad)
                         #endif
@@ -85,6 +89,7 @@ struct ExerciseLogView: View {
                     Text("Stairs Climbed")
                     Spacer()
                     TextField("Optional", text: $stairs)
+                        .foregroundColor(.black)
                         #if os(iOS)
                         .keyboardType(.numberPad)
                         #endif
@@ -98,6 +103,7 @@ struct ExerciseLogView: View {
                     Text("Resting HR")
                     Spacer()
                     TextField("Optional", text: $restingHR)
+                        .foregroundColor(.black)
                         #if os(iOS)
                         .keyboardType(.numberPad)
                         #endif
@@ -109,6 +115,7 @@ struct ExerciseLogView: View {
                     Text("Min HR")
                     Spacer()
                     TextField("Optional", text: $minHR)
+                        .foregroundColor(.black)
                         #if os(iOS)
                         .keyboardType(.numberPad)
                         #endif
@@ -120,6 +127,7 @@ struct ExerciseLogView: View {
                     Text("Max HR")
                     Spacer()
                     TextField("Optional", text: $maxHR)
+                        .foregroundColor(.black)
                         #if os(iOS)
                         .keyboardType(.numberPad)
                         #endif
@@ -133,6 +141,7 @@ struct ExerciseLogView: View {
                     Text("Meditation (minutes)")
                     Spacer()
                     TextField("Optional", text: $meditationMinutes)
+                        .foregroundColor(.black)
                         #if os(iOS)
                         .keyboardType(.decimalPad)
                         #endif
@@ -144,6 +153,7 @@ struct ExerciseLogView: View {
                     Text("Breathing Practice (minutes)")
                     Spacer()
                     TextField("Optional", text: $breathingMinutes)
+                        .foregroundColor(.black)
                         #if os(iOS)
                         .keyboardType(.decimalPad)
                         #endif

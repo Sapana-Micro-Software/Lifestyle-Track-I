@@ -170,6 +170,7 @@ struct ThoughtRecordView: View {
                             get: { evidenceFor.joined(separator: "\n") },
                             set: { evidenceFor = $0.components(separatedBy: "\n").filter { !$0.isEmpty } }
                         ))
+                        .foregroundColor(.black)
                         .frame(height: 100)
                         .padding(AppDesign.Spacing.sm)
                         .background(AppDesign.Colors.surface)
@@ -183,6 +184,7 @@ struct ThoughtRecordView: View {
                             get: { evidenceAgainst.joined(separator: "\n") },
                             set: { evidenceAgainst = $0.components(separatedBy: "\n").filter { !$0.isEmpty } }
                         ))
+                        .foregroundColor(.black)
                         .frame(height: 100)
                         .padding(AppDesign.Spacing.sm)
                         .background(AppDesign.Colors.surface)

@@ -84,6 +84,7 @@ struct VisionCheckView: View { // Define VisionCheckView struct conforming to Vi
                         }
                     }
                     TextField("Notes", text: $notes, axis: .vertical) // Create notes text field
+                        .foregroundColor(.black)
                         .lineLimit(3...6) // Set line limit
                 }
                 

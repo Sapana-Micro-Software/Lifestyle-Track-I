@@ -27,6 +27,7 @@ struct ExerciseInputView: View {
                     Text("Muscle Mass (\(viewModel.unitSystem.weightUnit))")
                     Spacer()
                     TextField("Optional", text: $muscleMass)
+                        .foregroundColor(.black)
                         #if os(iOS)
                         .keyboardType(.decimalPad)
                         #endif
@@ -38,6 +39,7 @@ struct ExerciseInputView: View {
                     Text("Body Fat %")
                     Spacer()
                     TextField("Optional", text: $bodyFatPercentage)
+                        .foregroundColor(.black)
                         #if os(iOS)
                         .keyboardType(.decimalPad)
                         #endif
@@ -49,6 +51,7 @@ struct ExerciseInputView: View {
                     Text("Daily Steps Goal")
                     Spacer()
                     TextField("Steps", text: $steps)
+                        .foregroundColor(.black)
                         #if os(iOS)
                         .keyboardType(.numberPad)
                         #endif
@@ -60,6 +63,7 @@ struct ExerciseInputView: View {
                     Text("Stairs Climbed (flights)")
                     Spacer()
                     TextField("Flights", text: $stairsClimbed)
+                        .foregroundColor(.black)
                         #if os(iOS)
                         .keyboardType(.numberPad)
                         #endif
@@ -93,6 +97,7 @@ struct ExerciseInputView: View {
                     Text("Medications")
                     Spacer()
                     TextField("Optional", text: $mentalHealthMedications)
+                        .foregroundColor(.black)
                         .multilineTextAlignment(TextAlignment.trailing)
                 }
                 
@@ -100,6 +105,7 @@ struct ExerciseInputView: View {
                     Text("Depression Symptoms")
                     Spacer()
                     TextField("Optional", text: $depressionSymptoms)
+                        .foregroundColor(.black)
                         .multilineTextAlignment(TextAlignment.trailing)
                 }
             }
@@ -115,6 +121,7 @@ struct ExerciseInputView: View {
                     Text("Concerns")
                     Spacer()
                     TextField("Optional", text: $sexualHealthConcerns)
+                        .foregroundColor(.black)
                         .multilineTextAlignment(TextAlignment.trailing)
                 }
             }

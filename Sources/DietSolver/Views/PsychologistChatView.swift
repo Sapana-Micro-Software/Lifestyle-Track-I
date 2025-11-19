@@ -242,6 +242,7 @@ struct PsychologistChatView: View {
                 // Text input
                 TextField("Type your message...", text: $messageText, axis: .vertical)
                     .textFieldStyle(.roundedBorder)
+                    .foregroundColor(.black)
                     .lineLimit(1...5)
                 
                 // Send button

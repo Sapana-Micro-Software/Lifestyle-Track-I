@@ -38,6 +38,7 @@ struct HealthDataInputView: View {
                     Text("Age")
                     Spacer()
                     TextField("Age", text: $age)
+                        .foregroundColor(.black)
                         #if os(iOS)
                         .keyboardType(.numberPad)
                         #endif
@@ -49,6 +50,7 @@ struct HealthDataInputView: View {
                     Text("Weight (\(viewModel.unitSystem.weightUnit))")
                     Spacer()
                     TextField("Weight", text: $weight)
+                        .foregroundColor(.black)
                         #if os(iOS)
                         .keyboardType(.decimalPad)
                         #endif
@@ -60,12 +62,13 @@ struct HealthDataInputView: View {
                     HStack {
                         Text("Height (\(viewModel.unitSystem.heightUnit))")
                         Spacer()
-                        TextField("Height", text: $height)
-                            #if os(iOS)
-                            .keyboardType(.decimalPad)
-                            #endif
-                            .frame(width: 100)
-                            .multilineTextAlignment(TextAlignment.trailing)
+                            TextField("Height", text: $height)
+                                .foregroundColor(.black)
+                                #if os(iOS)
+                                .keyboardType(.decimalPad)
+                                #endif
+                                .frame(width: 100)
+                                .multilineTextAlignment(TextAlignment.trailing)
                     }
                 } else {
                     HStack {
@@ -73,12 +76,15 @@ struct HealthDataInputView: View {
                         Spacer()
                         HStack {
                             TextField("Feet", text: $heightFeet)
+                                .foregroundColor(.black)
                                 #if os(iOS)
                                 .keyboardType(.numberPad)
                                 #endif
                                 .frame(width: 60)
                             Text("ft")
+                                .foregroundColor(AppDesign.Colors.textPrimary)
                             TextField("Inches", text: $heightInches)
+                                .foregroundColor(.black)
                                 #if os(iOS)
                                 .keyboardType(.decimalPad)
                                 #endif
@@ -100,6 +106,7 @@ struct HealthDataInputView: View {
                     Text("Glucose (mg/dL)")
                     Spacer()
                     TextField("Optional", text: $glucose)
+                        .foregroundColor(.black)
                         #if os(iOS)
                         .keyboardType(.decimalPad)
                         #endif
@@ -111,6 +118,7 @@ struct HealthDataInputView: View {
                     Text("Hemoglobin (g/dL)")
                     Spacer()
                     TextField("Optional", text: $hemoglobin)
+                        .foregroundColor(.black)
                         #if os(iOS)
                         .keyboardType(.decimalPad)
                         #endif
@@ -122,6 +130,7 @@ struct HealthDataInputView: View {
                     Text("Cholesterol (mg/dL)")
                     Spacer()
                     TextField("Optional", text: $cholesterol)
+                        .foregroundColor(.black)
                         #if os(iOS)
                         .keyboardType(.decimalPad)
                         #endif
@@ -135,6 +144,7 @@ struct HealthDataInputView: View {
                     Text("Systolic")
                     Spacer()
                     TextField("Optional", text: $systolicBP)
+                        .foregroundColor(.black)
                         #if os(iOS)
                         .keyboardType(.numberPad)
                         #endif
@@ -146,6 +156,7 @@ struct HealthDataInputView: View {
                     Text("Diastolic")
                     Spacer()
                     TextField("Optional", text: $diastolicBP)
+                        .foregroundColor(.black)
                         #if os(iOS)
                         .keyboardType(.numberPad)
                         #endif

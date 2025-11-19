@@ -234,11 +234,11 @@ struct ModernInputField: View {
                 TextField(placeholder, text: $value)
                     .keyboardType(keyboardType)
                     .font(AppDesign.Typography.title2)
-                    .foregroundColor(AppDesign.Colors.textPrimary)
+                    .foregroundColor(.black)
                 #else
                 TextField(placeholder, text: $value)
                     .font(AppDesign.Typography.title2)
-                    .foregroundColor(AppDesign.Colors.textPrimary)
+                    .foregroundColor(.black)
                 #endif
                 
                 if let unit = unit {
@@ -283,7 +283,7 @@ struct ModernPickerField<T: Hashable & CaseIterable & RawRepresentable>: View wh
             }
             .pickerStyle(.menu)
             .font(AppDesign.Typography.title2)
-            .foregroundColor(AppDesign.Colors.textPrimary)
+            .foregroundColor(.black)
             .padding(.vertical, AppDesign.Spacing.sm)
         }
     }

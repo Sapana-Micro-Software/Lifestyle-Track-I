@@ -1,11 +1,16 @@
 /Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/Badge.swift.o
 /Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/BadgeGalleryView.swift.o
+/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/BreathingVisualizationView.swift.o
+/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/CBTTools.swift.o
+/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/CBTToolsView.swift.o
 /Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/CalendarSchedule.swift.o
 /Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/CarPlayView.swift.o
 /Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/CertificateView.swift.o
 /Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/CognitiveAnalyzer.swift.o
 /Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/CognitiveAssessment.swift.o
 /Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ContentView.swift.o
+/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ConversationTemplates.swift.o
+/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ConversationTemplatesView.swift.o
 /Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/DentalFitnessView.swift.o
 /Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/DesignSystem.swift.o
 /Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/DietPlanView.swift.o
@@ -14,6 +19,8 @@
 /Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/DietSolverViewModel.swift.o
 /Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/EatingMetrics.swift.o
 /Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/EatingMetricsInputView.swift.o
+/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/EmotionRegulation.swift.o
+/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/EmotionRegulationView.swift.o
 /Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/EmotionalHealth.swift.o
 /Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/EmotionalHealthInputView.swift.o
 /Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/EnhancedPlanGenerator.swift.o
@@ -26,6 +33,7 @@
 /Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ExternalHealthAnalyzer.swift.o
 /Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ExternalHealthCaptureView.swift.o
 /Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ExternalHealthData.swift.o
+/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/FeedbackLearning.swift.o
 /Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/Food.swift.o
 /Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/GroceryListGenerator.swift.o
 /Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/GroceryListView.swift.o
@@ -44,6 +52,7 @@
 /Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/Journal.swift.o
 /Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/JournalAnalysisView.swift.o
 /Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/JournalAnalyzer.swift.o
+/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/JournalTemplates.swift.o
 /Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/LongTermPlan.swift.o
 /Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/LongTermPlanView.swift.o
 /Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/LongTermPlanner.swift.o
@@ -66,6 +75,12 @@
 /Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/PlanningSessionView.swift.o
 /Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/PlatformAdapter.swift.o
 /Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ProgressChartsView.swift.o
+/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/PsychologistBadges.swift.o
+/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/PsychologistChat.swift.o
+/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/PsychologistChatView.swift.o
+/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/PsychologistChatbotManager.swift.o
+/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/PsychologistProgressTracker.swift.o
+/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/PsychologistProgressView.swift.o
 /Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/RecipeGenerator.swift.o
 /Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/RecipeLibraryManager.swift.o
 /Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/RecipeLibraryView.swift.o

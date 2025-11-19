@@ -149,6 +149,20 @@
     "swift-dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/PassportManager.swiftdeps",
     "diagnostics": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/PassportManager.dia"
   },
+  "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Managers/PsychologistChatbotManager.swift": {
+    "dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/PsychologistChatbotManager.d",
+    "object": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/PsychologistChatbotManager.swift.o",
+    "swiftmodule": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/PsychologistChatbotManager~partial.swiftmodule",
+    "swift-dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/PsychologistChatbotManager.swiftdeps",
+    "diagnostics": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/PsychologistChatbotManager.dia"
+  },
+  "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Managers/PsychologistProgressTracker.swift": {
+    "dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/PsychologistProgressTracker.d",
+    "object": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/PsychologistProgressTracker.swift.o",
+    "swiftmodule": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/PsychologistProgressTracker~partial.swiftmodule",
+    "swift-dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/PsychologistProgressTracker.swiftdeps",
+    "diagnostics": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/PsychologistProgressTracker.dia"
+  },
   "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Managers/RecipeLibraryManager.swift": {
     "dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/RecipeLibraryManager.d",
     "object": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/RecipeLibraryManager.swift.o",
@@ -177,6 +191,13 @@
     "swift-dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/Badge.swiftdeps",
     "diagnostics": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/Badge.dia"
   },
+  "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/CBTTools.swift": {
+    "dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/CBTTools.d",
+    "object": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/CBTTools.swift.o",
+    "swiftmodule": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/CBTTools~partial.swiftmodule",
+    "swift-dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/CBTTools.swiftdeps",
+    "diagnostics": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/CBTTools.dia"
+  },
   "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/CalendarSchedule.swift": {
     "dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/CalendarSchedule.d",
     "object": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/CalendarSchedule.swift.o",
@@ -191,12 +212,26 @@
     "swift-dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/CognitiveAssessment.swiftdeps",
     "diagnostics": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/CognitiveAssessment.dia"
   },
+  "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/ConversationTemplates.swift": {
+    "dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ConversationTemplates.d",
+    "object": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ConversationTemplates.swift.o",
+    "swiftmodule": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ConversationTemplates~partial.swiftmodule",
+    "swift-dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ConversationTemplates.swiftdeps",
+    "diagnostics": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ConversationTemplates.dia"
+  },
   "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/EatingMetrics.swift": {
     "dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/EatingMetrics.d",
     "object": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/EatingMetrics.swift.o",
     "swiftmodule": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/EatingMetrics~partial.swiftmodule",
     "swift-dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/EatingMetrics.swiftdeps",
     "diagnostics": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/EatingMetrics.dia"
+  },
+  "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/EmotionRegulation.swift": {
+    "dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/EmotionRegulation.d",
+    "object": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/EmotionRegulation.swift.o",
+    "swiftmodule": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/EmotionRegulation~partial.swiftmodule",
+    "swift-dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/EmotionRegulation.swiftdeps",
+    "diagnostics": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/EmotionRegulation.dia"
   },
   "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/EmotionalHealth.swift": {
     "dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/EmotionalHealth.d",
@@ -218,6 +253,13 @@
     "swiftmodule": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ExternalHealthData~partial.swiftmodule",
     "swift-dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ExternalHealthData.swiftdeps",
     "diagnostics": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ExternalHealthData.dia"
+  },
+  "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/FeedbackLearning.swift": {
+    "dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/FeedbackLearning.d",
+    "object": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/FeedbackLearning.swift.o",
+    "swiftmodule": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/FeedbackLearning~partial.swiftmodule",
+    "swift-dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/FeedbackLearning.swiftdeps",
+    "diagnostics": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/FeedbackLearning.dia"
   },
   "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/Food.swift": {
     "dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/Food.d",
@@ -261,6 +303,13 @@
     "swift-dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/Journal.swiftdeps",
     "diagnostics": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/Journal.dia"
   },
+  "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/JournalTemplates.swift": {
+    "dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/JournalTemplates.d",
+    "object": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/JournalTemplates.swift.o",
+    "swiftmodule": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/JournalTemplates~partial.swiftmodule",
+    "swift-dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/JournalTemplates.swiftdeps",
+    "diagnostics": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/JournalTemplates.dia"
+  },
   "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/LongTermPlan.swift": {
     "dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/LongTermPlan.d",
     "object": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/LongTermPlan.swift.o",
@@ -288,6 +337,20 @@
     "swiftmodule": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/Nutrient~partial.swiftmodule",
     "swift-dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/Nutrient.swiftdeps",
     "diagnostics": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/Nutrient.dia"
+  },
+  "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/PsychologistBadges.swift": {
+    "dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/PsychologistBadges.d",
+    "object": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/PsychologistBadges.swift.o",
+    "swiftmodule": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/PsychologistBadges~partial.swiftmodule",
+    "swift-dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/PsychologistBadges.swiftdeps",
+    "diagnostics": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/PsychologistBadges.dia"
+  },
+  "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/PsychologistChat.swift": {
+    "dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/PsychologistChat.d",
+    "object": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/PsychologistChat.swift.o",
+    "swiftmodule": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/PsychologistChat~partial.swiftmodule",
+    "swift-dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/PsychologistChat.swiftdeps",
+    "diagnostics": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/PsychologistChat.dia"
   },
   "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/SleepAnalysis.swift": {
     "dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/SleepAnalysis.d",
@@ -387,6 +450,20 @@
     "swift-dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/BadgeGalleryView.swiftdeps",
     "diagnostics": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/BadgeGalleryView.dia"
   },
+  "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/BreathingVisualizationView.swift": {
+    "dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/BreathingVisualizationView.d",
+    "object": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/BreathingVisualizationView.swift.o",
+    "swiftmodule": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/BreathingVisualizationView~partial.swiftmodule",
+    "swift-dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/BreathingVisualizationView.swiftdeps",
+    "diagnostics": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/BreathingVisualizationView.dia"
+  },
+  "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/CBTToolsView.swift": {
+    "dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/CBTToolsView.d",
+    "object": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/CBTToolsView.swift.o",
+    "swiftmodule": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/CBTToolsView~partial.swiftmodule",
+    "swift-dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/CBTToolsView.swiftdeps",
+    "diagnostics": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/CBTToolsView.dia"
+  },
   "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/CertificateView.swift": {
     "dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/CertificateView.d",
     "object": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/CertificateView.swift.o",
@@ -400,6 +477,13 @@
     "swiftmodule": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ContentView~partial.swiftmodule",
     "swift-dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ContentView.swiftdeps",
     "diagnostics": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ContentView.dia"
+  },
+  "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/ConversationTemplatesView.swift": {
+    "dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ConversationTemplatesView.d",
+    "object": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ConversationTemplatesView.swift.o",
+    "swiftmodule": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ConversationTemplatesView~partial.swiftmodule",
+    "swift-dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ConversationTemplatesView.swiftdeps",
+    "diagnostics": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ConversationTemplatesView.dia"
   },
   "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/DentalFitnessView.swift": {
     "dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/DentalFitnessView.d",
@@ -428,6 +512,13 @@
     "swiftmodule": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/EatingMetricsInputView~partial.swiftmodule",
     "swift-dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/EatingMetricsInputView.swiftdeps",
     "diagnostics": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/EatingMetricsInputView.dia"
+  },
+  "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/EmotionRegulationView.swift": {
+    "dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/EmotionRegulationView.d",
+    "object": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/EmotionRegulationView.swift.o",
+    "swiftmodule": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/EmotionRegulationView~partial.swiftmodule",
+    "swift-dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/EmotionRegulationView.swiftdeps",
+    "diagnostics": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/EmotionRegulationView.dia"
   },
   "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/EmotionalHealthInputView.swift": {
     "dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/EmotionalHealthInputView.d",
@@ -638,6 +729,20 @@
     "swiftmodule": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ProgressChartsView~partial.swiftmodule",
     "swift-dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ProgressChartsView.swiftdeps",
     "diagnostics": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ProgressChartsView.dia"
+  },
+  "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/PsychologistChatView.swift": {
+    "dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/PsychologistChatView.d",
+    "object": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/PsychologistChatView.swift.o",
+    "swiftmodule": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/PsychologistChatView~partial.swiftmodule",
+    "swift-dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/PsychologistChatView.swiftdeps",
+    "diagnostics": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/PsychologistChatView.dia"
+  },
+  "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/PsychologistProgressView.swift": {
+    "dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/PsychologistProgressView.d",
+    "object": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/PsychologistProgressView.swift.o",
+    "swiftmodule": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/PsychologistProgressView~partial.swiftmodule",
+    "swift-dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/PsychologistProgressView.swiftdeps",
+    "diagnostics": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/PsychologistProgressView.dia"
   },
   "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/RecipeLibraryView.swift": {
     "dependencies": "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/RecipeLibraryView.d",

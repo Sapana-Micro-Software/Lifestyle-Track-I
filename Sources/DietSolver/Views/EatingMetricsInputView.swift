@@ -132,6 +132,7 @@ struct EatingMetricsInputView: View {
                             // Add food piece form
                             VStack(spacing: AppDesign.Spacing.sm) {
                                 TextField("Food name", text: $currentFoodPiece.name)
+                                    .foregroundColor(.black)
                                     .textFieldStyle(.roundedBorder)
                                 
                                 HStack {
@@ -139,18 +140,21 @@ struct EatingMetricsInputView: View {
                                         Text("Length (cm)")
                                             .font(AppDesign.Typography.caption)
                                         TextField("", value: $currentFoodPiece.length, format: .number)
+                                            .foregroundColor(.black)
                                             .textFieldStyle(.roundedBorder)
                                     }
                                     VStack {
                                         Text("Width (cm)")
                                             .font(AppDesign.Typography.caption)
                                         TextField("", value: $currentFoodPiece.width, format: .number)
+                                            .foregroundColor(.black)
                                             .textFieldStyle(.roundedBorder)
                                     }
                                     VStack {
                                         Text("Height (cm)")
                                             .font(AppDesign.Typography.caption)
                                         TextField("", value: $currentFoodPiece.height, format: .number)
+                                            .foregroundColor(.black)
                                             .textFieldStyle(.roundedBorder)
                                     }
                                 }
@@ -213,6 +217,7 @@ struct EatingMetricsInputView: View {
                             Text("Notes")
                                 .font(AppDesign.Typography.subheadline)
                             TextEditor(text: $notes)
+                                .foregroundColor(.black)
                                 .frame(height: 100)
                                 .overlay(
                                     RoundedRectangle(cornerRadius: AppDesign.Radius.small)

@@ -97,6 +97,7 @@ struct LegacyTongueCheckView: View {
                 
                 Section(header: Text("Notes")) {
                     TextEditor(text: $notes)
+                        .foregroundColor(.black)
                         .frame(height: 100)
                 }
                 

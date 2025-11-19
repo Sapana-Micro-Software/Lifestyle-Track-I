@@ -100,6 +100,7 @@ struct TemplateCustomizationView: View {
                     .padding(.top, AppDesign.Spacing.md)
                 
                 TextEditor(text: $customizedText)
+                    .foregroundColor(.black)
                     .padding(AppDesign.Spacing.sm)
                     .background(AppDesign.Colors.surface)
                     .cornerRadius(AppDesign.Radius.medium)

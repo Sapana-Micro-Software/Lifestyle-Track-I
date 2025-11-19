@@ -112,6 +112,14 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Managers/PsychologistChatbotManager.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Managers/PsychologistProgressTracker.swift"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Managers/RecipeLibraryManager.swift"
         },
         {
@@ -128,6 +136,10 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/CBTTools.swift"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/CalendarSchedule.swift"
         },
         {
@@ -136,7 +148,15 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/ConversationTemplates.swift"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/EatingMetrics.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/EmotionRegulation.swift"
         },
         {
           "kind" : "file",
@@ -149,6 +169,10 @@
         {
           "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/ExternalHealthData.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/FeedbackLearning.swift"
         },
         {
           "kind" : "file",
@@ -176,6 +200,10 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/JournalTemplates.swift"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/LongTermPlan.swift"
         },
         {
@@ -189,6 +217,14 @@
         {
           "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/Nutrient.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/PsychologistBadges.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/PsychologistChat.swift"
         },
         {
           "kind" : "file",
@@ -248,11 +284,23 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/BreathingVisualizationView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/CBTToolsView.swift"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/CertificateView.swift"
         },
         {
           "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/ContentView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/ConversationTemplatesView.swift"
         },
         {
           "kind" : "file",
@@ -269,6 +317,10 @@
         {
           "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/EatingMetricsInputView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/EmotionRegulationView.swift"
         },
         {
           "kind" : "file",
@@ -392,6 +444,14 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/PsychologistChatView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/PsychologistProgressView.swift"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/RecipeLibraryView.swift"
         },
         {
@@ -460,26 +520,35 @@
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/NFCManager.swift.o",
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/NotificationManager.swift.o",
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/PassportManager.swift.o",
+        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/PsychologistChatbotManager.swift.o",
+        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/PsychologistProgressTracker.swift.o",
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/RecipeLibraryManager.swift.o",
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ResearchKitManager.swift.o",
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/WalletManager.swift.o",
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/Badge.swift.o",
+        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/CBTTools.swift.o",
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/CalendarSchedule.swift.o",
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/CognitiveAssessment.swift.o",
+        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ConversationTemplates.swift.o",
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/EatingMetrics.swift.o",
+        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/EmotionRegulation.swift.o",
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/EmotionalHealth.swift.o",
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/Exercise.swift.o",
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ExternalHealthData.swift.o",
+        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/FeedbackLearning.swift.o",
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/Food.swift.o",
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/HealthCertificate.swift.o",
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/HealthData.swift.o",
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/HealthHistory.swift.o",
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/HearingData.swift.o",
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/Journal.swift.o",
+        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/JournalTemplates.swift.o",
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/LongTermPlan.swift.o",
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/MedicalSpecialties.swift.o",
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/MedicalTests.swift.o",
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/Nutrient.swift.o",
+        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/PsychologistBadges.swift.o",
+        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/PsychologistChat.swift.o",
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/SleepAnalysis.swift.o",
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/TactileData.swift.o",
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/TongueData.swift.o",
@@ -494,12 +563,16 @@
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/DietSolver.swift.o",
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/DietSolverViewModel.swift.o",
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/BadgeGalleryView.swift.o",
+        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/BreathingVisualizationView.swift.o",
+        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/CBTToolsView.swift.o",
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/CertificateView.swift.o",
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ContentView.swift.o",
+        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ConversationTemplatesView.swift.o",
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/DentalFitnessView.swift.o",
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/DesignSystem.swift.o",
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/DietPlanView.swift.o",
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/EatingMetricsInputView.swift.o",
+        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/EmotionRegulationView.swift.o",
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/EmotionalHealthInputView.swift.o",
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ExerciseInputView.swift.o",
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ExerciseLogView.swift.o",
@@ -530,6 +603,8 @@
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/visionOSView.swift.o",
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/watchOSView.swift.o",
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ProgressChartsView.swift.o",
+        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/PsychologistChatView.swift.o",
+        "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/PsychologistProgressView.swift.o",
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/RecipeLibraryView.swift.o",
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/SolvingView.swift.o",
         "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/TactileCheckView.swift.o",
@@ -683,6 +758,14 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/PsychologistChatbotManager.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/PsychologistProgressTracker.swift.o"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/RecipeLibraryManager.swift.o"
         },
         {
@@ -699,6 +782,10 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/CBTTools.swift.o"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/CalendarSchedule.swift.o"
         },
         {
@@ -707,7 +794,15 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ConversationTemplates.swift.o"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/EatingMetrics.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/EmotionRegulation.swift.o"
         },
         {
           "kind" : "file",
@@ -720,6 +815,10 @@
         {
           "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ExternalHealthData.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/FeedbackLearning.swift.o"
         },
         {
           "kind" : "file",
@@ -747,6 +846,10 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/JournalTemplates.swift.o"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/LongTermPlan.swift.o"
         },
         {
@@ -760,6 +863,14 @@
         {
           "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/Nutrient.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/PsychologistBadges.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/PsychologistChat.swift.o"
         },
         {
           "kind" : "file",
@@ -819,11 +930,23 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/BreathingVisualizationView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/CBTToolsView.swift.o"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/CertificateView.swift.o"
         },
         {
           "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ContentView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ConversationTemplatesView.swift.o"
         },
         {
           "kind" : "file",
@@ -840,6 +963,10 @@
         {
           "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/EatingMetricsInputView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/EmotionRegulationView.swift.o"
         },
         {
           "kind" : "file",
@@ -963,6 +1090,14 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/PsychologistChatView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/PsychologistProgressView.swift.o"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/RecipeLibraryView.swift.o"
         },
         {
@@ -1025,26 +1160,35 @@
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Managers/NFCManager.swift",
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Managers/NotificationManager.swift",
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Managers/PassportManager.swift",
+        "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Managers/PsychologistChatbotManager.swift",
+        "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Managers/PsychologistProgressTracker.swift",
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Managers/RecipeLibraryManager.swift",
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Managers/ResearchKitManager.swift",
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Managers/WalletManager.swift",
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/Badge.swift",
+        "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/CBTTools.swift",
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/CalendarSchedule.swift",
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/CognitiveAssessment.swift",
+        "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/ConversationTemplates.swift",
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/EatingMetrics.swift",
+        "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/EmotionRegulation.swift",
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/EmotionalHealth.swift",
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/Exercise.swift",
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/ExternalHealthData.swift",
+        "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/FeedbackLearning.swift",
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/Food.swift",
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/HealthCertificate.swift",
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/HealthData.swift",
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/HealthHistory.swift",
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/HearingData.swift",
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/Journal.swift",
+        "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/JournalTemplates.swift",
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/LongTermPlan.swift",
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/MedicalSpecialties.swift",
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/MedicalTests.swift",
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/Nutrient.swift",
+        "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/PsychologistBadges.swift",
+        "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/PsychologistChat.swift",
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/SleepAnalysis.swift",
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/TactileData.swift",
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/TongueData.swift",
@@ -1059,12 +1203,16 @@
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Solver/DietSolver.swift",
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/ViewModels/DietSolverViewModel.swift",
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/BadgeGalleryView.swift",
+        "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/BreathingVisualizationView.swift",
+        "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/CBTToolsView.swift",
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/CertificateView.swift",
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/ContentView.swift",
+        "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/ConversationTemplatesView.swift",
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/DentalFitnessView.swift",
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/DesignSystem.swift",
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/DietPlanView.swift",
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/EatingMetricsInputView.swift",
+        "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/EmotionRegulationView.swift",
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/EmotionalHealthInputView.swift",
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/ExerciseInputView.swift",
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/ExerciseLogView.swift",
@@ -1095,6 +1243,8 @@
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/PlatformSpecific/visionOSView.swift",
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/PlatformSpecific/watchOSView.swift",
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/ProgressChartsView.swift",
+        "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/PsychologistChatView.swift",
+        "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/PsychologistProgressView.swift",
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/RecipeLibraryView.swift",
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/SolvingView.swift",
         "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/TactileCheckView.swift",
@@ -1524,26 +1674,35 @@
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Managers/NFCManager.swift",
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Managers/NotificationManager.swift",
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Managers/PassportManager.swift",
+      "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Managers/PsychologistChatbotManager.swift",
+      "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Managers/PsychologistProgressTracker.swift",
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Managers/RecipeLibraryManager.swift",
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Managers/ResearchKitManager.swift",
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Managers/WalletManager.swift",
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/Badge.swift",
+      "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/CBTTools.swift",
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/CalendarSchedule.swift",
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/CognitiveAssessment.swift",
+      "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/ConversationTemplates.swift",
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/EatingMetrics.swift",
+      "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/EmotionRegulation.swift",
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/EmotionalHealth.swift",
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/Exercise.swift",
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/ExternalHealthData.swift",
+      "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/FeedbackLearning.swift",
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/Food.swift",
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/HealthCertificate.swift",
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/HealthData.swift",
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/HealthHistory.swift",
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/HearingData.swift",
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/Journal.swift",
+      "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/JournalTemplates.swift",
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/LongTermPlan.swift",
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/MedicalSpecialties.swift",
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/MedicalTests.swift",
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/Nutrient.swift",
+      "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/PsychologistBadges.swift",
+      "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/PsychologistChat.swift",
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/SleepAnalysis.swift",
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/TactileData.swift",
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/TongueData.swift",
@@ -1558,12 +1717,16 @@
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Solver/DietSolver.swift",
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/ViewModels/DietSolverViewModel.swift",
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/BadgeGalleryView.swift",
+      "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/BreathingVisualizationView.swift",
+      "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/CBTToolsView.swift",
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/CertificateView.swift",
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/ContentView.swift",
+      "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/ConversationTemplatesView.swift",
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/DentalFitnessView.swift",
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/DesignSystem.swift",
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/DietPlanView.swift",
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/EatingMetricsInputView.swift",
+      "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/EmotionRegulationView.swift",
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/EmotionalHealthInputView.swift",
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/ExerciseInputView.swift",
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/ExerciseLogView.swift",
@@ -1594,6 +1757,8 @@
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/PlatformSpecific/visionOSView.swift",
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/PlatformSpecific/watchOSView.swift",
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/ProgressChartsView.swift",
+      "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/PsychologistChatView.swift",
+      "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/PsychologistProgressView.swift",
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/RecipeLibraryView.swift",
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/SolvingView.swift",
       "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/TactileCheckView.swift",
@@ -1998,6 +2163,14 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Managers/PsychologistChatbotManager.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Managers/PsychologistProgressTracker.swift"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Managers/RecipeLibraryManager.swift"
         },
         {
@@ -2014,6 +2187,10 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/CBTTools.swift"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/CalendarSchedule.swift"
         },
         {
@@ -2022,7 +2199,15 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/ConversationTemplates.swift"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/EatingMetrics.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/EmotionRegulation.swift"
         },
         {
           "kind" : "file",
@@ -2035,6 +2220,10 @@
         {
           "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/ExternalHealthData.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/FeedbackLearning.swift"
         },
         {
           "kind" : "file",
@@ -2062,6 +2251,10 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/JournalTemplates.swift"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/LongTermPlan.swift"
         },
         {
@@ -2075,6 +2268,14 @@
         {
           "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/Nutrient.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/PsychologistBadges.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Models/PsychologistChat.swift"
         },
         {
           "kind" : "file",
@@ -2134,11 +2335,23 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/BreathingVisualizationView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/CBTToolsView.swift"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/CertificateView.swift"
         },
         {
           "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/ContentView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/ConversationTemplatesView.swift"
         },
         {
           "kind" : "file",
@@ -2155,6 +2368,10 @@
         {
           "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/EatingMetricsInputView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/EmotionRegulationView.swift"
         },
         {
           "kind" : "file",
@@ -2278,6 +2495,14 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/PsychologistChatView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/PsychologistProgressView.swift"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/Sources/DietSolver/Views/RecipeLibraryView.swift"
         },
         {
@@ -2360,6 +2585,18 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/BreathingVisualizationView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/CBTTools.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/CBTToolsView.swift.o"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/CalendarSchedule.swift.o"
         },
         {
@@ -2381,6 +2618,14 @@
         {
           "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ContentView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ConversationTemplates.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ConversationTemplatesView.swift.o"
         },
         {
           "kind" : "file",
@@ -2413,6 +2658,14 @@
         {
           "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/EatingMetricsInputView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/EmotionRegulation.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/EmotionRegulationView.swift.o"
         },
         {
           "kind" : "file",
@@ -2461,6 +2714,10 @@
         {
           "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ExternalHealthData.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/FeedbackLearning.swift.o"
         },
         {
           "kind" : "file",
@@ -2533,6 +2790,10 @@
         {
           "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/JournalAnalyzer.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/JournalTemplates.swift.o"
         },
         {
           "kind" : "file",
@@ -2621,6 +2882,30 @@
         {
           "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ProgressChartsView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/PsychologistBadges.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/PsychologistChat.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/PsychologistChatView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/PsychologistChatbotManager.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/PsychologistProgressTracker.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/PsychologistProgressView.swift.o"
         },
         {
           "kind" : "file",
@@ -2788,6 +3073,18 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/BreathingVisualizationView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/CBTTools.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/CBTToolsView.swift.o"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/CalendarSchedule.swift.o"
         },
         {
@@ -2809,6 +3106,14 @@
         {
           "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ContentView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ConversationTemplates.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ConversationTemplatesView.swift.o"
         },
         {
           "kind" : "file",
@@ -2841,6 +3146,14 @@
         {
           "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/EatingMetricsInputView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/EmotionRegulation.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/EmotionRegulationView.swift.o"
         },
         {
           "kind" : "file",
@@ -2889,6 +3202,10 @@
         {
           "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ExternalHealthData.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/FeedbackLearning.swift.o"
         },
         {
           "kind" : "file",
@@ -2961,6 +3278,10 @@
         {
           "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/JournalAnalyzer.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/JournalTemplates.swift.o"
         },
         {
           "kind" : "file",
@@ -3049,6 +3370,30 @@
         {
           "kind" : "file",
           "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/ProgressChartsView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/PsychologistBadges.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/PsychologistChat.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/PsychologistChatView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/PsychologistChatbotManager.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/PsychologistProgressTracker.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/shyamalchandra/diet-solver/.build/x86_64-apple-macosx/debug/DietSolver.build/PsychologistProgressView.swift.o"
         },
         {
           "kind" : "file",

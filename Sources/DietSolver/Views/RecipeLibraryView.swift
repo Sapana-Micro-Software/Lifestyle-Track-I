@@ -49,6 +49,7 @@ struct RecipeLibraryView: View {
                     Image(systemName: "magnifyingglass")
                         .foregroundColor(AppDesign.Colors.textSecondary)
                     TextField("Search recipes...", text: $searchText)
+                        .foregroundColor(.black)
                         .textFieldStyle(PlainTextFieldStyle())
                 }
                 .padding()

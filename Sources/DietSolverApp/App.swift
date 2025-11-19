@@ -19,6 +19,7 @@ struct HealthAndWellnessLifestyleSolverAppMain: App { // Define main app struct 
                 .frame(minWidth: 800, minHeight: 600) // Set minimum window size for macOS
                 .frame(maxWidth: .infinity, maxHeight: .infinity) // Ensure full window coverage
                 .background(Color(red: 0.98, green: 0.98, blue: 0.99)) // Set background color
+                .preferredColorScheme(.light) // Force light mode for consistent black text
                 .onAppear {
                     #if os(macOS)
                     // Bring window to front on macOS (with proper error handling)

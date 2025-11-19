@@ -49,6 +49,7 @@ struct MusicSessionView: View {
                     }
                     
                     TextField("Genre (optional)", text: $genre)
+                        .foregroundColor(.black)
                     
                     Stepper("Duration: \(Int(duration)) minutes", value: $duration, in: 1...180, step: 5)
                 }
@@ -95,6 +96,7 @@ struct MusicSessionView: View {
                 
                 Section(header: Text("Notes")) {
                     TextEditor(text: $notes)
+                        .foregroundColor(.black)
                         .frame(height: 100)
                 }
                 
