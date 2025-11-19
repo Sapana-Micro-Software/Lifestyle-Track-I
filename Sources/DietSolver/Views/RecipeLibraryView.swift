@@ -129,16 +129,28 @@ struct RecipeLibraryView: View {
                 Button(action: saveCurrentMeal) {
                     Image(systemName: "plus.circle.fill")
                 }
-                .disabled(viewModel.dietPlan == nil)
+                .disabled(viewModel.dietPlan == nil && viewModel.dailyPlans.isEmpty)
             }
             #endif
         }
     }
     
     private func saveCurrentMeal() {
-        guard let dietPlan = viewModel.dietPlan,
-              let firstMeal = dietPlan.meals.first else { return }
-        libraryManager.saveRecipe(from: firstMeal)
+        // Try to save from current diet plan
+        if let dietPlan = viewModel.dietPlan {
+            for meal in dietPlan.meals {
+                libraryManager.saveRecipe(from: meal)
+            }
+        } else if !viewModel.dailyPlans.isEmpty {
+            // Save recipes from daily plans
+            for plan in viewModel.dailyPlans {
+                if let dietPlan = plan.dietPlan {
+                    for meal in dietPlan.meals {
+                        libraryManager.saveRecipe(from: meal)
+                    }
+                }
+            }
+        }
     }
 }
 

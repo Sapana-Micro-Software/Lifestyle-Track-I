@@ -105,6 +105,35 @@ class DietSolverViewModel: ObservableObject { // Define view model class conform
             
             DispatchQueue.main.async {
                 self.dietPlan = plan
+                // Auto-save recipes from generated meals
+                self.saveRecipesFromDietPlan(plan)
+            }
+        }
+    }
+    
+    // MARK: - Recipe Auto-Save
+    private func saveRecipesFromDietPlan(_ plan: DailyDietPlan) {
+        let recipeManager = RecipeLibraryManager.shared
+        for meal in plan.meals {
+            // Only save if recipe doesn't already exist
+            let existingRecipes = recipeManager.savedRecipes
+            if !existingRecipes.contains(where: { $0.mealName == meal.name && $0.items.count == meal.items.count }) {
+                recipeManager.saveRecipe(from: meal)
+            }
+        }
+    }
+    
+    private func saveRecipesFromDailyPlans(_ plans: [DailyPlanEntry]) {
+        let recipeManager = RecipeLibraryManager.shared
+        for plan in plans {
+            if let dietPlan = plan.dietPlan {
+                for meal in dietPlan.meals {
+                    // Only save if recipe doesn't already exist
+                    let existingRecipes = recipeManager.savedRecipes
+                    if !existingRecipes.contains(where: { $0.mealName == meal.name && $0.items.count == meal.items.count }) {
+                        recipeManager.saveRecipe(from: meal)
+                    }
+                }
             }
         }
     }
@@ -174,6 +203,9 @@ class DietSolverViewModel: ObservableObject { // Define view model class conform
             
             DispatchQueue.main.async { // Return to main thread for UI updates
                 self.dailyPlans = dailyPlans // Update published daily plans array
+                
+                // Auto-save recipes from all daily plans
+                self.saveRecipesFromDailyPlans(dailyPlans)
                 
                 // Schedule notifications for meals and exercises
                 self.schedulePlanNotifications(dailyPlans: dailyPlans)

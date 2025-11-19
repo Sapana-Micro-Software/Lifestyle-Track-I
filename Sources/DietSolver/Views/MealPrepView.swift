@@ -61,7 +61,7 @@ struct MealPrepView: View {
                             .foregroundColor(.white)
                             .cornerRadius(12)
                         }
-                        .disabled(isGenerating || viewModel.dailyPlans.isEmpty)
+                        .disabled(isGenerating || (viewModel.dailyPlans.isEmpty && viewModel.dietPlan == nil))
                     }
                     .padding(AppDesign.Spacing.md)
                 }
@@ -97,15 +97,42 @@ struct MealPrepView: View {
     
     // MARK: - Generate Schedule
     private func generateMealPrepSchedule() {
-        guard !viewModel.dailyPlans.isEmpty else { return }
-        
         isGenerating = true
         
         DispatchQueue.global(qos: .userInitiated).async {
-            let schedule = MealPrepPlanner.shared.generateMealPrepSchedule(
-                from: viewModel.dailyPlans,
-                days: daysToPlan
-            )
+            let schedule: MealPrepSchedule
+            
+            // Use daily plans if available, otherwise create from current diet plan
+            if !viewModel.dailyPlans.isEmpty {
+                schedule = MealPrepPlanner.shared.generateMealPrepSchedule(
+                    from: viewModel.dailyPlans,
+                    days: daysToPlan
+                )
+            } else if let dietPlan = viewModel.dietPlan {
+                // Create a single-day plan entry from current diet plan
+                let planEntry = DailyPlanEntry(
+                    date: Date(),
+                    dayNumber: 1,
+                    dietPlan: dietPlan,
+                    exercisePlan: nil,
+                    supplements: [],
+                    meditationMinutes: 0,
+                    breathingPracticeMinutes: 0,
+                    sleepTarget: 8,
+                    waterIntake: 2,
+                    notes: nil
+                )
+                schedule = MealPrepPlanner.shared.generateMealPrepSchedule(
+                    from: [planEntry],
+                    days: 1
+                )
+            } else {
+                // No data available
+                DispatchQueue.main.async {
+                    self.isGenerating = false
+                }
+                return
+            }
             
             DispatchQueue.main.async {
                 self.mealPrepSchedule = schedule

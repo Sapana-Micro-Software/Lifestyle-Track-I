@@ -35,6 +35,10 @@ class PsychologistChatbotManager: ObservableObject {
     private var emotionalHealthHistory: [EmotionalHealth] = []
     private var journalEntries: [JournalEntry] = []
     
+    // HealthKit integration
+    private let healthKitManager = HealthKitManager()
+    private var currentHealthKitData: HealthKitBiomarkers?
+    
     // Therapy approach selection
     private var activeTherapyApproach: TherapyTechnique = .personCentered
     
@@ -538,6 +542,11 @@ class PsychologistChatbotManager: ObservableObject {
             responseComponents.append(insight)
         }
         
+        // Add health data contextual insights
+        if let healthInsight = await generateHealthDataInsight(for: message, sentiment: sentiment) {
+            responseComponents.append(healthInsight)
+        }
+        
         // Add follow-up question
         if shouldAskFollowUp(session: session) {
             responseComponents.append(generateFollowUpQuestion(basedOn: message, sentiment: sentiment, intent: intent))
@@ -974,6 +983,11 @@ class PsychologistChatbotManager: ObservableObject {
         // Extract journal entries
         self.journalEntries = healthData.journalCollection.entries
         
+        // Load HealthKit data
+        Task {
+            await loadHealthKitData()
+        }
+        
         // Check for badges
         let sessionCount = userProfile.conversationHistory.count
         let moodImprovement = userProfile.progressMetrics.sentimentTrend == .improving
@@ -990,6 +1004,87 @@ class PsychologistChatbotManager: ObservableObject {
             goalsCompleted: goalsCompleted,
             crisisResilience: crisisResilience
         )
+    }
+    
+    // MARK: - Health Data Integration
+    
+    private func loadHealthKitData() async {
+        let authorized = await healthKitManager.requestAuthorization()
+        if authorized {
+            currentHealthKitData = await healthKitManager.readBiomarkers()
+        }
+    }
+    
+    private func generateHealthDataInsight(for message: ChatMessage, sentiment: SentimentAnalysis) async -> String? {
+        // Load HealthKit data if not already loaded
+        if currentHealthKitData == nil {
+            await loadHealthKitData()
+        }
+        
+        var insights: [String] = []
+        
+        // Heart rate correlation
+        if let heartRate = currentHealthKitData?.heartRate {
+            if let avgHR = heartRate.average, avgHR > 90 {
+                if sentiment.score < -0.2 || sentiment.dominantEmotion == .anxiety || sentiment.dominantEmotion == .stress {
+                    insights.append("I notice your heart rate is elevated (\(Int(avgHR)) bpm). " +
+                                   "This might be related to feeling anxious or stressed. " +
+                                   "Would you like to try a breathing exercise to help calm your body?")
+                }
+            }
+            
+            if let restingHR = heartRate.resting, restingHR > 80 {
+                insights.append("Your resting heart rate is a bit elevated (\(Int(restingHR)) bpm), " +
+                               "which can sometimes indicate stress or fatigue. " +
+                               "How have you been sleeping lately?")
+            }
+        }
+        
+        // Sleep correlation
+        if let sleep = currentHealthKitData?.sleep {
+            if let totalSleep = sleep.totalSleepTime {
+                let hours = totalSleep / 3600
+                if hours < 6 {
+                    if sentiment.score < 0 || sentiment.dominantEmotion == .sadness || sentiment.dominantEmotion == .anxiety {
+                        insights.append("You only got \(String(format: "%.1f", hours)) hours of sleep last night. " +
+                                       "Poor sleep can definitely affect your mood and make you feel more irritable or anxious. " +
+                                       "This might explain some of what you're experiencing today.")
+                    }
+                } else if hours < 7 {
+                    insights.append("You got \(String(format: "%.1f", hours)) hours of sleep, which is slightly below the recommended 7-9 hours. " +
+                                   "This could be contributing to how you're feeling.")
+                }
+            }
+            
+            if let efficiency = sleep.sleepEfficiency, efficiency < 0.75 {
+                insights.append("Your sleep efficiency was \(Int(efficiency * 100))% last night, which suggests you had trouble staying asleep. " +
+                               "This can impact your emotional well-being. Have you noticed any patterns in your sleep?")
+            }
+        }
+        
+        // Activity correlation
+        if let activity = currentHealthKitData?.activity {
+            if let steps = activity.steps, steps < 3000 {
+                if sentiment.score < 0 {
+                    insights.append("You've taken \(steps) steps today, which is lower than usual. " +
+                                   "Physical activity can really help with mood - even a short walk might make a difference. " +
+                                   "Would you like some exercise suggestions?")
+                }
+            }
+        }
+        
+        // Blood pressure correlation
+        if let bp = currentHealthKitData?.bloodPressure {
+            if bp.systolic > 140 || bp.diastolic > 90 {
+                if sentiment.dominantEmotion == .stress || sentiment.dominantEmotion == .anxiety {
+                    insights.append("Your blood pressure is elevated (\(Int(bp.systolic))/\(Int(bp.diastolic))). " +
+                                   "This can be related to stress. " +
+                                   "Managing stress through relaxation techniques might help both your emotional and physical health.")
+                }
+            }
+        }
+        
+        return insights.isEmpty ? nil : insights.joined(separator: " ")
     }
     
     private func updateUserProfile(with message: ChatMessage) {

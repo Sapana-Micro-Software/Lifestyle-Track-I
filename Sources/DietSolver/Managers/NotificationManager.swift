@@ -301,6 +301,91 @@ class NotificationManager: NSObject, ObservableObject {
     }
     
     // MARK: - Cancel Specific Notification
+    // MARK: - Schedule Generic Notification
+    func scheduleNotification(identifier: String, title: String, body: String, date: Date) {
+        guard notificationsEnabled else { return }
+        
+        #if os(iOS) || os(watchOS) || os(tvOS)
+        let content = UNMutableNotificationContent()
+        content.title = title
+        content.body = body
+        content.sound = .default
+        content.userInfo = ["identifier": identifier]
+        
+        let components = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: date)
+        let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: false)
+        
+        let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
+        
+        UNUserNotificationCenter.current().add(request) { error in
+            if let error = error {
+                print("Error scheduling notification: \(error)")
+            }
+        }
+        #elseif os(macOS)
+        print("Notification scheduled: \(title) at \(date)")
+        #endif
+    }
+    
+    // MARK: - Schedule Daily Reminder
+    func scheduleDailyReminder(identifier: String, title: String, body: String, hour: Int, minute: Int) {
+        guard notificationsEnabled else { return }
+        
+        #if os(iOS) || os(watchOS) || os(tvOS)
+        let content = UNMutableNotificationContent()
+        content.title = title
+        content.body = body
+        content.sound = .default
+        content.userInfo = ["identifier": identifier, "type": "daily_reminder"]
+        
+        var components = DateComponents()
+        components.hour = hour
+        components.minute = minute
+        
+        let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: true)
+        
+        let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
+        
+        UNUserNotificationCenter.current().add(request) { error in
+            if let error = error {
+                print("Error scheduling daily reminder: \(error)")
+            }
+        }
+        #elseif os(macOS)
+        print("Daily reminder scheduled: \(title) at \(hour):\(minute)")
+        #endif
+    }
+    
+    // MARK: - Schedule Weekly Reminder
+    func scheduleWeeklyReminder(identifier: String, title: String, body: String, weekday: Int, hour: Int, minute: Int) {
+        guard notificationsEnabled else { return }
+        
+        #if os(iOS) || os(watchOS) || os(tvOS)
+        let content = UNMutableNotificationContent()
+        content.title = title
+        content.body = body
+        content.sound = .default
+        content.userInfo = ["identifier": identifier, "type": "weekly_reminder"]
+        
+        var components = DateComponents()
+        components.weekday = weekday
+        components.hour = hour
+        components.minute = minute
+        
+        let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: true)
+        
+        let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
+        
+        UNUserNotificationCenter.current().add(request) { error in
+            if let error = error {
+                print("Error scheduling weekly reminder: \(error)")
+            }
+        }
+        #elseif os(macOS)
+        print("Weekly reminder scheduled: \(title) on weekday \(weekday) at \(hour):\(minute)")
+        #endif
+    }
+    
     func cancelNotification(identifier: String) {
         #if os(iOS) || os(watchOS) || os(tvOS)
         UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [identifier])

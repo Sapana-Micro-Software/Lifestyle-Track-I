@@ -62,7 +62,7 @@ struct GroceryListView: View {
                             .foregroundColor(.white)
                             .cornerRadius(12)
                         }
-                        .disabled(isGenerating || viewModel.dailyPlans.isEmpty)
+                        .disabled(isGenerating || (viewModel.dailyPlans.isEmpty && viewModel.dietPlan == nil))
                     }
                     .padding(AppDesign.Spacing.md)
                 }
@@ -109,15 +109,27 @@ struct GroceryListView: View {
     
     // MARK: - Generate Grocery List
     private func generateGroceryList() {
-        guard !viewModel.dailyPlans.isEmpty else { return }
-        
         isGenerating = true
         
         DispatchQueue.global(qos: .userInitiated).async {
-            let list = GroceryListGenerator.shared.generateGroceryList(
-                from: viewModel.dailyPlans,
-                days: daysToGenerate
-            )
+            let list: GroceryList
+            
+            // Use daily plans if available, otherwise use current diet plan
+            if !viewModel.dailyPlans.isEmpty {
+                list = GroceryListGenerator.shared.generateGroceryList(
+                    from: viewModel.dailyPlans,
+                    days: daysToGenerate
+                )
+            } else if let dietPlan = viewModel.dietPlan {
+                // Generate from current diet plan
+                list = GroceryListGenerator.shared.generateGroceryList(from: dietPlan)
+            } else {
+                // No data available
+                DispatchQueue.main.async {
+                    self.isGenerating = false
+                }
+                return
+            }
             
             DispatchQueue.main.async {
                 self.groceryList = list

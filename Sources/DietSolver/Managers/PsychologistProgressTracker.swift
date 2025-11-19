@@ -181,4 +181,189 @@ class PsychologistProgressTracker {
         // Prompt if it's been more than 2 days
         return daysSinceLastSession > 2
     }
+    
+    // MARK: - Mood Prediction
+    
+    func predictMood(for daysAhead: Int = 1, from sessions: [ConversationSession]) -> MoodPrediction? {
+        guard sessions.count >= 3 else { return nil }
+        
+        // Analyze patterns
+        let sortedSessions = sessions.sorted { $0.startDate < $1.startDate }
+        let sentiments = sortedSessions.compactMap { $0.averageSentiment }
+        
+        // Calculate trend
+        let recentSentiments = Array(sentiments.suffix(5))
+        let trend = calculateTrend(from: recentSentiments)
+        
+        // Identify patterns
+        let weeklyPattern = detectWeeklyPattern(sessions: sortedSessions)
+        let dayOfWeekPattern = detectDayOfWeekPattern(sessions: sortedSessions)
+        
+        // Predict based on patterns
+        let predictedSentiment = predictSentiment(
+            currentTrend: trend,
+            weeklyPattern: weeklyPattern,
+            dayOfWeekPattern: dayOfWeekPattern,
+            daysAhead: daysAhead
+        )
+        
+        // Determine risk level
+        let riskLevel: MoodPrediction.RiskLevel
+        if predictedSentiment < -0.5 {
+            riskLevel = .high
+        } else if predictedSentiment < -0.2 {
+            riskLevel = .moderate
+        } else {
+            riskLevel = .low
+        }
+        
+        // Generate recommendation
+        let recommendation = generatePreventiveRecommendation(
+            predictedSentiment: predictedSentiment,
+            riskLevel: riskLevel,
+            patterns: (weeklyPattern, dayOfWeekPattern)
+        )
+        
+        return MoodPrediction(
+            predictedSentiment: predictedSentiment,
+            daysAhead: daysAhead,
+            confidence: calculatePredictionConfidence(sessions: sortedSessions),
+            riskLevel: riskLevel,
+            recommendation: recommendation,
+            basedOnPatterns: [weeklyPattern, dayOfWeekPattern].compactMap { $0 }
+        )
+    }
+    
+    private func calculateTrend(from sentiments: [Double]) -> Double {
+        guard sentiments.count >= 2 else { return 0.0 }
+        
+        let firstHalf = Array(sentiments.prefix(sentiments.count / 2))
+        let secondHalf = Array(sentiments.suffix(sentiments.count / 2))
+        
+        let firstAvg = firstHalf.reduce(0, +) / Double(firstHalf.count)
+        let secondAvg = secondHalf.reduce(0, +) / Double(secondHalf.count)
+        
+        return secondAvg - firstAvg
+    }
+    
+    private func detectWeeklyPattern(sessions: [ConversationSession]) -> String? {
+        guard sessions.count >= 7 else { return nil }
+        
+        var weeklySentiments: [Int: [Double]] = [:]
+        
+        for session in sessions {
+            let weekOfYear = Calendar.current.component(.weekOfYear, from: session.startDate)
+            if let sentiment = session.averageSentiment {
+                if weeklySentiments[weekOfYear] == nil {
+                    weeklySentiments[weekOfYear] = []
+                }
+                weeklySentiments[weekOfYear]?.append(sentiment)
+            }
+        }
+        
+        // Check for consistent patterns
+        if weeklySentiments.count >= 2 {
+            return "Weekly mood patterns detected"
+        }
+        
+        return nil
+    }
+    
+    private func detectDayOfWeekPattern(sessions: [ConversationSession]) -> String? {
+        guard sessions.count >= 7 else { return nil }
+        
+        var daySentiments: [Int: [Double]] = [:]
+        
+        for session in sessions {
+            let weekday = Calendar.current.component(.weekday, from: session.startDate)
+            if let sentiment = session.averageSentiment {
+                if daySentiments[weekday] == nil {
+                    daySentiments[weekday] = []
+                }
+                daySentiments[weekday]?.append(sentiment)
+            }
+        }
+        
+        // Find day with consistently lower sentiment
+        for (day, sentiments) in daySentiments {
+            let avg = sentiments.reduce(0, +) / Double(sentiments.count)
+            if avg < -0.3 && sentiments.count >= 2 {
+                let dayName = Calendar.current.weekdaySymbols[day - 1]
+                return "Lower mood typically on \(dayName)s"
+            }
+        }
+        
+        return nil
+    }
+    
+    private func predictSentiment(
+        currentTrend: Double,
+        weeklyPattern: String?,
+        dayOfWeekPattern: String?,
+        daysAhead: Int
+    ) -> Double {
+        // Base prediction on current trend
+        var prediction = currentTrend * Double(daysAhead)
+        
+        // Adjust based on day of week pattern
+        if let dayPattern = dayOfWeekPattern {
+            let calendar = Calendar.current
+            let targetDate = calendar.date(byAdding: .day, value: daysAhead, to: Date()) ?? Date()
+            let targetWeekday = calendar.component(.weekday, from: targetDate)
+            
+            // If pattern suggests lower mood on this day, adjust prediction
+            if dayPattern.contains(calendar.weekdaySymbols[targetWeekday - 1]) {
+                prediction -= 0.2
+            }
+        }
+        
+        return max(-1.0, min(1.0, prediction))
+    }
+    
+    private func calculatePredictionConfidence(sessions: [ConversationSession]) -> Double {
+        // More sessions = higher confidence
+        let sessionCount = Double(sessions.count)
+        let baseConfidence = min(sessionCount / 20.0, 0.8) // Max 80% from session count
+        
+        // Pattern consistency increases confidence
+        let patternBonus = detectWeeklyPattern(sessions: sessions) != nil ? 0.1 : 0.0
+        
+        return min(baseConfidence + patternBonus, 0.9) // Cap at 90%
+    }
+    
+    private func generatePreventiveRecommendation(
+        predictedSentiment: Double,
+        riskLevel: MoodPrediction.RiskLevel,
+        patterns: (String?, String?)
+    ) -> String {
+        if riskLevel == .high {
+            return "Based on your patterns, you might experience difficult emotions in the coming days. " +
+                   "I recommend scheduling a check-in session and having your coping strategies ready. " +
+                   "Consider trying a breathing exercise or mindfulness practice proactively."
+        } else if riskLevel == .moderate {
+            return "Your patterns suggest you might feel a bit down in the coming days. " +
+                   "This is a good time to engage in activities that typically help your mood, " +
+                   "like exercise, social connection, or your favorite coping strategies."
+        } else {
+            return "Your patterns suggest you're likely to maintain stable or positive mood. " +
+                   "Continue with your current self-care practices."
+        }
+    }
+}
+
+// MARK: - Mood Prediction Model
+
+struct MoodPrediction: Codable {
+    var predictedSentiment: Double // -1.0 to 1.0
+    var daysAhead: Int
+    var confidence: Double // 0.0 to 1.0
+    var riskLevel: RiskLevel
+    var recommendation: String
+    var basedOnPatterns: [String]
+    
+    enum RiskLevel: String, Codable {
+        case low = "Low"
+        case moderate = "Moderate"
+        case high = "High"
+    }
 }
